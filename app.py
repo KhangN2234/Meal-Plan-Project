@@ -8,8 +8,6 @@ app = Flask(__name__)
 def welcome():
     return render_template('welcome.html')
 
-init_db()
-
 # Route to display the signup form and handle form submissions
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
