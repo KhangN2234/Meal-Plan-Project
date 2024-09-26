@@ -4,17 +4,9 @@ import bcrypt
 
 app = Flask(__name__)
 
-# Initialize the database (if not already)
-def init_db():
-    conn = sqlite3.connect('users.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS users (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    username TEXT UNIQUE NOT NULL,
-                    password TEXT NOT NULL
-                )''')
-    conn.commit()
-    conn.close()
+@app.route('/')
+def welcome():
+    return render_template('welcome.html')
 
 init_db()
 
@@ -42,11 +34,5 @@ def signup():
             conn.close()
     
     return render_template('signup.html')
-
-# Success page
-@app.route('/success')
-def success():
-    return "Account created successfully!"
-
 if __name__ == '__main__':
     app.run(debug=True)
