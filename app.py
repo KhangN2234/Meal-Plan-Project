@@ -19,7 +19,7 @@ def signup():
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
         
         # It should store the username and password in the database but doesn't work
-        '''
+        
         conn = sqlite3.connect('users.db')
         c = conn.cursor()
         
@@ -31,7 +31,12 @@ def signup():
             return "Username already exists. Try another one."
         finally:
             conn.close()
-    '''
+    
     return render_template('signup.html')
+# Success page
+@app.route('/success')
+def success():
+    return "Account created successfully!"
+
 if __name__ == '__main__':
     app.run(debug=True)
