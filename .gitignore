@@ -48,3 +48,9 @@ Thumbs.db
 *.mov
 *.wmv
 
+.env
+__pycache__/
+.DS_Store
+.venv/
+venv/
+.project
