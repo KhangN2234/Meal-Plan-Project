@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h2>Adjust Ingredients for Scaling</h2>
+  <p>Select the ingredients you have and specify the amount:</p>
+
+  <form>
+    <div class="ingredient-list">
+      <!-- Example of one ingredient -->
+      <div class="ingredient-item">
+        <label>
+          <input type="checkbox" name="flour"> Flour (Required: 500 grams)
+        </label>
+        <input type="number" name="amount_flour" placeholder="How much do you have?" min="0" step="any">
+      </div>
+
+      <div class="ingredient-item">
+        <label>
+          <input type="checkbox" name="sugar"> Sugar (Required: 200 grams)
+        </label>
+        <input type="number" name="amount_sugar" placeholder="How much do you have?" min="0" step="any">
+      </div>
+
+      <!-- Repeat this structure for more ingredients -->
+    </div>
+
+    <button type="submit">Scale Recipe</button>
+  </form>
+{% endblock %}
