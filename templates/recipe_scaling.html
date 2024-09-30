@@ -28,6 +28,24 @@
             background-color: #6d6d6d;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        
+        .back-button {
+            position: absolute; 
+            top: 20px;
+            left: 20px;
+            background-color: #f44336; 
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            text-decoration: none; 
+        }
+
+        .back-button:hover {
+            background-color: #d32f2f; 
+        }
 
         h1 {
             margin-top: 0;
@@ -44,7 +62,7 @@
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px; /* Space between each label */
+            gap: 15px; 
         }
 
         label {
@@ -54,25 +72,21 @@
             width: 100%;
         }
 
-        /* Align the checkbox to the left */
         label input[type="checkbox"] {
             flex: 0;
-            margin-right: 10px; /* Add space between checkbox and title */
+            margin-right: 10px; 
         }
 
-        /* Align the title (text) to the center */
         label .title {
-            flex: 1; /* Takes up the remaining space */
+            flex: 1; 
             text-align: center;
         }
 
-        /* Align the number input to the right */
         label .input-group {
             display: flex;
             align-items: center;
         }
 
-        /* Adjust the width of the number input */
         label input[type="number"] {
             width: 60px;
             text-align: right;
@@ -96,6 +110,7 @@
 <body>
 
 <header>
+    <button class="back-button" onclick="history.back()"> Back to Recipe</button>
     <h1>Recipe Scaling</h1>
     <h2>What ingredients are you short on?</h2>
 </header>
