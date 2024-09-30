@@ -1,19 +1,110 @@
-<form>
-    <h2>Search:</h2>
-    <input type="text"></input>
-    <select>
-        <option>Breakfast</option>
-        <option>Lunch</option>
-        <option>Dinner</option>
-    </select>
-    <input type="submit" value="Search"></input>
-</form>
+<!DOCTYPE html>
+<head>
 
-<ul>
-    <li>
-        <p>Result 1</p>
+</head>
+    <body>
+    <form class="input">
+        <style>
+            body{
+                font-family: 'Arial';
+                width: fit-content;
+                align-self: center;
+                margin: 5%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .input {
+                border-style: solid;
+                border-radius: 2%;
+                border-width: thin;
+                border-color: rgb(146, 145, 145);
+                padding: 5%;
+                margin: 5px;
+            }
+
+            .output {
+                border-style: solid;
+                border-radius: 2%;
+                border-width: thin;
+                border-color: rgb(146, 145, 145);
+                padding: 5%;
+                margin: 5px;
+            }
+            h3{
+                color: grey;
+                font-weight: lighter;
+                
+            }
+            h2{
+                font-weight: 1000;
+                font-size: 32px;
+            }
+            .searchbar{
+                display: block;
+                width: 96%;
+                margin-top: 10%;
+                margin-bottom: 10%;
+                height: 40px;
+                border-radius: 2% / 10%;
+                border-width: 2px;
+                border-color: rgb(155, 155, 155);
+                border-style: solid;
+                outline: none;
+                padding-left: 5px;
+            }
+            .mealtype {
+                display: block;
+                width: 100%;
+                margin-top: 10%;
+                margin-bottom: 10%;
+                height: 40px;
+                border-radius: 2% / 10%;
+                border-width: 2px;
+                border-color: rgb(155, 155, 155);
+                border-style: solid;
+                outline: none;
+                padding-left: 5px;
+                font-size: medium;
+                background-color: white;
+            }
+
+            .Submit {
+                display: block;
+                width: 100%;
+                margin-top: 10%;
+                font-weight: bold;
+                height: 40px;
+                border-radius: 2% / 10%;
+                border-width: 2px;
+                border-color: rgb(0, 0, 0);
+                border-style: solid;
+                outline: none;
+                padding-left: 5px;
+                font-size: small;
+                background-color: black;
+                color: white;
+            }
+        </style>
+        <h2>Search</h2>
+        <h3>Find a meal plan that works for you</h3>
+        <input type="text" class="searchbar"></input>
+        <select label="Category" class="mealtype">
+            <option>Breakfast</option>
+            <option>Lunch</option>
+            <option>Dinner</option>
+        </select>
+        <input type="submit" value="Search Recipes" class="Submit"></input>
+    </form>
+
+    <div class="output">
         <ul>
-            <li>details about result 1</li>
+            <li>
+                <p>Result 1</p>
+                <ul>
+                    <li>details about result 1</li>
+                </ul>
+            </li>
         </ul>
-    </li>
-</ul>
+    </div>
+</body>
