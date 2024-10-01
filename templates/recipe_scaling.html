@@ -30,21 +30,21 @@
         }
         
         .back-button {
-            position: absolute; 
+            position: absolute; /* Fixed to the top-left corner */
             top: 20px;
             left: 20px;
-            background-color: #f44336; 
+            background-color: #f44336; /* Red background */
             color: white;
             border: none;
             padding: 10px 15px;
             cursor: pointer;
             font-size: 16px;
             border-radius: 5px;
-            text-decoration: none; 
+            text-decoration: none; /* Removes underline if using <a> tag */
         }
 
         .back-button:hover {
-            background-color: #d32f2f; 
+            background-color: #d32f2f; /* Darker red on hover */
         }
 
         h1 {
@@ -110,40 +110,25 @@
 <body>
 
 <header>
-    <button class="back-button" onclick="history.back()"> Back to Recipe</button>
+    <button class="back-button" onclick="goback()"> Back to Recipe</button>
     <h1>Recipe Scaling</h1>
     <h2>What ingredients are you short on?</h2>
 </header>
 
 <div class="container">
     <h3>Check the box and enter the amount you have</h3>
+    
     <form action="#" method="POST">
+        {% for ingredient in ingredients %}
         <label>
-            <input type="checkbox" name="item1-checkbox">
-            <span class="title">Item 1</span>
+            <input type="checkbox" class="checkbox">
+            <span class="title">{{ ingredient.name }}</span>
             <div class="input-group">
-                <input type="number" name="item1-amount" placeholder="0">
-                <span class="input-text">kg</span>
+                <input type="number" value="{{ ingredient.amountOnHand }}" placeholder="0">
+                <span>g</span>
             </div>
         </label>
-    
-        <label>
-            <input type="checkbox" name="item2-checkbox">
-            <span class="title">Item 2</span>
-            <div class="input-group">
-                <input type="number" name="item2-amount" placeholder="0">
-                <span class="input-text">kg</span>
-            </div>
-        </label>
-    
-        <label>
-            <input type="checkbox" name="item3-checkbox">
-            <span class="title">Item 3</span>
-            <div class="input-group">
-                <input type="number" name="item3-amount" placeholder="0">
-                <span class="input-text">kg</span>
-            </div>
-        </label>
+        {% endfor %}
     
         <input type="submit" value="Submit">
     </form>
