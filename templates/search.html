@@ -108,14 +108,23 @@
         <input type="submit" value="Search Recipes" class="Submit"></input>
     </form>
 
-    <div class="output">
-        <ul>
-            <li>
-                <p>Result 1</p>
-                <ul>
-                    <li>details about result 1</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</body>
+
+{%if success%}
+    {% for recipe in recipes %}
+        <div class="output">
+            <ul>
+                <li>
+                    <p>{{ recipe.label }}</p>
+                    <ul>
+                        <li> {{recipe. calories}} cal </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    {% endfor %}
+    </body>
+
+{% else %}
+<p>Error.</p>
+
+{% endif %}

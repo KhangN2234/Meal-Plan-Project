@@ -53,7 +53,13 @@ def search():
         response = requests.get(api_url)
 
         data = response.json()
-        return data
+
+        list_of_recipes = data['hits']
+
+        display_data = [{'label': recipe['recipe']['label'], 'calories': recipe['recipe']['calories']} for recipe in list_of_recipes]
+        
+
+        return render_template('search.html', recipes=display_data, success=True)
     
 if __name__ == '__main__':
     app.run(debug=True)
