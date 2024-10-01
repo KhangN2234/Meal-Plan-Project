@@ -3,11 +3,11 @@
 
 </head>
     <body>
-    <form class="input">
+    <form class="input" action="/search" method="POST">
         <style>
             body{
                 font-family: 'Arial';
-                width: fit-content;
+                width: 25%;
                 align-self: center;
                 margin: 5%;
                 margin-left: auto;
@@ -99,7 +99,7 @@
         <h2>Search</h2>
         <h3>Find a meal plan that works for you</h3>
         <p class="label">I'm looking for....</p>
-        <input type="text" class="searchbar" id="searchbar" placeholder="Chicken Parmesan..."></input>
+        <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."></input>
         <select label="Category" class="mealtype">
             <option>Breakfast</option>
             <option>Lunch</option>
@@ -108,14 +108,23 @@
         <input type="submit" value="Search Recipes" class="Submit"></input>
     </form>
 
-    <div class="output">
-        <ul>
-            <li>
-                <p>Result 1</p>
-                <ul>
-                    <li>details about result 1</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</body>
+
+{%if success%}
+    {% for recipe in recipes %}
+        <div class="output">
+            <ul>
+                <li>
+                    <p>{{ recipe.label }}</p>
+                    <ul>
+                        <li> {{recipe. calories}} cal </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    {% endfor %}
+    </body>
+
+{% else %}
+<p>Error.</p>
+
+{% endif %}
