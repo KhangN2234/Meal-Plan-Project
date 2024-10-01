@@ -56,7 +56,7 @@ def search():
 
         list_of_recipes = data['hits']
 
-        display_data = [{'label': recipe['recipe']['label'], 'calories': recipe['recipe']['calories'], 'servings': recipe['recipe']['yield'], 'cal_per_serv': recipe['recipe']['calories']/recipe['recipe']['yield']} for recipe in list_of_recipes]
+        display_data = [{'label': recipe['recipe']['label'], 'calories': round(recipe['recipe']['calories']), 'servings': round(recipe['recipe']['yield']), 'cal_per_serv': round(recipe['recipe']['calories']/recipe['recipe']['yield'])} for recipe in list_of_recipes]
         
 
         return render_template('search.html', recipes=display_data, success=True)
