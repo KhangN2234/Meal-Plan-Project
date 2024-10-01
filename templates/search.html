@@ -3,7 +3,7 @@
 
 </head>
     <body>
-    <form class="input">
+    <form class="input" action="/search" method="POST">
         <style>
             body{
                 font-family: 'Arial';
@@ -99,7 +99,7 @@
         <h2>Search</h2>
         <h3>Find a meal plan that works for you</h3>
         <p class="label">I'm looking for....</p>
-        <input type="text" class="searchbar" id="searchbar" placeholder="Chicken Parmesan..."></input>
+        <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."></input>
         <select label="Category" class="mealtype">
             <option>Breakfast</option>
             <option>Lunch</option>
