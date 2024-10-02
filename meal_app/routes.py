@@ -2,6 +2,9 @@ from meal_app import app
 from flask import Flask, render_template, request, redirect
 import sqlite3
 import bcrypt
+import requests
+import os
+
 
 
 @app.route('/')
@@ -37,3 +40,26 @@ def signup():
 @app.route('/success')
 def success():
     return "Account created successfully!"
+
+
+
+recipe_search_app_id = os.getenv('RECIPE_SEARCH_APP_ID')
+recipe_search_api_key = os.getenv('RECIPE_SEARCH_API_KEY')
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    if request.method == 'GET': 
+        return render_template('search.html')
+    else:
+        searchbar = request.form['searchbar']
+        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={searchbar}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&random=false&field=uri&field=label&field=calories"
+        response = requests.get(api_url)
+
+        data = response.json()
+
+        list_of_recipes = data['hits']
+
+        display_data = [{'label': recipe['recipe']['label'], 'calories': recipe['recipe']['calories']} for recipe in list_of_recipes]
+        
+
+        return render_template('search.html', recipes=display_data, success=True)
