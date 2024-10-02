@@ -91,6 +91,12 @@
                 background-color: black;
                 color: white;
             }
+
+            .Submit:hover {
+                border-color: rgb(161, 161, 161);
+            }
+
+
             .label {
                 font-size: small;
                 margin-bottom: .5;
@@ -100,7 +106,7 @@
         <h3>Find a meal plan that works for you</h3>
         <p class="label">I'm looking for....</p>
         <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."></input>
-        <select label="Category" class="mealtype">
+        <select label="Category" name='mealtype' class="mealtype" id="mealtype">
             <option>Breakfast</option>
             <option>Lunch</option>
             <option>Dinner</option>
@@ -110,6 +116,7 @@
 
 
 {%if success%}
+    <p>Results for <b>{{ searchbar }}</b> in <b>{{ mealtype }}</b></p>
     {% for recipe in recipes %}
         <div class="output">
             <ul>
@@ -118,7 +125,7 @@
                     <ul>
                         <li> {{recipe. calories}} cal </li>
                         <li> {{recipe. servings}} servings</li>
-                        <li> {{recipe. cal_per_serv}} cal/serving</li>
+                        <li><b> {{recipe. cal_per_serv}} cal/serving </b></li>
                     </ul>
                 </li>
             </ul>
