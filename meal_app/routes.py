@@ -52,14 +52,16 @@ def search():
         return render_template('search.html')
     else:
         searchbar = request.form['searchbar']
-        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={searchbar}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&random=false&field=uri&field=label&field=calories"
+        mealtype = request.form['mealtype']
+        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={searchbar}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&mealType={mealtype}&random=false&field=uri&field=label&field=calories&field=yield"
+
         response = requests.get(api_url)
 
         data = response.json()
 
         list_of_recipes = data['hits']
 
-        display_data = [{'label': recipe['recipe']['label'], 'calories': recipe['recipe']['calories']} for recipe in list_of_recipes]
+        display_data = [{'label': recipe['recipe']['label'], 'calories': round(recipe['recipe']['calories']), 'servings': round(recipe['recipe']['yield']), 'cal_per_serv': round(recipe['recipe']['calories']/recipe['recipe']['yield'])} for recipe in list_of_recipes]
         
 
-        return render_template('search.html', recipes=display_data, success=True)
+        return render_template('search.html', recipes=display_data, mealtype=mealtype, searchbar=searchbar, success=True)
