@@ -41,7 +41,7 @@ def signup():
 def success():
     return "Account created successfully!"
 
-@app.route('/profile.html')
+@app.route('/profile')
 def profile():
     return render_template('profile.html')
 
