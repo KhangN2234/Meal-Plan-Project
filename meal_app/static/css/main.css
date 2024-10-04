@@ -10,7 +10,7 @@ body {
 h1 {
     font-family: "Gill Sans", sans-serif;
     font-size: 14cap;
-    min-height: 60vh;
+    min-height: 0vh;
     color: rgb(240, 230, 230);
 }
 
@@ -45,6 +45,13 @@ h1 {
     font-size: 30px;
     color: aqua;
     font-weight: 600;
+}
+
+ .burger {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    display: flex;
 }
 
 .navbar {
