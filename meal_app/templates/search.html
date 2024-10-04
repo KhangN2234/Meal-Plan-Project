@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+    <body>
+    <form class="input" action="/search" method="POST">
+        <style>
+            body{
+                font-family: 'Arial';
+                width: 25%;
+                min-width: 300px;
+                align-self: center;
+                margin: 5%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .input {
+                border-style: solid;
+                border-radius: 2%;
+                border-width: thin;
+                border-color: rgb(146, 145, 145);
+                padding: 5%;
+                margin: 5px;
+            }
+
+            .output {
+                border-style: solid;
+                border-radius: 2%;
+                border-width: thin;
+                border-color: rgb(146, 145, 145);
+                padding: 5%;
+                margin: 5px;
+            }
+            h3{
+                color: grey;
+                font-weight: lighter;
+                
+            }
+            h2{
+                font-weight: 1000;
+                font-size: 32px;
+            }
+            .searchbar{
+                display: block;
+                width: 96%;
+                margin-bottom: 10%;
+                height: 35px;
+                border-radius: 2% / 10%;
+                border-width: 2px;
+                border-color: rgb(155, 155, 155);
+                border-style: solid;
+                outline: none;
+                padding-left: 5px;
+            }
+
+            .searchbar::placeholder{
+                font-weight: normal;
+                opacity: 15%;
+
+            }
+
+            .mealtype {
+                display: block;
+                width: 100%;
+                margin-top: 10%;
+                margin-bottom: 10%;
+                height: 40px;
+                border-radius: 2% / 10%;
+                border-width: 2px;
+                border-color: rgb(155, 155, 155);
+                border-style: solid;
+                outline: none;
+                padding-left: 5px;
+                font-size: medium;
+                background-color: white;
+            }
+
+            .Submit {
+                display: block;
+                width: 100%;
+                margin-top: 10%;
+                font-weight: bold;
+                height: 40px;
+                border-radius: 2% / 10%;
+                border-width: 2px;
+                border-color: rgb(0, 0, 0);
+                border-style: solid;
+                outline: none;
+                padding-left: 5px;
+                font-size: small;
+                background-color: black;
+                color: white;
+            }
+
+            .Submit:hover {
+                border-color: rgb(161, 161, 161);
+            }
+
+
+            .label {
+                font-size: small;
+                margin-bottom: .5;
+            }
+
+            .title{
+                list-style-type: none
+                
+            }
+
+            .contents{
+                list-style-type:circle
+            }
+        </style>
+        <h2>Search</h2>
+        <h3>Find a meal plan that works for you</h3>
+        <p class="label">I'm looking for....</p>
+        <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."></input>
+        <select label="Category" name='mealtype' class="mealtype" id="mealtype">
+            <option>Breakfast</option>
+            <option>Lunch</option>
+            <option>Dinner</option>
+        </select>
+        <input type="submit" value="Search Recipes" class="Submit"></input>
+    </form>
+
+
+{%if success%}
+    <p>Results for <b>{{ searchbar }}</b> in <b>{{ mealtype }}</b></p>
+    {% for recipe in recipes %}
+        <div class="output">
+            <ul>
+                <li class="title">
+                    <p><b>{{ recipe.label }}</b></p>
+                    
+                    <ul class="contents">
+                        <li> {{recipe. protein}}{{recipe. proteinunit}} Protein</li>
+                        <li> {{recipe. calories}} cal </li>
+                        <li> {{recipe. servings}} servings</li>
+                        <li><b> {{recipe. protein_per_serv}}{{recipe. proteinunit}} protein/serving </b></li>
+                        <li><b> {{recipe. cal_per_serv}} cal/serving </b></li>
+                        <br>
+                        <li> <b>Ingredients</b> </li>
+                            <ul>
+                                {% for ingredient in recipe.ingredients %}
+                                    <li>{{ ingredient }}</li>
+                                {% endfor %}
+                            </ul>
+
+                        <br>
+                        <a href='{{recipe. url}}'>From {{recipe. source}}</a>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    {% endfor %}
+    </body>
+
+{% else %}
+<p>Error.</p>
+
+{% endif %}
