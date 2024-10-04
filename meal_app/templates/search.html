@@ -8,6 +8,7 @@
             body{
                 font-family: 'Arial';
                 width: 25%;
+                min-width: 300px;
                 align-self: center;
                 margin: 5%;
                 margin-left: auto;
@@ -91,16 +92,31 @@
                 background-color: black;
                 color: white;
             }
+
+            .Submit:hover {
+                border-color: rgb(161, 161, 161);
+            }
+
+
             .label {
                 font-size: small;
                 margin-bottom: .5;
+            }
+
+            .title{
+                list-style-type: none
+                
+            }
+
+            .contents{
+                list-style-type:circle
             }
         </style>
         <h2>Search</h2>
         <h3>Find a meal plan that works for you</h3>
         <p class="label">I'm looking for....</p>
         <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."></input>
-        <select label="Category" class="mealtype">
+        <select label="Category" name='mealtype' class="mealtype" id="mealtype">
             <option>Breakfast</option>
             <option>Lunch</option>
             <option>Dinner</option>
@@ -110,13 +126,29 @@
 
 
 {%if success%}
+    <p>Results for <b>{{ searchbar }}</b> in <b>{{ mealtype }}</b></p>
     {% for recipe in recipes %}
         <div class="output">
             <ul>
-                <li>
-                    <p>{{ recipe.label }}</p>
-                    <ul>
+                <li class="title">
+                    <p><b>{{ recipe.label }}</b></p>
+                    
+                    <ul class="contents">
+                        <li> {{recipe. protein}}{{recipe. proteinunit}} Protein</li>
                         <li> {{recipe. calories}} cal </li>
+                        <li> {{recipe. servings}} servings</li>
+                        <li><b> {{recipe. protein_per_serv}}{{recipe. proteinunit}} protein/serving </b></li>
+                        <li><b> {{recipe. cal_per_serv}} cal/serving </b></li>
+                        <br>
+                        <li> <b>Ingredients</b> </li>
+                            <ul>
+                                {% for ingredient in recipe.ingredients %}
+                                    <li>{{ ingredient }}</li>
+                                {% endfor %}
+                            </ul>
+
+                        <br>
+                        <a href='{{recipe. url}}'>From {{recipe. source}}</a>
                     </ul>
                 </li>
             </ul>
