@@ -121,11 +121,12 @@
     <form action="#" method="POST">
         {% for ingredient in ingredients %}
         <label>
-            <input type="checkbox" class="checkbox">
+            <input type="checkbox" name="ingredient_selected_{{ loop.index }}" class="checkbox">
             <span class="title">{{ ingredient.name }}</span>
             <div class="input-group">
-                <input type="number" value="{{ ingredient.amountOnHand }}" placeholder="0">
-                <span>g</span>
+                <span>{{ ingredient.amountNeeded }} {{ ingredient.unit }} needed /</span>
+                <input type="number" name="amount_on_hand_{{ loop.index }}"value="{{ ingredient.amountOnHand }}" placeholder="0">
+                <span>{{ ingredient.unit }}</span>
             </div>
         </label>
         {% endfor %}
