@@ -41,6 +41,10 @@ def signup():
 def success():
     return "Account created successfully!"
 
+@app.route('/profile.html')
+def profile():
+    return render_template('profile.html')
+
 
 
 recipe_search_app_id = os.getenv('RECIPE_SEARCH_APP_ID')
