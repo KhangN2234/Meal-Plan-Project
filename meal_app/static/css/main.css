@@ -14,6 +14,13 @@ h1 {
     color: rgb(240, 230, 230);
 }
 
+h2 {
+    font-size: 2em;
+    margin-top: 40px;
+    text-align: center;
+    letter-spacing: -2px;
+}
+
 
 .wrapper h2 {
     font-family: "Gill Sans", sans-serif;
@@ -59,10 +66,12 @@ h1 {
 }
 
 ul.navbar {
-    position: absolute;
+    position: fixed;
     top: 2em;
     left: 1em;
-    width: 9em }
+    width: 100%;
+    overflow: hidden;
+}
 
 ul.navbar a {
     text-decoration: none }
@@ -79,8 +88,32 @@ a:visited {
 
 .navbar li {
     display: inline;
+    float: left;
 }
 
-.navbar li + li {
-    margin-left: 35px;
+.navbar li a {
+    color: white;
+    text-align: center;
+    padding: 14px 30px;
+    text-decoration: none;
+}
+
+.navbar a {
+    float: left;
+    color: red;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 8px;
+    background-color: #dddddd;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar a.active {
+    background-color: #04aa6d;
+    color: white;
 }
