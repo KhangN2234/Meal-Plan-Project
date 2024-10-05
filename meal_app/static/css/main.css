@@ -2,16 +2,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 40vh;
     height: 100vh;
-    background: rgb(95, 194, 95);
+    background: rgb(51, 202, 109);
   }
 
+/* change title text stuff*/
 h1 {
     font-family: "Gill Sans", sans-serif;
     font-size: 14cap;
-    min-height: 0vh;
     color: rgb(240, 230, 230);
+    height: 20px;
 }
 
 h2 {
@@ -54,66 +54,60 @@ h2 {
     font-weight: 600;
 }
 
- .burger {
+.burger {
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
     display: flex;
+    height: 400px;
 }
 
+/* change nav bar position*/
 .navbar {
-    font-size: 40px;
-}
-
-ul.navbar {
     position: fixed;
-    top: 2em;
-    left: 1em;
+    font-size: 40px;
+    top: 0em;
+    left: -1em;
     width: 100%;
     overflow: hidden;
+    margin-top: 0px;
 }
 
-ul.navbar a {
-    text-decoration: none }
-a:link {
-    color: blue }
-a:visited {
-    color: rgb(122, 112, 187) 
-}
-
-.navbar {
-    float: right;
-    margin-top: 8px;
-}
-
+/* hide the dot next to the tabs */
 .navbar li {
     display: inline;
     float: left;
+    
 }
 
+/* change text inside nav bar */
 .navbar li a {
-    color: white;
+    font-family: "Gill Sans", sans-serif;
+    color: rgb(68, 104, 180);
     text-align: center;
-    padding: 14px 30px;
-    text-decoration: none;
+    padding: 20px 30px;
+    border-left: 1px solid #38a0cf;
 }
 
+/* change background of nav bar */
 .navbar a {
     float: left;
-    color: red;
     text-align: center;
     text-decoration: none;
     font-size: 20px;
-    padding: 8px;
-    background-color: #dddddd;
+    background-color: #e7e6e6;
+    list-style-type: none;
+}
+ul.navbar {
+    background-color: #e7e6e6;
+    border-bottom: 4px solid #38a0cf;
 }
 
 .navbar a:hover {
-    background-color: #ddd;
+    background-color: lightblue;
     color: black;
 }
 
-.navbar a.active {
-    background-color: #04aa6d;
-    color: white;
+.active.navbar {
+    background-color: aqua;
 }
