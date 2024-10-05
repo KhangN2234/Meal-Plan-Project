@@ -111,6 +111,10 @@
             .contents{
                 list-style-type:circle
             }
+            .rangeValue{
+                display:inline
+            }
+            
         </style>
         <h2>Search</h2>
         <h3>Find a meal plan that works for you</h3>
@@ -121,6 +125,19 @@
             <option>Lunch</option>
             <option>Dinner</option>
         </select>
+        <details>
+            <summary>Additional Filters</summary>
+            <label for="servings">Max Ingredients: </label>
+            <p id="rangeValue" class="rangeValue">20</p>
+            <input type="range" id="maxingredients" name="maxIngredients" min="1" max="20" step="1" value="20" oninput="rangeValue.innerText = this.value" list="markers">
+            <datalist id="markers">
+                <option value="0"></option>
+                <option value="5"></option>
+                <option value="10"></option>
+                <option value="15"></option>
+                <option value="20"></option>
+            </datalist>
+        </details>
         <input type="submit" value="Search Recipes" class="Submit"></input>
     </form>
 
