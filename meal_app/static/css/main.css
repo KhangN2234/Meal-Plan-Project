@@ -12,6 +12,7 @@ h1 {
     font-size: 14cap;
     color: rgb(240, 230, 230);
     height: 20px;
+    font-weight: 10;
 }
 
 h2 {
@@ -78,6 +79,7 @@ h2 {
     text-align: center;
     padding: 20px 30px;
     border-left: 1px solid #38a0cf;
+    font-weight: 40;
 }
 
 /* change background of nav bar */
