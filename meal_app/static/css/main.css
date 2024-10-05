@@ -4,7 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     background: rgb(51, 202, 109);
-  }
+}
 
 /* change title text stuff*/
 h1 {
@@ -19,15 +19,6 @@ h2 {
     margin-top: 40px;
     text-align: center;
     letter-spacing: -2px;
-}
-
-
-.wrapper h2 {
-    font-family: "Gill Sans", sans-serif;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    color: aqua;
 }
 
 .wrapper .register {
@@ -106,8 +97,4 @@ ul.navbar {
 .navbar a:hover {
     background-color: lightblue;
     color: black;
-}
-
-.active.navbar {
-    background-color: aqua;
 }
