@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block content %}
 <head>
 
 </head>
@@ -13,6 +14,7 @@
                 margin: 5%;
                 margin-left: auto;
                 margin-right: auto;
+                height: 100%;
             }
 
             .input {
@@ -22,6 +24,7 @@
                 border-color: rgb(146, 145, 145);
                 padding: 5%;
                 margin: 5px;
+                background-color: aliceblue;
             }
 
             .output {
@@ -31,6 +34,7 @@
                 border-color: rgb(146, 145, 145);
                 padding: 5%;
                 margin: 5px;
+                background-color: aliceblue;
             }
             h3{
                 color: grey;
@@ -160,3 +164,4 @@
 <p>Error.</p>
 
 {% endif %}
+{% endblock %}
