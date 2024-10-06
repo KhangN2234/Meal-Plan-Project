@@ -5,79 +5,10 @@
 </head>
     <body>
     <form class="input" action="/search" method="POST">
-        <style>
-           
-
-            .searchbar{
-                display: block;
-                width: 96%;
-                margin-bottom: 10%;
-                height: 35px;
-                border-radius: 2% / 10%;
-                border-width: 2px;
-                border-color: rgb(155, 155, 155);
-                border-style: solid;
-                outline: none;
-                padding-left: 5px;
-            }
-
-            .searchbar::placeholder{
-                font-weight: normal;
-                opacity: 15%;
-
-            }
-
-            .mealtype {
-                display: block;
-                width: 100%;
-                margin-top: 10%;
-                margin-bottom: 10%;
-                height: 40px;
-                border-radius: 2% / 10%;
-                border-width: 2px;
-                border-color: rgb(155, 155, 155);
-                border-style: solid;
-                outline: none;
-                padding-left: 5px;
-                font-size: medium;
-                background-color: white;
-            }
-
-            .Submit {
-                display: block;
-                width: 100%;
-                margin-top: 10%;
-                font-weight: bold;
-                height: 40px;
-                border-radius: 2% / 10%;
-                border-width: 2px;
-                border-color: rgb(0, 0, 0);
-                border-style: solid;
-                outline: none;
-                padding-left: 5px;
-                font-size: small;
-                background-color: black;
-                color: white;
-            }
-
-            .Submit:hover {
-                border-color: rgb(161, 161, 161);
-            }
-
-
-            .label {
-                font-size: small;
-                margin-bottom: .5;
-            }
-
-            
-
-            
-        </style>
         <h2>Search</h2>
         <h3>Find a meal plan that works for you</h3>
         <p class="label">I'm looking for....</p>
-        <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."></input>
+        <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."required></input> 
         <select label="Category" name='mealtype' class="mealtype" id="mealtype">
             <option>Breakfast</option>
             <option>Lunch</option>
@@ -118,7 +49,7 @@
     {% endfor %}
     </body>
 
-{% else %}
+{% elif success == false%}
 <p>Error.</p>
 
 {% endif %}

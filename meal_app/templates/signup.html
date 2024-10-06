@@ -17,4 +17,10 @@
     </form>
 </body>
 </html>
+
+{%if success%}
+    <p> Account created successfully </p>
+{% elif success == false%}
+    <p> Account already exist </p>
+{% endif %}
 {% endblock %}
