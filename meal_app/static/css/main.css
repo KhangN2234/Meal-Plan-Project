@@ -4,6 +4,9 @@ body {
     align-items: center;
     height: 100vh;
     background: rgb(51, 202, 109);
+    font-family: Arial, sans-serif;
+    height: 0%;
+    margin-top: 5%;
 }
 
 /* change title text stuff*/
@@ -20,6 +23,42 @@ h2 {
     margin-top: 40px;
     text-align: center;
     letter-spacing: -2px;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+h3 {
+    color: grey;
+    font-weight: lighter;
+}
+
+/* Box that is around the input */
+.input {
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 5%;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+}
+
+/* Box that is around the output */
+.output {
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 1%;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+}
+
+.label {
+    font-size: small;
+    margin-bottom: .5;
 }
 
 .wrapper .register {
@@ -99,4 +138,65 @@ ul.navbar {
 .navbar a:hover {
     background-color: lightblue;
     color: black;
+}
+
+/* search bar style*/
+.searchbar{
+    display: block;
+    width: 96%;
+    margin-bottom: 10%;
+    height: 35px;
+    border-radius: 2% / 10%;
+    border-width: 2px;
+    border-color: rgb(155, 155, 155);
+    border-style: solid;
+    outline: none;
+    padding-left: 5px;
+}
+
+.searchbar::placeholder{
+    font-weight: normal;
+    opacity: 15%;
+}
+
+.mealtype {
+    display: block;
+    width: 100%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    height: 40px;
+    border-radius: 2% / 10%;
+    border-width: 2px;
+    border-color: rgb(155, 155, 155);
+    border-style: solid;
+    outline: none;
+    padding-left: 5px;
+    font-size: medium;
+    background-color: white;
+}
+
+.Submit {
+    display: block;
+    width: 100%;
+    margin-top: 10%;
+    font-weight: bold;
+    height: 40px;
+    border-radius: 2% / 10%;
+    border-width: 2px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    outline: none;
+    padding-left: 5px;
+    font-size: small;
+    background-color: black;
+    color: white;
+}
+
+.Submit:hover {
+    border-color: rgb(161, 161, 161);
+}
+
+/* Profile style */
+.profile-info {
+    margin-bottom: 10%;
 }
