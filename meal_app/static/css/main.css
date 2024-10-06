@@ -56,23 +56,8 @@ h3 {
     box-shadow: 0 0 10px;
 }
 
-.label {
-    font-size: small;
-    margin-bottom: .5;
-}
-
-.wrapper .register {
-    width: 100%;
-    height: 80px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px;
-}
-
 .wrapper .btn {
-    width: 100%;
+    width: 50%;
     height: 65px;
     background: #fff;
     border: none;
@@ -83,6 +68,11 @@ h3 {
     font-size: 30px;
     color: aqua;
     font-weight: 600;
+    margin-left: 25%;
+}
+
+.wrapper .btn:hover {
+    margin-top: 5px;
 }
 
 .burger {
@@ -94,25 +84,24 @@ h3 {
 }
 
 /* change nav bar position*/
-.navbar {
+nav {
+    background-color: #e7e6e6;
+    border-bottom: 4px solid #38a0cf;
     position: fixed;
     font-size: 40px;
     top: 0em;
-    left: -1em;
+    left: 0em;
     width: 100%;
-    overflow: hidden;
-    margin-top: 0px;
 }
 
 /* hide the dot next to the tabs */
-.navbar li {
+nav li {
     display: inline;
     float: left;
-    
 }
 
 /* change text inside nav bar */
-.navbar li a {
+nav li a {
     font-family: "Gill Sans", sans-serif;
     color: rgb(68, 104, 180);
     text-align: center;
@@ -122,7 +111,7 @@ h3 {
 }
 
 /* change background of nav bar */
-.navbar a {
+nav a {
     float: left;
     text-align: center;
     text-decoration: none;
@@ -130,14 +119,11 @@ h3 {
     background-color: #e7e6e6;
     list-style-type: none;
 }
-ul.navbar {
-    background-color: #e7e6e6;
-    border-bottom: 4px solid #38a0cf;
-}
 
-.navbar a:hover {
+nav a:hover {
     background-color: lightblue;
     color: black;
+    transition: ease-in-out 200ms;
 }
 
 /* search bar style*/
