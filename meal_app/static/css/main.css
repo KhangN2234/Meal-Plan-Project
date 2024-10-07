@@ -9,6 +9,16 @@ body {
     margin-top: 5%;
 }
 
+.searchbody {
+    font-family: 'Arial';
+    width: 25%;
+    min-width: 400px;
+    align-self: center;
+    margin: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* change title text stuff*/
 h1 {
     font-family: "Gill Sans", sans-serif;
