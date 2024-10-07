@@ -30,17 +30,18 @@ def signup():
         try:
             c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
             conn.commit()
-            return redirect('/success')  # Redirect after successful signup
+            return render_template('signup.html', success = True)  # Redirect after successful signup
         except sqlite3.IntegrityError:
-            return "Username already exists. Try another one."
+            return render_template('signup.html', success = False)
         finally:
             conn.close()
     
     return render_template('signup.html')
+
 # Success page
-@app.route('/success')
-def success():
-    return "Account created successfully!"
+#@app.route('/success')
+#def success():
+#    return "Account created successfully!"
 
 @app.route('/profile')
 def profile():
@@ -58,7 +59,10 @@ def search():
     else:
         searchbar = request.form['searchbar']
         mealtype = request.form['mealtype']
-        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={searchbar}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&mealType={mealtype}&random=false&field=uri&field=label&field=calories&field=yield&field=ingredientLines&field=source&field=images&field=url&field=totalNutrients"
+        dishtype = request.form['dishtype']
+        maxIngredients = request.form['maxIngredients']
+        cuisineType = request.form['cuisinetype']
+        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={searchbar}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&mealType={mealtype}&dishType={dishtype}&ingr={maxIngredients}&cuisineType={cuisineType}&random=false&field=uri&field=label&field=calories&field=yield&field=ingredientLines&field=source&field=images&field=url&field=totalNutrients"
 
         response = requests.get(api_url)
 

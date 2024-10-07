@@ -1,0 +1,201 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgb(51, 202, 109);
+    font-family: Arial, sans-serif;
+    height: 0%;
+    margin-top: 5%;
+}
+
+.searchbody {
+    font-family: 'Arial';
+    width: 25%;
+    min-width: 400px;
+    align-self: center;
+    margin: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* change title text stuff*/
+h1 {
+    font-family: "Gill Sans", sans-serif;
+    font-size: 14cap;
+    color: rgb(240, 230, 230);
+    height: 20px;
+    font-weight: 10;
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 40px;
+    text-align: center;
+    letter-spacing: -2px;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+h3 {
+    color: grey;
+    font-weight: lighter;
+}
+
+/* Box that is around the input */
+.input {
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 5%;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+}
+
+/* Box that is around the output */
+.output {
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 1%;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+}
+
+.wrapper .Sigbtn {
+    width: 50%;
+    height: 65px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px black;
+    cursor: pointer;
+    font-size: 30px;
+    color: aqua;
+    font-weight: 600;
+    margin-left: 25%;
+}
+
+.wrapper .Sigbtn:hover {
+    margin-top: 5px;
+    background-color: rgb(143, 227, 255);
+    color: black; /* of text */
+    transition: ease-in-out 200ms;
+}
+
+.burger {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    display: flex;
+    height: 400px;
+}
+
+/* change nav bar position*/
+nav {
+    background-color: #e7e6e6;
+    border-bottom: 4px solid #38a0cf;
+    position: fixed;
+    font-size: 40px;
+    top: 0em;
+    left: 0em;
+    width: 100%;
+}
+
+/* hide the dot next to the tabs */
+nav li {
+    display: inline;
+    float: left;
+}
+
+/* change text inside nav bar */
+nav li a {
+    font-family: "Gill Sans", sans-serif;
+    color: rgb(68, 104, 180);
+    text-align: center;
+    padding: 20px 30px;
+    border-left: 1px solid #38a0cf;
+    font-weight: 40;
+}
+
+/* change background of nav bar */
+nav a {
+    float: left;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    background-color: #e7e6e6;
+    list-style-type: none;
+}
+
+nav a:hover {
+    color: black;
+    background-color: lightblue;
+    transition: ease-in-out 250ms;
+}
+
+/* search bar style*/
+.searchbar{
+    display: block;
+    width: 96%;
+    margin-bottom: 10%;
+    height: 35px;
+    border-radius: 2% / 10%;
+    border-width: 2px;
+    border-color: rgb(155, 155, 155);
+    border-style: solid;
+    outline: none;
+    padding-left: 5px;
+}
+
+.searchbar::placeholder{
+    font-weight: normal;
+    opacity: 15%;
+}
+
+.mealtype {
+    display: block;
+    width: 100%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    height: 40px;
+    border-radius: 2% / 10%;
+    border-width: 2px;
+    border-color: rgb(155, 155, 155);
+    border-style: solid;
+    outline: none;
+    padding-left: 5px;
+    font-size: medium;
+    background-color: white;
+}
+
+.Submit {
+    display: block;
+    width: 100%;
+    margin-top: 10%;
+    font-weight: bold;
+    height: 40px;
+    border-radius: 2% / 10%;
+    border-width: 2px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    outline: none;
+    padding-left: 5px;
+    font-size: small;
+    background-color: black;
+    color: white;
+}
+
+.Submit:hover {
+    border-color: rgb(161, 161, 161);
+}
+
+/* Profile style */
+.profile-info {
+    margin-bottom: 10%;
+}
