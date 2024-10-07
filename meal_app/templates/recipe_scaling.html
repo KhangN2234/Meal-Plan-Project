@@ -118,18 +118,18 @@
 <div class="container">
     <h3>Check the box and enter the amount you have</h3>
     
-    <form action="#" method="POST">
+    <form action="{{ url_for('recipe_scaling') }}" method="POST">
         {% for ingredient in ingredients %}
         <label>
             <input type="checkbox" name="ingredient_selected_{{ loop.index }}" class="checkbox">
-            <span class="title">{{ ingredient }}</span>
+            <span class="title">{{ ingredient.amount_needed }} {{ ingredient.ingredient }}</span>
+            <input type="hidden" name="ingredient" value="{{ ingredient.ingredient }}">
+            <input type="hidden" name="amount_needed_{{ loop.index }}" value="{{ ingredient.amount_needed }}">
             <div class="input-group">
-                <span>{{ ingredient.amountNeeded }} needed /</span>
-                <input type="number" name="amount_on_hand_{{ loop.index }}" placeholder="0">
+                <input type="number" name="amount_on_hand_{{ loop.index }}" value="{{ ingredient.amount_on_hand }}" placeholder="0">
             </div>
         </label>
         {% endfor %}
-    
         <input type="submit" value="Submit">
     </form>
 </div>

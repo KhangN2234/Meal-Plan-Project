@@ -5,7 +5,7 @@ import sqlite3
 import bcrypt
 import requests
 import os
-
+import re
 
 
 @app.route('/')
@@ -79,40 +79,66 @@ def search():
 def scale_recipe():
     # Get the list of ingredients from the POST request
     ingredients = request.form.getlist('ingredients[]')
+    processed_ingredients = []
+
+    # Regular expression pattern to capture the optional amount and the rest of the string
+    pattern = r'(\d*\.?\d+)?\s*(.*)'
+
+    for ingredient in ingredients:
+        match = re.match(pattern, ingredient)
+
+        if match:
+            # Extract the amount (if it exists) or default to 0
+            amount_needed = float(match.group(1)) if match.group(1) else 0
+            ingredient_name = match.group(2).strip()  # Extract the rest of the string as the ingredient name
+            
+            # Append the processed ingredient (as a dictionary) to the list
+            processed_ingredients.append({
+                'amount_needed': amount_needed,
+                'ingredient': ingredient_name,
+                'amount_on_hand': 0
+            })
 
     # Pass the ingredient list to the recipe scaling template
-    return render_template('recipe_scaling.html', ingredients=ingredients)
+    return render_template('recipe_scaling.html', ingredients=processed_ingredients)
 
-@app.route('/recipe_scaling', methods=['GET', 'POST'])
+@app.route('/recipe_scaling', methods=['POST'])
 def recipe_scaling():
-    ingredients = request.form.getlist('ingredient')
-    
+    print(request.form)  # Debug: Print all submitted form data
+
+    ingredients = request.form.getlist('ingredient')  # Check that this returns the right list
+
     if request.method == 'POST':
         ratios = []
         adjusted_ingredients = []
 
         for index, ingredient in enumerate(ingredients, 1):
-            # Check if the ingredient's checkbox was selected
+            print(f'Processing ingredient {ingredient}')  # Debug: See if ingredients are iterating correctly
+
             if f'ingredient_selected_{index}' in request.form:
-                # Get the amount on hand entered by the user
                 amount_on_hand = float(request.form.get(f'amount_on_hand_{index}', 0))
-                # Calculate the ratio of amount on hand to amount needed
+                amount_needed = float(request.form.get(f'amount_needed_{index}', 0))
+
                 if amount_on_hand > 0:
-                    ratio = amount_on_hand / ingredient['amountNeeded']
+                    ratio = amount_on_hand / amount_needed
+                    print(f'Ratio for {ingredient}: {ratio}')  # Debug: Check calculated ratio
                     ratios.append(ratio)
 
-        # If any ratios were provided, scale the recipe by the smallest ratio
+        # If there are ratios, process and scale
         if ratios:
             smallest_ratio = min(ratios)
-            for ingredient in ingredients:
-                scaled_amount = ingredient['amountNeeded'] * smallest_ratio
+            print(f'Smallest ratio: {smallest_ratio}')  # Debug: Print smallest ratio
+
+            for index, ingredient in enumerate(ingredients, 1):
+                scaled_amount = amount_needed * smallest_ratio
                 adjusted_ingredients.append({
-                    'name': ingredient['name'],
-                    'scaledAmount': round(scaled_amount, 2),
-                    'unit': ingredient['unit']
+                    'name': ingredient,
+                    'scaledAmount': round(scaled_amount, 2)
                 })
 
-            # Redirect to the scaled recipe page, passing the adjusted ingredients list
+            print(f'Adjusted ingredients: {adjusted_ingredients}')  # Debug: Check final ingredient scaling
+
+            # Render scaled_recipe.html
             return render_template('scaled_recipe.html', adjusted_ingredients=adjusted_ingredients)
 
     return render_template('recipe_scaling.html', ingredients=ingredients)

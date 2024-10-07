@@ -80,10 +80,10 @@
 
 <div class="container">
     <ul>
-        {% for ingredient in adjusted_ingredients %}
+        {% for item in adjusted_ingredients %}
         <li>
-            <span>{{ ingredient.name }}</span>
-            <span>{{ ingredient.scaledAmount }} {{ ingredient.unit }}</span>
+            <span>{{ item.scaledAmount }}</span>
+            <span>{{ item.name }}</span>
         </li>
         {% endfor %}
     </ul>
