@@ -30,17 +30,18 @@ def signup():
         try:
             c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
             conn.commit()
-            return redirect('/success')  # Redirect after successful signup
+            return render_template('signup.html', success = True)  # Redirect after successful signup
         except sqlite3.IntegrityError:
-            return "Username already exists. Try another one."
+            return render_template('signup.html', success = False)
         finally:
             conn.close()
     
     return render_template('signup.html')
+
 # Success page
-@app.route('/success')
-def success():
-    return "Account created successfully!"
+#@app.route('/success')
+#def success():
+#    return "Account created successfully!"
 
 @app.route('/profile')
 def profile():
