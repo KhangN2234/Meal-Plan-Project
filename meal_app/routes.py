@@ -104,41 +104,41 @@ def scale_recipe():
 
 @app.route('/recipe_scaling', methods=['POST'])
 def recipe_scaling():
-    print(request.form)  # Debug: Print all submitted form data
+    ingredients = request.form.getlist('ingredient')  # List of ingredient names
+    adjusted_ingredients = []
+    ratios = []
 
-    ingredients = request.form.getlist('ingredient')  # Check that this returns the right list
+    # Step 1: Iterate through the ingredients, compute ratios for checked ingredients
+    for index, ingredient in enumerate(ingredients, 1):
+        # Check if the ingredient was selected
+        if f'ingredient_selected_{index}' in request.form:
+            amount_on_hand = float(request.form.get(f'amount_on_hand_{index}', 0))
+            amount_needed = float(request.form.get(f'amount_needed_{index}', 0))
 
-    if request.method == 'POST':
-        ratios = []
-        adjusted_ingredients = []
+            if amount_on_hand > 0 and amount_needed > 0:
+                ratio = amount_on_hand / amount_needed
+                ratios.append(ratio)  # Collect all ratios for checked ingredients
+                print(f'Ratio for {ingredient}: {ratio}')  # Debugging ratio calculation
+    
+    # Step 2: Find the smallest ratio from the checked ingredients
+    if ratios:
+        smallest_ratio = min(ratios)
+        print(f'Smallest ratio: {smallest_ratio}')  # Debugging smallest ratio
 
+        # Step 3: Scale all ingredients using the smallest ratio
         for index, ingredient in enumerate(ingredients, 1):
-            print(f'Processing ingredient {ingredient}')  # Debug: See if ingredients are iterating correctly
+            amount_needed = float(request.form.get(f'amount_needed_{index}', 0))
+            scaled_amount = amount_needed * smallest_ratio  # Scale using smallest ratio
 
-            if f'ingredient_selected_{index}' in request.form:
-                amount_on_hand = float(request.form.get(f'amount_on_hand_{index}', 0))
-                amount_needed = float(request.form.get(f'amount_needed_{index}', 0))
+            adjusted_ingredients.append({
+                'name': ingredient,
+                'scaledAmount': round(scaled_amount, 2)  # Rounded to 2 decimal places for display
+            })
 
-                if amount_on_hand > 0:
-                    ratio = amount_on_hand / amount_needed
-                    print(f'Ratio for {ingredient}: {ratio}')  # Debug: Check calculated ratio
-                    ratios.append(ratio)
+        print(f'Adjusted ingredients: {adjusted_ingredients}')  # Debugging adjusted amounts
 
-        # If there are ratios, process and scale
-        if ratios:
-            smallest_ratio = min(ratios)
-            print(f'Smallest ratio: {smallest_ratio}')  # Debug: Print smallest ratio
+        # Step 4: Render the scaled_recipe.html template with the adjusted ingredients
+        return render_template('scaled_recipe.html', adjusted_ingredients=adjusted_ingredients)
 
-            for index, ingredient in enumerate(ingredients, 1):
-                scaled_amount = amount_needed * smallest_ratio
-                adjusted_ingredients.append({
-                    'name': ingredient,
-                    'scaledAmount': round(scaled_amount, 2)
-                })
-
-            print(f'Adjusted ingredients: {adjusted_ingredients}')  # Debug: Check final ingredient scaling
-
-            # Render scaled_recipe.html
-            return render_template('scaled_recipe.html', adjusted_ingredients=adjusted_ingredients)
-
+    # If no ingredients were selected, reload the page with the same ingredients
     return render_template('recipe_scaling.html', ingredients=ingredients)
