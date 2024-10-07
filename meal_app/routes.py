@@ -59,7 +59,8 @@ def search():
         searchbar = request.form['searchbar']
         mealtype = request.form['mealtype']
         maxIngredients = request.form['maxIngredients']
-        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={searchbar}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&mealType={mealtype}&ingr={maxIngredients}&random=false&field=uri&field=label&field=calories&field=yield&field=ingredientLines&field=source&field=images&field=url&field=totalNutrients"
+        cuisineType = request.form['cuisinetype']
+        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={searchbar}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&mealType={mealtype}&ingr={maxIngredients}&cuisineType={cuisineType}&random=false&field=uri&field=label&field=calories&field=yield&field=ingredientLines&field=source&field=images&field=url&field=totalNutrients"
 
         response = requests.get(api_url)
 
