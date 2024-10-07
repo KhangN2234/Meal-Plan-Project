@@ -70,3 +70,45 @@ def search():
         
 
         return render_template('search.html', recipes=display_data, mealtype=mealtype, searchbar=searchbar, success=True)
+
+@app.route('/scale_recipe', methods=['POST'])
+def scale_recipe():
+    # Get the list of ingredients from the POST request
+    ingredients = request.form.getlist('ingredients[]')
+
+    # Pass the ingredient list to the recipe scaling template
+    return render_template('recipe_scaling.html', ingredients=ingredients)
+
+@app.route('/recipe_scaling', methods=['GET', 'POST'])
+def recipe_scaling():
+    ingredients = request.form.getlist('ingredient')
+    
+    if request.method == 'POST':
+        ratios = []
+        adjusted_ingredients = []
+
+        for index, ingredient in enumerate(ingredients, 1):
+            # Check if the ingredient's checkbox was selected
+            if f'ingredient_selected_{index}' in request.form:
+                # Get the amount on hand entered by the user
+                amount_on_hand = float(request.form.get(f'amount_on_hand_{index}', 0))
+                # Calculate the ratio of amount on hand to amount needed
+                if amount_on_hand > 0:
+                    ratio = amount_on_hand / ingredient['amountNeeded']
+                    ratios.append(ratio)
+
+        # If any ratios were provided, scale the recipe by the smallest ratio
+        if ratios:
+            smallest_ratio = min(ratios)
+            for ingredient in ingredients:
+                scaled_amount = ingredient['amountNeeded'] * smallest_ratio
+                adjusted_ingredients.append({
+                    'name': ingredient['name'],
+                    'scaledAmount': round(scaled_amount, 2),
+                    'unit': ingredient['unit']
+                })
+
+            # Redirect to the scaled recipe page, passing the adjusted ingredients list
+            return render_template('scaled_recipe.html', adjusted_ingredients=adjusted_ingredients)
+
+    return render_template('recipe_scaling.html', ingredients=ingredients)

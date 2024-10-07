@@ -149,6 +149,12 @@
 
                         <br>
                         <a href='{{recipe. url}}'>From {{recipe. source}}</a>
+                        <form action="/scale_recipe" method="POST">
+                            {% for ingredient in recipe.ingredients %}
+                                <input type="hidden" name="ingredients[]" value="{{ ingredient }}">
+                            {% endfor %}
+                            <button type="submit">Scale Recipe</button>
+                        </form>
                     </ul>
                 </li>
             </ul>
