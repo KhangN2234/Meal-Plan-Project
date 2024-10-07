@@ -9,10 +9,11 @@
 
 ## General Information
 - Created by Joseph Bond, Lucas Garcia, Mark Nardone, Khang Ngo, Sean Kuge
-- This is a web app centered around making mealprepping easy. A lot of us face the issue of wanting to mealprep but being scare off due to its difficulty. This app aims to solve that and enable people looking to improve their health, fitness, and finances while improving their quality of life.
+- This is a web app centered around making mealprepping easy. A lot of us face the issue of wanting to mealprep but being scared off due to its difficulty. This app aims to solve that and enable people looking to improve their health, fitness, and finances while improving their quality of life.
 
 ## Technologies Used
 - Flask 3.0.3
+- Edamam Recipe Search API v2
 
 
 ## Features
