@@ -82,12 +82,34 @@ Mark Nardone: Made and designed the Signup.html that allows users to create an a
 	-  Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-55
 	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/7
 
-
+Lucas Garcia: Designed and implemented search.html page. Set up project's api integration.
+- Jira Task CP-76: Configure search result data displayed
+	-  Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-76
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/branch/feature/CP-76-configure-search-result-data-displ
+- Jira Task CP-75: Link search page to rest of app
+	-  Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-75
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/branch/CP-75-link-search-page-to-rest-of-app
+- Jira Task CP-39: Link search page to rest of app
+	-  Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-39
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/branch/feature/CP-39-create-search-page-route-in-flask
+- Jira Task CP-42: Design Page Layout
+	-  Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-42
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/branch/CP-42-design-page-layout
+- Jira Task CP-40: Create Result Filtering Interface
+	-  Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-40
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/branch/feature/CP-40-create-result-filtering-interface
+- Jira Task CP-41: Write Unit Tests For Page
+	-  Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-41
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/branch/CP-41-write-unit-tests-for-page
+- Jira Task CP-38: Implement CSS / HTML For Search Page
+	-  Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-38
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/branch/CP-38-implement-css---html-for-search-pa
 
 ## Next Steps
 - Khang: Make an option for user to select a type of diet for their preferred meal.
 - Joseph: Add a feature that tracks the calorie intake for user based on recipes made.
 - Mark: Tie the account creation to the profile and make a log in feature.
+- Lucas: Expand on search page to add shopping list functionality
 
 
 
