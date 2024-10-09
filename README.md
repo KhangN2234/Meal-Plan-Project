@@ -21,9 +21,9 @@ List the ready features here:
 - Welcome Page
 	-  Users can get a full overview of the app and its features from a comfortable welcome page.
 	-  Story: Welcome Page
-- Comment System
-	-  You can comment on your favorite recipes and come back later and check your notes!
-	-  Story: Comment System
+- Account Creation System
+	-  You can make an account that is able to store your username and password.
+	-  Story: Account Creation
 - Recipe Search Page
 	-  Can't seem to find that recipe you saw earlier? Just search for it and you'll be there in no time! 
 	-  Story: Recipe Search Page
@@ -58,12 +58,21 @@ Khang Ngo: Made the Welcome Page for the user, along with the navigation bar. Al
 - Jira Task CP-77: Add some animation to UI
 	-  Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-77  
 	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/f6aafc0b30ebfe1b139d6201b2a2dd7055794f0a 
+Contribution:
 
+Mark Nardone: Made and designed the Signup.html that allows users to create an account. Along with that made a profile.html with profile basic profile features. Also worked on the app.py
+- Jira Task CP-54: Account Creation UI
+	-  Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-54
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/commits/ea5a613a516a74184f48799ef6ebbffc63667cec
+- Jira Task CP-55: Profile Creation
+	-  Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-55
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/7
 
 
 
 ## Next Steps
 - Khang: Make an option for user to select a type of diet for their preferred meal.
+- Mark: Tie the account creation to the profile and make a log in feature.
 
 
 
