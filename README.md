@@ -59,12 +59,25 @@ Khang Ngo: Made the Welcome Page for the user, along with the navigation bar. Al
 	-  Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-77  
 	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/f6aafc0b30ebfe1b139d6201b2a2dd7055794f0a 
 
-
+Joseph Bond: created the function for scaling down specific ingredients for recipes. 
+- Jira Task CP-74: Conduct further research of HTML and Python
+	-Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-74
+	-bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/branch/CP-74-cunduct-further-research-of-html-a
+-Jira Task CP-30 Design UI for Ingredient Adjustment
+	-Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-30
+	-bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/branch/feature%2FCP-30-design-ui-for-ingredient-adjustmen
+-Jira Task CP-32 Develop Basic Algorithm for Scaling Recipes
+	-Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-32
+	-bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/branch/CP-32-develop-basic-algorithm-for-scalin
+-Jira Task CP-73 Integrate Recipe Scaling with the core functionality of app
+	-Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-73
+	-bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/branch/CP-73-integrate-recipe-scaling-with-the-
+-Jira Task CP-35 Unit Testing for scaling algorithm (To-Do)
 
 
 ## Next Steps
 - Khang: Make an option for user to select a type of diet for their preferred meal.
-
+- Joseph: Add a feature that tracks the calorie intake for user based on recipes made.
 
 
 
