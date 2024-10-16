@@ -1,4 +1,4 @@
-from meal_app import app
+from meal_app import app, db
 from flask import Flask, render_template, request, redirect
 import json
 import sqlite3
@@ -6,6 +6,7 @@ import bcrypt
 import requests
 import os
 import re
+
 
 
 @app.route('/')
