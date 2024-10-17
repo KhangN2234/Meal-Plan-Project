@@ -1,26 +1,15 @@
 {% extends "layout.html" %}
 {% block content %}
-<html>
-<head>
-    <title>Sign Up</title>
-</head>
-<body>
     <div class="input">
         <h2>Create an Account</h2>
-        <form method="POST">
-            <label for="username">Username:</label>
-            <input type="text" name="username" required><br><br>
+        <form method="POST" id="signupForm">
+            <label for="email">Email:</label>
+            <input type="email" name="email" required><br><br>
+
             <label for="password">Password:</label>
             <input type="password" name="password" required><br><br>
-            <input type="submit" value="Sign Up">
-        </div>
-    </form>
-</body>
-</html>
 
-{%if success%}
-    <p> Account created successfully </p>
-{% elif success == false%}
-    <p> Account already exist </p>
-{% endif %}
+            <input type="submit" value="Next">
+        </form>
+    </div>
 {% endblock %}
