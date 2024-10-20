@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+
+</head>
+    <body class="cartbody">
+        <p>Shopping Cart</p>
+    </body>
+
+
+{%if success%}
+
+{% elif success == false %}
+<p>Error.</p>
+
+{% endif %}
+{% endblock %}
