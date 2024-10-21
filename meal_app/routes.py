@@ -1,5 +1,5 @@
 from meal_app import app, db
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 import json
 import sqlite3
 import bcrypt
@@ -61,10 +61,13 @@ def login():
                 # If the pasword matches, set the user session
                 session['user'] = email
                 return redirect('/profile')  # Sends user to profile page if login works
+            else:
+                # error if the password is incorret
+                return render_template('login.html', error="Invalid password")
+        else:
+            # Sends an error if no account exists for this email
+            return render_template('login.html', error="No account found with this email")
         
-            
-        return render_template('login.html')
-
     return render_template('login.html')
 
 # Success page
