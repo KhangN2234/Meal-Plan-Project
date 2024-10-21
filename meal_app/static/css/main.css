@@ -199,3 +199,11 @@ nav a:hover {
 .profile-info {
     margin-bottom: 10%;
 }
+
+/* Calender style */
+.days {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    display: flex;
+}
