@@ -116,6 +116,8 @@
                         </form>
                         <br>
                         <form action="/calendar" method="POST">
+                            <input type="hidden" name="recipe_label" value="{{ recipe.label }}">
+                            <input type="hidden" name="recipe_url" value="{{ recipe.url }}">
                             <button type="submit">Add to Calendar</button>
                         </form>
                     </ul>
