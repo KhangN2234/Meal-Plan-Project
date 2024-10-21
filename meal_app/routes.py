@@ -1,5 +1,5 @@
 from meal_app import app, db
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash
 import json
 import sqlite3
 import bcrypt
@@ -70,8 +70,16 @@ def login():
             # Sends an error if no account exists for this email
             return render_template('login.html', error="No account found with this email")
         
-
     return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    # This removes the user from the session if he is logged in
+    session.pop('user', None)
+
+    flash('You have been successfully logged out.')
+
+    return redirect('/login')
 
 # Success page
 #@app.route('/success')
