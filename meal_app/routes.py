@@ -57,6 +57,11 @@ def login():
             user_data = doc.to_dict()
             stored_password = user_data['password']
 
+            if bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
+                # If the pasword matches, set the user session
+                session['user'] = email
+                return redirect('/profile')  # Sends user to profile page if login works
+        
             
         return render_template('login.html')
 
