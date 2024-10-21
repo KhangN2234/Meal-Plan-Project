@@ -1,4 +1,4 @@
-from meal_app import app
+from meal_app import app, db
 from flask import Flask, render_template, request, redirect
 import json
 import sqlite3
@@ -11,6 +11,7 @@ from .scale_recipe.recipe_scaling_routes import recipe_scaling_templates
 from .search_recipe.search_routes import search_templates
 
 
+
 @app.route('/')
 def welcome():
     return render_template('welcome.html')
@@ -19,25 +20,24 @@ def welcome():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        username = request.form['username']
+        email = request.form['email']
         password = request.form['password']
         
         # Hash the password before storing it
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
         
-        # It should store the username and password in the database but doesn't work
-        
-        conn = sqlite3.connect('users.db')
-        c = conn.cursor()
-        
+        # Create user data to store in Firestore
+        user_data = {
+            'email': email,
+            'password': hashed_password.decode('utf-8')  # Store hashed password
+        }
+
         try:
-            c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
-            conn.commit()
-            return render_template('signup.html', success = True)  # Redirect after successful signup
-        except sqlite3.IntegrityError:
-            return render_template('signup.html', success = False)
-        finally:
-            conn.close()
+            # Store user data in Firebase Firestore using the email as document ID
+            db.collection('users').document(email).set(user_data)
+            return render_template('signup.html', success=True)
+        except Exception as e:
+            return render_template('signup.html', success=False, error=str(e))
     
     return render_template('signup.html')
 
