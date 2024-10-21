@@ -35,7 +35,12 @@ def signup():
         try:
             # Store user data in Firebase Firestore using the email as document ID
             db.collection('users').document(email).set(user_data)
-            return render_template('signup.html', success=True)
+
+            flash('Account created successfully!')
+            session['new_signup'] = True
+            session['user'] = email
+            return redirect('/profile')
+        
         except Exception as e:
             return render_template('signup.html', success=False, error=str(e))
     
@@ -61,7 +66,9 @@ def login():
                 # If the pasword matches, set the user session
                 session['user'] = email
 
-                flash('You have been successfully logged in!')
+                if 'new_signup' in session:
+                    session.pop('new_signup', None)
+                    flash('You have been successfully logged in!')
 
                 return redirect('/profile')  # Sends user to profile page if login works
             
