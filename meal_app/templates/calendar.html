@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<title>Calendar</title>
+<head>
+</head>
+<body>
+<form action="{{ url_for('calendar') }}" method="POST">
+    <h2>Monday</h2>
+    <div class="days">
+        <textarea id ="days" name="days"
+        rows="5" cols="50">
+        Monday
+        </textarea>
+    </div>
+
+    <h2>Tuesday</h2>
+    <div class="days">
+        <textarea id ="days" name="days"
+        rows="5" cols="50">
+        Tuesday
+        </textarea>
+    </div>
+    <form>
+        <label for="recipe_name">Recipe Name:</label>
+        <a href='{{recipe_url}}'>
+        
+        <label for="recipe_url">Recipe URL:</label>
+        <input type="text" id="recipe_url" name="recipe_url" value="{{ recipe_url }}" readonly><br><br>
+
+        <!-- Add more calendar-specific fields or buttons if needed -->
+    </form>
+</form>
+
+</body>
+</html>
+{% endblock %}
