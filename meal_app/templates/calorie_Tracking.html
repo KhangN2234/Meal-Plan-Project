@@ -1,37 +1,46 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% block content %}
 <div class="searchbody">
-  <h2>Calorie Tracker</h2>
+    <h2>Calorie Tracker</h2>
 
-  <form method="POST" action="/submit_calories" class="input">
-    <label for="name">Food Name:</label>
-    <input 
-      type="text" 
-      id="name" 
-      name="name" 
-      class="searchbar" 
-      placeholder="Enter the food name" 
-      required>
-    
-    <label for="calories">Calories Consumed:</label>
-    <input 
-      type="number" 
-      id="calories" 
-      name="calories" 
-      class="searchbar" 
-      placeholder="Enter the calorie amount" 
-      required>
+    <form method="POST" action="{{ url_for('calorie_tracking') }}">
+        <div class="input">
+            <label for="item_name">Item Name:</label>
+            <input type="text" id="item_name" name="item_name" class="searchbar" placeholder="Enter food item" required>
+            
+            <label for="calories">Calories:</label>
+            <input type="number" id="calories" name="calories" class="searchbar" placeholder="Enter calorie count" required>
 
-    <label for="date">Date of Intake:</label>
-    <input 
-      type="date" 
-      id="date" 
-      name="date" 
-      class="mealtype" 
-      required>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" class="mealtype" required>
 
-    <button type="submit" class="Submit">Add Entry</button>
-  </form>
+            <button type="submit" class="Submit">Add Entry</button>
+        </div>
+    </form>
+
+    <h3>Your Entries</h3>
+
+    <div class="output">
+        {% if entries %}
+            {% for date, items in entries.items() %}
+                <h4>{{ date }}</h4>
+                <table border="1" width="100%" cellpadding="5">
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Calories</th>
+                    </tr>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item['name'] }}</td>
+                        <td>{{ item['calories'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% endfor %}
+        {% else %}
+            <p>No entries yet. Add some!</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
