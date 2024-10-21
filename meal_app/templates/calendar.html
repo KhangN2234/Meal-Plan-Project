@@ -4,30 +4,60 @@
 <head>
 </head>
 <body>
+
+<!-- Form to handle the day selection and add the recipe to the calendar -->
 <form action="{{ url_for('calendar') }}" method="POST">
-    <h2>Monday</h2>
-    <div class="days">
-        <textarea id ="days" name="days"
-        rows="5" cols="50">
-        Monday
-        </textarea>
-    </div>
+    
+    <h2>Select the day(s) to add the recipe</h2>
 
-    <h2>Tuesday</h2>
-    <div class="days">
-        <textarea id ="days" name="days"
-        rows="5" cols="50">
-        Tuesday
-        </textarea>
-    </div>
-    <form>
-        <label for="recipe_name">Recipe Name:</label>
-        <a href='{{ recipe_url }}'>{{recipe_label}}</a>
+    <!-- Checkboxes for day selection -->
+    <input type="checkbox" id="monday" name="selected_days" value="Monday">
+    <label for="monday">Monday</label><br>
+    <input type="checkbox" id="tuesday" name="selected_days" value="Tuesday">
+    <label for="tuesday">Tuesday</label><br><br>
 
-        <!-- Add more calendar-specific fields or buttons if needed -->
-    </form>
+    <!-- Hidden fields to pass the recipe details with the form -->
+    <input type="hidden" name="recipe_label" value="{{ recipe_label }}">
+    <input type="hidden" name="recipe_url" value="{{ recipe_url }}">
+
+    <!-- Display Recipe Name and URL -->
+    <label for="recipe_name">Recipe Name:</label>
+    <a href="{{ recipe_url }}" target="_blank">{{ recipe_label }}</a><br><br>
+
+    <!-- Submit button to add the recipe to the selected days -->
+    <button type="submit">Add Recipe to Selected Day(s)</button>
 </form>
+
+<!-- Display areas for Monday and Tuesday -->
+<h2>Monday</h2>
+<div class = "recipe_links">
+    {% if 'Monday' in selected_days %}
+        <a href='{{ recipe_url }}'> {{ recipe_label }}</a>
+    {% endif %}
+</div>
+<div class="days">
+    <textarea id="monday_textarea" name="monday_textarea" rows="5" cols="50">
+    
+    </textarea>
+</div>
+
+
+<h2>Tuesday</h2>
+<div class = "recipe_links">
+    {% if 'Tuesday' in selected_days %}
+        <a href='{{ recipe_url }}'> {{ recipe_label }}</a>
+    {% endif %}
+</div>
+<div class="days">
+    <textarea id="tuesday_textarea" name="tuesday_textarea" rows="5" cols="50">
+    
+    </textarea>
+</div>
 
 </body>
 </html>
 {% endblock %}
+
+
+
+
