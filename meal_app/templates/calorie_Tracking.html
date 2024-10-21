@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="searchbody">
+  <h2>Calorie Tracker</h2>
+
+  <form method="POST" action="/submit_calories" class="input">
+    <label for="name">Food Name:</label>
+    <input 
+      type="text" 
+      id="name" 
+      name="name" 
+      class="searchbar" 
+      placeholder="Enter the food name" 
+      required>
+    
+    <label for="calories">Calories Consumed:</label>
+    <input 
+      type="number" 
+      id="calories" 
+      name="calories" 
+      class="searchbar" 
+      placeholder="Enter the calorie amount" 
+      required>
+
+    <label for="date">Date of Intake:</label>
+    <input 
+      type="date" 
+      id="date" 
+      name="date" 
+      class="mealtype" 
+      required>
+
+    <button type="submit" class="Submit">Add Entry</button>
+  </form>
+</div>
+{% endblock %}
