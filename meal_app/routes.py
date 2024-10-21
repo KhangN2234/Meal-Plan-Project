@@ -41,6 +41,27 @@ def signup():
     
     return render_template('signup.html')
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # This Gets the email and password from user
+        email = request.form['email']
+        password = request.form['password']
+
+        # Checks to see if user has signed up
+        doc_ref = db.collection('users').document(email)
+        doc = doc_ref.get()
+
+        if doc.exists:
+            # Gets password
+            user_data = doc.to_dict()
+            stored_password = user_data['password']
+
+            
+        return render_template('login.html')
+
+    return render_template('login.html')
+
 # Success page
 #@app.route('/success')
 #def success():
