@@ -61,13 +61,16 @@ def login():
                 # If the pasword matches, set the user session
                 session['user'] = email
                 return redirect('/profile')  # Sends user to profile page if login works
+            
             else:
                 # error if the password is incorret
                 return render_template('login.html', error="Invalid password")
+            
         else:
             # Sends an error if no account exists for this email
             return render_template('login.html', error="No account found with this email")
         
+
     return render_template('login.html')
 
 # Success page
