@@ -1,4 +1,4 @@
-from meal_app import app#, db
+from meal_app import app, db
 from flask import Flask, render_template, request, redirect
 import json
 import sqlite3
@@ -28,10 +28,10 @@ def signup():
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
         
         # Create user data to store in Firestore
-        #user_data = {
-        #    'email': email,
-        #    'password': hashed_password.decode('utf-8')  # Store hashed password
-        #}
+        user_data = {
+            'email': email,
+            'password': hashed_password.decode('utf-8')  # Store hashed password
+        }
 
         try:
             # Store user data in Firebase Firestore using the email as document ID
