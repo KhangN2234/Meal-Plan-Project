@@ -7,6 +7,10 @@
     <div class="input">
         <h2>My Profile</h2>
 
+        {% for message in get_flashed_messages() %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+
         <h3>My personal details</h3>
 
         <div class="profile-info">

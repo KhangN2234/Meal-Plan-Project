@@ -60,6 +60,9 @@ def login():
             if bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
                 # If the pasword matches, set the user session
                 session['user'] = email
+
+                flash('You have been successfully logged in!')
+
                 return redirect('/profile')  # Sends user to profile page if login works
             
             else:
