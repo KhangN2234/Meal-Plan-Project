@@ -1,4 +1,4 @@
-from meal_app import app, db
+from meal_app import app#, db
 from flask import Flask, render_template, request, redirect
 import json
 import sqlite3
@@ -10,6 +10,7 @@ from .scale_recipe.scale_recipe_routes import scaled_recipe_templates
 from .scale_recipe.recipe_scaling_routes import recipe_scaling_templates
 from .search_recipe.search_routes import search_templates
 from .shopping_cart.shopping_cart_route import shopping_cart_template
+from .calendar.calendar_routes import calendar_templates
 
 
 @app.route('/')
@@ -27,14 +28,14 @@ def signup():
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
         
         # Create user data to store in Firestore
-        user_data = {
-            'email': email,
-            'password': hashed_password.decode('utf-8')  # Store hashed password
-        }
+        #user_data = {
+        #    'email': email,
+        #    'password': hashed_password.decode('utf-8')  # Store hashed password
+        #}
 
         try:
             # Store user data in Firebase Firestore using the email as document ID
-            db.collection('users').document(email).set(user_data)
+            #db.collection('users').document(email).set(user_data)
             return render_template('signup.html', success=True)
         except Exception as e:
             return render_template('signup.html', success=False, error=str(e))
@@ -56,3 +57,4 @@ app.register_blueprint(search_templates)
 app.register_blueprint(scaled_recipe_templates)
 app.register_blueprint(recipe_scaling_templates)
 app.register_blueprint(shopping_cart_template)
+app.register_blueprint(calendar_templates)
