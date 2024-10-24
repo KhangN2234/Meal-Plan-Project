@@ -5,7 +5,6 @@
 </head>
 <body>
 
-<!-- Form to handle the day selection and add the recipe to the calendar -->
 <form action="{{ url_for('calendar') }}" method="POST">
     
     <h2>Select the day(s) to add the recipe</h2>
@@ -26,22 +25,17 @@
     <input type="checkbox" id="Sunday" name="selected_days" value="Sunday">
     <label for="Sunday">Sunday</label><br><br>
 
-
     <!-- Hidden fields to pass the recipe details with the form -->
     <input type="hidden" name="recipe_label" value="{{ recipe_label }}">
     <input type="hidden" name="recipe_url" value="{{ recipe_url }}">
 
     <!-- Display Recipe Name and URL -->
     <label for="recipe_name">Recipe Name:</label>
-    <a href="{{ recipe_url }}" target="_blank">{{ recipe_label }}</a><br><br>
-
-    <!-- Submit button to add the recipe to the selected days -->
+    <a href="{{ recipe_url }}"> {{ recipe_label }}</a><br><br>
     <button type="submit">Add Recipe to Selected Day(s)</button>
 </form>
 
-
-
-<!-- Display areas for Monday and Tuesday -->
+<!-- Display areas for days -->
 <h2>Monday</h2>
 <div class = "recipe_links">
     {% if 'Monday' in selected_days %}
