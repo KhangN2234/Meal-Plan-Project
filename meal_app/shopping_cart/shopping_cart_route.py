@@ -29,4 +29,9 @@ def cart():
                 saved_recipes.append(recipeURI)
                 doc_ref.update({'cart': saved_recipes})
 
-                return render_template('shoppingcart.html')  
+                return render_template('shoppingcart.html', statusMessage="Item added successfully")
+            else:
+                return render_template('shoppingcart.html', statusMessage="Item already in cart")
+            
+        else:
+            return render_template('shoppingcart.html', statusMessage="No user currently logged in.")
