@@ -16,12 +16,17 @@ def cart():
     if request.method == 'GET': 
         return render_template('shoppingcart.html')        
     if request.method == "POST":
-        print("Method called.")
         recipeURI = request.form.get('recipeURI')
         if 'user' in session:  # Check if the user is logged in
             email = session['user']
             doc_ref = db.collection('users').document(email)
+
+            user_data = doc_ref.get().to_dict()
+            saved_recipes = user_data.get('cart', [])
         
-        # Update the document to add a new field with the latest search query
-            doc_ref.update({'saved_recipes': recipeURI})
-            return render_template('shoppingcart.html')  
+            # Update the document to add a new field with the latest search query
+            if recipeURI and recipeURI not in saved_recipes:
+                saved_recipes.append(recipeURI)
+                doc_ref.update({'cart': saved_recipes})
+
+                return render_template('shoppingcart.html')  
