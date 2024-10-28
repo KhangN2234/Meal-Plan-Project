@@ -114,6 +114,9 @@
                             {% endfor %}
                             <button type="submit">Scale Recipe</button>
                         </form>
+                        <form action="/cart" method="POST">
+                            <button type="submit" name="recipeURI" value="{{ recipe. uri }}">Add to Shopping Cart</button>
+                        </form>
                     </ul>
                 </li>
             </ul>
