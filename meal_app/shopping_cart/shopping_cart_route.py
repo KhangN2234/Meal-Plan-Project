@@ -4,6 +4,7 @@ from spellchecker import SpellChecker
 import requests
 import os
 from flask import Blueprint
+from urllib.parse import quote
 
 
 recipe_search_app_id = os.getenv('RECIPE_SEARCH_APP_ID')
@@ -20,7 +21,26 @@ def cart():
 
             user_data = doc_ref.get().to_dict()
             saved_recipes = user_data.get('cart', [])
-        return render_template('shoppingcart.html', saved_recipes=saved_recipes)
+            api_url = f"https://api.edamam.com/api/recipes/v2/by-uri?type=public&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}"
+            for string in saved_recipes:
+                encodedString = quote(string, safe='')
+                api_url += "&uri=" + encodedString
+
+                print(api_url)
+
+                response = requests.get(api_url)
+
+                print(response.json)
+
+                data = response.json()
+
+                list_of_recipes = data['hits']
+
+                print(list_of_recipes)
+
+                display_data = [{'label': recipe['recipe']['label'], 'uri': recipe['recipe']['uri'], 'calories': round(recipe['recipe']['calories']), 'servings': round(recipe['recipe']['yield']), 'cal_per_serv': round(recipe['recipe']['calories']/recipe['recipe']['yield']), 'ingredients': recipe['recipe']['ingredientLines'], 'url': recipe['recipe']['url'], 'source': recipe['recipe']['source'], 'protein': round(recipe['recipe']['totalNutrients']['PROCNT']['quantity']), 'proteinunit': recipe['recipe']['totalNutrients']['PROCNT']['unit'], 'protein_per_serv': round(recipe['recipe']['totalNutrients']['PROCNT']['quantity']/recipe['recipe']['yield'])} for recipe in list_of_recipes]
+            
+        return render_template('shoppingcart.html', saved_recipes=saved_recipes, recipes=display_data)
            
     if request.method == "POST":
         recipeURI = request.form.get('recipeURI')

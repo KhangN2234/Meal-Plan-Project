@@ -13,7 +13,12 @@
         <div class="successnotification">{{ successMessage }}</div>
         {% endif %}
         <h2>Shopping Cart<h2>
-        <p>{{ saved_recipes }}</p>
+
+        <ol>
+        {% for recipe in recipes %}
+            <li>{{ recipe.label }}</li>
+        {% endfor %}
+        </ol>
 
         <div class="ingredient">
             <input type="checkbox">
