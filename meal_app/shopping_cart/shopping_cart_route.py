@@ -1,5 +1,5 @@
-from meal_app import app
-from flask import Flask, render_template, request, redirect
+from meal_app import app, db
+from flask import Flask, render_template, request, redirect, session, flash
 from spellchecker import SpellChecker
 import requests
 import os
@@ -15,3 +15,23 @@ shopping_cart_template = Blueprint('cart',__name__)
 def cart():
     if request.method == 'GET': 
         return render_template('shoppingcart.html')        
+    if request.method == "POST":
+        recipeURI = request.form.get('recipeURI')
+        if 'user' in session:  # Check if the user is logged in
+            email = session['user']
+            doc_ref = db.collection('users').document(email)
+
+            user_data = doc_ref.get().to_dict()
+            saved_recipes = user_data.get('cart', [])
+        
+            # Update the document to add a new field with the latest search query
+            if recipeURI and recipeURI not in saved_recipes:
+                saved_recipes.append(recipeURI)
+                doc_ref.update({'cart': saved_recipes})
+
+                return render_template('shoppingcart.html', successMessage="Item added successfully")
+            else:
+                return render_template('shoppingcart.html', errorMessage="Error: Item already in cart")
+            
+        else:
+            return render_template('shoppingcart.html', errorMessage="Error: No user currently logged in.")

@@ -252,3 +252,25 @@ nav a:hover {
     color: grey;
     font-size: medium;
 }
+
+.errornotification {
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    background-color: rgb(255, 94, 94);
+    box-shadow: 0 0 10px;
+    width: 100%;
+    font-size: medium;
+}
+
+.successnotification {
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    background-color: rgb(111, 255, 166);
+    box-shadow: 0 0 10px;
+    width: 100%;
+    font-size: medium;
+}

@@ -6,6 +6,12 @@
 
 <body class="cartbody">
     <div class="cartwindow">
+        {% if errorMessage %}
+            <div class="errornotification">{{ errorMessage }}</div>
+        {% endif %}
+        {% if successMessage %}
+        <div class="successnotification">{{ successMessage }}</div>
+        {% endif %}
         <h2>Shopping Cart<h2>
 
         <div class="ingredient">
@@ -22,6 +28,7 @@
         <input type="button" class="Submit" value="Save as PDF"></input>
     </div>
 </body>
+
 
 
 {% endblock %}
