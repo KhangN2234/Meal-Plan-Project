@@ -9,25 +9,23 @@ calendar_templates = Blueprint('calendar',__name__)
 @app.route('/calendar', methods=['GET', 'POST'])
 def calendar():
     if request.method == 'GET': 
-        print("get")
         if 'user' in session:
             email = session['user']
-            # Structure to save in Firebase
-            print("success")
             
-            #recipe_label = db.collection('users').document(email).collection('recipes').document('Egg, Poblano and Avocado Scramble (Ww)').collection('recipe_label')
             doc = db.collection('users').document(email).collection('recipes').document('Egg, Poblano and Avocado Scramble (Ww)').get()
-
 
             # Check if the document exists
             if doc.exists:
                 # Access the 'recipe_label' field
-                recipe_label = doc.to_dict().get('recipe_label')
+                #.to_dict() convert the variable to an array then .get() get the value from that array created from the document
+                recipe_label = doc.to_dict().get('recipe_label') 
                 recipe_url = doc.to_dict().get('recipe_url')
                 selected_days = doc.to_dict().get('days',[])
-        return render_template('calendar.html', recipe_label=recipe_label, recipe_url=recipe_url, selected_days=selected_days)
+            return render_template('calendar.html', recipe_label=recipe_label, recipe_url=recipe_url, selected_days=selected_days)
+        else:
+            return redirect('/login')
+    
     else:
-        print("post")
         if 'user' in session:
             recipe_label = request.form.get('recipe_label')
             recipe_url = request.form.get('recipe_url')
@@ -42,6 +40,6 @@ def calendar():
                 db.collection('users').document(email).collection('recipes').document(recipe_label).set(recipe_data)
             else:
                 db.collection('users').document(email).collection('recipes').document(recipe_label).array('days').set(selected_days)
-            
+                
             # Pass the selected days and recipe details to the template
             return render_template('calendar.html', recipe_label=recipe_label, recipe_url=recipe_url, selected_days=selected_days)
