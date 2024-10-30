@@ -225,24 +225,24 @@ nav a:hover {
 }
 
 .ingredient{
-    display: inline-flex;
+    display: inline;
 }
 
 .quantity{
-    display: inline-flex;
+    display: inline;
     padding-left: 10px;
     padding-right: 10px;
     font-weight: 200;
 }
 
 .measure{
-    display: inline-flex;
+    display: inline;
     padding-right: 10px;
     font-weight: 50;
 }
 
 .ingredientName{
-    display: inline-flex;
+    display: inline;
     padding-right: 10px;
 
 }
