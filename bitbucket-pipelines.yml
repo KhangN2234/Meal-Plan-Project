@@ -19,7 +19,8 @@ pipelines:
           - pip install --upgrade pip
           - pip install -r requirements.txt
           - heroku buildpacks:set heroku/python --app $HEROKU_APP_NAME  # Set the Python buildpack
-          - zip -r app.zip app.py meal_app -x "*.git*" "*.firebase*" "*.pytest_cache*" "*.venv*" "Designs/*" "Research Documentation/*" "*.pdf" "*.docx" "*.png" "*.webp" "tests/*" "__pycache__/*" -x "*/.*"  # Create zip file
+          - zip -r app.zip app.py meal_app/* requirements.txt -x "*.git*" "*.firebase*" "*.pytest_cache*" "*.venv*" "Designs/*" "Research Documentation/*" "*.pdf" "*.docx" "*.png" "*.webp" "tests/*" "__pycache__/*" -x "*/.*"  # Create zip file
+          - du -sh app.zip  # Check the size of the ZIP file
           - unzip -l app.zip  # List contents of the ZIP file for verification
           - pipe: atlassian/heroku-deploy:0.1.1
             variables:
