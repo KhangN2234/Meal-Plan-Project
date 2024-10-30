@@ -67,5 +67,5 @@ def renderCart(successMessage, errorMessage):
                     }
                     result.append(processed_item)
 
-        return render_template('shoppingcart.html', saved_recipes=saved_recipes, recipes=display_data, result=result, successMessage=successMessage, errorMessage=errorMessage)
+        return render_template('shoppingcart.html', saved_recipes=saved_recipes, result=result, successMessage=successMessage, errorMessage=errorMessage)
     else: return render_template('shoppingcart.html', errorMessage="Error: No user currently logged in.")
