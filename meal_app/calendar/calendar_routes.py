@@ -16,12 +16,10 @@ def calendar():
             print("success")
             
             #recipe_label = db.collection('users').document(email).collection('recipes').document('Egg, Poblano and Avocado Scramble (Ww)').collection('recipe_label')
-            doc_ref = db.collection('users').document(email).collection('recipes').document('Egg, Poblano and Avocado Scramble (Ww)')
+            doc = db.collection('users').document(email).collection('recipes').document('Egg, Poblano and Avocado Scramble (Ww)').get()
 
-            # Get the document data
-            doc = doc_ref.get()
 
-# Check if the document exists
+            # Check if the document exists
             if doc.exists:
                 # Access the 'recipe_label' field
                 recipe_label = doc.to_dict().get('recipe_label')
