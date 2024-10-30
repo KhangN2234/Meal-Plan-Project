@@ -14,16 +14,17 @@
         {% endif %}
         <h2>Shopping Cart<h2>
 
+        {% for precessed_item in result %}
         <div class="ingredient">
-            <input type="checkbox">
-            <p class="quantity">0</p>
-            <p class="measure">g</p>
-            <p class="ingredientName">IngredientName</p>
-            <br>
-            <ul>
-                <li class="recipesUsing">-RecipesUsingIt</li>
-            </ul>
+            <table>
+                <td><input type="checkbox"></td>
+                <td><p class="quantity"> {{ precessed_item.quantity }}</p></td>
+                <td><p class="measure">{{ precessed_item.measure }}</p></td>
+                <td><p class="ingredientName">{{ precessed_item.food }}</p></td>
+                <td><p class="recipesUsing">{{ precessed_item.recipe }}</p></td>
+            </table>
         </div>
+        {% endfor %}
         <br>
         <input type="button" class="Submit" value="Save as PDF"></input>
     </div>
