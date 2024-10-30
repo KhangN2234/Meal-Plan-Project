@@ -11,9 +11,23 @@ def calendar():
     if request.method == 'GET': 
         print("get")
         if 'user' in session:
+            email = session['user']
             # Structure to save in Firebase
             print("success")
-        return render_template('calendar.html')
+            
+            #recipe_label = db.collection('users').document(email).collection('recipes').document('Egg, Poblano and Avocado Scramble (Ww)').collection('recipe_label')
+            doc_ref = db.collection('users').document(email).collection('recipes').document('Egg, Poblano and Avocado Scramble (Ww)')
+
+            # Get the document data
+            doc = doc_ref.get()
+
+# Check if the document exists
+            if doc.exists:
+                # Access the 'recipe_label' field
+                recipe_label = doc.to_dict().get('recipe_label')
+                recipe_url = doc.to_dict().get('recipe_url')
+                selected_days = doc.to_dict().get('days',[])
+        return render_template('calendar.html', recipe_label=recipe_label, recipe_url=recipe_url, selected_days=selected_days)
     else:
         print("post")
         if 'user' in session:
