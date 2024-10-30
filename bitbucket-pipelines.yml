@@ -16,13 +16,14 @@ pipelines:
           - apt-get update && apt-get install -y zip  # Install zip utility
           - pip install --upgrade pip
           - pip install -r requirements.txt
-          - zip -r app.zip .  # Create the ZIP file
+          - zip -r app.zip . -x "*.git*" "*.firebase*" "*.pytest_cache*" "*.venv*" "Designs/*" "Research Documentation/*" "*.pdf" "*.docx" "*.png" "*.webp" "tests/*" "__pycache__/*"
           - pipe: atlassian/heroku-deploy:0.1.1
             variables:
               HEROKU_API_KEY: $HEROKU_API_KEY
               HEROKU_APP_NAME: $HEROKU_APP_NAME
               ZIP_FILE: "app.zip"
               WAIT: 'true'
+
 
 
 
