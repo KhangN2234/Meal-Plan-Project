@@ -13,6 +13,7 @@ pipelines:
         caches:
           - pip
         script:
+          - apt-get update && apt-get install -y zip  # Install zip utility
           - pip install --upgrade pip
           - pip install -r requirements.txt
           - zip -r app.zip .  # Create the ZIP file
@@ -20,7 +21,8 @@ pipelines:
             variables:
               HEROKU_API_KEY: $HEROKU_API_KEY
               HEROKU_APP_NAME: $HEROKU_APP_NAME
-              ZIP_FILE: "app.zip"  # Specify the ZIP file here
+              ZIP_FILE: "app.zip"
               WAIT: 'true'
+
 
 
