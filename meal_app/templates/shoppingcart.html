@@ -16,12 +16,13 @@
 
         {% for precessed_item in result %}
         <div class="ingredient">
-            <input type="checkbox">
-            <p class="quantity"> {{ precessed_item.quantity }}</p>
-            <p class="measure">{{ precessed_item.measure }}</p>
-            <p class="ingredientName">{{ precessed_item.food }}</p>
-            <p class="recipesUsing">{{ precessed_item.recipe }}</p>
-            <br>
+            <table>
+                <td><input type="checkbox"></td>
+                <td><p class="quantity"> {{ precessed_item.quantity }}</p></td>
+                <td><p class="measure">{{ precessed_item.measure }}</p></td>
+                <td><p class="ingredientName">{{ precessed_item.food }}</p></td>
+                <td><p class="recipesUsing">{{ precessed_item.recipe }}</p></td>
+            </table>
         </div>
         {% endfor %}
         <br>
