@@ -19,7 +19,7 @@ pipelines:
           - pip install --upgrade pip
           - pip install -r requirements.txt
           - mkdir app  # Create the ./app directory as Heroku expects
-          - cp -R app.py meal_app requirements.txt app/  # Copy files into the ./app directory
+          - cp -R app.py meal_app meal-afe56-firebase-adminsdk-lsk0x-4f1be2c0c8.json requirements.txt app/  # Copy files into the ./app directory
           - tar -czvf app.tar.gz -C app .  # Create a .tar.gz file from the ./app directory
           - pipe: atlassian/heroku-deploy:0.1.1
             variables:
