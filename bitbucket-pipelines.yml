@@ -13,6 +13,7 @@ pipelines:
         caches:
           - pip
         script:
+          - pip install --upgrade pip # Upgrade pip
           - pip install -r requirements.txt
           - pipe: atlassian/heroku-deploy:0.1.1
             variables:
