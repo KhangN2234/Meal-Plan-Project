@@ -18,12 +18,12 @@ pipelines:
           - echo "$HEROKU_API_KEY" | heroku auth:token  # Authenticate with Heroku
           - pip install --upgrade pip
           - pip install -r requirements.txt
-          - zip -r app.zip app.py meal_app/* requirements.txt -x "*.git*" "*.firebase*" "*.pytest_cache*" "*.venv*" "Designs/*" "Research Documentation/*" "*.pdf" "*.docx" "*.png" "*.webp" "tests/*" "__pycache__/*" -x "*/.*"  # Create zip file
-          - du -sh app.zip  # Check the size of the ZIP file
-          - unzip -l app.zip  # List contents of the ZIP file for verification
+          - mkdir app  # Create the ./app directory as Heroku expects
+          - cp -R app.py meal_app requirements.txt app/  # Copy files into the ./app directory
+          - tar -czvf app.tar.gz -C app .  # Create a .tar.gz file from the ./app directory
           - pipe: atlassian/heroku-deploy:0.1.1
             variables:
               HEROKU_API_KEY: $HEROKU_API_KEY
               HEROKU_APP_NAME: $HEROKU_APP_NAME
-              ZIP_FILE: "app.zip"
+              ZIP_FILE: "app.tar.gz"  # Specify the .tar.gz file
               WAIT: 'true'
