@@ -13,7 +13,15 @@ def calendar():
             email = session['user']
             
             doc = db.collection('users').document(email).collection('recipes').document('Egg, Poblano and Avocado Scramble (Ww)').get()
-
+            
+            # Reference to the user's recipes collection
+            recipes_collection_ref = db.collection('users').document(email).collection('recipes')
+            recipes_docs = recipes_collection_ref.stream()
+            
+            # Check if the 'recipes' collection is empty
+            if not any(True for _ in recipes_docs):
+                return redirect('search')
+            
             # Check if the document exists
             if doc.exists:
                 # Access the 'recipe_label' field
