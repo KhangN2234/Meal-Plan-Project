@@ -5,8 +5,6 @@
 # You can specify a custom docker image from Docker Hub as your build environment.
 image: python:3.9
 
-image: python:3.9
-
 pipelines:
   default:
     - step:
@@ -17,10 +15,12 @@ pipelines:
         script:
           - pip install --upgrade pip
           - pip install -r requirements.txt
-          - heroku container:login
-          - docker build -t registry.heroku.com/$HEROKU_APP_NAME/web .
-          - docker push registry.heroku.com/$HEROKU_APP_NAME/web
-          - heroku container:release web --app $HEROKU_APP_NAME
-        WAIT: 'true' # Optional: Wait for the deployment to complete before finishing the pipeline
+          - zip -r app.zip .  # Create the ZIP file
+          - pipe: atlassian/heroku-deploy:0.1.1
+            variables:
+              HEROKU_API_KEY: $HEROKU_API_KEY
+              HEROKU_APP_NAME: $HEROKU_APP_NAME
+              ZIP_FILE: "app.zip"  # Specify the ZIP file here
+              WAIT: 'true'
 
 
