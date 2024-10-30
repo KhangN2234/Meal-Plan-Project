@@ -25,5 +25,7 @@ pipelines:
             variables:
               HEROKU_API_KEY: $HEROKU_API_KEY
               HEROKU_APP_NAME: $HEROKU_APP_NAME
+              RECIPE_SEARCH_APP_ID= $RECIPE_SEARCH_APP_ID
+              RECIPE_SEARCH_API_KEY= $RECIPE_SEARCH_API_KEY
               ZIP_FILE: "app.tar.gz"  # Specify the .tar.gz file
               WAIT: 'true'
