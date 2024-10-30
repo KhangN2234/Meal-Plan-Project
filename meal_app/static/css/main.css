@@ -69,6 +69,7 @@ h3 {
 .wrapper .Sigbtn {
     width: 50%;
     height: 65px;
+    margin-top: 1%;
     background: #fff;
     border: none;
     outline: none;
@@ -177,7 +178,7 @@ nav a:hover {
 .Submit {
     display: block;
     width: 100%;
-    margin-top: 10%;
+    margin-top: 0%;
     font-weight: bold;
     height: 40px;
     border-radius: 2% / 10%;
