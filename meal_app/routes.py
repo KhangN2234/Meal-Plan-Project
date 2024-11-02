@@ -1,5 +1,5 @@
 from meal_app import app, db
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session, flash
 import json
 import sqlite3
 import bcrypt
@@ -36,11 +36,61 @@ def signup():
         try:
             # Store user data in Firebase Firestore using the email as document ID
             db.collection('users').document(email).set(user_data)
-            return render_template('signup.html', success=True)
+
+            flash('Account created successfully!')
+            session['new_signup'] = True
+            session['user'] = email
+            return redirect('/profile')
+        
         except Exception as e:
             return render_template('signup.html', success=False, error=str(e))
     
     return render_template('signup.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # This Gets the email and password from user
+        email = request.form['email']
+        password = request.form['password']
+
+        # Checks to see if user has signed up
+        doc_ref = db.collection('users').document(email)
+        doc = doc_ref.get()
+
+        if doc.exists:
+            # Gets password
+            user_data = doc.to_dict()
+            stored_password = user_data['password']
+
+            if bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
+                # If the pasword matches, set the user session
+                session['user'] = email
+
+                if 'new_signup' in session:
+                    session.pop('new_signup', None)
+                    flash('You have been successfully logged in!')
+
+                return redirect('/profile')  # Sends user to profile page if login works
+            
+            else:
+                # error if the password is incorret
+                return render_template('login.html', error="Invalid password")
+            
+        else:
+            # Sends an error if no account exists for this email
+            return render_template('login.html', error="No account found with this email")
+        
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    # This removes the user from the session if he is logged in
+    session.pop('user', None)
+
+    flash('You have been successfully logged out.')
+
+    return redirect('/login')
 
 # Success page
 #@app.route('/success')
