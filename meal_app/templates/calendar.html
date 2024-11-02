@@ -38,92 +38,73 @@
 <!-- Display areas for days -->
 <h2>Monday</h2>
 <div class = "recipe_links">
-    {% if 'Monday' in selected_days %}
-        <a href='{{ recipe_url }}'> {{ recipe_label }}</a>
-    {% endif %}
+    {% for recipe in recipes_list %}
+        {% if 'Monday' in recipe. days %}
+            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
+        {% endif %}
+    {% endfor %}
 </div>
-<div class="days">
-    <textarea id="days_textarea" name="days_textarea" rows="5" cols="50">
-    Notes:
-    </textarea>
-</div>
+
 
 
 <h2>Tuesday</h2>
 <div class = "recipe_links">
-    {% if 'Tuesday' in selected_days %}
-        <a href='{{ recipe_url }}'> {{ recipe_label }}</a>
-    {% endif %}
-</div>
-<div class="days">
-    <textarea id="days_textarea" name="days_textarea" rows="5" cols="50">
-    Notes:
-    </textarea>
+    {% for recipe in recipes_list %}
+        {% if 'Tuesday' in recipe. days %}
+            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
+        {% endif %}
+    {% endfor %}
 </div>
 
 
 <h2>Wednesday</h2>
 <div class = "recipe_links">
-    {% if 'Wednesday' in selected_days %}
-        <a href='{{ recipe_url }}'> {{ recipe_label }}</a>
-    {% endif %}
-</div>
-<div class="days">
-    <textarea id="days_textarea" name="days_textarea" rows="5" cols="50">
-    Notes:
-    </textarea>
+    {% for recipe in recipes_list %}
+        {% if 'Wednesday' in recipe. days %}
+            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
+        {% endif %}
+    {% endfor %}
 </div>
 
 
 <h2>Thursday</h2>
 <div class = "recipe_links">
-    {% if 'Thursday' in selected_days %}
-        <a href='{{ recipe_url }}'> {{ recipe_label }}</a>
-    {% endif %}
+    {% for recipe in recipes_list %}
+        {% if 'Thursday' in recipe. days %}
+            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
+        {% endif %}
+    {% endfor %}
 </div>
-<div class="days">
-    <textarea id="days_textarea" name="days_textarea" rows="5" cols="50">
-    Notes:
-    </textarea>
-</div>
+
 
 
 <h2>Friday</h2>
 <div class = "recipe_links">
-    {% if 'Friday' in selected_days %}
-        <a href='{{ recipe_url }}'> {{ recipe_label }}</a>
-    {% endif %}
-</div>
-<div class="days">
-    <textarea id="days_textarea" name="days_textarea" rows="5" cols="50">
-    Notes:
-    </textarea>
+    {% for recipe in recipes_list %}
+        {% if 'Friday' in recipe. days %}
+            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
+        {% endif %}
+    {% endfor %}
 </div>
 
 
 <h2>Saturday</h2>
 <div class = "recipe_links">
-    {% if 'Saturday' in selected_days %}
-        <a href='{{ recipe_url }}'> {{ recipe_label }}</a>
-    {% endif %}
-</div>
-<div class="days">
-    <textarea id="days_textarea" name="days_textarea" rows="5" cols="50">
-    Notes:
-    </textarea>
+    {% for recipe in recipes_list %}
+        {% if 'Saturday' in recipe. days %}
+            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
+        {% endif %}
+    {% endfor %}
 </div>
 
 
 <h2>Sunday</h2>
 <div class = "recipe_links">
-    {% if 'Sunday' in selected_days %}
-        <a href='{{ recipe_url }}'> {{ recipe_label }}</a>
-    {% endif %}
-</div>
-<div class="days">
-    <textarea id="days_textarea" name="days_textarea" rows="5" cols="50">
-    Notes:
-    </textarea>
+    {% for recipe in recipes_list %}
+        {% if 'Sunday' in recipe. days %}
+            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
+        {% endif %}
+    {% endfor %}
 </div>
 
 </body>

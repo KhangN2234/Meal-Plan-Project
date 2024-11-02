@@ -11,17 +11,31 @@ def calendar():
     if request.method == 'GET': 
         if 'user' in session:
             email = session['user']
-            
-            doc = db.collection('users').document(email).collection('recipes').document('Egg, Poblano and Avocado Scramble (Ww)').get()
 
-            # Check if the document exists
-            if doc.exists:
-                # Access the 'recipe_label' field
-                #.to_dict() convert the variable to an array then .get() get the value from that array created from the document
-                recipe_label = doc.to_dict().get('recipe_label') 
-                recipe_url = doc.to_dict().get('recipe_url')
-                selected_days = doc.to_dict().get('days',[])
-            return render_template('calendar.html', recipe_label=recipe_label, recipe_url=recipe_url, selected_days=selected_days)
+            # Reference to the user's recipes collection
+            recipes_collection_ref = db.collection('users').document(email).collection('recipes')
+            recipes_docs = recipes_collection_ref.stream()
+            doc = db.collection('users').document(email).collection('recipes').get()
+            
+            # Check if the 'recipes' collection is empty
+            if not any(True for _ in recipes_docs):
+                return redirect('search')
+            
+            # Put name of recipes in an array list
+            recipes_name = []
+            #.to_dict() convert the variable to an array then .get() get the value (ie recipe_url) from that map created from the document
+            for recipe in doc:
+                recipes_name.append(recipe.to_dict().get('recipe_label'))
+
+
+            data = [{'label': recipes_collection_ref.document(recipe).get().to_dict().get('recipe_label'), 
+                     'days' : recipes_collection_ref.document(recipe).get().to_dict().get('days'),
+                     'url' : recipes_collection_ref.document(recipe).get().to_dict().get('recipe_url')} for recipe in recipes_name]
+            
+            #recipes_list = [{'label': db.collection('users').document(email).collection('recipes').document(recipe).get().to_dict().get('recipe_label')} for recipe in recipes_name]
+            return render_template('calendar.html', 
+                                   recipes_list = data
+                                   )
         else:
             return redirect('/login')
     
