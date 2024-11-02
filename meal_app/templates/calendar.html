@@ -38,9 +38,11 @@
 <!-- Display areas for days -->
 <h2>Monday</h2>
 <div class = "recipe_links">
-    {% if 'Monday' in selected_days %}
-        <a href='{{ recipe_url }}'> {{ recipe_label }}</a>
-    {% endif %}
+    {% for recipe in recipes_list %}
+        {% if 'Monday' in recipe. days %}
+            <a href='{{ recipe_url }}'> {{ recipe. label }}</a>
+        {% endif %}
+    {% endfor %}
 </div>
 <div class="days">
     <textarea id="days_textarea" name="days_textarea" rows="5" cols="50">
