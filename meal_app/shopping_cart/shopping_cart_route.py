@@ -74,9 +74,12 @@ def renderCart(successMessage, errorMessage):
 
             for recipe in list_of_recipes:
                 for item in recipe['recipe']['ingredients']:
+                    measure = item.get('measure')
+                    if measure == "<unit>":
+                        measure = "​"
                     processed_item = {
-                        'quantity': item.get('quantity'),
-                        'measure': item.get('measure'),
+                        'quantity': round(item.get('quantity'), 2),
+                        'measure': measure,
                         'food': item.get('food'),
                         "recipe": recipe['recipe']['label']
                     }
