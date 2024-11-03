@@ -23,19 +23,23 @@
 
     <div class="output">
         {% if entries %}
-            {% for date, items in entries.items() %}
+            {% for date, data in entries.items() %}
                 <h4>{{ date }}</h4>
                 <table border="1" width="100%" cellpadding="5">
                     <tr>
                         <th>Item Name</th>
                         <th>Calories</th>
                     </tr>
-                    {% for item in items %}
+                    {% for item in data['items'] %}
                     <tr>
                         <td>{{ item['name'] }}</td>
                         <td>{{ item['calories'] }}</td>
                     </tr>
                     {% endfor %}
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>{{ data['total_calories'] }}</strong></td>
+                    </tr>
                 </table>
             {% endfor %}
         {% else %}

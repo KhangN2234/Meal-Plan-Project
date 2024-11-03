@@ -13,14 +13,16 @@ def calorie_tracking():
     if request.method == 'POST':
         # Get form data
         item_name = request.form['item_name']
-        calories = request.form['calories']
+        calories = int(request.form['calories'])  # Convert to int for calculations
         date = request.form['date']
 
         # Store the entry by date in the dictionary
         if date not in entries:
-            entries[date] = []
+            entries[date] = {'items': [], 'total_calories': 0}
 
-        entries[date].append({'name': item_name, 'calories': calories})
+        # Add item and update total calories for the date
+        entries[date]['items'].append({'name': item_name, 'calories': calories})
+        entries[date]['total_calories'] += calories
 
         # Redirect to avoid form resubmission on refresh
         return redirect(url_for('calorie_tracking'))
