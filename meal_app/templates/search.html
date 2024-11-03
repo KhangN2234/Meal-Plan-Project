@@ -120,6 +120,9 @@
                             <input type="hidden" name="recipe_url" value="{{ recipe.url }}">
                             <button type="submit">Add to Calendar</button>
                         </form>
+                        <form action="/cart" method="POST">
+                            <button type="submit" name="recipeURI" value="{{ recipe. uri }}">Add to Shopping Cart</button>
+                        </form>
                     </ul>
                 </li>
             </ul>
