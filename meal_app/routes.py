@@ -9,7 +9,7 @@ import re
 from .scale_recipe.scale_recipe_routes import scaled_recipe_templates
 from .scale_recipe.recipe_scaling_routes import recipe_scaling_templates
 from .search_recipe.search_routes import search_templates
-
+from .shopping_cart.shopping_cart_route import shopping_cart_template
 
 
 @app.route('/')
@@ -28,6 +28,7 @@ def signup():
         
         # Create user data to store in Firestore
         user_data = {
+            'cart':[],
             'email': email,
             'password': hashed_password.decode('utf-8')  # Store hashed password
         }
@@ -105,3 +106,4 @@ def profile():
 app.register_blueprint(search_templates)
 app.register_blueprint(scaled_recipe_templates)
 app.register_blueprint(recipe_scaling_templates)
+app.register_blueprint(shopping_cart_template)
