@@ -33,7 +33,8 @@ def calendar():
                      'url' : recipes_collection_ref.document(recipe).get().to_dict().get('recipe_url')} for recipe in recipes_name]
             
             return render_template('calendar.html', 
-                                   recipes_list = data
+                                   recipes_list = data,
+                                   recipe_label = "None"
                                    )
         else:
             return redirect('/login')

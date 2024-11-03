@@ -35,11 +35,11 @@
     <button type ="submit"> Add Recipe to Selected Day(s)</button>
 </form>
 
-
+<br>
 <!-- Display areas for days -->
-<div class = "output">
-    <ul> 
-        <h2>Monday</h2>
+<div class = "output"> 
+    <h2>Monday</h2>
+    <ul>
         {% for recipe in recipes_list %}
             {% if 'Monday' in recipe. days %}
                 <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
@@ -49,8 +49,9 @@
 </div>
 
 <div class = "output">
-    <ul> 
-        <h2>Tuesday</h2>
+     
+    <h2>Tuesday</h2>
+    <ul>
         {% for recipe in recipes_list %}
             {% if 'Tuesday' in recipe. days %}
                 <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
@@ -61,8 +62,9 @@
 
 
 <div class = "output">
-    <ul> 
-        <h2>Wednesday</h2>
+    
+    <h2>Wednesday</h2>
+    <ul>
         {% for recipe in recipes_list %}
             {% if 'Wednesday' in recipe. days %}
                 <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
@@ -73,8 +75,8 @@
 
 
 <div class = "output">
+    <h2>Thursday</h2>
     <ul> 
-        <h2>Thursday</h2>
         {% for recipe in recipes_list %}
             {% if 'Thursday' in recipe. days %}
                 <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
@@ -85,8 +87,8 @@
 
 
 <div class = "output">
+    <h2>Friday</h2>
     <ul> 
-        <h2>Friday</h2>
         {% for recipe in recipes_list %}
             {% if 'Friday' in recipe. days %}
                 <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
@@ -97,8 +99,8 @@
 
 
 <div class = "output">
+    <h2>Saturday</h2>
     <ul> 
-        <h2>Saturday</h2>
         {% for recipe in recipes_list %}
             {% if 'Saturday' in recipe. days %}
                 <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
@@ -109,8 +111,8 @@
 
 
 <div class = "output">
+    <h2>Sunday</h2>
     <ul> 
-        <h2>Sunday</h2>
         {% for recipe in recipes_list %}
             {% if 'Sunday' in recipe. days %}
                 <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
