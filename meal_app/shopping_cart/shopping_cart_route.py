@@ -14,8 +14,23 @@ shopping_cart_template = Blueprint('cart',__name__)
 
 @app.route('/cart', methods=['GET', 'POST'])
 def cart():
-    if request.method == 'GET': 
-        return renderCart("","")
+    if request.method == 'GET':
+        if 'user' in session:
+            email = session['user']
+            
+            # Get the user document
+            user_doc = db.collection('users').document(email).get()
+            
+            # Check if the 'cart' field exists and has items
+            if user_doc.exists:
+                cart_items = user_doc.to_dict().get('cart', [])
+                
+                if not cart_items:
+                    return redirect('search')
+                else:
+                    return renderCart("", "")
+            else:
+                return redirect('search')
     if request.method == "POST":
         recipeURI = request.form.get('recipeURI')
         if 'user' in session:  # Check if the user is logged in
