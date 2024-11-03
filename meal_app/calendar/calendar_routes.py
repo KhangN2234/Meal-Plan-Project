@@ -34,11 +34,12 @@ def calendar():
             
             return render_template('calendar.html', 
                                    recipes_list = data,
-                                   recipe_label = "None"
+                                   recipe_label = None
                                    )
         else:
             return redirect('/login')
     
+    # Handle method POST
     else:
         if 'user' in session:
             email = session['user']
@@ -57,14 +58,17 @@ def calendar():
             recipe_url = request.form.get('recipe_url')
             selected_days = request.form.getlist('selected_days')
             
-            recipe_data = {
-                'recipe_label': recipe_label,
-                'recipe_url': recipe_url,
-                'days': selected_days
-            }
+            if recipe_label != 'None':
+                recipe_data = {
+                    'recipe_label': recipe_label,
+                    'recipe_url': recipe_url,
+                    'days': selected_days
+                }
+                # Save to firebase
+                recipes_collection_ref.document(recipe_label).set(recipe_data)
+
             
-            # Save to firebase
-            recipes_collection_ref.document(recipe_label).set(recipe_data)
+
             
     # This portion will display the data in the firebase
             # Put name of recipes in an array list
