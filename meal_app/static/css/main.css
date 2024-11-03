@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: rgb(51, 202, 109);
+    background: rgb(250, 250, 250);
     font-family: Arial, sans-serif;
     height: 0%;
     margin-top: 5%;
@@ -23,7 +23,7 @@ body {
 h1 {
     font-family: "Gill Sans", sans-serif;
     font-size: 14cap;
-    color: rgb(240, 230, 230);
+    color: rgb(36, 33, 33);
     height: 20px;
     font-weight: 10;
 }
