@@ -87,27 +87,26 @@
 {%if success%}
     <p>Results for <b>{{ searchbar }}</b> in <b>{{ mealtype }}</b></p>
     {% for recipe in recipes %}
-        <div class="output">
-            <ul>
-                <li class="title">
-                    <p><b>{{ recipe.label }}</b></p>
+    <div class="output">
+        <ul>
+            <li class="title">
+                <p><b>{{ recipe.label }}</b></p>
+                <ul class="contents">
+                    <li>{{ recipe.protein }}{{ recipe.proteinunit}} Protein</li>
+                    <li>{{ recipe.calories }} cal</li>
+                    <li>{{ recipe.servings }} servings</li>
+                    <li><b>{{ recipe.protein_per_serv }}{{ recipe.proteinunit }} protein/serving</b></li>
+                    <li><b>{{ recipe.cal_per_serv }} cal/serving</b></li>
+                    <br>
+                    <li><b>Ingredients</b></li>
+                    <ul>
+                        {% for ingredient in recipe.ingredients %}
+                            <li>{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>
+                    <br>
+                    <a href='{{ recipe.url }}'>From {{ recipe.source }}</a>
                     
-                    <ul class="contents">
-                        <li> {{recipe. protein}}{{recipe. proteinunit}} Protein</li>
-                        <li> {{recipe. calories}} cal </li>
-                        <li> {{recipe. servings}} servings</li>
-                        <li><b> {{recipe. protein_per_serv}}{{recipe. proteinunit}} protein/serving </b></li>
-                        <li><b> {{recipe. cal_per_serv}} cal/serving </b></li>
-                        <br>
-                        <li> <b>Ingredients</b> </li>
-                            <ul>
-                                {% for ingredient in recipe.ingredients %}
-                                    <li>{{ ingredient }}</li>
-                                {% endfor %}
-                            </ul>
-
-                        <br>
-                        <a href='{{recipe. url}}'>From {{recipe. source}}</a>
                         <form action="/scale_recipe" method="POST">
                             {% for ingredient in recipe.ingredients %}
                                 <input type="hidden" name="ingredients[]" value="{{ ingredient }}">
@@ -122,11 +121,17 @@
                         <form action="/cart" method="POST">
                             <button type="submit" name="recipeURI" value="{{ recipe. uri }}">Add to Shopping Cart</button>
                         </form>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    {% endfor %}
+                    <form action="{{ url_for('calorie_tracking') }}" method="POST">
+                        <input type="hidden" name="item_name" value="{{ recipe.label }}">
+                        <input type="hidden" name="calories" value="{{ recipe.calories }}">
+                        <input type="hidden" name="date" value="{{ current_date }}">
+                        <button type="submit" class="add-calorie-btn">Add to Calorie Tracker</button>
+                    </form>
+                </ul>
+            </li>
+        </ul>
+    </div>
+{% endfor %}
     </body>
 
 {% elif success == false%}
