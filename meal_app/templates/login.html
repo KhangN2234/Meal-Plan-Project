@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="input">
+    <h2>Login to Your Account</h2>
+    <form method="POST">
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br><br>
+
+        <input type="submit" value="Sign In">
+    </form>
+
+    {% for message in get_flashed_messages() %}
+            <p style="color: green;">{{ message }}</p>
+    {% endfor %}
+    
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+
+{% endif %}
+</div>
+{% endblock %}
