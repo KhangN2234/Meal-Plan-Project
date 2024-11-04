@@ -40,3 +40,6 @@ def download_pdf():
                         'recipe': recipe_label
                     }
                     all_ingredients.append(processed_item)
+
+    else:
+        return "Error: No user currently logged in.", 403
