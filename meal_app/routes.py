@@ -110,6 +110,9 @@ def profile():
 
     doc_ref = db.collection('users').document(email)
     doc = doc_ref.get()
+
+    if not doc.exists:
+        return redirect('/login')
     
     return render_template('profile.html')
 
