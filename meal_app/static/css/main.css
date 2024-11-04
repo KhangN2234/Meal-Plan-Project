@@ -3,10 +3,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: rgb(51, 202, 109);
+    background: rgb(250, 250, 250);
     font-family: Arial, sans-serif;
     height: 0%;
-    margin-top: 5%;
+    margin-top: 10%;
 }
 
 .searchbody {
@@ -23,7 +23,7 @@ body {
 h1 {
     font-family: "Gill Sans", sans-serif;
     font-size: 14cap;
-    color: rgb(240, 230, 230);
+    color: rgb(36, 33, 33);
     height: 20px;
     font-weight: 10;
 }
@@ -202,9 +202,83 @@ nav a:hover {
 }
 
 /* Calender style */
-.days {
+
+
+.cartbody {
+    font-family: 'Arial';
+    font-size: 12px;
+    width: 100%;
+    min-width: 400px;
+    align-self: center;
+    margin: 5%;
     margin-left: auto;
     margin-right: auto;
-    justify-content: center;
-    display: flex;
+    width: fit-content;
+}
+
+.cartwindow {
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 5%;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+    width: 100%;
+}
+
+.ingredient{
+    display: inline;
+}
+
+.boughtCheck{
+    width: 20px;
+    height: 20px;
+}
+.quantity{
+    display: inline;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 200;
+}
+
+.measure{
+    display: inline;
+    padding-right: 10px;
+    font-weight: 50;
+}
+
+.ingredientName{
+    display: inline;
+    padding-right: 10px;
+
+}
+
+.recipesUsing{
+    display: block;
+    color: grey;
+    font-size: medium;
+}
+
+.errornotification {
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    background-color: rgb(255, 94, 94);
+    box-shadow: 0 0 10px;
+    width: 100%;
+    font-size: medium;
+}
+
+.successnotification {
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    background-color: rgb(111, 255, 166);
+    box-shadow: 0 0 10px;
+    width: 100%;
+    font-size: medium;
 }

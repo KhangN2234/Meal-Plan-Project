@@ -35,77 +35,92 @@
     <button type ="submit"> Add Recipe to Selected Day(s)</button>
 </form>
 
+<br>
 <!-- Display areas for days -->
-<h2>Monday</h2>
-<div class = "recipe_links">
-    {% for recipe in recipes_list %}
-        {% if 'Monday' in recipe. days %}
-            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
-        {% endif %}
-    {% endfor %}
+<div class = "output"> 
+    <h2>Monday</h2>
+    <ul>
+        {% for recipe in recipes_list %}
+            {% if 'Monday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<div class = "output">
+     
+    <h2>Tuesday</h2>
+    <ul>
+        {% for recipe in recipes_list %}
+            {% if 'Tuesday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 </div>
 
 
-
-<h2>Tuesday</h2>
-<div class = "recipe_links">
-    {% for recipe in recipes_list %}
-        {% if 'Tuesday' in recipe. days %}
-            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
-        {% endif %}
-    {% endfor %}
+<div class = "output">
+    
+    <h2>Wednesday</h2>
+    <ul>
+        {% for recipe in recipes_list %}
+            {% if 'Wednesday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 </div>
 
 
-<h2>Wednesday</h2>
-<div class = "recipe_links">
-    {% for recipe in recipes_list %}
-        {% if 'Wednesday' in recipe. days %}
-            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
-        {% endif %}
-    {% endfor %}
+<div class = "output">
+    <h2>Thursday</h2>
+    <ul> 
+        {% for recipe in recipes_list %}
+            {% if 'Thursday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 </div>
 
 
-<h2>Thursday</h2>
-<div class = "recipe_links">
-    {% for recipe in recipes_list %}
-        {% if 'Thursday' in recipe. days %}
-            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
-        {% endif %}
-    {% endfor %}
+<div class = "output">
+    <h2>Friday</h2>
+    <ul> 
+        {% for recipe in recipes_list %}
+            {% if 'Friday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 </div>
 
 
-
-<h2>Friday</h2>
-<div class = "recipe_links">
-    {% for recipe in recipes_list %}
-        {% if 'Friday' in recipe. days %}
-            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
-        {% endif %}
-    {% endfor %}
+<div class = "output">
+    <h2>Saturday</h2>
+    <ul> 
+        {% for recipe in recipes_list %}
+            {% if 'Saturday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 </div>
 
 
-<h2>Saturday</h2>
-<div class = "recipe_links">
-    {% for recipe in recipes_list %}
-        {% if 'Saturday' in recipe. days %}
-            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
-        {% endif %}
-    {% endfor %}
+<div class = "output">
+    <h2>Sunday</h2>
+    <ul> 
+        {% for recipe in recipes_list %}
+            {% if 'Sunday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 </div>
 
-
-<h2>Sunday</h2>
-<div class = "recipe_links">
-    {% for recipe in recipes_list %}
-        {% if 'Sunday' in recipe. days %}
-            <a href='{{ recipe. url }}'> {{ recipe. label }}</a><br>
-        {% endif %}
-    {% endfor %}
-</div>
 
 </body>
 </html>
