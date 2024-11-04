@@ -114,7 +114,9 @@ def profile():
     if not doc.exists:
         return redirect('/login')
     
-    return render_template('profile.html')
+    user_data = doc.to_dict()
+    
+    return render_template('profile.html', user_data=user_data)
 
 
 
