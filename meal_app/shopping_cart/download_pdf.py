@@ -4,6 +4,12 @@ from spellchecker import SpellChecker
 import requests
 import os
 from flask import Blueprint
+from urllib.parse import quote
+from flask import send_file
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+import io
+
 
 recipe_search_app_id = os.getenv('RECIPE_SEARCH_APP_ID')
 recipe_search_api_key = os.getenv('RECIPE_SEARCH_API_KEY')
@@ -16,6 +22,12 @@ def download_pdf():
         doc_ref = db.collection('users').document(email)
         user_data = doc_ref.get().to_dict()
         saved_recipes = user_data.get('cart', [])
+
+        buffer = io.BytesIO()
+        p = canvas.Canvas(buffer, pagesize=letter)
+
+        p.drawString(100, 750, "Shopping Cart Items:")
+        y = 730
         
         all_ingredients = []
 
