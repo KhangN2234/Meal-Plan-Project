@@ -29,9 +29,11 @@ def signup():
         
         # Create user data to store in Firestore
         user_data = {
-            'cart':[],
             'email': email,
-            'password': hashed_password.decode('utf-8')  # Store hashed password
+            'password': hashed_password.decode('utf-8'),
+            'username': '',  
+            'bio': '',  
+            'profile_picture': ''  
         }
 
         try:
