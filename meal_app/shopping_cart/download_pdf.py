@@ -44,7 +44,7 @@ def download_pdf():
                 for item in recipe['recipe']['ingredients']:
                     measure = item.get('measure', "")
                     if measure == "<unit>":
-                        measure = "​"
+                        measure = "x"
                     processed_item = {
                         'quantity': round(item.get('quantity', 0), 2),
                         'measure': measure,
@@ -53,5 +53,19 @@ def download_pdf():
                     }
                     all_ingredients.append(processed_item)
 
+        #Write to PDF
+        for ingredient in all_ingredients:
+            p.drawString(100, y, f"{ingredient['quantity']} {ingredient['measure']} {ingredient['food']} (from {ingredient['recipe']})")
+            y -= 20  #Next line
+            if y < 40:  #New page if needed
+                p.showPage()
+                y = 750  #Reset Y pos
+
+        p.showPage()
+        p.save()
+        buffer.seek(0)
+
+        #Send PDF as a response
+        return send_file(buffer, as_attachment=True, download_name='shopping_cart.pdf', mimetype='application/pdf')
     else:
         return "Error: No user currently logged in.", 403
