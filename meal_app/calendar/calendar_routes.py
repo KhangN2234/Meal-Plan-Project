@@ -47,11 +47,7 @@ def calendar():
             # Reference to the user's recipes collection
             recipes_collection_ref = db.collection('users').document(email).collection('recipes')
             recipes_docs = recipes_collection_ref.stream()
-            doc = db.collection('users').document(email).collection('recipes').get()
             
-            # Check if the 'recipes' collection is empty
-            if not any(True for _ in recipes_docs):
-                return redirect('search')
             
     # This portion add the new recipe to the firebase 
             recipe_label = request.form.get('recipe_label')
@@ -74,7 +70,7 @@ def calendar():
             # Put name of recipes in an array list
             recipes_name = []
             #.to_dict() convert the variable to an array then .get() get the value (ie recipe_url) from that map created from the document
-            for recipe in doc:
+            for recipe in recipes_collection_ref.get():
                 recipes_name.append(recipe.to_dict().get('recipe_label'))
 
 
