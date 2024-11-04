@@ -116,7 +116,13 @@ def profile():
     user_data = doc.to_dict()
 
     if request.method == 'POST':
-            pass
+        username = request.form.get('username', user_data.get('username'))
+        bio = request.form.get('bio', user_data.get('bio'))
+
+    updated_data = {
+        'username': username,
+        'bio': bio
+    }
 
     return render_template('profile.html', user_data=user_data)
 
