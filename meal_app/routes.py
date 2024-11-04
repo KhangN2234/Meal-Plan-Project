@@ -10,7 +10,8 @@ from .scale_recipe.scale_recipe_routes import scaled_recipe_templates
 from .scale_recipe.recipe_scaling_routes import recipe_scaling_templates
 from .search_recipe.search_routes import search_templates
 from .shopping_cart.shopping_cart_route import shopping_cart_template
-
+from .calendar.calendar_routes import calendar_templates
+from .shopping_cart.download_pdf import download_pdf
 
 @app.route('/')
 def welcome():
@@ -28,9 +29,11 @@ def signup():
         
         # Create user data to store in Firestore
         user_data = {
-            'cart':[],
             'email': email,
-            'password': hashed_password.decode('utf-8')  # Store hashed password
+            'password': hashed_password.decode('utf-8'),
+            'username': '',  
+            'bio': '',  
+            'profile_picture': ''  
         }
 
         try:
@@ -97,13 +100,45 @@ def logout():
 #def success():
 #    return "Account created successfully!"
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    return render_template('profile.html')
 
+    if 'user' not in session:
+        return redirect('/login')
+    
+    email = session['user']
+    doc_ref = db.collection('users').document(email)
+    doc = doc_ref.get()
+
+    if not doc.exists:
+        return redirect('/login')
+    
+    user_data = doc.to_dict()
+
+    if request.method == 'POST':
+        username = request.form.get('username', user_data.get('username'))
+        bio = request.form.get('bio', user_data.get('bio'))
+
+        updated_data = {
+        'username': username,
+        'bio': bio
+    }
+
+     
+        doc_ref.update(updated_data)
+
+        
+        flash('Profile updated successfully!')
+
+        
+        return redirect('/profile')
+
+    
+    return render_template('profile.html', user_data=user_data)
 
 
 app.register_blueprint(search_templates)
 app.register_blueprint(scaled_recipe_templates)
 app.register_blueprint(recipe_scaling_templates)
 app.register_blueprint(shopping_cart_template)
+app.register_blueprint(calendar_templates)
