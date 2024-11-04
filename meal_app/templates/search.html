@@ -107,18 +107,25 @@
                     <br>
                     <a href='{{ recipe.url }}'>From {{ recipe.source }}</a>
                     
+                        <form action="/scale_recipe" method="POST">
+                            {% for ingredient in recipe.ingredients %}
+                                <input type="hidden" name="ingredients[]" value="{{ ingredient }}">
+                            {% endfor %}
+                            <button type="submit">Scale Recipe</button>
+                        </form>
+                        <form action="/calendar" method="POST">
+                            <input type="hidden" name="recipe_label" value="{{ recipe.label }}">
+                            <input type="hidden" name="recipe_url" value="{{ recipe.url }}">
+                            <button type="submit">Add to Calendar</button>
+                        </form>
+                        <form action="/cart" method="POST">
+                            <button type="submit" name="recipeURI" value="{{ recipe. uri }}">Add to Shopping Cart</button>
+                        </form>
                     <form action="{{ url_for('calorie_tracking') }}" method="POST">
                         <input type="hidden" name="item_name" value="{{ recipe.label }}">
                         <input type="hidden" name="calories" value="{{ recipe.calories }}">
                         <input type="hidden" name="date" value="{{ current_date }}">
                         <button type="submit" class="add-calorie-btn">Add to Calorie Tracker</button>
-                    </form>
-                    
-                    <form action="/scale_recipe" method="POST">
-                        {% for ingredient in recipe.ingredients %}
-                            <input type="hidden" name="ingredients[]" value="{{ ingredient }}">
-                        {% endfor %}
-                        <button type="submit">Scale Recipe</button>
                     </form>
                 </ul>
             </li>
