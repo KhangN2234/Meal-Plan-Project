@@ -102,9 +102,14 @@ def logout():
 
 @app.route('/profile')
 def profile():
-    
+
     if 'user' not in session:
         return redirect('/login')
+    
+    email = session['user']
+
+    doc_ref = db.collection('users').document(email)
+    doc = doc_ref.get()
     
     return render_template('profile.html')
 
