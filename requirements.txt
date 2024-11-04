@@ -10,3 +10,4 @@ python-dotenv==1.0.1
 requests==2.32.3
 pyspellchecker==0.8.1
 firebase_admin==6.5.0
+reportlab
