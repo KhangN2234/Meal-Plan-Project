@@ -7,7 +7,7 @@ from firebase_admin import credentials, firestore
 
 # Define the blueprint
 calorie_tracking_templates = Blueprint('calorie_tracking', __name__)
-
+delete_entry_templates = Blueprint('delete_entry', __name__)
 entries = {}
 
 @app.route('/calorie_tracking', methods=['GET', 'POST'])
@@ -67,7 +67,16 @@ def calorie_tracking():
         if entry_date:
             if entry_date not in entries:
                 entries[entry_date] = {'items': [], 'total_calories': 0}
-            entries[entry_date]['items'].append({'name': item_name, 'calories': calories})
+            entries[entry_date]['items'].append({'name': item_name, 'calories': calories, 'id': doc.id})
             entries[entry_date]['total_calories'] += calories
 
     return render_template('calorie_tracking.html', entries=entries)
+@app.route('/delete_entry', methods=['POST'])
+def delete_entry():
+    user_email = session.get('user')
+    if user_email and 'entry_id' in request.form:
+        entry_id = request.form['entry_id']
+        user_ref = db.collection('users').document(user_email).collection('calorie_entries').document(entry_id)
+        user_ref.delete()
+        flash('Entry deleted successfully.')
+    return redirect(url_for('calorie_tracking'))

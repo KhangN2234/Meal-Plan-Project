@@ -10,6 +10,7 @@ from .scale_recipe.scale_recipe_routes import scaled_recipe_templates
 from .scale_recipe.recipe_scaling_routes import recipe_scaling_templates
 from .search_recipe.search_routes import search_templates
 from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
+from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 
 
 
@@ -107,3 +108,4 @@ app.register_blueprint(search_templates)
 app.register_blueprint(scaled_recipe_templates)
 app.register_blueprint(recipe_scaling_templates)
 app.register_blueprint(calorie_tracking_templates)
+app.register_blueprint(delete_entry_templates)
