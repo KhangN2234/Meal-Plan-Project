@@ -70,20 +70,17 @@ def renderCart(successMessage, errorMessage):
 
             list_of_recipes = data['hits']
 
-            result = []
+            ingredients_dict = {}
 
             for recipe in list_of_recipes:
                 for item in recipe['recipe']['ingredients']:
                     measure = item.get('measure')
                     if measure == "<unit>":
                         measure = "x"
-                    processed_item = {
-                        'quantity': round(item.get('quantity'), 2),
-                        'measure': measure,
-                        'food': item.get('food'),
-                        "recipe": recipe['recipe']['label']
-                    }
-                    result.append(processed_item)
+                    quantity = round(item.get('quantity'), 2)
+                    food = item.get('food')
+                    recipeLabel = recipe['recipe']['label']
+                    
 
         return render_template('shoppingcart.html', saved_recipes=saved_recipes, result=result, successMessage=successMessage, errorMessage=errorMessage)
     else: return render_template('shoppingcart.html', errorMessage="Error: No user currently logged in.")
