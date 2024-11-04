@@ -109,7 +109,7 @@
                     
                     <form action="{{ url_for('calorie_tracking') }}" method="POST">
                         <input type="hidden" name="item_name" value="{{ recipe.label }}">
-                        <input type="hidden" name="calories" value="{{ round(recipe.calories) }}">
+                        <input type="hidden" name="calories" value="{{ recipe.calories }}">
                         <input type="hidden" name="date" value="{{ current_date }}">
                         <button type="submit">Add to Calorie Tracker</button>
                     </form>
