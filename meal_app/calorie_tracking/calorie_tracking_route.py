@@ -1,4 +1,4 @@
-from meal_app import app
+from meal_app import app, db
 from flask import Flask, render_template, request, redirect, session, flash
 from flask import Blueprint
 from flask import url_for
@@ -6,7 +6,6 @@ import re
 from datetime import  datetime
 import firebase_admin
 from firebase_admin import credentials, firestore
-from __init__ import db
 
 calorie_tracking_templates = Blueprint('calorie_tracking',__name__)
 
@@ -25,7 +24,7 @@ def calorie_tracking():
     if request.method == 'POST':
         # Get form data
         item_name = request.form['item_name']
-        calories = int(request.form['calories'])
+        calories = request.form['calories']
         date = request.form['date']
 
         # Save entry to Firestore
@@ -46,9 +45,18 @@ def calorie_tracking():
     for doc in docs:
         entry = doc.to_dict()
         entry_date = entry['date']
+
+    # Ensure 'calories' field is valid and numeric; default to 0 if not
+        calories = entry.get('calories', 0)
+        try:
+            calories = int(calories)
+        except ValueError:
+            calories = 0  # If calories is not an integer, set to 0
+
         if entry_date not in entries:
             entries[entry_date] = {'items': [], 'total_calories': 0}
-        entries[entry_date]['items'].append({'name': entry['item_name'], 'calories': entry['calories']})
-        entries[entry_date]['total_calories'] += entry['calories']
+
+        entries[entry_date]['items'].append({'name': entry['item_name'], 'calories': calories})
+        entries[entry_date]['total_calories'] += calories
 
     return render_template('calorie_tracking.html', entries=entries)

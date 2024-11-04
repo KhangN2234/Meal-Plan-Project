@@ -108,10 +108,10 @@
                     <a href='{{ recipe.url }}'>From {{ recipe.source }}</a>
                     
                     <form action="{{ url_for('calorie_tracking') }}" method="POST">
-                        <input type="hidden" name="item_name" value="{{ recipe.label }}">
-                        <input type="hidden" name="calories" value="{{ recipe.calories }}">
-                        <input type="hidden" name="date" value="{{ current_date }}">
-                        <button type="submit">Add to Calorie Tracker</button>
+                        <input type="hidden" name="item_name" value="{{ recipe_name }}">
+                        <input type="hidden" name="calories" value="{{ recipe_calories }}">
+                        <input type="hidden" name="date" value="{{ current_date }}"> <!-- Set to today's date or allow user to select -->
+                        <button type="submit" class="add-calorie-btn">Add to Calorie Tracker</button>
                     </form>
                     
                     <form action="/scale_recipe" method="POST">
