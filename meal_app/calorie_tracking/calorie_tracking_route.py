@@ -43,7 +43,6 @@ def calorie_tracking():
             }
             user_ref.add(entry_data)  # Store entry under the user's calorie_entries collection
 
-            flash('Entry added successfully!')
         else:
             flash('All fields are required!')
 
@@ -78,5 +77,4 @@ def delete_entry():
         entry_id = request.form['entry_id']
         user_ref = db.collection('users').document(user_email).collection('calorie_entries').document(entry_id)
         user_ref.delete()
-        flash('Entry deleted successfully.')
     return redirect(url_for('calorie_tracking'))
