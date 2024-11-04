@@ -113,5 +113,24 @@ Lucas Garcia: Designed and implemented search.html page. Set up project's api in
 
 
 
+## Sprint 2 (October 14th - November 4th)
+Contribution:
+
+Khang Ngo: 
+
+Joseph Bond: 
+
+Mark Nardone: 
+
+Lucas Garcia: 
+
+## Next Steps
+- Khang: 
+- Joseph: 
+- Mark: 
+- Lucas: 
+
+
+
 
 
