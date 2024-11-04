@@ -1,13 +1,12 @@
 from meal_app import app, db
-from flask import Flask, render_template, request, redirect, session, flash
+from flask import Flask, render_template, request, redirect, session, flash, url_for
 from flask import Blueprint
-from flask import url_for
-import re
-from datetime import  datetime
+from datetime import datetime
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-calorie_tracking_templates = Blueprint('calorie_tracking',__name__)
+# Define the blueprint
+calorie_tracking_templates = Blueprint('calorie_tracking', __name__)
 
 entries = {}
 
@@ -22,21 +21,32 @@ def calorie_tracking():
     user_ref = db.collection('users').document(user_email).collection('calorie_entries')
 
     if request.method == 'POST':
-        # Get form data
-        item_name = request.form['item_name']
-        calories = request.form['calories']
-        date = request.form['date']
+        # Get form data and validate it
+        item_name = request.form.get('item_name', '').strip()
+        calories = request.form.get('calories', '').strip()
+        date = request.form.get('date', '').strip()
 
-        # Save entry to Firestore
-        entry_data = {
-            'item_name': item_name,
-            'calories': calories,
-            'date': date,
-            'timestamp': datetime.utcnow()
-        }
-        user_ref.add(entry_data)  # Store entry under the user's calorie_entries collection
+        # Only proceed if all fields are provided
+        if item_name and calories and date:
+            try:
+                calories = int(calories)  # Convert calories to integer
+            except ValueError:
+                flash("Please enter a valid number for calories.")
+                return redirect(url_for('calorie_tracking'))
 
-        flash('Entry added successfully!')
+            # Save entry to Firestore
+            entry_data = {
+                'item_name': item_name,
+                'calories': calories,
+                'date': date,
+                'timestamp': datetime.utcnow()
+            }
+            user_ref.add(entry_data)  # Store entry under the user's calorie_entries collection
+
+            flash('Entry added successfully!')
+        else:
+            flash('All fields are required!')
+
         return redirect(url_for('calorie_tracking'))
 
     # Retrieve all entries for this user from Firestore
@@ -44,19 +54,20 @@ def calorie_tracking():
     docs = user_ref.stream()
     for doc in docs:
         entry = doc.to_dict()
-        entry_date = entry['date']
-
-    # Ensure 'calories' field is valid and numeric; default to 0 if not
+        entry_date = entry.get('date')
+        item_name = entry.get('item_name', 'Unnamed item')
         calories = entry.get('calories', 0)
+
+        # Convert calories to int safely
         try:
             calories = int(calories)
         except ValueError:
-            calories = 0  # If calories is not an integer, set to 0
+            calories = 0
 
-        if entry_date not in entries:
-            entries[entry_date] = {'items': [], 'total_calories': 0}
-
-        entries[entry_date]['items'].append({'name': entry['item_name'], 'calories': calories})
-        entries[entry_date]['total_calories'] += calories
+        if entry_date:
+            if entry_date not in entries:
+                entries[entry_date] = {'items': [], 'total_calories': 0}
+            entries[entry_date]['items'].append({'name': item_name, 'calories': calories})
+            entries[entry_date]['total_calories'] += calories
 
     return render_template('calorie_tracking.html', entries=entries)
