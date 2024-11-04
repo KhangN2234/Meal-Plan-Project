@@ -64,26 +64,46 @@ def renderCart(successMessage, errorMessage):
             encodedString = quote(string, safe='')
             api_url += "&uri=" + encodedString
 
-            response = requests.get(api_url)
+        response = requests.get(api_url)
 
-            data = response.json()
+        data = response.json()
 
-            list_of_recipes = data['hits']
+        list_of_recipes = data['hits']
 
-            result = []
+        ingredients_dict = {}
 
-            for recipe in list_of_recipes:
-                for item in recipe['recipe']['ingredients']:
-                    measure = item.get('measure')
-                    if measure == "<unit>":
-                        measure = "x"
-                    processed_item = {
-                        'quantity': round(item.get('quantity'), 2),
+        for recipe in list_of_recipes:
+            for item in recipe['recipe']['ingredients']:
+                measure = item.get('measure')
+                if measure == "<unit>":
+                    measure = "x"
+                quantity = round(item.get('quantity'), 2)
+                food = item.get('food')
+                recipeLabel = recipe['recipe']['label']
+
+                key = (food, measure)
+
+                if key in ingredients_dict:
+                    ingredients_dict[key]['quantity'] += quantity
+                    ingredients_dict[key]['recipes'].append(recipeLabel)
+
+                else:
+                    ingredients_dict[key] = {
+                        'quantity': quantity,
                         'measure': measure,
-                        'food': item.get('food'),
-                        "recipe": recipe['recipe']['label']
+                        'food': food,
+                        'recipes': [recipeLabel]
                     }
-                    result.append(processed_item)
+        result = [
+            {
+                'quantity': item['quantity'],
+                'measure': item['measure'],
+                'food': item['food'],
+                'recipe': ', '.join(item['recipes'])  # Combine recipe names
+            }
+            for item in ingredients_dict.values()
+        ]
 
         return render_template('shoppingcart.html', saved_recipes=saved_recipes, result=result, successMessage=successMessage, errorMessage=errorMessage)
-    else: return render_template('shoppingcart.html', errorMessage="Error: No user currently logged in.")
+    else:
+        return render_template('shoppingcart.html', errorMessage="Error: No user currently logged in.")

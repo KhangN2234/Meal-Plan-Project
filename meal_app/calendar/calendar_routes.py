@@ -21,16 +21,13 @@ def calendar():
             if not any(True for _ in recipes_docs):
                 return redirect('search')
             
-            # Put name of recipes in an array list
-            recipes_name = []
-            #.to_dict() convert the variable to an array then .get() get the value (ie recipe_url) from that map created from the document
-            for recipe in recipes_collection_ref.get():
-                recipes_name.append(recipe.to_dict().get('recipe_label'))
-
-
-            data = [{'label': recipes_collection_ref.document(recipe).get().to_dict().get('recipe_label'), 
-                     'days' : recipes_collection_ref.document(recipe).get().to_dict().get('days'),
-                     'url' : recipes_collection_ref.document(recipe).get().to_dict().get('recipe_url')} for recipe in recipes_name]
+            data = [
+            {
+                'label': recipe.to_dict().get('recipe_label'),
+                'days': recipe.to_dict().get('days'),
+                'url': recipe.to_dict().get('recipe_url')
+            }
+            for recipe in recipes_collection_ref.get()]
             
             return render_template('calendar.html', 
                                    recipes_list = data,

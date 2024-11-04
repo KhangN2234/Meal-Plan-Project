@@ -29,7 +29,7 @@ def download_pdf():
         p.drawString(100, 750, "Shopping Cart Items:")
         y = 730
         
-        all_ingredients = []
+        ingredients = {}
 
         for recipe_uri in saved_recipes:
             # Call the API for each URI to get recipe details (if needed)
@@ -45,17 +45,27 @@ def download_pdf():
                     measure = item.get('measure', "")
                     if measure == "<unit>":
                         measure = "x"
-                    processed_item = {
-                        'quantity': round(item.get('quantity', 0), 2),
-                        'measure': measure,
-                        'food': item.get('food', "Unknown"),
-                        'recipe': recipe_label
-                    }
-                    all_ingredients.append(processed_item)
+                    quantity = round(item.get('quantity', 0), 2)
+                    food = item.get('food', "Unknown")
+
+                    key = (food, measure)
+                    
+                    if key in ingredients:
+                        ingredients[key]['quantity'] += quantity
+                        ingredients[key]['recipes'].append(recipe_label)
+                    else:
+                        ingredients[key] = {
+                            'quantity': quantity,
+                            'measure': measure,
+                            'food': food,
+                            'recipes': [recipe_label]
+                        }
 
         #Write to PDF
-        for ingredient in all_ingredients:
-            p.drawString(100, y, f"{ingredient['quantity']} {ingredient['measure']} {ingredient['food']} (from {ingredient['recipe']})")
+        for ingredient in ingredients.values():
+            recipenames = ', '.join(ingredient['recipes'])
+            p.drawString(100, y, f"{ingredient['quantity']} {ingredient['measure']} {ingredient['food']} (from {recipenames})")
+
             y -= 20  #Next line
             if y < 40:  #New page if needed
                 p.showPage()
