@@ -107,7 +107,6 @@ def profile():
         return redirect('/login')
     
     email = session['user']
-
     doc_ref = db.collection('users').document(email)
     doc = doc_ref.get()
 
@@ -115,7 +114,10 @@ def profile():
         return redirect('/login')
     
     user_data = doc.to_dict()
-    
+
+    if request.method == 'POST':
+            pass
+
     return render_template('profile.html', user_data=user_data)
 
 
