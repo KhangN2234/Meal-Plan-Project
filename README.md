@@ -122,13 +122,31 @@ Joseph Bond:
 
 Mark Nardone: 
 
-Lucas Garcia: 
+Lucas Garcia: Set up functional ingredient shopping page with pdf export. Added spellcheck to search feature.
+- Jira Task SCRUM-53: Design shopping list layout
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-53
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-53-design-shopping-list-layout
+- Jira Task SCRUM-51: Create Saved Recipe Ingredient Addition / Consolidation
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-51
+	-  Bitbucket: https://bitbucket.org/%7B%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/feature/SCRUM-51-create-saved-recipe-ingredient-
+- Jira Task SCRUM-52: Implement HTML / CSS for Shopping List Page
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-52
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-52-implement-html---css-for-shoppi
+- Jira Task SCRUM-90: Create interface with search page to 'add to shopping list'
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-90
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/feature/SCRUM-90-create-interface-with-search-pa
+- Jira Task SCRUM-89: Create function exporting shopping list as pdf
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-89
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D
+- Jira Task SCRUM-93: Add spellcheck functionality
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-93
+	-  Bitbucket: https://bitbucket.org/%7B%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-93-add-spellcheck-functionality
 
 ## Next Steps
 - Khang: 
 - Joseph: 
 - Mark: 
-- Lucas: 
+- Lucas: Continue to work on getting web hosting working. Start work on social media aspects of app. (Comments, likes, further profile features)
 
 
 
