@@ -100,7 +100,7 @@ def logout():
 #def success():
 #    return "Account created successfully!"
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
 
     if 'user' not in session:
@@ -119,13 +119,22 @@ def profile():
         username = request.form.get('username', user_data.get('username'))
         bio = request.form.get('bio', user_data.get('bio'))
 
-    updated_data = {
+        updated_data = {
         'username': username,
         'bio': bio
     }
 
-    return render_template('profile.html', user_data=user_data)
+     
+        doc_ref.update(updated_data)
 
+        
+        flash('Profile updated successfully!')
+
+        
+        return redirect('/profile')
+
+    
+    return render_template('profile.html', user_data=user_data)
 
 
 app.register_blueprint(search_templates)
