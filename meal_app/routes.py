@@ -31,9 +31,11 @@ def signup():
         
         # Create user data to store in Firestore
         user_data = {
-            'cart':[],
             'email': email,
-            'password': hashed_password.decode('utf-8')  # Store hashed password
+            'password': hashed_password.decode('utf-8'),
+            'username': '',  
+            'bio': '',  
+            'profile_picture': ''  
         }
 
         try:
@@ -100,10 +102,41 @@ def logout():
 #def success():
 #    return "Account created successfully!"
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    return render_template('profile.html')
 
+    if 'user' not in session:
+        return redirect('/login')
+    
+    email = session['user']
+    doc_ref = db.collection('users').document(email)
+    doc = doc_ref.get()
+
+    if not doc.exists:
+        return redirect('/login')
+    
+    user_data = doc.to_dict()
+
+    if request.method == 'POST':
+        username = request.form.get('username', user_data.get('username'))
+        bio = request.form.get('bio', user_data.get('bio'))
+
+        updated_data = {
+        'username': username,
+        'bio': bio
+    }
+
+     
+        doc_ref.update(updated_data)
+
+        
+        flash('Profile updated successfully!')
+
+        
+        return redirect('/profile')
+
+    
+    return render_template('profile.html', user_data=user_data)
 
 
 app.register_blueprint(search_templates)
