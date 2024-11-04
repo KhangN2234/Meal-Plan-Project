@@ -8,3 +8,4 @@ Werkzeug==2.2.2
 bcrypt==4.2.0
 dotenv==1.0.1
 requests==2.32.3
+reportlab
