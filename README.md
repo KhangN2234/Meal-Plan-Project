@@ -116,7 +116,28 @@ Lucas Garcia: Designed and implemented search.html page. Set up project's api in
 ## Sprint 2 (October 14th - November 4th)
 Contribution:
 
-Khang Ngo: 
+Khang Ngo: Made the Calendar Page for the user.
+- Jira Task Scrum-95: Make the UI more appealing
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-95
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/27 
+- Jira Task Scrum-83: Refactor Routes
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-83  
+	-  Bitbucket:https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-83-refactor-the-routes.py (NO PULL REQUEST NEEDED, MERGED TO MY OWN CODE)
+- Jira Task Scrum-81: Implement multiple recipes
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-81 
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-81-display-multiple-recipes (NO PULL REQUEST NEEDED, MERGED TO MY OWN CODE)
+- Jira Task Scrum-78: Functional CSS and HTML
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-78
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-78-functional-css-and-html (NO PULL REQUEST NEEDED, MERGED TO MY OWN CODE)
+- Jira Task Scrum-79: Save Recipes
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-79 
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-79-save-recipes (NO PULL REQUEST NEEDED, MERGED TO MY OWN CODE)
+- Jira Task Scrum-102: Display recipes from account
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-102  
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-102-display-the-recipes-from-accou (NO PULL REQUEST NEEDED, MERGED TO MY OWN CODE)
+- Jira Task Scrum-82: Make a diet system in Search
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-82 
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/15  
 
 Joseph Bond: 
 
@@ -143,42 +164,10 @@ Lucas Garcia: Set up functional ingredient shopping page with pdf export. Added 
 	-  Bitbucket: https://bitbucket.org/%7B%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-93-add-spellcheck-functionality
 
 ## Next Steps
-- Khang: 
+- Khang: Add more functionality to the Calendar System like a delete, help overhaul and update UI elements, and add proper months and year rather than just one week.
 - Joseph: 
 - Mark: 
 - Lucas: Continue to work on getting web hosting working. Start work on social media aspects of app. (Comments, likes, further profile features)
 
-
-
-
-## Sprint 2 (October 23rd - November 1st)
-
-Khang Ngo: Made the Calendar Page for the user.
-
-- Jira Task Scrum-95: Make the UI more appealing
-	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-95
-	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/27 
-- Jira Task Scrum-83: Refactor Routes
-	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-83  
-	-  Bitbucket:https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-83-refactor-the-routes.py (NO PULL REQUEST NEEDED)
-- Jira Task Scrum-81: Implement multiple recipes
-	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-81 
-	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-81-display-multiple-recipes (NO PULL REQUEST NEEDED)
-- Jira Task Scrum-78: Functional CSS and HTML
-	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-78
-	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-78-functional-css-and-html (NO PULL REQUEST NEEDED)
-- Jira Task Scrum-79: Save Recipes
-	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-79 
-	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-79-save-recipes (NO PULL REQUEST NEEDED)
-- Jira Task Scrum-102: Display recipes from account
-	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-102  
-	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-102-display-the-recipes-from-accou (NO PULL REQUEST NEEDED)
-
-- Jira Task Scrum-82: Make a diet system in Search
-	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-82 
-	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/15 
-
-## Next Steps
-- Khang: Add more functionality to the Calendar System
 
 
