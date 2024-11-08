@@ -162,7 +162,22 @@ Joseph Bond: Made the Calorie tracking page.
 	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-99
 	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-99-write-unit-tests-form-calorie-t/
 
-Mark Nardone: 
+Mark Nardone: Make a profile creation and edit system
+-Jira Task SCRUM-86: Firebase Integration
+	- Jira https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-86
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/pull-requests/18
+	
+-Jira Task SCRUM-84: Login and Out Feature
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-84
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/pull-requests/21
+
+- Jira Task SCRUM-88: Customizable Profile
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-88
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/pull-requests/30
+	
+- Jira Task SCRUM-87: Add comment functionality
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-85
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/feature/SCRUM-85-add-comment-functionality
 
 Lucas Garcia: Set up functional ingredient shopping page with pdf export. Added spellcheck to search feature.
 - Jira Task SCRUM-53: Design shopping list layout
@@ -187,7 +202,7 @@ Lucas Garcia: Set up functional ingredient shopping page with pdf export. Added 
 ## Next Steps
 - Khang: Add more functionality to the Calendar System like a delete, help overhaul and update UI elements, and add proper months and year rather than just one week.
 - Joseph: add daily calorie goal feature to calories page. begin working on food prep reminders feature, adjust UI for scaling algorithm and calorie tracker.
-- Mark: 
+- Mark: Add a home page and add more profile options to its page.
 - Lucas: Continue to work on getting web hosting working. Start work on social media aspects of app. (Comments, likes, further profile features)
 
 
