@@ -1,5 +1,5 @@
 from meal_app import app, db
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash
 from flask import Blueprint
 from firebase_admin import firestore
 import re
@@ -34,6 +34,7 @@ def calendar():
                                    recipe_label = None
                                    )
         else:
+            flash("Please log in to access your calendar.")
             return redirect('/login')
     
     # Handle method POST
@@ -83,6 +84,7 @@ def calendar():
                                    selected_days = selected_days
                                    )
         else:
+            flash("Please log in to access your calendar.")
             return redirect('/login')
             
             

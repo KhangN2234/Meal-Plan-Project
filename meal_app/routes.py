@@ -16,6 +16,10 @@ from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 
 @app.route('/')
+def startup():
+    return redirect('/login')
+
+@app.route('/welcome')
 def welcome():
     return render_template('welcome.html')
 
@@ -97,15 +101,11 @@ def logout():
 
     return redirect('/login')
 
-# Success page
-#@app.route('/success')
-#def success():
-#    return "Account created successfully!"
-
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
 
     if 'user' not in session:
+        flash("Please log in to access your account information")
         return redirect('/login')
     
     email = session['user']
