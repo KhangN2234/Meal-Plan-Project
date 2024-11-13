@@ -1,15 +1,144 @@
-{% extends "layout.html" %}
-{% block content %}
-    <div class="input">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh;
+            background: url('static/img/burgerLogin2.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        * {
+            padding: 0;
+            margin: 3px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 10%;
+            font-family:"Papyrus", fantasy;
+        }
+
+        .wrapper {
+            border-style: solid;
+            padding: 0 38px 30px 15px;
+            border-width: thin;
+            border-color: rgb(0, 0, 0);
+            background-color: transparent;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 10px;
+            border-radius: 10px;
+        }
+
+        p {
+            font-family:"Garamond", serif;
+            padding-bottom: 5px;
+            font-weight: 500;
+        }
+
+        
+
+        .wrapper .input_box {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 30px 0 60px;
+        }
+
+        .wrapper .createAcc_btn {
+            width: 100%;
+            height: 45px;
+            border: none;
+            outline: none;
+            border-radius: 7px;
+            box-shadow: 0 0 10px;
+            font-family:"Garamond", serif;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .wrapper .createAcc_btn:hover {
+            position: relative;
+            background-color: rgb(143, 227, 255);
+            color: black; /* of text */
+            transition: ease-in-out 200ms;
+        }
+
+        .input_box input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            border: 2px solid black;
+            border-radius: 7px;
+            font-size: 16px;
+            padding: 20px 45px 20px 40px;
+            font-family:"Garamond", serif;
+        }
+
+        .input_box i {
+            position: absolute;
+            left: 20px;
+            top: 40px;
+            transform: translate(-50%);
+            font-size: 20px;
+        }    
+
+        .login_link {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 14.5px;
+            text-align: left;
+        }
+
+        .login_link p a {
+            color: rgb(13, 13, 14);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login_link p a:hover {
+            color: rgb(23, 93, 134);
+            text-decoration: underline;
+        }
+    </style>
+    
+    
+    <div class="wrapper">
         <h2>Create an Account</h2>
         <form method="POST" id="signupForm">
-            <label for="email">Email:</label>
-            <input type="email" name="email" required><br><br>
+            <p style="color: rgb(124, 124, 124);"> Register for free to save your recipes.</p>
+            
+            <div class = "input_box">
+                <p> Email: </p>
+                <i class='bx bxs-envelope'></i>
+                <input type="email" name="email" placeholder = "Email" required>
+            </div>
+            
+            <div class = "input_box">
+                <p> Password: </p>
+                <i class='bx bxs-lock-alt'></i>
+                <input type="password" name="password" placeholder="Password" required>
+            </div> <br>
+            
+            <input type="submit" class="createAcc_btn" value="Create">
 
-            <label for="password">Password:</label>
-            <input type="password" name="password" required><br><br>
-
-            <input type="submit" value="Create Account">
+            <div class = "login_link">
+                <p> Already have an account? <a href="/login"> Login </a></p>
+            </div>
         </form>
     </div>
-{% endblock %}
+</html>
