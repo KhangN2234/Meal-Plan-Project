@@ -9,6 +9,10 @@ from firebase_admin import credentials, firestore
 calorie_tracking_templates = Blueprint('calorie_tracking', __name__)
 delete_entry_templates = Blueprint('delete_entry', __name__)
 entries = {}
+@app.route('/daily_calorie_goal', methods=['POST'])
+def daily_calorie_goal():
+    if request.method == 'POST':
+        dailyCalorieGoal = request.form.get('calorie_goal')
 
 @app.route('/calorie_tracking', methods=['GET', 'POST'])
 def calorie_tracking():
