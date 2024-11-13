@@ -2,12 +2,108 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: rgb(250, 250, 250);
-    font-family: Arial, sans-serif;
-    height: 0%;
-    margin-top: 7%;
+    min-height: 70vh;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+
+h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 10%;
+    font-family:"Papyrus", fantasy;
+}
+
+.wrapper {
+    border-style: solid;
+    padding: 0 38px 30px 15px;
+    border-width: thin;
+    border-color: rgb(0, 0, 0);
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px;
+    border-radius: 10px;
+}
+
+.wrapper p {
+    font-family:"Garamond", serif;
+    padding-bottom: 5px;
+    font-weight: 500;
+}
+
+.wrapper .input_box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0 60px;
+}
+
+.wrapper .submit_btn {
+    width: 100%;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    box-shadow: 0 0 10px;
+    font-family:"Garamond", serif;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.wrapper .submit_btn:hover {
+    position: relative;
+    background-color: rgb(143, 227, 255);
+    color: black; /* of text */
+    transition: ease-in-out 200ms;
+}
+
+.input_box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 20px 45px 20px 40px;
+    font-family:"Garamond", serif;
+}
+
+.input_box i {
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    transform: translate(-50%);
+    font-size: 20px;
+}
+
+.input_box * {
+    margin: 3px;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+.word_link {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 14.5px;
+    text-align: left;
+}
+
+.word_link p a {
+    color: rgb(13, 13, 14);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.word_link p a:hover {
+    color: rgb(23, 93, 134);
+    text-decoration: underline;
+}
+
 
 .searchbody {
     font-family: 'Arial';
@@ -28,18 +124,10 @@ h1 {
     font-weight: 10;
 }
 
-h2 {
-    font-size: 2em;
-    margin-top: 40px;
-    text-align: center;
-    letter-spacing: -2px;
-    font-weight: bold;
-    font-size: 32px;
-}
-
 h3 {
     color: grey;
     font-weight: lighter;
+    font-family:"Garamond", serif;
 }
 
 /* Box that is around the input */
@@ -66,7 +154,7 @@ h3 {
     box-shadow: 0 0 10px;
 }
 
-.wrapper .Sigbtn {
+.Sigbtn {
     width: 50%;
     height: 65px;
     margin-top: 1%;
@@ -82,7 +170,7 @@ h3 {
     margin-left: 25%;
 }
 
-.wrapper .Sigbtn:hover {
+.Sigbtn:hover {
     margin-top: 5px;
     background-color: rgb(143, 227, 255);
     color: black; /* of text */
