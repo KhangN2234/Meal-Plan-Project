@@ -13,8 +13,15 @@ daily_calorie_goal_templates = Blueprint('daily_calorie_goal', __name__)
 entries = {}
 @app.route('/daily_calorie_goal', methods=['POST'])
 def daily_calorie_goal():
+    user_email = session['user']
+    user_ref = db.collection('users').document(user_email)
     if request.method == 'POST':
         dailyCalorieGoal = request.form.get('calorie_goal')
+        if dailyCalorieGoal:
+            daily_calorie_Entry = {
+                'daily_calorie_goal': dailyCalorieGoal
+            }
+            user_ref.set(daily_calorie_Entry)
         return redirect(url_for('calorie_tracking'))
 
 @app.route('/calorie_tracking', methods=['GET', 'POST'])
