@@ -120,12 +120,17 @@ def profile():
     if request.method == 'POST':
         username = request.form.get('username', user_data.get('username'))
         bio = request.form.get('bio', user_data.get('bio'))
+        password = request.form.get('password')
 
         updated_data = {
         'username': username,
         'bio': bio
     }
 
+        if password:
+            # Hash the new password
+            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+            updated_data['password'] = hashed_password.decode('utf-8')
      
         doc_ref.update(updated_data)
 
