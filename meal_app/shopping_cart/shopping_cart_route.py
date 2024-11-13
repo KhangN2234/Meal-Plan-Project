@@ -31,6 +31,9 @@ def cart():
                     return renderCart("", "")
             else:
                 return redirect('search')
+        else:
+            flash("Please log in to access your cart")
+            return redirect('login')
     if request.method == "POST":
         recipeURI = request.form.get('recipeURI')
         if 'user' in session:  # Check if the user is logged in
