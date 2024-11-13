@@ -74,17 +74,17 @@ def login():
 
                 if 'new_signup' in session:
                     session.pop('new_signup', None)
+                    flash('Account created successfully!')
+                else:
                     flash('You have been successfully logged in!')
-
-                return redirect('/profile')  # Sends user to profile page if login works
-            
-            else:
-                # error if the password is incorret
-                return render_template('login.html', error="Invalid password")
-            
+                return redirect('/profile')
         else:
-            # Sends an error if no account exists for this email
-            return render_template('login.html', error="No account found with this email")
+                # If its incorrect
+                flash('Invalid password')
+                return render_template('login.html')
+        
+        flash('No account found with this email')
+        return render_template('login.html')
         
     return render_template('login.html')
 
