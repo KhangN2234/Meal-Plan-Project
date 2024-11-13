@@ -14,6 +14,7 @@ from .calendar.calendar_routes import calendar_templates
 from .shopping_cart.download_pdf import download_pdf
 from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
+from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_templates
 
 @app.route('/')
 def welcome():
@@ -146,3 +147,4 @@ app.register_blueprint(shopping_cart_template)
 app.register_blueprint(calendar_templates)
 app.register_blueprint(calorie_tracking_templates)
 app.register_blueprint(delete_entry_templates)
+app.register_blueprint(daily_calorie_goal_templates)
