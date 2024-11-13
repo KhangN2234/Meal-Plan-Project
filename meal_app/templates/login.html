@@ -6,31 +6,45 @@
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh;
+            background: url('static/img/burgerLogin2.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
         * {
             padding: 0;
             margin: 3px;
             box-sizing: border-box;
         }
-        .wrapper {
-            border-style: solid;
-            padding: 0 38px 20px 15px;
-            border-width: thin;
-            border-color: rgb(146, 145, 145);
-            background-color: aliceblue;
-            box-shadow: 0 0 10px;
-            border-radius: 7px;
-        }
 
         h2 {
             text-align: left;
             margin-bottom: 10%;
+            font-family:"Papyrus", fantasy;
         }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 70vh;
+        .wrapper {
+            border-style: solid;
+            padding: 0 38px 30px 15px;
+            border-width: thin;
+            border-color: rgb(0, 0, 0);
+            background-color: transparent;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px;
+            border-radius: 10px;
+        }
+
+        .wrapper p {
+            font-family:"Garamond", serif;
+            padding-bottom: 5px;
+            font-weight: 500;
         }
 
         .wrapper .input_box {
@@ -38,6 +52,23 @@
             width: 100%;
             height: 50px;
             margin: 30px 0 60px;
+        }
+
+        .wrapper .SignIn_btn {
+            width: 100%;
+            height: 45px;
+            border: none;
+            outline: none;
+            border-radius: 7px;
+            box-shadow: 0 0 10px;
+            font-family:"Garamond", serif;
+            font-size: 20px;
+        }
+
+        .wrapper .register {
+            margin-top: 10px;
+            font-size: 14.5px;
+            text-align: left;
         }
 
         .input_box input {
@@ -61,25 +92,6 @@
             font-size: 20px;
         }
 
-        .wrapper .SignIn_btn {
-            width: 100%;
-            height: 45px;
-            border: none;
-            outline: none;
-            border-radius: 7px;
-            box-shadow: 0 0 10px;
-        }
-
-        .wrapper p {
-            padding-bottom: 5px;
-        }
-
-        .wrapper .register {
-            margin-top: 10px;
-            font-size: 14.5px;
-            text-align: left;
-        }
-
         .register p a {
             color: rgb(13, 13, 14);
             text-decoration: none;
@@ -87,8 +99,7 @@
         }
 
         .register p a:hover {
-            color: rgb(23, 93, 134); /* of text */
-            transition: ease-in-out 100ms;
+            color: rgb(23, 93, 134);
             text-decoration: underline;
         }
 
