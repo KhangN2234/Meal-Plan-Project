@@ -6,6 +6,14 @@
 
     <form method="POST" action="{{ url_for('calorie_tracking') }}">
         <div class="input">
+            <label for="calorie_goal">Daily Calorie Goal:</label>
+            <input type="number" id="calorie_goal" name="calorie_goal" class="searchbar" placeholder="Enter your calorie goal" required>
+            <button type="submit" class="Submit">Set Goal</button>
+        </div>
+    </form>
+
+    <form method="POST" action="{{ url_for('calorie_tracking') }}">
+        <div class="input">
             <label for="item_name">Item Name:</label>
             <input type="text" id="item_name" name="item_name" class="searchbar" placeholder="Enter food item" required>
             
