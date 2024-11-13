@@ -25,7 +25,8 @@
         }
 
         h2 {
-            text-align: left;
+            text-align: center;
+            font-size: 40px;
             margin-bottom: 10%;
             font-family:"Papyrus", fantasy;
         }
@@ -36,7 +37,7 @@
             border-width: thin;
             border-color: rgb(0, 0, 0);
             background-color: transparent;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
             box-shadow: 0 0 10px;
             border-radius: 10px;
         }
@@ -63,10 +64,19 @@
             box-shadow: 0 0 10px;
             font-family:"Garamond", serif;
             font-size: 20px;
+            cursor: pointer;
+        }
+
+        .wrapper .SignIn_btn:hover {
+            position: relative;
+            background-color: rgb(143, 227, 255);
+            color: black; /* of text */
+            transition: ease-in-out 200ms;
         }
 
         .wrapper .register {
             margin-top: 10px;
+            margin-bottom: 5px;
             font-size: 14.5px;
             text-align: left;
         }
@@ -81,7 +91,7 @@
             border-radius: 7px;
             font-size: 16px;
             padding: 20px 45px 20px 40px;
-            
+            font-family:"Garamond", serif;
         }
 
         .input_box i {
@@ -125,19 +135,19 @@
                 <input type="password" name="password" placeholder="Password" required>
             </div> <br>
             
-            <input type="submit" class= "SignIn_btn" value="Sign In">
+            <input type="submit" class="SignIn_btn" value="Sign In">
 
             <div class = "register">
                 <p>Don't have an account? <a href="/signup"> Register </a></p>
             </div>
-        </form>
 
-        {% for message in get_flashed_messages() %}
-                <p style="color: green;">{{ message }}</p>
-        {% endfor %}
-        
-        {% if error %}
-        <p style="color: red;">{{ error }}</p>
-        {% endif %}
+            {% for message in get_flashed_messages() %}
+            <p style="color: green;">{{ message }}</p>
+            {% endfor %}
+            
+            {% if error %}
+            <p style="color: red;">{{ error }}</p>
+            {% endif %}
+        </form>
     </div>
 </html>
