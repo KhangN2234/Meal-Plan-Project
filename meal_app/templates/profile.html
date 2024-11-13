@@ -7,15 +7,25 @@
     <div class="input">
         <h2>My Profile</h2>
 
+        {% for message in get_flashed_messages() %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+
         <h3>My personal details</h3>
 
         <div class="profile-info">
-            <p class="label">Username: </p>
-            <p class="label">Password change: </p>
-            <p class="label">Email Address: </p>
-            <p class="label">Bio: </p>
-            <p class="label">Exit </p>
-
+            <form method="POST">
+                <label>Username:</label>
+                <input type="text" name="username" value="{{ user_data.username }}" required><br><br>
+        
+                <label>Bio:</label>
+                <textarea name="bio">{{ user_data.bio }}</textarea><br><br>
+        
+                <button type="submit">Update Profile</button>
+        </form>
+                <form action="logout" method="GET">
+                    <button type="submit" class="btn-logout">Logout</button>
+                </form>
         </div>
     </div>
 

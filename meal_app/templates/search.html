@@ -66,6 +66,19 @@
                 <option>Starter</option>
                 <option>Sweets</option>
             </select> 
+            <br>
+            <label for="healthType">Diet: </label>
+            <select label="healthType" name='healthType' class="healthType" id="healthType">
+                <option value="vegan&health=vegetarian&health=paleo&health=kosher&health=peanut-free&health=pork-free&health=shellfish-free&health=gluten-free">Any</option>
+                <option value = "vegan">Vegan</option>
+                <option value = "vegetarian">Vegetarian</option>
+                <option value = "paleo">Paleo</option>
+                <option value = "kosher">Kosher</option>
+                <option value = "peanut-free">Peanut-free</option>
+                <option value = "pork-free">Pork-free</option>
+                <option value = "shellfish-free">Shellfish-free</option>
+                <option value = "gluten-free">Gluten-free</option>
+            </select> 
         </details>
         <input type="submit" value="Search Recipes" class="Submit"></input>
     </form>
@@ -74,38 +87,51 @@
 {%if success%}
     <p>Results for <b>{{ searchbar }}</b> in <b>{{ mealtype }}</b></p>
     {% for recipe in recipes %}
-        <div class="output">
-            <ul>
-                <li class="title">
-                    <p><b>{{ recipe.label }}</b></p>
+    <div class="output">
+        <ul>
+            <li class="title">
+                <p><b>{{ recipe.label }}</b></p>
+                <ul class="contents">
+                    <li>{{ recipe.protein }}{{ recipe.proteinunit}} Protein</li>
+                    <li>{{ recipe.calories }} cal</li>
+                    <li>{{ recipe.servings }} servings</li>
+                    <li><b>{{ recipe.protein_per_serv }}{{ recipe.proteinunit }} protein/serving</b></li>
+                    <li><b>{{ recipe.cal_per_serv }} cal/serving</b></li>
+                    <br>
+                    <li><b>Ingredients</b></li>
+                    <ul>
+                        {% for ingredient in recipe.ingredients %}
+                            <li>{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>
+                    <br>
+                    <a href='{{ recipe.url }}'>From {{ recipe.source }}</a>
                     
-                    <ul class="contents">
-                        <li> {{recipe. protein}}{{recipe. proteinunit}} Protein</li>
-                        <li> {{recipe. calories}} cal </li>
-                        <li> {{recipe. servings}} servings</li>
-                        <li><b> {{recipe. protein_per_serv}}{{recipe. proteinunit}} protein/serving </b></li>
-                        <li><b> {{recipe. cal_per_serv}} cal/serving </b></li>
-                        <br>
-                        <li> <b>Ingredients</b> </li>
-                            <ul>
-                                {% for ingredient in recipe.ingredients %}
-                                    <li>{{ ingredient }}</li>
-                                {% endfor %}
-                            </ul>
-
-                        <br>
-                        <a href='{{recipe. url}}'>From {{recipe. source}}</a>
                         <form action="/scale_recipe" method="POST">
                             {% for ingredient in recipe.ingredients %}
                                 <input type="hidden" name="ingredients[]" value="{{ ingredient }}">
                             {% endfor %}
                             <button type="submit">Scale Recipe</button>
                         </form>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    {% endfor %}
+                        <form action="/calendar" method="POST">
+                            <input type="hidden" name="recipe_label" value="{{ recipe.label }}">
+                            <input type="hidden" name="recipe_url" value="{{ recipe.url }}">
+                            <button type="submit">Add to Calendar</button>
+                        </form>
+                        <form action="/cart" method="POST">
+                            <button type="submit" name="recipeURI" value="{{ recipe. uri }}">Add to Shopping Cart</button>
+                        </form>
+                    <form action="{{ url_for('calorie_tracking') }}" method="POST">
+                        <input type="hidden" name="item_name" value="{{ recipe.label }}">
+                        <input type="hidden" name="calories" value="{{ recipe.calories }}">
+                        <input type="hidden" name="date" value="{{ current_date }}">
+                        <button type="submit" class="add-calorie-btn">Add to Calorie Tracker</button>
+                    </form>
+                </ul>
+            </li>
+        </ul>
+    </div>
+{% endfor %}
     </body>
 
 {% elif success == false%}
