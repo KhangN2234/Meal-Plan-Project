@@ -1,5 +1,5 @@
 from meal_app import app, db
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash
 from flask import Blueprint
 from firebase_admin import firestore
 import re
@@ -21,6 +21,7 @@ def calendar():
             if not any(True for _ in recipes_docs):
                 return redirect('search')
             
+            # Display the recipes in the calendar
             data = [
             {
                 'label': recipe.to_dict().get('recipe_label'),
@@ -34,6 +35,7 @@ def calendar():
                                    recipe_label = None
                                    )
         else:
+            flash("Please log in to access your calendar.")
             return redirect('/login')
     
     # Handle method POST
@@ -64,17 +66,14 @@ def calendar():
 
             
     # This portion will display the data in the firebase
-            # Put name of recipes in an array list
-            recipes_name = []
-            #.to_dict() convert the variable to an array then .get() get the value (ie recipe_url) from that map created from the document
-            for recipe in recipes_collection_ref.get():
-                recipes_name.append(recipe.to_dict().get('recipe_label'))
-
-
-            data = [{'label': recipes_collection_ref.document(recipe).get().to_dict().get('recipe_label'), 
-                     'days' : recipes_collection_ref.document(recipe).get().to_dict().get('days'),
-                     'url' : recipes_collection_ref.document(recipe).get().to_dict().get('recipe_url')} for recipe in recipes_name]
-
+            # Display the recipes in the calendar
+            data = [
+            {
+                'label': recipe.to_dict().get('recipe_label'),
+                'days': recipe.to_dict().get('days'),
+                'url': recipe.to_dict().get('recipe_url')
+            }
+            for recipe in recipes_collection_ref.get()]
 
             return render_template('calendar.html', 
                                    recipes_list = data,
@@ -83,6 +82,7 @@ def calendar():
                                    selected_days = selected_days
                                    )
         else:
+            flash("Please log in to access your calendar.")
             return redirect('/login')
             
             
