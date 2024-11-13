@@ -2,11 +2,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 70vh;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+/* change title text stuff*/
+h1 {
+    font-family: "Gill Sans", sans-serif;
+    font-size: 14cap;
+    color: rgb(36, 33, 33);
+    height: 20px;
+    font-weight: 10;
 }
 
 h2 {
@@ -14,6 +22,16 @@ h2 {
     font-size: 40px;
     margin-bottom: 10%;
     font-family:"Papyrus", fantasy;
+}
+
+h3 {
+    color: grey;
+    font-weight: lighter;
+    font-family:"Garamond", serif;
+}
+
+.container {
+    margin-top: 40px;
 }
 
 .wrapper {
@@ -72,10 +90,11 @@ h2 {
     font-family:"Garamond", serif;
 }
 
+/* icon next to email and password */
 .input_box i {
     position: absolute;
     left: 20px;
-    top: 40px;
+    top: 44px;
     transform: translate(-50%);
     font-size: 20px;
 }
@@ -113,21 +132,6 @@ h2 {
     margin: 5%;
     margin-left: auto;
     margin-right: auto;
-}
-
-/* change title text stuff*/
-h1 {
-    font-family: "Gill Sans", sans-serif;
-    font-size: 14cap;
-    color: rgb(36, 33, 33);
-    height: 20px;
-    font-weight: 10;
-}
-
-h3 {
-    color: grey;
-    font-weight: lighter;
-    font-family:"Garamond", serif;
 }
 
 /* Box that is around the input */
