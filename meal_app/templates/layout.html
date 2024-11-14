@@ -3,17 +3,15 @@
   <head>
     <title>Meal Project</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <h2>
-      <nav>
-          <li><a href="{{ url_for('welcome') }}">Home</a></li>
-          <li><a href="{{ url_for('profile') }}">Profile</a></li>
-          <li><a href="{{ url_for('calorie_tracking') }}">Calories</a></li>
-          <li><a href="{{ url_for('calendar') }}">Calendar</a></li>
-          <li style="float: right"><a href="{{ url_for('cart') }}">Cart</a></li>
-          <li style="float: right"><a href="{{ url_for('search') }}">Search</a></li>
-      </nav>
-    </h2>
   </head>
+  <nav>
+    <li><a href="{{ url_for('welcome') }}">Home</a></li>
+    <li><a href="{{ url_for('profile') }}">Profile</a></li>
+    <li><a href="{{ url_for('calorie_tracking') }}">Calories</a></li>
+    <li><a href="{{ url_for('calendar') }}">Calendar</a></li>
+    <li style="float: right"><a href="{{ url_for('cart') }}">Cart</a></li>
+    <li style="float: right"><a href="{{ url_for('search') }}">Search</a></li>
+  </nav>
   <body>
     <div class="container">
       {% block content %}
