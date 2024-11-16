@@ -88,6 +88,7 @@
     <p>Results for <b>{{ searchbar }}</b> in <b>{{ mealtype }}</b></p>
     {% for recipe in recipes %}
     <div class="output">
+        <img src="{{ recipe.images }}" alt = "{{ recipe.label }} image">
         <ul>
             <li class="title">
                 <p><b>{{ recipe.label }}</b></p>
