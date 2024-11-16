@@ -7,6 +7,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    margin-top: 1%;
 }
 
 /* change title text stuff*/
@@ -47,20 +48,14 @@ h3 {
     border-radius: 10px;
 }
 
-.wrapper p {
+p {
     font-family:"Garamond", serif;
     padding-bottom: 5px;
     font-weight: 500;
+    font-size: 18px;
 }
 
-.wrapper .input_box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0 60px;
-}
-
-.wrapper .submit_btn {
+.submit_btn {
     width: 100%;
     height: 45px;
     border: none;
@@ -72,11 +67,18 @@ h3 {
     cursor: pointer;
 }
 
-.wrapper .submit_btn:hover {
+.submit_btn:hover {
     position: relative;
     background-color: rgb(143, 227, 255);
     color: black; /* of text */
     transition: ease-in-out 200ms;
+}
+
+.input_box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0 60px;
 }
 
 .input_box input {
@@ -123,17 +125,6 @@ h3 {
 .word_link p a:hover {
     color: rgb(23, 93, 134);
     text-decoration: underline;
-}
-
-
-.searchbody {
-    font-family: 'Arial';
-    width: 25%;
-    min-width: 400px;
-    align-self: center;
-    margin: 5%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 /* Box that is around the input */
@@ -235,60 +226,7 @@ nav a:hover {
 }
 
 /* search bar style*/
-.searchbar{
-    display: block;
-    width: 96%;
-    margin-bottom: 10%;
-    height: 35px;
-    border-radius: 2% / 10%;
-    border-width: 2px;
-    border-color: rgb(155, 155, 155);
-    border-style: solid;
-    outline: none;
-    padding-left: 5px;
-}
 
-.searchbar::placeholder{
-    font-weight: normal;
-    opacity: 15%;
-}
-
-.mealtype {
-    display: block;
-    width: 100%;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    height: 40px;
-    border-radius: 2% / 10%;
-    border-width: 2px;
-    border-color: rgb(155, 155, 155);
-    border-style: solid;
-    outline: none;
-    padding-left: 5px;
-    font-size: medium;
-    background-color: white;
-}
-
-.Submit {
-    display: block;
-    width: 100%;
-    margin-top: 0%;
-    font-weight: bold;
-    height: 40px;
-    border-radius: 2% / 10%;
-    border-width: 2px;
-    border-color: rgb(0, 0, 0);
-    border-style: solid;
-    outline: none;
-    padding-left: 5px;
-    font-size: small;
-    background-color: black;
-    color: white;
-}
-
-.Submit:hover {
-    border-color: rgb(161, 161, 161);
-}
 
 /* Profile style */
 .profile-info {

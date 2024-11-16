@@ -1,21 +1,47 @@
 {% extends "layout.html" %}
 {% block content %}
 <head>
-
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-    <body class="searchbody">
-    <form class="input" action="/search" method="POST">
-        <h2>Search</h2>
-        <h3>Find a meal plan that works for you</h3>
-        <p class="label"><i>I'm looking for....</i></p>
-        <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."required></input> 
-        <select label="Category" name='mealtype' class="mealtype" id="mealtype">
-            <option>Breakfast</option>
-            <option>Lunch</option>
-            <option>Dinner</option>
-        </select>
-        <details>
-            <summary>Additional Filters</summary>
+<style>
+    .input_box i{
+        position: absolute;
+        top: 14px;
+        transform: translate(50%);
+        font-size: 20px;
+    }
+    summary  {
+        list-style: none;
+        display: inline-flex;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    summary i {
+        font-size: 18px;
+        position: relative;
+    }
+
+</style>
+
+<form action="/search" method="POST">
+    <div class="input_box">
+        <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."required> 
+    </div>
+    <details>
+        <summary>
+            <i class='bx bx-filter' ></i>
+            Filter
+        </summary>
+        <div class="wrapper">
+            <select label="Category" name='mealtype' class="mealtype" id="mealtype">
+                <option value="Breakfast&mealType=Lunch&mealType=Dinner">Any</option>
+                <option>Breakfast</option>
+                <option>Lunch</option>
+                <option>Dinner</option>
+            </select>
             <label for="servings">Max Ingredients: </label>
             <p id="rangeValue" class="rangeValue">20</p>
             <input type="range" id="maxingredients" name="maxIngredients" min="1" max="20" step="1" value="20" oninput="rangeValue.innerText = this.value" list="markers">
@@ -27,7 +53,7 @@
                 <option value="20"></option>
             </datalist>
             <br>
-            <label for="cuisinetype">Cuisine Type: </label>
+            <label for="cuisinetype"><p>Cuisine Type: </p></label>
             <select label="cuisinetype" name='cuisinetype' class="cuisinetype" id="cuisinetype">
                 <option value="American&cuisineType=Asian&cuisineType=British&cuisineType=Caribbean&cuisineType=Central%20Europe&cuisineType=Chinese&cuisineType=Eastern%20Europe&cuisineType=French&cuisineType=Indian&cuisineType=Italian&cuisineType=Japanese&cuisineType=Kosher&cuisineType=Mediterranean&cuisineType=Mexican&cuisineType=Middle%20Eastern&cuisineType=Nordic&cuisineType=South%20American&cuisineType=South%20East%20Asian">Any</option>
                 <option>Amercian</option>
@@ -47,7 +73,7 @@
                 <option>South East Asian</option>
             </select>
             <br>
-            <label for="dishtype">Dish Type: </label>
+            <label for="dishtype"><p>Dish Type: </p></label>
             <select label="dishtype" name='dishtype' class="dishtype" id="dishtype">
                 <option value="Biscuits%20and%20cookies&dishType=Bread&dishType=Cereals&dishType=Condiments%20and%20sauces&dishType=Desserts&dishType=Drinks&dishType=Main%20course&dishType=Pancake&dishType=Preps&dishType=Preserve&dishType=Salad&dishType=Sandwiches&dishType=Side%20dish&dishType=Soup&dishType=Starter&dishType=Sweets">Any</option>
                 <option>Biscuits and cookies</option>
@@ -67,7 +93,7 @@
                 <option>Sweets</option>
             </select> 
             <br>
-            <label for="healthType">Diet: </label>
+            <label for="healthType"><p>Diet: </p></label>
             <select label="healthType" name='healthType' class="healthType" id="healthType">
                 <option value="vegan&health=vegetarian&health=paleo&health=kosher&health=peanut-free&health=pork-free&health=shellfish-free&health=gluten-free">Any</option>
                 <option value = "vegan">Vegan</option>
@@ -79,14 +105,20 @@
                 <option value = "shellfish-free">Shellfish-free</option>
                 <option value = "gluten-free">Gluten-free</option>
             </select> 
-        </details>
-        <input type="submit" value="Search Recipes" class="Submit"></input>
-    </form>
+        </div>
+    </details>
+<br>
 
+    <button type="submit" class="submit_btn"> <i class='bx bx-search-alt'></i></button>
+</div>
+</form>
 
+<!-- 
     <p>Results for <b>{{ searchbar }}</b> in <b>{{ mealtype }}</b></p>
     <div class="output">
-        <img src="static/img/sampleImage.jpg" alt="burger">
+        <div class="recipe_image">
+            <img src="static/img/sampleImage.jpg" alt="burger">
+        </div>
         <ul>
             <li class="title">
                 <p><b>Chicken</b></p>
@@ -94,20 +126,22 @@
                     <li>200 Protein</li>
                     <li>200 cal</li>
                     <li>200 servings</li>
-                    <li><b>200 protein/serving</b></li>
+                    <li><b>200000000 protein/serving</b></li>
                     <li><b>200 cal/serving</b></li>
                     <br>
-                    <li><b>Ingredients</b></li>
-                    <ul>
-                        <li>Chicken</li>
-                        <li>Chicken</li>
-                        <li>Chicken</li>
-                        <li>Chicken</li>
-                        <li>Chicken</li>
-                        <li>Chicken</li>
-                        <li>Chicken</li>
-                        <li>Chicken</li>
-                    </ul>
+                    <details>
+                        <summary>Ingredients</summary>
+                        <ul>
+                            <li>Chicken</li>
+                            <li>Chicken</li>
+                            <li>Chicken</li>
+                            <li>Chicken</li>
+                            <li>Chicken</li>
+                            <li>Chicken</li>
+                            <li>Chicken</li>
+                            <li>Chicken</li>
+                        </ul>
+                    </details>
                     <br>
                     <a href='edamam.com'>From BBC</a>
                     
@@ -128,9 +162,9 @@
         </ul>
     </div>
 
-
+ -->
 {%if success%}
-    <p>Results for <b>{{ searchbar }}</b> in <b>{{ mealtype }}</b></p>
+    <p>Results for <b>{{ searchbar }}</b></p>
     {% for recipe in recipes %}
     <div class="output">
         <img src="{{ recipe.images }}" alt = "{{ recipe.label }} image">
@@ -178,7 +212,6 @@
         </ul>
     </div>
 {% endfor %}
-    </body>
 
 {% elif success == false%}
 <p>Error.</p>
