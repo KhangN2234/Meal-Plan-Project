@@ -84,6 +84,51 @@
     </form>
 
 
+    <p>Results for <b>{{ searchbar }}</b> in <b>{{ mealtype }}</b></p>
+    <div class="output">
+        <img src="static/img/sampleImage.jpg" alt="burger">
+        <ul>
+            <li class="title">
+                <p><b>Chicken</b></p>
+                <ul class="contents">
+                    <li>200 Protein</li>
+                    <li>200 cal</li>
+                    <li>200 servings</li>
+                    <li><b>200 protein/serving</b></li>
+                    <li><b>200 cal/serving</b></li>
+                    <br>
+                    <li><b>Ingredients</b></li>
+                    <ul>
+                        <li>Chicken</li>
+                        <li>Chicken</li>
+                        <li>Chicken</li>
+                        <li>Chicken</li>
+                        <li>Chicken</li>
+                        <li>Chicken</li>
+                        <li>Chicken</li>
+                        <li>Chicken</li>
+                    </ul>
+                    <br>
+                    <a href='edamam.com'>From BBC</a>
+                    
+                        <form action="/scale_recipe" method="POST">
+                            <button type="submit">Scale Recipe</button>
+                        </form>
+                        <form action="/calendar" method="POST">
+                            <button type="submit">Add to Calendar</button>
+                        </form>
+                        <form action="/cart" method="POST">
+                            <button type="submit" name="recipeURI" >Add to Shopping Cart</button>
+                        </form>
+                    <form action="{{ url_for('calorie_tracking') }}" method="POST">
+                        <button type="submit" class="add-calorie-btn">Add to Calorie Tracker</button>
+                    </form>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
 {%if success%}
     <p>Results for <b>{{ searchbar }}</b> in <b>{{ mealtype }}</b></p>
     {% for recipe in recipes %}
