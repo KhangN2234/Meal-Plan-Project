@@ -37,7 +37,19 @@ def search():
         if(len(corrected_words) == 0):
             combinedcorrected = searchbar
 
-        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={combinedcorrected}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&mealType={mealtype}&dishType={dishtype}&ingr={maxIngredients}&cuisineType={cuisineType}&health={healthType}&imageSize=SMALL"
+        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={combinedcorrected}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&imageSize=SMALL"
+        
+        if (mealtype != "None"): 
+            api_url += f"&mealType={mealtype}"
+        if (dishtype != "None"):
+            api_url += f"&dishType={dishtype}"
+        if (maxIngredients != "None"):
+            api_url += f"&ingr={maxIngredients}"
+        if (cuisineType != "None"):
+            api_url += f"&cuisineType={cuisineType}"    
+        if (healthType != "None"):
+            api_url += f"&health={healthType}"
+
 
         response = requests.get(api_url)
 

@@ -15,7 +15,7 @@
     <li>
       <form action="{{ url_for('search') }}" method="POST" class="search_body">
         <div class="input_box">
-            <i class='bx bx-search-alt'></i>
+            <button type="submit" class="submit_btn"> <i class='bx bx-search-alt'></i> </button>
             <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."required> 
         </div>
         <details>
@@ -25,7 +25,7 @@
             <div class="wrapper">
                 <label for="mealtype"><p>Meal Type: </label>
                 <select label="Category" name='mealtype' class="mealtype" id="mealtype">
-                    <option value="Breakfast&mealType=Lunch&mealType=Dinner">Any</option>
+                    <option value="None">Any</option>
                     <option>Breakfast</option>
                     <option>Lunch</option>
                     <option>Dinner</option>
@@ -45,7 +45,7 @@
                 
                 <label for="cuisinetype"><p>Cuisine: </label>
                 <select label="cuisinetype" name='cuisinetype' class="cuisinetype" id="cuisinetype">
-                    <option value="American&cuisineType=Asian&cuisineType=British&cuisineType=Caribbean&cuisineType=Central%20Europe&cuisineType=Chinese&cuisineType=Eastern%20Europe&cuisineType=French&cuisineType=Indian&cuisineType=Italian&cuisineType=Japanese&cuisineType=Kosher&cuisineType=Mediterranean&cuisineType=Mexican&cuisineType=Middle%20Eastern&cuisineType=Nordic&cuisineType=South%20American&cuisineType=South%20East%20Asian">Any</option>
+                    <option value="None">Any</option>
                     <option>Amercian</option>
                     <option>Asian</option>
                     <option>British</option>
@@ -66,7 +66,7 @@
                 
                 <label for="dishtype"><p>Dish Type: </label>
                 <select label="dishtype" name='dishtype' class="dishtype" id="dishtype">
-                    <option value="Biscuits%20and%20cookies&dishType=Bread&dishType=Cereals&dishType=Condiments%20and%20sauces&dishType=Desserts&dishType=Drinks&dishType=Main%20course&dishType=Pancake&dishType=Preps&dishType=Preserve&dishType=Salad&dishType=Sandwiches&dishType=Side%20dish&dishType=Soup&dishType=Starter&dishType=Sweets">Any</option>
+                    <option value="None">Any</option>
                     <option>Biscuits and cookies</option>
                     <option>Bread</option>
                     <option>Cereal</option>
@@ -87,7 +87,7 @@
                 
                 <label for="healthType"><p>Diet: </label>
                 <select label="healthType" name='healthType' class="healthType" id="healthType">
-                    <option value="vegan&health=vegetarian&health=paleo&health=kosher&health=peanut-free&health=pork-free&health=shellfish-free&health=gluten-free">Any</option>
+                    <option value="None">Any</option>
                     <option value = "vegan">Vegan</option>
                     <option value = "vegetarian">Vegetarian</option>
                     <option value = "paleo">Paleo</option>
