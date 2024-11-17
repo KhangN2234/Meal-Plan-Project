@@ -196,6 +196,7 @@ nav {
 nav li {
     display: inline;
     float: left;
+    position: relative;
 }
 
 /* change text inside nav bar */
@@ -316,7 +317,7 @@ nav a:hover {
 
 
 
-
+/* Search bar */
 .search_body .input_box {
     display: inline-block;
     margin-bottom: 0;
@@ -337,7 +338,7 @@ nav a:hover {
     display: inline-block;
     text-align: center;
     position: relative;
-    float: auto;
+    margin-left: 45%;
 }
 
 .search_body summary {
@@ -373,4 +374,25 @@ details[open] summary {
     border-radius: 7px;
     text-align: left;
     top: 7px;
+}
+
+/* Prevent nav bar from stacking when adjusting window's width */
+@media (max-width: 92em) {
+    nav {
+      flex-direction: column;
+      width: 100%;
+    }
+    .search_body {
+        margin-left: 0;
+    }
+  }
+
+@media (max-width: 80em) {
+    nav {
+        flex-direction: column;
+        width: 32em;
+    }
+    .search_body {
+        margin-left: 0;
+    }
 }

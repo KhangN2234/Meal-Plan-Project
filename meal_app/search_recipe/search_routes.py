@@ -20,7 +20,7 @@ recipe_search_api_key = os.getenv('RECIPE_SEARCH_API_KEY')
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == 'GET': 
-        return render_template('search.html')
+        return render_template('search.html',success = False)
     else:
         searchbar = request.form['searchbar']
         mealtype = request.form['mealtype']
@@ -62,6 +62,7 @@ def search():
 
         return render_template('search.html', 
                                searchbar=combinedcorrected,
+                               length=len(list_of_recipes),
                                recipes=display_data, 
                                mealtype=mealtype, 
                                success=True, 

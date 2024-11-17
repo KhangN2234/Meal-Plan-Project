@@ -13,95 +13,93 @@
     <li style="float: right"><a href="{{ url_for('cart') }}">Cart</a></li>
     <li style="float: right"><a href="{{ url_for('search') }}">Search</a></li>
     <li>
-      <form action="{{ url_for('search') }}" method="POST" class="search-form">
-        <div class="search_body">
-          <div class="input_box">
-              <i class='bx bx-search-alt'></i>
-              <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."required> 
-          </div>
-          <details>
-              <summary>
-                  <i class='bx bx-filter' ></i>
-              </summary>
-              <div class="wrapper">
-                  <label for="mealtype"><p>Meal Type: </label>
-                  <select label="Category" name='mealtype' class="mealtype" id="mealtype">
-                      <option value="Breakfast&mealType=Lunch&mealType=Dinner">Any</option>
-                      <option>Breakfast</option>
-                      <option>Lunch</option>
-                      <option>Dinner</option>
-                  </select>
-                </p>
-                  
-                  <label for="servings"> <p>Max Ingredients: </p></label>
-                  <p id="rangeValue" class="rangeValue">20</p>
-                  <input type="range" id="maxingredients" name="maxIngredients" min="1" max="20" step="1" value="20" oninput="rangeValue.innerText = this.value" list="markers">
-                  <datalist id="markers">
-                      <option value="0"></option>
-                      <option value="5"></option>
-                      <option value="10"></option>
-                      <option value="15"></option>
-                      <option value="20"></option>
-                  </datalist>
-                  
-                  <label for="cuisinetype"><p>Cuisine: </label>
-                  <select label="cuisinetype" name='cuisinetype' class="cuisinetype" id="cuisinetype">
-                      <option value="American&cuisineType=Asian&cuisineType=British&cuisineType=Caribbean&cuisineType=Central%20Europe&cuisineType=Chinese&cuisineType=Eastern%20Europe&cuisineType=French&cuisineType=Indian&cuisineType=Italian&cuisineType=Japanese&cuisineType=Kosher&cuisineType=Mediterranean&cuisineType=Mexican&cuisineType=Middle%20Eastern&cuisineType=Nordic&cuisineType=South%20American&cuisineType=South%20East%20Asian">Any</option>
-                      <option>Amercian</option>
-                      <option>Asian</option>
-                      <option>British</option>
-                      <option>Carribbean</option>
-                      <option>Central Europe</option>
-                      <option>Chinese</option>
-                      <option>Eastern Europe</option>
-                      <option>French</option>
-                      <option>Italian</option>
-                      <option>Japanese</option>
-                      <option>Kosher</option>
-                      <option>Mediterranean</option>
-                      <option>Mexican</option>
-                      <option>Middle Eastern</option>
-                      <option>South East Asian</option>
-                  </select>
-                </p>
-                  
-                  <label for="dishtype"><p>Dish Type: </label>
-                  <select label="dishtype" name='dishtype' class="dishtype" id="dishtype">
-                      <option value="Biscuits%20and%20cookies&dishType=Bread&dishType=Cereals&dishType=Condiments%20and%20sauces&dishType=Desserts&dishType=Drinks&dishType=Main%20course&dishType=Pancake&dishType=Preps&dishType=Preserve&dishType=Salad&dishType=Sandwiches&dishType=Side%20dish&dishType=Soup&dishType=Starter&dishType=Sweets">Any</option>
-                      <option>Biscuits and cookies</option>
-                      <option>Bread</option>
-                      <option>Cereal</option>
-                      <option>Condiments and sauces</option>
-                      <option>Drinks</option>
-                      <option>Main Course</option>
-                      <option>Pancake</option>
-                      <option>Preps</option>
-                      <option>Preserve</option>
-                      <option>Salad</option>
-                      <option>Sandwiches</option>
-                      <option>Side Dish</option>
-                      <option>Soup</option>
-                      <option>Starter</option>
-                      <option>Sweets</option>
-                  </select> 
-                </p>
-                  
-                  <label for="healthType"><p>Diet: </label>
-                  <select label="healthType" name='healthType' class="healthType" id="healthType">
-                      <option value="vegan&health=vegetarian&health=paleo&health=kosher&health=peanut-free&health=pork-free&health=shellfish-free&health=gluten-free">Any</option>
-                      <option value = "vegan">Vegan</option>
-                      <option value = "vegetarian">Vegetarian</option>
-                      <option value = "paleo">Paleo</option>
-                      <option value = "kosher">Kosher</option>
-                      <option value = "peanut-free">Peanut-free</option>
-                      <option value = "pork-free">Pork-free</option>
-                      <option value = "shellfish-free">Shellfish-free</option>
-                      <option value = "gluten-free">Gluten-free</option>
-                  </select> 
-                </p>
-              </div>
-          </details>
+      <form action="{{ url_for('search') }}" method="POST" class="search_body">
+        <div class="input_box">
+            <i class='bx bx-search-alt'></i>
+            <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."required> 
         </div>
+        <details>
+            <summary>
+                <i class='bx bx-filter' ></i>
+            </summary>
+            <div class="wrapper">
+                <label for="mealtype"><p>Meal Type: </label>
+                <select label="Category" name='mealtype' class="mealtype" id="mealtype">
+                    <option value="Breakfast&mealType=Lunch&mealType=Dinner">Any</option>
+                    <option>Breakfast</option>
+                    <option>Lunch</option>
+                    <option>Dinner</option>
+                </select>
+              </p>
+                
+                <label for="servings"> <p>Max Ingredients: </p></label>
+                <p id="rangeValue" class="rangeValue">20</p>
+                <input type="range" id="maxingredients" name="maxIngredients" min="1" max="20" step="1" value="20" oninput="rangeValue.innerText = this.value" list="markers">
+                <datalist id="markers">
+                    <option value="0"></option>
+                    <option value="5"></option>
+                    <option value="10"></option>
+                    <option value="15"></option>
+                    <option value="20"></option>
+                </datalist>
+                
+                <label for="cuisinetype"><p>Cuisine: </label>
+                <select label="cuisinetype" name='cuisinetype' class="cuisinetype" id="cuisinetype">
+                    <option value="American&cuisineType=Asian&cuisineType=British&cuisineType=Caribbean&cuisineType=Central%20Europe&cuisineType=Chinese&cuisineType=Eastern%20Europe&cuisineType=French&cuisineType=Indian&cuisineType=Italian&cuisineType=Japanese&cuisineType=Kosher&cuisineType=Mediterranean&cuisineType=Mexican&cuisineType=Middle%20Eastern&cuisineType=Nordic&cuisineType=South%20American&cuisineType=South%20East%20Asian">Any</option>
+                    <option>Amercian</option>
+                    <option>Asian</option>
+                    <option>British</option>
+                    <option>Carribbean</option>
+                    <option>Central Europe</option>
+                    <option>Chinese</option>
+                    <option>Eastern Europe</option>
+                    <option>French</option>
+                    <option>Italian</option>
+                    <option>Japanese</option>
+                    <option>Kosher</option>
+                    <option>Mediterranean</option>
+                    <option>Mexican</option>
+                    <option>Middle Eastern</option>
+                    <option>South East Asian</option>
+                </select>
+              </p>
+                
+                <label for="dishtype"><p>Dish Type: </label>
+                <select label="dishtype" name='dishtype' class="dishtype" id="dishtype">
+                    <option value="Biscuits%20and%20cookies&dishType=Bread&dishType=Cereals&dishType=Condiments%20and%20sauces&dishType=Desserts&dishType=Drinks&dishType=Main%20course&dishType=Pancake&dishType=Preps&dishType=Preserve&dishType=Salad&dishType=Sandwiches&dishType=Side%20dish&dishType=Soup&dishType=Starter&dishType=Sweets">Any</option>
+                    <option>Biscuits and cookies</option>
+                    <option>Bread</option>
+                    <option>Cereal</option>
+                    <option>Condiments and sauces</option>
+                    <option>Drinks</option>
+                    <option>Main Course</option>
+                    <option>Pancake</option>
+                    <option>Preps</option>
+                    <option>Preserve</option>
+                    <option>Salad</option>
+                    <option>Sandwiches</option>
+                    <option>Side Dish</option>
+                    <option>Soup</option>
+                    <option>Starter</option>
+                    <option>Sweets</option>
+                </select> 
+              </p>
+                
+                <label for="healthType"><p>Diet: </label>
+                <select label="healthType" name='healthType' class="healthType" id="healthType">
+                    <option value="vegan&health=vegetarian&health=paleo&health=kosher&health=peanut-free&health=pork-free&health=shellfish-free&health=gluten-free">Any</option>
+                    <option value = "vegan">Vegan</option>
+                    <option value = "vegetarian">Vegetarian</option>
+                    <option value = "paleo">Paleo</option>
+                    <option value = "kosher">Kosher</option>
+                    <option value = "peanut-free">Peanut-free</option>
+                    <option value = "pork-free">Pork-free</option>
+                    <option value = "shellfish-free">Shellfish-free</option>
+                    <option value = "gluten-free">Gluten-free</option>
+                </select> 
+              </p>
+            </div>
+        </details>
       </form>
     </li>
   </nav>

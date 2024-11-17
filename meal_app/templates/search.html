@@ -3,15 +3,13 @@
 <head>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<style>
-    
-</style>
 
-<form action="/search" method="POST">
-    
 
+<form action="/search" method="GET">
+    <h2>Recipe Search</h2>
 </form>
-    <p>Results for <b>{{ searchbar }}</b></p>
+<form action="/search" method="POST" class="result">
+    <p>Number of recipes found for <b>{{ searchbar }}: 1</b></p>
     <div class="output">
         <div class="recipe_image">
             <img src="static/img/sampleImage.jpg" alt="burger">
@@ -44,7 +42,7 @@
                     </details>
                     <br>
                     <a href='edamam.com'>From BBC</a>
-                    
+                        <br>
                         <form action="/scale_recipe" method="POST">
                             <button type="submit">Scale Recipe</button>
                         </form>
@@ -64,7 +62,7 @@
 
 
 {%if success%}
-    <p>Results for <b>{{ searchbar }}</b></p>
+    <p>Nunber of recipes found for <b>{{ searchbar }}:</b> {{ length }}</p>
     {% for recipe in recipes %}
     <div class="output">
         <img src="{{ recipe.images }}" alt = "{{ recipe.label }} image">
@@ -111,10 +109,21 @@
             </li>
         </ul>
     </div>
-{% endfor %}
-
+    {% endfor %}
+    </div>
+</form>
 {% elif success == false%}
-<p>Error.</p>
+    <style>
+        .search_body {
+            position: absolute;
+            top: 4em;
+            left: 5.5em;
+        }
+
+        .result {
+            margin-top: 40%;
+        }
+    </style>
 
 {% endif %}
 {% endblock %}
