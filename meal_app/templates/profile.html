@@ -13,6 +13,15 @@
 
         <h3>My personal details</h3>
 
+        <div class="profile-picture">
+            <form method="POST" enctype="multipart/form-data">
+                <label for="profile_picture">
+                    <img src="{{ user_data.profile_picture }}" alt="Profile Picture" class="profile-img" onclick="document.getElementById('fileInput').click()">
+                </label>
+                <input type="file" id="fileInput" name="profile_picture" style="display: none;" onchange="this.form.submit()">
+            </form>
+        </div>
+
         <div class="profile-info">
             <form method="POST">
                 <label>Username:</label>
