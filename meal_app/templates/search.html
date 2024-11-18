@@ -23,7 +23,23 @@
     .search_result {
         margin-top: 30%;
         margin-bottom: 5%;
-        position: relative;
+        margin: 0; /* Remove any default margins */
+        display: flex; /* Flexbox for inner layout */
+        flex-direction: column; /* Stack content vertically */
+        align-items: stretch; /* Stretch to occupy the full width of the grid column */
+        background: #f9f9f9; /* Optional: Add a light background for visibility */
+        border-radius: 8px; /* Optional: Add some rounding to the corners */
+        overflow: hidden; /* Ensure content fits within bounds */
+    }
+
+    .search_columns {
+        display: grid; /* Enable grid layout */
+        grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
+        gap: 2em; /* Space between items */
+        width: 100%; /* Full width of the container */
+        max-width: 70em; /* Optional: Set a maximum width */
+        margin: 0 auto; /* Center the grid container */
+        justify-content: center; /* Center the grid within the parent */
     }
 
     .search_result .wrapper {
@@ -68,11 +84,11 @@
 
 </style>
 
-<form action="/search" method="GET">
-    <h2>Recipe Search</h2>
-</form>
-<form action="/search" method="POST">
-    <p>Number of recipes found for <b>{{ searchbar }}: 1</b></p>
+
+<h2>Recipe Search</h2>
+
+
+<form action="/search" method="POST" class="search_columns">
     <div class="search_result">
         <div class="wrapper">
             <a href='edamam.com'>From BBC</a>
@@ -122,39 +138,38 @@
             </form>
         </div>
     </div>
+    
+    {%if success%}
+    <p>Nunber of recipes found for <b>{{ searchbar }}:</b> {{ length }}</p>
+    {% for recipe in recipes %}
 
-    <div class="search_result">
+    <div class="search_result"> 
         <div class="wrapper">
-            <a href='edamam.com'>From BBC</a>
             <div class="recipe_image">
-                <img src="static/img/sampleImage.jpg" alt="image">
+                <img src="{{recipe.images}}" alt="image">
             </div>
             <ul>
-                <h2 class="title">
-                    <b>Chicken Chicken Chicken Chicken</b>
-                </h2>
+                <p class="title">
+                    <b>{{recipe.label}}</b>
+                </p>
                 <ul class="contents">
-                    <li>200 Protein</li>
-                    <li>200 cal</li>
-                    <li>200 servings</li>
-                    <li><b>200000000 protein/serving</b></li>
-                    <li><b>200 cal/serving</b></li>
+                    <li>{{recipe.protein}} Protein</li>
+                    <li>{{recipe.calories}} cal</li>
+                    <li>{{recipe.servings}} servings</li>
+                    <li><b>{{recipe.protein_per_serv}} protein/serving</b></li>
+                    <li><b>{{recipe.cal_per_serv}} cal/serving</b></li>
+                    <a href='{{recipe.uri}}'>From {{recipe.source}}</a>
                 </ul>
             </ul>
         </div>
         <details>
             <summary>Ingredients</summary>
             <ul>
+                {% for ingredient in recipe.ingredients %}
                 <div class="wrapper">
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                    <li>Chicken</li>
+                    <li>{{ingredient}}</li>
                 </div>
+                {% endfor %}
             </ul>
         </details>
         <div class="group_btn">
@@ -165,65 +180,14 @@
                 <button type="submit" class="small_btn">Add to Calendar</button>
             </form>
             <form action="/cart" method="POST">
-                <button type="submit" name="recipeURI" class="small_btn">Add to Shopping Cart</button>
+                <button type="submit" name="recipeURI" class="small_btn" >Add to Shopping Cart</button>
             </form>
             <form action="{{ url_for('calorie_tracking') }}" method="POST">
                 <button type="submit" class="small_btn">Add to Calorie Tracker</button>
             </form>
         </div>
-    </div>
-
-
-{%if success%}
-    <p>Nunber of recipes found for <b>{{ searchbar }}:</b> {{ length }}</p>
-    {% for recipe in recipes %}
-
-    <div class="search_result"> 
-        <div class="wrapper">
-            <div class="recipe_image">
-                <img src="{{recipe.images}}" alt="image">
-            </div>
-            <ul>
-            <p class="title">
-                <b>{{recipe.label}}</b>
-            </p>
-            <ul class="contents">
-                <li>{{recipe.protein}} Protein</li>
-                <li>{{recipe.calories}} cal</li>
-                <li>{{recipe.servings}} servings</li>
-                <li><b>{{recipe.protein_per_serv}} protein/serving</b></li>
-                <li><b>{{recipe.cal_per_serv}} cal/serving</b></li>
-                <a href='{{recipe.uri}}'>From {{recipe.source}}</a>
-            </ul>
-        </ul>
-        </div>
-    <details>
-        <summary>Ingredients</summary>
-        <ul>
-            {% for ingredient in recipe.ingredients %}
-            <div class="wrapper">
-                <li>{{ingredient}}</li>
-            </div>
-            {% endfor %}
-        </ul>
-    </details>
-    <div class="group_btn">
-        <form action="/scale_recipe" method="POST">
-            <button type="submit" class="small_btn">Scale Recipe</button>
-        </form>
-        <form action="/calendar" method="POST">
-            <button type="submit" class="small_btn">Add to Calendar</button>
-        </form>
-        <form action="/cart" method="POST">
-            <button type="submit" name="recipeURI" class="small_btn" >Add to Shopping Cart</button>
-        </form>
-        <form action="{{ url_for('calorie_tracking') }}" method="POST">
-            <button type="submit" class="small_btn">Add to Calorie Tracker</button>
-        </form>
-    </div>
     {% endfor %}
     </div>
-</div>
 </form>
 {% elif success == false%}
     <style>
