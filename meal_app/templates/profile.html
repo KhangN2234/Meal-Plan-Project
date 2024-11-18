@@ -1,9 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<title>My Profile</title>
-</head>
-<body>
-
+<br>
     <div class="input">
         <h2>My Profile</h2>
 
@@ -25,13 +22,11 @@
                 <textarea name="bio">{{ user_data.bio }}</textarea><br><br>
         
                 <button type="submit">Update Profile</button>
-        </form>
-                <form action="logout" method="GET">
-                    <button type="submit" class="btn-logout">Logout</button>
-                </form>
+            </form>
+            
+            <form action="logout" method="GET">
+                <button type="submit" class="btn-logout">Logout</button>
+            </form>
         </div>
     </div>
-
-</body>
-</html>
 {% endblock %}

@@ -54,6 +54,7 @@ __pycache__/
 .venv/
 venv/
 .project
+sampleImage.jpg
 
 #Firebase stuff
 .firebaserc
