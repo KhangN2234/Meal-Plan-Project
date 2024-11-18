@@ -23,28 +23,20 @@
     .search_result {
         margin-top: 30%;
         margin-bottom: 5%;
-        margin: 0; /* Remove any default margins */
-        display: flex; /* Flexbox for inner layout */
-        flex-direction: column; /* Stack content vertically */
-        align-items: stretch; /* Stretch to occupy the full width of the grid column */
-        background: #f9f9f9; /* Optional: Add a light background for visibility */
-        border-radius: 8px; /* Optional: Add some rounding to the corners */
-        overflow: hidden; /* Ensure content fits within bounds */
+        margin: 0;
+        
     }
 
     .search_columns {
-        display: grid; /* Enable grid layout */
-        grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
-        gap: 2em; /* Space between items */
-        width: 100%; /* Full width of the container */
-        max-width: 70em; /* Optional: Set a maximum width */
-        margin: 0 auto; /* Center the grid container */
-        justify-content: center; /* Center the grid within the parent */
+        display: grid; 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 2rem; 
+        row-gap: 4rem;
     }
 
     .search_result .wrapper {
         padding: 0 20px 0px 0px;
-        border-radius: 7px;
+        border-radius: 7px 7px 0 0;
         padding-left: 0;
         height: 12.5em;
         width: 30em;
@@ -62,7 +54,7 @@
 
     .search_result .title {
         top: 0;
-        font-size: 24px;
+        font-size: 20px;
         margin: 0 0 5% 35%;
         text-align: left;
     }
@@ -82,125 +74,136 @@
         position: absolute;
     }
 
+    .search_result details i {
+        transition: 0.2s;
+    }
+
+    .search_result details {
+        position: absolute;
+        border-style: solid;
+        border-width: thin;
+        border-color: #000000;
+        background-color: white;
+        border-radius: 0 0 3px 3px;
+        padding: 0 6px 0 6px;
+        width: 30.5em;
+    }
+
+    .search_result details ul {
+        column-rule: 2;
+    }
+
+    .search_result details[open] {
+        z-index: 2;
+    }
+
+    .search_result details[open] > summary i {
+        transform: rotate(180deg);
+        color: black;
+    }
+
+    .search_result summary {
+        list-style: none;
+        text-align: center;
+    }
 </style>
 
 
 <h2>Recipe Search</h2>
 
-
-<form action="/search" method="POST" class="search_columns">
-    <div class="search_result">
-        <div class="wrapper">
-            <a href='edamam.com'>From BBC</a>
-            <div class="recipe_image">
-                <img src="static/img/sampleImage.jpg" alt="image">
-            </div>
-            <ul>
-                <p class="title">
-                    <b>Chicken</b>
-                </p>
-                <ul class="contents">
-                    <li>200 Protein</li>
-                    <li>200 cal</li>
-                    <li>200 servings</li>
-                    <li><b>200000000 protein/serving</b></li>
-                    <li><b>200 cal/serving</b></li>
-                </ul>
-            </ul>
-        </div>
-        <details>
-            <summary>Ingredients</summary>
-            <ul>
-                <div class="wrapper">
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                    <li>Chicken</li>
-                </div>
-            </ul>
-        </details>
-        <div class="group_btn">
-            <form action="/scale_recipe" method="POST">
-                <button type="submit" class="small_btn">Scale Recipe</button>
-            </form>
-            <form action="/calendar" method="POST">
-                <button type="submit" class="small_btn">Add to Calendar</button>
-            </form>
-            <form action="/cart" method="POST">
-                <button type="submit" name="recipeURI" class="small_btn">Add to Shopping Cart</button>
-            </form>
-            <form action="{{ url_for('calorie_tracking') }}" method="POST">
-                <button type="submit" class="small_btn">Add to Calorie Tracker</button>
-            </form>
-        </div>
-    </div>
+{%if success%}
+<p>Number of recipes found for <b>{{ searchbar }}:</b> {{ length }}</p>
     
-    {%if success%}
-    <p>Nunber of recipes found for <b>{{ searchbar }}:</b> {{ length }}</p>
-    {% for recipe in recipes %}
 
-    <div class="search_result"> 
-        <div class="wrapper">
-            <div class="recipe_image">
-                <img src="{{recipe.images}}" alt="image">
-            </div>
-            <ul>
-                <p class="title">
-                    <b>{{recipe.label}}</b>
-                </p>
-                <ul class="contents">
-                    <li>{{recipe.protein}} Protein</li>
-                    <li>{{recipe.calories}} cal</li>
-                    <li>{{recipe.servings}} servings</li>
-                    <li><b>{{recipe.protein_per_serv}} protein/serving</b></li>
-                    <li><b>{{recipe.cal_per_serv}} cal/serving</b></li>
-                    <a href='{{recipe.uri}}'>From {{recipe.source}}</a>
-                </ul>
-            </ul>
-        </div>
-        <details>
-            <summary>Ingredients</summary>
-            <ul>
-                {% for ingredient in recipe.ingredients %}
-                <div class="wrapper">
-                    <li>{{ingredient}}</li>
+<form action="/search" method="POST">
+    <div class="search_columns">
+        {% for recipe in recipes %}
+        <div class="search_result"> 
+            <div class="wrapper">
+                <div class="recipe_image">
+                    <img src="{{recipe.images}}" alt="image">
                 </div>
-                {% endfor %}
-            </ul>
-        </details>
-        <div class="group_btn">
-            <form action="/scale_recipe" method="POST">
-                <button type="submit" class="small_btn">Scale Recipe</button>
-            </form>
-            <form action="/calendar" method="POST">
-                <button type="submit" class="small_btn">Add to Calendar</button>
-            </form>
-            <form action="/cart" method="POST">
-                <button type="submit" name="recipeURI" class="small_btn" >Add to Shopping Cart</button>
-            </form>
-            <form action="{{ url_for('calorie_tracking') }}" method="POST">
-                <button type="submit" class="small_btn">Add to Calorie Tracker</button>
-            </form>
+                <ul>
+                    <p class="title">
+                        <b>{{recipe.label}}</b>
+                    </p>
+                    <ul class="contents">
+                        <li>{{recipe.protein}} Protein</li>
+                        <li>{{recipe.calories}} cal</li>
+                        <li>{{recipe.servings}} servings</li>
+                        <li><b>{{recipe.protein_per_serv}} protein/serving</b></li>
+                        <li><b>{{recipe.cal_per_serv}} cal/serving</b></li>
+                        <a href='{{recipe.uri}}'>From {{recipe.source}}</a>
+                    </ul>
+                    
+                </ul>
+            </div>
+            <details>
+                <summary> <i class='bx bx-chevrons-up' ></i> </summary>
+                <ul>
+                    <p>Ingredients</p>
+                    {% for ingredient in recipe.ingredients %}
+                    <div>
+                        <li>{{ingredient}}</li>
+                    </div>
+                    {% endfor %}
+                </ul>
+                <div class="group_btn">
+                    <form action="/scale_recipe" method="POST">
+                        <button type="submit" class="small_btn">Scale Recipe</button>
+                    </form>
+                    <form action="/calendar" method="POST">
+                        <button type="submit" class="small_btn">Add to Calendar</button>
+                    </form>
+                    <form action="/cart" method="POST">
+                        <button type="submit" name="recipeURI" class="small_btn">Add to Cart</button>
+                    </form>
+                    <form action="{{ url_for('calorie_tracking') }}" method="POST">
+                        <button type="submit" class="small_btn">Add to Calorie Tracker</button>
+                    </form>
+                </div>
+            </details>
         </div>
-    {% endfor %}
+        {% endfor %}
     </div>
 </form>
+
 {% elif success == false%}
     <style>
         .search_body {
-            position: absolute;
+            position: relative;
+            align-items: center;
             top: 4em;
-            left: 5.5em;
+            
         }
 
         .result {
             margin-top: 40%;
         }
     </style>
-
+    <details>
+        <summary>Ingredients</summary>
+        <ul>
+            {% for ingredient in recipe.ingredients %}
+            <div>
+                <li>{{ingredient}}</li>
+            </div>
+            {% endfor %}
+        </ul>
+    </details>
+    <div class="group_btn">
+        <form action="/scale_recipe" method="POST">
+            <button type="submit" class="small_btn">Scale Recipe</button>
+        </form>
+        <form action="/calendar" method="POST">
+            <button type="submit" class="small_btn">Add to Calendar</button>
+        </form>
+        <form action="/cart" method="POST">
+            <button type="submit" name="recipeURI" class="small_btn">Add to Shopping Cart</button>
+        </form>
+        <form action="{{ url_for('calorie_tracking') }}" method="POST">
+            <button type="submit" class="small_btn">Add to Calorie Tracker</button>
+        </form>
+    </div>
 {% endif %}
 {% endblock %}

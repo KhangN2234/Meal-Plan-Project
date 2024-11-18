@@ -190,6 +190,7 @@ nav {
     top: 0em;
     left: 0em;
     width: 100%;
+    z-index: 1000;
 }
 
 /* hide the dot next to the tabs */
@@ -335,10 +336,9 @@ nav a:hover {
 
 .search_body {
     width: 500px;
-    display: inline-block;
     text-align: center;
     position: relative;
-    margin-left: 45%;
+    margin-left: 30%;
 }
 
 .search_body summary {
@@ -350,7 +350,6 @@ nav a:hover {
     width: 0px;
     color: #30353b;
     border-radius: 7px;
-    transition: 2s;
 }
 
 .search_body summary i {
@@ -363,16 +362,16 @@ nav a:hover {
     left: 3px;
 }
 
-.search_body summary::-webkit-details-marker {
+summary::-webkit-details-marker {
     display: none;
 }
 
-details[open] summary {
+.search_body details[open] summary {
     border-radius: 5px 5px 0 0;
     right: 30em;
 }
 
-details[open] > summary i {
+.search_body details[open] > summary i {
     transform: rotate(0deg);
     color: black;
 }
@@ -390,15 +389,16 @@ details[open] > summary i {
     padding: 10px;
     font-weight: bold;
     cursor: pointer;
-    height: 48px;
+    height: 46px;
     width: 45px;
     color: #30353b;
     border-radius: 7px;
     position: absolute;
-    left: 16.45em;
-    border-radius: 7px;
+    border-left: 2px solid black;
+    left: 16.4em;
+    border-radius: 0px 7px 7px 0px;
     text-align: left;
-    top: 4px;
+    top: 6px;
     box-shadow: none;
 }
 
