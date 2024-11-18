@@ -44,7 +44,7 @@ h3 {
     border-color: rgb(0, 0, 0);
     background-color: transparent;
     backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
 
@@ -218,12 +218,12 @@ nav a {
     font-size: 20px;
     background-color: #e7e6e6;
     list-style-type: none;
+    transition: ease-in-out 250ms;
 }
 
 nav a:hover {
     color: black;
     background-color: lightblue;
-    transition: ease-in-out 250ms;
 }
 
 /* search bar style*/

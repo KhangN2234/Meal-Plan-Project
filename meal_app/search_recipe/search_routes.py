@@ -37,7 +37,7 @@ def search():
         if(len(corrected_words) == 0):
             combinedcorrected = searchbar
 
-        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={combinedcorrected}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&imageSize=LARGE"
+        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={searchbar}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&imageSize=LARGE"
         
         if (mealtype != ""): 
             api_url += f"&mealType={mealtype}"
@@ -73,7 +73,7 @@ def search():
         current_date = datetime.now().strftime("%Y-%m-%d")
 
         return render_template('search.html', 
-                               searchbar=combinedcorrected,
+                               searchbar=searchbar,
                                length=len(list_of_recipes),
                                recipes=display_data, 
                                mealtype=mealtype, 
