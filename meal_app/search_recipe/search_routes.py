@@ -20,7 +20,7 @@ recipe_search_api_key = os.getenv('RECIPE_SEARCH_API_KEY')
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == 'GET': 
-        return render_template('search.html',success = False)
+        return render_template('search.html', success=False)
     else:
         searchbar = request.form['searchbar']
         mealtype = request.form['mealtype']
@@ -37,7 +37,7 @@ def search():
         if(len(corrected_words) == 0):
             combinedcorrected = searchbar
 
-        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={searchbar}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&imageSize=LARGE"
+        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={searchbar}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&imageSize=SMALL"
         
         if (mealtype != ""): 
             api_url += f"&mealType={mealtype}"

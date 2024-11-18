@@ -4,147 +4,14 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<style>
-    .recipe_image img {
-        display: inline-block;
-        left: 0;
-        border-top-left-radius: 7px;
-        border-bottom-left-radius: 7px;
-        object-fit: cover;
-	    overflow: hidden;
-    }
-
-    .recipe_image {
-        display: inline-block;
-        height: auto;
-        left: 0;
-    }
-
-    .search_result {
-        margin-top: 30%;
-        margin-bottom: 5%;
-        margin: 0;
-        
-    }
-
-    .search_columns {
-        display: grid; 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 2rem; 
-        row-gap: 4rem;
-    }
-
-    .search_result .wrapper {
-        padding: 0 20px 0px 0px;
-        border-radius: 7px 7px 0 0;
-        padding-left: 0;
-        height: 12.5em;
-        width: 30em;
-        display: inline-block;
-    }
-
-    .search_result ul {
-        margin-left: 10%;
-    }
-
-    .search_result .contents {
-        margin-top: -5%;
-        margin-left: 29%;
-    }
-
-    .search_result .title {
-        top: 0;
-        font-size: 20px;
-        margin: 0 0 5% 35%;
-        text-align: left;
-    }
-
-    .search_result a {
-        right: 1.2em;
-        top: 11em;
-        position: absolute;
-        margin-bottom: 0;
-    }
-
-    .search_result .contents {
-        font-size: 16px;
-    }
-
-    .search_result .recipe_image {
-        position: absolute;
-    }
-
-    .search_result details i {
-        transition: 0.2s;
-    }
-
-    .search_result details ul {
-        margin-left: 0;
-        column-count: 2;
-    }
-
-    .search_result details {
-        position: absolute;
-        border-style: solid;
-        border-width: thin;
-        border-color: #000000;
-        background-color: white;
-        border-radius: 0 0 7px 7px;
-        padding: 0 6px 0 6px;
-        width: 30.5em;
-        box-shadow: 0 4px 8px #505050, 0 6px 20px #949494;
-    }
-
-    .search_result details[open] {
-        z-index: 2;
-    }
-
-    .search_result details[open] > summary i {
-        transform: rotate(180deg);
-        color: black;
-    }
-
-    .search_result summary {
-        list-style: none;
-        text-align: center;
-    }
-
-    .group_btn {
-        display: flex; 
-        gap: 10px; 
-        flex-wrap: wrap; 
-        margin-top: 10px;
-        border-bottom: 2px solid #000000;
-        width: 100%;
-        align-items: center;
-    }
-
-    .small_btn {
-        text-align: center;
-        padding: 8px 12px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        background-color: #007bff;
-        height: 40px;
-        color: white;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        font-size: 12px;
-    }
-
-    .small_btn:hover {
-        background-color: #0056b3;
-    }
-</style>
 <h2>Recipe Search</h2>
 
 {%if success%}
+
 <p>Number of recipes found for <b>{{ searchbar }}:</b> {{ length }}</p>
     
-
 <form action="/search" method="POST">
-    <div class="search_columns">
+    <div class="search_grid">
         {% for recipe in recipes %}
         <div class="search_result"> 
             <div class="wrapper">
@@ -157,28 +24,35 @@
                     </p>
                     <ul class="contents">
                         <li>{{recipe.protein}} Protein</li>
-                        <li>{{recipe.calories}} cal</li>
-                        <li>{{recipe.servings}} servings</li>
-                        <li><b>{{recipe.protein_per_serv}} protein/serving</b></li>
-                        <li><b>{{recipe.cal_per_serv}} cal/serving</b></li>
+                        <li>{{recipe.calories}} Calories</li>
+                        <li>{{recipe.servings}} Servings</li>
+                        <li><b>{{recipe.protein_per_serv}} Protein/Serving</b></li>
+                        <li><b>{{recipe.cal_per_serv}} Cal/Serving</b></li>
                         <a href='{{recipe.uri}}'>From {{recipe.source}}</a>
-                    </ul>
-                    
+                    </ul>  
                 </ul>
             </div>
             <details>
                 <summary> <i class='bx bx-chevrons-up' ></i> </summary>
                 <div class="group_btn">
                     <form action="/scale_recipe" method="POST">
+                        {% for ingredient in recipe.ingredients %}
+                            <input type="hidden" name="ingredients[]" value="{{ ingredient }}">
+                        {% endfor %}
                         <button type="submit" class="small_btn">Scale Recipe</button>
                     </form>
                     <form action="/calendar" method="POST">
+                        <input type="hidden" name="recipe_label" value="{{ recipe.label }}">
+                        <input type="hidden" name="recipe_url" value="{{ recipe.url }}">
                         <button type="submit" class="small_btn">Add to Calendar</button>
                     </form>
                     <form action="/cart" method="POST">
-                        <button type="submit" name="recipeURI" class="small_btn">Add to Cart</button>
+                        <button type="submit" name="recipeURI" class="small_btn" value="{{ recipe. uri }}">Add to Cart</button>
                     </form>
                     <form action="{{ url_for('calorie_tracking') }}" method="POST">
+                        <input type="hidden" name="item_name" value="{{ recipe.label }}">
+                        <input type="hidden" name="calories" value="{{ recipe.calories }}">
+                        <input type="hidden" name="date" value="{{ current_date }}">
                         <button type="submit" class="small_btn">Add to Calorie Tracker</button>
                     </form>
                 </div>
@@ -195,6 +69,8 @@
         {% endfor %}
     </div>
 </form>
+
+<br><br><br><br>
 
 {% elif success == false%}
     <style>

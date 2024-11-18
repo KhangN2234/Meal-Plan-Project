@@ -30,18 +30,18 @@
                     <option>Lunch</option>
                     <option>Dinner</option>
                 </select>
-              </p>
-                
-                <label for="servings"> <p>Max Ingredients: </p></label>
-                <p id="rangeValue" class="rangeValue">20</p>
-                <input type="range" id="maxingredients" name="maxIngredients" min="1" max="20" step="1" value="20" oninput="rangeValue.innerText = this.value" list="markers">
-                <datalist id="markers">
-                    <option value="0"></option>
-                    <option value="5"></option>
-                    <option value="10"></option>
-                    <option value="15"></option>
-                    <option value="20"></option>
-                </datalist>
+                <div class="maxIngredients" style="display: flex;">
+                  <label for="servings"> <p>Max Ingredients: </p></label>
+                  <p id="rangeValue" class="rangeValue" style="margin-left: 10px;">20</p>
+                </div>  
+                  <input type="range" id="maxingredients" name="maxIngredients" min="1" max="20" step="1" value="20" oninput="rangeValue.innerText = this.value" list="markers">
+                  <datalist id="markers">
+                      <option value="0"></option>
+                      <option value="5"></option>
+                      <option value="10"></option>
+                      <option value="15"></option>
+                      <option value="20"></option>
+                  </datalist>
                 
                 <label for="cuisinetype"><p>Cuisine: </label>
                 <select label="cuisinetype" name='cuisinetype' class="cuisinetype" id="cuisinetype">

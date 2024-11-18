@@ -10,7 +10,6 @@ body {
     margin-top: 1%;
 }
 
-/* change title text stuff*/
 h1 {
     font-family: "Gill Sans", sans-serif;
     font-size: 14cap;
@@ -48,6 +47,28 @@ h3 {
     border-radius: 10px;
 }
 
+.input {
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 5%;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+}
+
+.output {
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 1%;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+}
+
 p {
     font-family:"Garamond", serif;
     padding-bottom: 5px;
@@ -74,356 +95,483 @@ p {
     transition: ease-in-out 200ms;
 }
 
-.input_box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0 60px;
-}
 
-.input_box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid black;
-    border-radius: 7px;
-    font-size: 16px;
-    padding: 20px 45px 20px 40px;
-    font-family:"Garamond", serif;
-}
+/* login and signup style */
+    .input_box {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        margin: 30px 0 60px;
+    }
 
-/* icon next to email and password */
-.input_box i {
-    position: absolute;
-    left: 20px;
-    top: 44px;
-    transform: translate(-50%);
-    font-size: 20px;
-}
+    .input_box input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        border: 2px solid black;
+        border-radius: 7px;
+        font-size: 16px;
+        padding: 20px 45px 20px 40px;
+        font-family:"Garamond", serif;
+    }
 
-.input_box * {
-    margin: 3px;
-    font-size: 20px;
-    box-sizing: border-box;
-}
+    /* icon next to email and password */
+    .input_box i {
+        position: absolute;
+        left: 20px;
+        top: 44px;
+        transform: translate(-50%);
+        font-size: 20px;
+    }
 
-.word_link {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-size: 14.5px;
-    text-align: left;
-}
+    .input_box * {
+        margin: 3px;
+        font-size: 20px;
+        box-sizing: border-box;
+    }
 
-.word_link p a {
-    color: rgb(13, 13, 14);
-    text-decoration: none;
-    font-weight: 600;
-}
+    .word_link {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: 14.5px;
+        text-align: left;
+    }
 
-.word_link p a:hover {
-    color: rgb(23, 93, 134);
-    text-decoration: underline;
-}
+    .word_link p a {
+        color: rgb(13, 13, 14);
+        text-decoration: none;
+        font-weight: 600;
+    }
 
-/* Box that is around the input */
-.input {
-    border-style: solid;
-    border-radius: 2%;
-    border-width: thin;
-    border-color: rgb(146, 145, 145);
-    padding: 5%;
-    margin: 5px;
-    background-color: aliceblue;
-    box-shadow: 0 0 10px;
-}
-
-/* Box that is around the output */
-.output {
-    border-style: solid;
-    border-radius: 2%;
-    border-width: thin;
-    border-color: rgb(146, 145, 145);
-    padding: 1%;
-    margin: 5px;
-    background-color: aliceblue;
-    box-shadow: 0 0 10px;
-}
-
-.Sigbtn {
-    width: 50%;
-    height: 65px;
-    margin-top: 1%;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px black;
-    cursor: pointer;
-    font-size: 30px;
-    color: aqua;
-    font-weight: 600;
-    margin-left: 25%;
-}
-
-.Sigbtn:hover {
-    background-color: rgb(143, 227, 255);
-    color: black; /* of text */
-    transition: ease-in-out 200ms;
-}
-
-.burger {
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-    display: flex;
-    height: 400px;
-}
-
-/* change nav bar position*/
-nav {
-    background-color: #e7e6e6;
-    border-bottom: 4px solid #38a0cf;
-    position: fixed;
-    font-size: 40px;
-    top: 0em;
-    left: 0em;
-    width: 100%;
-    z-index: 1000;
-}
-
-/* hide the dot next to the tabs */
-nav li {
-    display: inline;
-    float: left;
-    position: relative;
-}
-
-/* change text inside nav bar */
-nav li a {
-    font-family: "Gill Sans", sans-serif;
-    color: rgb(68, 104, 180);
-    text-align: center;
-    padding: 20px 30px;
-    border-left: 1px solid #38a0cf;
-    font-weight: 40;
-}
-
-/* change background of nav bar */
-nav a {
-    float: left;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
-    background-color: #e7e6e6;
-    list-style-type: none;
-    transition: ease-in-out 250ms;
-}
-
-nav a:hover {
-    color: black;
-    background-color: lightblue;
-}
-
-/* search bar style*/
+    .word_link p a:hover {
+        color: rgb(23, 93, 134);
+        text-decoration: underline;
+    }
 
 
+/* Welcome Page style */
+    .Sigbtn {
+        width: 50%;
+        height: 65px;
+        margin-top: 1%;
+        background: #fff;
+        border: none;
+        outline: none;
+        border-radius: 40px;
+        box-shadow: 0 0 10px black;
+        cursor: pointer;
+        font-size: 30px;
+        color: rgb(0, 0, 0);
+        font-weight: 600;
+        margin-left: 25%;
+    }
+
+    .Sigbtn:hover {
+        background-color: rgb(143, 227, 255);
+        color: black; /* of text */
+        transition: ease-in-out 200ms;
+    }
+
+    .burger {
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+        display: flex;
+        height: 400px;
+    }
+
+/* nav bar style */
+    /* change nav bar position*/
+    nav {
+        background-color: #e7e6e6;
+        border-bottom: 4px solid #38a0cf;
+        position: fixed;
+        font-size: 40px;
+        top: 0em;
+        left: 0em;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    /* hide the dot next to the tabs */
+    nav li {
+        display: inline;
+        float: left;
+        position: relative;
+    }
+
+    /* change text inside nav bar */
+    nav li a {
+        font-family: "Gill Sans", sans-serif;
+        color: rgb(68, 104, 180);
+        text-align: center;
+        padding: 20px 30px;
+        border-left: 1px solid #38a0cf;
+        font-weight: 40;
+    }
+
+    /* change background of nav bar */
+    nav a {
+        float: left;
+        text-align: center;
+        text-decoration: none;
+        font-size: 20px;
+        background-color: #e7e6e6;
+        list-style-type: none;
+        transition: ease-in-out 250ms;
+    }
+
+    nav a:hover {
+        color: black;
+        background-color: lightblue;
+    }
+
+
+/* Search BAR style */
+    .search_body {
+        width: 500px;
+        text-align: center;
+        position: relative;
+        margin-left: 33%;
+    }
+
+    .search_body .input_box {
+        display: inline-block;
+        margin-bottom: 0;
+        margin-top: 0;
+        width: 75%;
+    }
+
+    .search_body .input_box i {
+        position: absolute;
+        left: 20px;
+        top: 17px;
+        transform: translate(-50%);
+        font-size: 20px;
+    }
+
+    /* Title of the detail tab */
+    .search_body summary {
+        list-style: none;
+        padding: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        height: 25px;
+        width: 0px;
+        color: #30353b;
+        border-radius: 7px;
+    }
+
+    /* Filter icon */
+    .search_body summary i {
+        font-size: 24px;
+        position: absolute;
+        top: 12px;
+        transform: rotate(-90deg);
+        color: black;
+        transition: 0.2s;
+        left: 3px;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    /* The entire filter btn */
+    .search_body details {
+        position: absolute;
+        left: 1.8em;
+        border-radius: 7px;
+        text-align: left;
+        top: 7px;
+    }
+
+    .search_body details[open] summary {
+        border-radius: 5px 5px 0 0;
+        right: 30em;
+    }
+
+    .search_body details[open] > summary i {
+        transform: rotate(0deg);
+        color: black;
+    }
+
+    .search_body .submit_btn {
+        list-style: none; 
+        padding: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        height: 46px;
+        width: 45px;
+        color: #30353b;
+        border-radius: 7px;
+        position: absolute;
+        border-left: 2px solid black;
+        left: 16.4em;
+        border-radius: 0px 7px 7px 0px;
+        text-align: left;
+        top: 6px;
+        box-shadow: none;
+    }
+
+    .search_body .submit_btn i {
+        top: 11px;
+        font: bold;
+    }
+
+    /* Prevent nav bar from stacking when adjusting window's width */
+    @media (max-width: 92em) {
+        nav {
+        flex-direction: column;
+        width: 100%;
+        }
+        .search_body {
+            margin-left: 0;
+        }
+    }
+
+    @media (max-width: 80em) {
+        nav {
+            flex-direction: column;
+            width: 32em;
+        }
+        .search_body {
+            margin-left: 0;
+        }
+    }
+
+
+/* Search RESULT style */
+    .search_grid {
+        display: grid; 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 2rem; 
+        row-gap: 4rem;
+    }
+
+    .recipe_image {
+        display: inline-block;
+        height: auto;
+        left: 0;
+    }
+
+    /* Manipulate the actual image itself */
+    .recipe_image img {
+        display: inline-block;
+        left: 0;
+        border-radius: 7px 0 0 0;
+        object-fit: cover;
+        overflow: hidden;
+    }
+
+    .search_result {
+        margin-top: 30%;
+        margin-bottom: 5%;
+        margin: 0;
+    }
+
+    .search_result .wrapper {
+        padding: 0 20px 0px 0px;
+        border-radius: 7px 7px 0 0;
+        padding-left: 0;
+        height: 12.5em;
+        width: 30em;
+        display: inline-block;
+    }
+
+    .search_result ul {
+        margin-left: 10%;
+    }
+
+    .search_result .contents {
+        margin-top: -5%;
+        margin-left: 29%;
+    }
+
+    .search_result .title {
+        top: 0;
+        font-size: 18px;
+        margin: 0 0 5% 35%;
+        text-align: left;
+    }
+
+    .search_result a {
+        right: 1.2em;
+        top: 15em;
+        position: absolute;
+        margin-bottom: 0;
+        font-size: 12px;
+    }
+
+    .search_result .contents {
+        font-size: 14px;
+    }
+
+    .search_result .recipe_image {
+        position: absolute;
+    }
+
+    .search_result details i {
+        transition: 0.2s;
+        color: white;
+    }
+
+    .search_result details ul {
+        margin-left: 0;
+        column-count: 2;
+    }
+
+    /* The little tab below the recipe card */
+    .search_result details {
+        position: absolute;
+        border-style: solid;
+        border-width: 1px;
+        border-color: black;
+        background-color: #2e6985;
+        border-radius: 0 0 7px 7px;
+        padding: 0 6px 0 6px;
+        width: 30.5em;
+        box-shadow: 0 4px 8px #505050, 0 6px 20px #949494;
+        cursor: pointer;
+    }
+
+    .search_result details[open] {
+        z-index: 2;
+        background-color: white;
+        cursor: auto;
+    }
+
+    .search_result details[open] > summary {
+        i {
+            transform: rotate(180deg);
+            color: black;
+        }
+        cursor: pointer;
+    }
+
+    /* Title of the detail tab */
+    .search_result summary {
+        list-style: none;
+        text-align: center;
+    }
+
+    /* Container around the buttons */
+    .group_btn {
+        display: flex; 
+        gap: 10px; 
+        flex-wrap: wrap; 
+        margin-top: 10px;
+        border-bottom: 2px solid #000000;
+        width: 100%;
+        align-items: center;
+    }
+
+    .small_btn {
+        text-align: center;
+        padding: 8px 12px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: #f8f8f8;
+        height: 40px;
+        color: black;
+        border-width: thin;
+        border-color: #000000;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 12px;
+    }
+    
+    .small_btn:hover {
+        background-color: rgb(143, 227, 255);
+    }
+
+    
 /* Profile style */
-.profile-info {
-    margin-bottom: 10%;
-}
+    .profile-info {
+        margin-bottom: 10%;
+    }
 
 /* Calender style */
 
 
-.cartbody {
-    font-family: 'Arial';
-    font-size: 12px;
-    width: 100%;
-    min-width: 400px;
-    align-self: center;
-    margin: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-}
-
-.cartwindow {
-    border-style: solid;
-    border-radius: 2%;
-    border-width: thin;
-    border-color: rgb(146, 145, 145);
-    padding: 5%;
-    margin: 5px;
-    background-color: aliceblue;
-    box-shadow: 0 0 10px;
-    width: 100%;
-}
-
-.ingredient{
-    display: inline;
-}
-
-.boughtCheck{
-    width: 20px;
-    height: 20px;
-}
-.quantity{
-    display: inline;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-weight: 200;
-}
-
-.measure{
-    display: inline;
-    padding-right: 10px;
-    font-weight: 50;
-}
-
-.ingredientName{
-    display: inline;
-    padding-right: 10px;
-
-}
-
-.recipesUsing{
-    display: block;
-    color: grey;
-    font-size: medium;
-}
-
-.errornotification {
-    border-style: solid;
-    border-radius: 2%;
-    border-width: thin;
-    border-color: rgb(146, 145, 145);
-    background-color: rgb(255, 94, 94);
-    box-shadow: 0 0 10px;
-    width: 100%;
-    font-size: medium;
-}
-
-.successnotification {
-    border-style: solid;
-    border-radius: 2%;
-    border-width: thin;
-    border-color: rgb(146, 145, 145);
-    background-color: rgb(111, 255, 166);
-    box-shadow: 0 0 10px;
-    width: 100%;
-    font-size: medium;
-}
-
-
-
-/* Search bar */
-.search_body .input_box {
-    display: inline-block;
-    margin-bottom: 0;
-    margin-top: 0;
-    width: 75%;
-}
-
-.search_body .input_box i {
-    position: absolute;
-    left: 20px;
-    top: 17px;
-    transform: translate(-50%);
-    font-size: 20px;
-}
-
-.search_body {
-    width: 500px;
-    text-align: center;
-    position: relative;
-    margin-left: 30%;
-}
-
-.search_body summary {
-    list-style: none;
-    padding: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    height: 25px;
-    width: 0px;
-    color: #30353b;
-    border-radius: 7px;
-}
-
-.search_body summary i {
-    font-size: 24px;
-    position: absolute;
-    top: 12px;
-    transform: rotate(-90deg);
-    color: black;
-    transition: 0.2s;
-    left: 3px;
-}
-
-summary::-webkit-details-marker {
-    display: none;
-}
-
-.search_body details[open] summary {
-    border-radius: 5px 5px 0 0;
-    right: 30em;
-}
-
-.search_body details[open] > summary i {
-    transform: rotate(0deg);
-    color: black;
-}
-
-.search_body details {
-    position: absolute;
-    left: 1.65em;
-    border-radius: 7px;
-    text-align: left;
-    top: 7px;
-}
-
-.search_body .submit_btn {
-    list-style: none;
-    padding: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    height: 46px;
-    width: 45px;
-    color: #30353b;
-    border-radius: 7px;
-    position: absolute;
-    border-left: 2px solid black;
-    left: 16.4em;
-    border-radius: 0px 7px 7px 0px;
-    text-align: left;
-    top: 6px;
-    box-shadow: none;
-}
-
-.search_body .submit_btn i {
-    top: 11px;
-    font: bold;
-}
-
-/* Prevent nav bar from stacking when adjusting window's width */
-@media (max-width: 92em) {
-    nav {
-      flex-direction: column;
-      width: 100%;
+/* Cart style */
+    .cartbody {
+        font-family: 'Arial';
+        font-size: 12px;
+        width: 100%;
+        min-width: 400px;
+        align-self: center;
+        margin: 5%;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
     }
-    .search_body {
-        margin-left: 0;
-    }
-  }
 
-@media (max-width: 80em) {
-    nav {
-        flex-direction: column;
-        width: 32em;
+    .cartwindow {
+        border-style: solid;
+        border-radius: 2%;
+        border-width: thin;
+        border-color: rgb(146, 145, 145);
+        padding: 5%;
+        margin: 5px;
+        background-color: aliceblue;
+        box-shadow: 0 0 10px;
+        width: 100%;
     }
-    .search_body {
-        margin-left: 0;
+
+    .ingredient{
+        display: inline;
     }
-}
+
+    .boughtCheck{
+        width: 20px;
+        height: 20px;
+    }
+    .quantity{
+        display: inline;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-weight: 200;
+    }
+
+    .measure{
+        display: inline;
+        padding-right: 10px;
+        font-weight: 50;
+    }
+
+    .ingredientName{
+        display: inline;
+        padding-right: 10px;
+
+    }
+
+    .recipesUsing{
+        display: block;
+        color: grey;
+        font-size: medium;
+    }
+
+    .errornotification {
+        border-style: solid;
+        border-radius: 2%;
+        border-width: thin;
+        border-color: rgb(146, 145, 145);
+        background-color: rgb(255, 94, 94);
+        box-shadow: 0 0 10px;
+        width: 100%;
+        font-size: medium;
+    }
+
+    .successnotification {
+        border-style: solid;
+        border-radius: 2%;
+        border-width: thin;
+        border-color: rgb(146, 145, 145);
+        background-color: rgb(111, 255, 166);
+        box-shadow: 0 0 10px;
+        width: 100%;
+        font-size: medium;
+    }
