@@ -121,6 +121,7 @@ def profile():
         username = request.form.get('username', user_data.get('username'))
         bio = request.form.get('bio', user_data.get('bio'))
         password = request.form.get('password')
+        newPost = request.form.get('newPost')
 
         updated_data = {
         'username': username,
@@ -134,8 +135,17 @@ def profile():
      
         doc_ref.update(updated_data)
 
-        
         flash('Profile updated successfully!')
+
+        if newPost:
+            postData = {
+                'author': username,
+                'email': email,
+                'content': newPost,
+                'timestamp': 0
+            }
+
+            db.collection('posts').add(postData)
 
         
         return redirect('/profile')
