@@ -16,6 +16,10 @@ from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 
 @app.route('/')
+def startup():
+    return redirect('/login')
+
+@app.route('/welcome')
 def welcome():
     return render_template('welcome.html')
 # test
@@ -74,17 +78,17 @@ def login():
 
                 if 'new_signup' in session:
                     session.pop('new_signup', None)
+                    flash('Account created successfully!')
+                else:
                     flash('You have been successfully logged in!')
-
-                return redirect('/profile')  # Sends user to profile page if login works
-            
-            else:
-                # error if the password is incorret
-                return render_template('login.html', error="Invalid password")
-            
+                return redirect('/profile')
         else:
-            # Sends an error if no account exists for this email
-            return render_template('login.html', error="No account found with this email")
+                # If its incorrect
+                flash('Invalid password')
+                return render_template('login.html')
+        
+        flash('No account found with this email')
+        return render_template('login.html')
         
     return render_template('login.html')
 
@@ -97,15 +101,11 @@ def logout():
 
     return redirect('/login')
 
-# Success page
-#@app.route('/success')
-#def success():
-#    return "Account created successfully!"
-
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
 
     if 'user' not in session:
+        flash("Please log in to access your account information")
         return redirect('/login')
     
     email = session['user']
@@ -120,12 +120,17 @@ def profile():
     if request.method == 'POST':
         username = request.form.get('username', user_data.get('username'))
         bio = request.form.get('bio', user_data.get('bio'))
+        password = request.form.get('password')
 
         updated_data = {
         'username': username,
         'bio': bio
     }
 
+        if password:
+            # Hash the new password
+            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+            updated_data['password'] = hashed_password.decode('utf-8')
      
         doc_ref.update(updated_data)
 
