@@ -72,9 +72,11 @@ def calorie_tracking():
 
         return redirect(url_for('calorie_tracking'))
 
-    # Retrieve all calorie entries
+    # Retrieve all calorie entries and calculate today's total calories
     entries = {}
+    total_calories_today = 0
     try:
+        today = datetime.utcnow().strftime('%Y-%m-%d')
         docs = calorie_entries_ref.stream()
         for doc in docs:
             entry = doc.to_dict()
@@ -92,11 +94,15 @@ def calorie_tracking():
                     entries[entry_date] = {'items': [], 'total_calories': 0}
                 entries[entry_date]['items'].append({'name': item_name, 'calories': calories, 'id': doc.id})
                 entries[entry_date]['total_calories'] += calories
+
+                # Add calories to today's total if the entry date matches
+                if entry_date == today:
+                    total_calories_today += calories
     except Exception as e:
         flash(f"Error retrieving entries: {str(e)}")
 
-    # Pass daily calorie goal to the template
-    return render_template('calorie_tracking.html', entries=entries, daily_calorie_goal=daily_calorie_goal)
+    # Pass daily calorie goal and today's total to the template
+    return render_template('calorie_tracking.html', entries=entries, daily_calorie_goal=daily_calorie_goal, total_calories_today=total_calories_today)
 @app.route('/delete_entry', methods=['POST'])
 def delete_entry():
     user_email = session.get('user')

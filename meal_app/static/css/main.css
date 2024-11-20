@@ -575,3 +575,9 @@ p {
         width: 100%;
         font-size: medium;
     }
+    .daily-goal-container {
+        text-align: center;
+        margin: 20px 0;
+        font-size: 1.5em;
+        color: #333;
+    }

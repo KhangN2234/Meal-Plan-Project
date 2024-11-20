@@ -5,9 +5,18 @@
     <h2>Calorie Tracker</h2>
 
     {% if daily_calorie_goal %}
-        <h3>Daily Calorie Goal: {{ daily_calorie_goal }}</h3>
+    <div class="daily-goal-container">
+        <h3>
+            Daily Calorie Goal: <strong>{{ daily_calorie_goal }}</strong>
+            {% if total_calories_today %}
+                | Calories Consumed Today: <strong>{{ total_calories_today }}</strong>
+            {% endif %}
+        </h3>
+    </div>
     {% else %}
-        <h3>Set your daily calorie goal below!</h3>
+    <div class="daily-goal-container">
+        <h3>Set your daily calorie goal above!</h3>
+    </div>
     {% endif %}
     <form method="POST" action="{{ url_for('daily_calorie_goal') }}">
         <div class="input">
