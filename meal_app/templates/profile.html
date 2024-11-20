@@ -42,6 +42,12 @@
                     <button type="submit" class="btn-logout">Logout</button>
                 </form>
         </div>
+        {% for post in userPosts %}
+            <p>{{post.author}}</p>
+            <p>{{post.email}}</p>
+            <p>{{post.timestamp}}</p>
+            <p>{{post.content}}</p>
+        {% endfor %}
     </div>
 
     <style>

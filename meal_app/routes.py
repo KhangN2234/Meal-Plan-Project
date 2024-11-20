@@ -150,9 +150,18 @@ def profile():
 
         
         return redirect('/profile')
+    
+    posts = db.collection('posts').order_by('timestamp', direction='DESCENDING').stream()
+    userPosts = [
+        {'content': post.to_dict().get('content'),
+         'author': post.to_dict().get('author'),
+         'timestamp': post.to_dict().get('timestamp')}
+        for post in posts
+    ]
+    
 
     
-    return render_template('profile.html', user_data=user_data)
+    return render_template('profile.html', user_data=user_data, userPosts=userPosts)
 
 
 app.register_blueprint(search_templates)
