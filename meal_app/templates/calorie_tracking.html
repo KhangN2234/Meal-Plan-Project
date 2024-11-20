@@ -4,6 +4,11 @@
 <div class="searchbody">
     <h2>Calorie Tracker</h2>
 
+    {% if daily_calorie_goal %}
+        <h3>Daily Calorie Goal: {{ daily_calorie_goal }}</h3>
+    {% else %}
+        <h3>Set your daily calorie goal below!</h3>
+    {% endif %}
     <form method="POST" action="{{ url_for('daily_calorie_goal') }}">
         <div class="input">
             <label for="calorie_goal">Daily Calorie Goal:</label>
