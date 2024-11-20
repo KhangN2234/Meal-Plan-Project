@@ -1,15 +1,44 @@
-{% extends "layout.html" %}
-{% block content %}
-    <div class="input">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <style>
+        body {
+            background: url('static/img/burgerLogin2.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            height: 70vh;
+        }
+    </style>
+    
+    
+    <div class="wrapper">
         <h2>Create an Account</h2>
         <form method="POST" id="signupForm">
-            <label for="email">Email:</label>
-            <input type="email" name="email" required><br><br>
+            <h3> Register for free to save your recipes.</h3>
+            
+            <div class = "input_box">
+                <p> Email: </p>
+                <i class='bx bxs-envelope'></i>
+                <input type="email" name="email" placeholder = "Email" required>
+            </div>
+            
+            <div class = "input_box">
+                <p> Password: </p>
+                <i class='bx bxs-lock-alt'></i>
+                <input type="password" name="password" placeholder="Password" required>
+            </div> <br>
+            
+            <input type="submit" class="submit_btn" value="Create">
 
-            <label for="password">Password:</label>
-            <input type="password" name="password" required><br><br>
-
-            <input type="submit" value="Create Account">
+            <div class = "word_link">
+                <p> Already have an account? <a href="/login"> Login </a></p>
+            </div>
         </form>
     </div>
-{% endblock %}
+</html>
