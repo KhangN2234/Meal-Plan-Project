@@ -43,11 +43,14 @@
                 </form>
         </div>
         {% for post in userPosts %}
-            <p>{{post.author}}</p>
-            <p>{{post.email}}</p>
-            <p>{{post.timestamp}}</p>
-            <p>{{post.content}}</p>
+            <div class="input">
+                <p>{{post.author}}</p>
+                <p>{{post.email}}</p>
+                <p>{{post.timestamp}}</p>
+                <p>{{post.content}}</p>
+            </div>
         {% endfor %}
+        </div>
     </div>
 
     <style>

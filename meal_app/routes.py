@@ -155,6 +155,7 @@ def profile():
     userPosts = [
         {'content': post.to_dict().get('content'),
          'author': post.to_dict().get('author'),
+         'email': post.to_dict().get('email'),
          'timestamp': post.to_dict().get('timestamp')}
         for post in posts
     ]
