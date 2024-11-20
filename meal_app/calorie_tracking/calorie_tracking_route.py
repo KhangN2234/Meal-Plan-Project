@@ -28,7 +28,6 @@ def daily_calorie_goal():
 
 @app.route('/calorie_tracking', methods=['GET', 'POST'])
 def calorie_tracking():
-    # Ensure user is logged in
     if 'user' not in session:
         flash("Please log in to track your calories.")
         return redirect('/login')
@@ -37,16 +36,10 @@ def calorie_tracking():
     user_ref = db.collection('users').document(user_email)
     calorie_entries_ref = user_ref.collection('calorie_entries')
 
-    # Retrieve daily calorie goal
-    daily_calorie_goal = None
-    try:
-        user_data = user_ref.get()
-        if user_data.exists:
-            daily_calorie_goal = user_data.to_dict().get('daily_calorie_goal', None)
-    except Exception as e:
-        flash(f"Error retrieving daily calorie goal: {str(e)}")
+    # Fetch user data and daily goal
+    user_data = user_ref.get().to_dict() or {}
+    daily_calorie_goal = int(user_data.get('daily_calorie_goal', 0))
 
-    # Handle POST request for adding a calorie entry
     if request.method == 'POST':
         item_name = request.form.get('item_name', '').strip()
         calories = request.form.get('calories', '').strip()
@@ -72,37 +65,23 @@ def calorie_tracking():
 
         return redirect(url_for('calorie_tracking'))
 
-    # Retrieve all calorie entries and calculate today's total calories
+    # Retrieve entries grouped by date
     entries = {}
-    total_calories_today = 0
-    try:
-        today = datetime.utcnow().strftime('%Y-%m-%d')
-        docs = calorie_entries_ref.stream()
-        for doc in docs:
-            entry = doc.to_dict()
-            entry_date = entry.get('date')
-            item_name = entry.get('item_name', 'Unnamed item')
-            calories = entry.get('calories', 0)
+    docs = calorie_entries_ref.order_by('timestamp', direction=firestore.Query.DESCENDING).stream()
+    for doc in docs:
+        entry = doc.to_dict()
+        entry_date = entry['date']
+        if entry_date not in entries:
+            entries[entry_date] = {'items': [], 'total_calories': 0}
+        entries[entry_date]['items'].append({'id': doc.id, 'name': entry['item_name'], 'calories': entry['calories']})
+        entries[entry_date]['total_calories'] += entry['calories']
 
-            try:
-                calories = int(calories)
-            except ValueError:
-                calories = 0
+    # Calculate today's total calories
+    today_date = datetime.utcnow().strftime('%Y-%m-%d')
+    total_calories_today = entries.get(today_date, {}).get('total_calories', 0)
+    percentage = min((total_calories_today / daily_calorie_goal) * 100, 100) if daily_calorie_goal > 0 else 0
 
-            if entry_date:
-                if entry_date not in entries:
-                    entries[entry_date] = {'items': [], 'total_calories': 0}
-                entries[entry_date]['items'].append({'name': item_name, 'calories': calories, 'id': doc.id})
-                entries[entry_date]['total_calories'] += calories
-
-                # Add calories to today's total if the entry date matches
-                if entry_date == today:
-                    total_calories_today += calories
-    except Exception as e:
-        flash(f"Error retrieving entries: {str(e)}")
-
-    # Pass daily calorie goal and today's total to the template
-    return render_template('calorie_tracking.html', entries=entries, daily_calorie_goal=daily_calorie_goal, total_calories_today=total_calories_today)
+    return render_template('calorie_tracking.html', entries=entries, daily_calorie_goal=daily_calorie_goal, total_calories_today=total_calories_today, percentage=percentage)
 @app.route('/delete_entry', methods=['POST'])
 def delete_entry():
     user_email = session.get('user')

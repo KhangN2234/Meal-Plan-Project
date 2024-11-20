@@ -4,20 +4,16 @@
 <div class="searchbody">
     <h2>Calorie Tracker</h2>
 
-    {% if daily_calorie_goal %}
-    <div class="daily-goal-container">
-        <h3>
-            Daily Calorie Goal: <strong>{{ daily_calorie_goal }}</strong>
-            {% if total_calories_today %}
-                | Calories Consumed Today: <strong>{{ total_calories_today }}</strong>
-            {% endif %}
-        </h3>
+    <h3>Your Daily Calorie Goal</h3>
+{% if daily_calorie_goal %}
+    <p style="text-align: center;">Daily Goal: {{ daily_calorie_goal }} calories</p>
+    <p style="text-align: center;">Calories Consumed Today: {{ total_calories_today }} calories</p>
+    <div class="progress-bar-container">
+        <div class="progress-bar" style="width: {{ percentage or 0 }}%;"></div>
     </div>
-    {% else %}
-    <div class="daily-goal-container">
-        <h3>Set your daily calorie goal above!</h3>
-    </div>
-    {% endif %}
+{% else %}
+    <p>No daily goal set. Please set one above!</p>
+{% endif %}
     <form method="POST" action="{{ url_for('daily_calorie_goal') }}">
         <div class="input">
             <label for="calorie_goal">Daily Calorie Goal:</label>
