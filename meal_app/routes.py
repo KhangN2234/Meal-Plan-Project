@@ -14,6 +14,7 @@ from .calendar.calendar_routes import calendar_templates
 from .shopping_cart.download_pdf import download_pdf
 from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
+from datetime import datetime
 
 @app.route('/')
 def startup():
@@ -142,7 +143,7 @@ def profile():
                 'author': username,
                 'email': email,
                 'content': newPost,
-                'timestamp': 0
+                'timestamp': datetime.utcnow()
             }
 
             db.collection('posts').add(postData)
