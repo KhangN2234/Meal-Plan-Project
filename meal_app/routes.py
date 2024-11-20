@@ -18,7 +18,7 @@ from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 @app.route('/')
 def welcome():
     return render_template('welcome.html')
-
+# test
 # Route to display the signup form and handle form submissions
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
