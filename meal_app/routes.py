@@ -15,6 +15,7 @@ from .shopping_cart.download_pdf import download_pdf
 from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_templates
+from datetime import datetime
 
 @app.route('/')
 def startup():
@@ -122,6 +123,7 @@ def profile():
         username = request.form.get('username', user_data.get('username'))
         bio = request.form.get('bio', user_data.get('bio'))
         password = request.form.get('password')
+        newPost = request.form.get('newPost')
 
         updated_data = {
         'username': username,
@@ -135,14 +137,33 @@ def profile():
      
         doc_ref.update(updated_data)
 
-        
         flash('Profile updated successfully!')
+
+        if newPost:
+            postData = {
+                'author': username,
+                'email': email,
+                'content': newPost,
+                'timestamp': datetime.utcnow()
+            }
+
+            db.collection('posts').add(postData)
 
         
         return redirect('/profile')
+    
+    posts = db.collection('posts').order_by('timestamp', direction='DESCENDING').stream()
+    userPosts = [
+        {'content': post.to_dict().get('content'),
+         'author': post.to_dict().get('author'),
+         'email': post.to_dict().get('email'),
+         'timestamp': post.to_dict().get('timestamp')}
+        for post in posts
+    ]
+    
 
     
-    return render_template('profile.html', user_data=user_data)
+    return render_template('profile.html', user_data=user_data, userPosts=userPosts)
 
 
 app.register_blueprint(search_templates)

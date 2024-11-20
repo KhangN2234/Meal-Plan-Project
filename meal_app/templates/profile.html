@@ -31,10 +31,25 @@
                 <textarea name="bio">{{ user_data.bio }}</textarea><br><br>
         
                 <button type="submit">Update Profile</button>
-        </form>
+            </form>
+            <form method="POST">
+                <label>New Post:</label>
+                <textarea name="newPost"></textarea><br><br>
+                <button type="submit">Post</button>
+            </form>
+        
                 <form action="logout" method="GET">
                     <button type="submit" class="btn-logout">Logout</button>
                 </form>
+        </div>
+        {% for post in userPosts %}
+            <div class="input">
+                <p>{{post.author}}</p>
+                <p>{{post.email}}</p>
+                <p>{{post.timestamp}}</p>
+                <p>{{post.content}}</p>
+            </div>
+        {% endfor %}
         </div>
     </div>
 
