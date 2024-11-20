@@ -2,24 +2,31 @@
 {% block content %}
 <style>
     .day_box {
-        input {
-            position: absolute;
-            opacity: 0;
-        }
-        .wrapper {
-            height: 25em;
-        }
         display: grid;
         grid-template-columns: repeat(2, 1fr); 
         gap: 2rem;
+        input {
+            display: none;
+        }
+        .wrapper {
+            height: 25em;
+            width: 25em;
+        }
     }
 
     .day_box .wrapper:hover {
         border-color: aqua;
+        cursor: pointer;
     }
 
     .day_box input:checked + label .wrapper {
         border-color: aqua;
+        box-shadow: 0 0 10px black;
+    }
+
+    .day_box :last-child {
+        justify-self: center;
+        grid-column-start: span 2;
     }
 </style>
 <form action="{{ url_for('calendar') }}" method="POST">
@@ -54,7 +61,6 @@
             </div>
         </label>
     
-
     <input type="checkbox" id="Tuesday" name="selected_days" value="Tuesday">
     <label for="Tuesday">
         <div class="wrapper">
@@ -69,9 +75,7 @@
         </div>
     </label>
 
-    
-
-<input type="checkbox" id="Wednesday" name="selected_days" value="Wednesday">
+    <input type="checkbox" id="Wednesday" name="selected_days" value="Wednesday">
     <label for="Wednesday">
         <div class="wrapper">
             <h2>Wednesday</h2>
@@ -140,10 +144,10 @@
             </ul>
         </div>
     </label>
-
+</div>
     {%if recipe_label != None%}
     <button type="submit"> Add Recipe to Selected Day(s)</button>
     {% endif %}
-</div>
+
 </form>
 {% endblock %}
