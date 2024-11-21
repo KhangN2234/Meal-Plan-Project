@@ -61,18 +61,18 @@ Khang Ngo: Made the Welcome Page for the user, along with the navigation bar. Al
 
 Joseph Bond: created the function for scaling down specific ingredients for recipes. 
 - Jira Task CP-74: Conduct further research of HTML and Python
-	-Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-74
-	-bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/branch/CP-74-cunduct-further-research-of-html-a
--Jira Task CP-30 Design UI for Ingredient Adjustment
-	-Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-30
-	-bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/branch/feature%2FCP-30-design-ui-for-ingredient-adjustmen
--Jira Task CP-32 Develop Basic Algorithm for Scaling Recipes
-	-Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-32
-	-bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/branch/CP-32-develop-basic-algorithm-for-scalin
--Jira Task CP-73 Integrate Recipe Scaling with the core functionality of app
-	-Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-73
-	-bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/branch/CP-73-integrate-recipe-scaling-with-the-
--Jira Task CP-35 Unit Testing for scaling algorithm (To-Do)
+	- Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-74
+	- bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/branch/CP-74-cunduct-further-research-of-html-a
+- Jira Task CP-30 Design UI for Ingredient Adjustment
+	- Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-30
+	- bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/branch/feature%2FCP-30-design-ui-for-ingredient-adjustmen
+- Jira Task CP-32 Develop Basic Algorithm for Scaling Recipes
+	- Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-32
+	- bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/branch/CP-32-develop-basic-algorithm-for-scalin
+- Jira Task CP-73 Integrate Recipe Scaling with the core functionality of app
+	- Jira: https://cs3398-europa1-f24.atlassian.net/browse/CP-73
+	- bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/commits/branch/CP-73-integrate-recipe-scaling-with-the-
+- Jira Task CP-35 Unit Testing for scaling algorithm (To-Do)
 
 Mark Nardone: Made and designed the Signup.html that allows users to create an account. Along with that made a profile.html with profile basic profile features. Also worked on the app.py
 - Jira Task CP-54: Account Creation UI
@@ -112,6 +112,98 @@ Lucas Garcia: Designed and implemented search.html page. Set up project's api in
 - Lucas: Expand on search page to add shopping list functionality
 
 
+
+## Sprint 2 (October 14th - November 4th)
+Contribution:
+
+Khang Ngo: Made the Calendar Page for the user.
+- Jira Task Scrum-95: Make the UI more appealing
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-95
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/27 
+- Jira Task Scrum-83: Refactor Routes
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-83  
+	-  Bitbucket:https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-83-refactor-the-routes.py (NO PULL REQUEST NEEDED, MERGED TO MY OWN CODE)
+- Jira Task Scrum-81: Implement multiple recipes
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-81 
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-81-display-multiple-recipes (NO PULL REQUEST NEEDED, MERGED TO MY OWN CODE)
+- Jira Task Scrum-78: Functional CSS and HTML
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-78
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-78-functional-css-and-html (NO PULL REQUEST NEEDED, MERGED TO MY OWN CODE)
+- Jira Task Scrum-79: Save Recipes
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-79 
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-79-save-recipes (NO PULL REQUEST NEEDED, MERGED TO MY OWN CODE)
+- Jira Task Scrum-102: Display recipes from account
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-102  
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-102-display-the-recipes-from-accou (NO PULL REQUEST NEEDED, MERGED TO MY OWN CODE)
+- Jira Task Scrum-82: Make a diet system in Search
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-82 
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/15  
+
+Joseph Bond: Made the Calorie tracking page.
+- Jira Task SCRUM-35: Unit Testing for Scaling Algorithm
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-35
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-35-unit-testing-for-scaling-algori/
+- Jira Task SCRUM-97: Implement User Input box for logging meal calories
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-97
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-97-implement-user-input-form-for-l/
+- Jira Task SCRUM-96: create Logic for tracking meals and their calories
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-96
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-96-create-database-model-for-track/
+- Jira Task SCRUM-100: create daily calorie goal entry option:(TO-DO)
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-100
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-100-create-daily-calorie-goal-entr/
+- Jira Task SCRUM-98: Create Daily Calorie Summary Logic:(TO-DO)
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-98
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-98-create-daily-calorie-summary-lo/
+- Jira Task SCRUM-101: implement logic to give calorie intake recomendations based on daily calorie goal(To-DO)
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-101
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-101-implement-logic-to-give-calori/
+- Jira Task SCRUM-99: write unit tests for calorie tracker logic:(TO-DO)
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-99
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-99-write-unit-tests-form-calorie-t/
+
+Mark Nardone: Make a profile creation and edit system
+-Jira Task SCRUM-86: Firebase Integration
+	- Jira https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-86
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/pull-requests/18
+	
+-Jira Task SCRUM-84: Login and Out Feature
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-84
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/pull-requests/21
+
+- Jira Task SCRUM-88: Customizable Profile
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-88
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/pull-requests/30
+	
+- Jira Task SCRUM-87: Add comment functionality
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-85
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/feature/SCRUM-85-add-comment-functionality
+
+Lucas Garcia: Set up functional ingredient shopping page with pdf export. Added spellcheck to search feature.
+- Jira Task SCRUM-53: Design shopping list layout
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-53
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-53-design-shopping-list-layout
+- Jira Task SCRUM-51: Create Saved Recipe Ingredient Addition / Consolidation
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-51
+	-  Bitbucket: https://bitbucket.org/%7B%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/feature/SCRUM-51-create-saved-recipe-ingredient-
+- Jira Task SCRUM-52: Implement HTML / CSS for Shopping List Page
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-52
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-52-implement-html---css-for-shoppi
+- Jira Task SCRUM-90: Create interface with search page to 'add to shopping list'
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-90
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/feature/SCRUM-90-create-interface-with-search-pa
+- Jira Task SCRUM-89: Create function exporting shopping list as pdf
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-89
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D
+- Jira Task SCRUM-93: Add spellcheck functionality
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-93
+	-  Bitbucket: https://bitbucket.org/%7B%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-93-add-spellcheck-functionality
+
+## Next Steps
+- Khang: Add more functionality to the Calendar System like a delete, help overhaul and update UI elements, and add proper months and year rather than just one week.
+- Joseph: add daily calorie goal feature to calories page. begin working on food prep reminders feature, adjust UI for scaling algorithm and calorie tracker.
+- Mark: Add a home page and add more profile options to its page.
+- Lucas: Continue to work on getting web hosting working. Start work on social media aspects of app. (Comments, likes, further profile features)
 
 
 
