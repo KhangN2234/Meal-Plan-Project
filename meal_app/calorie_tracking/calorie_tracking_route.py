@@ -78,6 +78,7 @@ def calorie_tracking():
 
     # Calculate today's total calories
     today_date = datetime.utcnow().strftime('%Y-%m-%d')
+    
     total_calories_today = entries.get(today_date, {}).get('total_calories', 0)
     percentage = min((total_calories_today / daily_calorie_goal) * 100, 100) if daily_calorie_goal > 0 else 0
 
