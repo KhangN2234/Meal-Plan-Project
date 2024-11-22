@@ -83,10 +83,14 @@ def calorie_tracking():
     percentage = min((total_calories_today / daily_calorie_goal) * 100, 100) if daily_calorie_goal > 0 else 0
 
     calorie_difference = daily_calorie_goal - total_calories_today
-    if calorie_difference > 0:
-        comparison_message = f"You are {calorie_difference} calories under your daily goal."
+    if calorie_difference > 300:
+        comparison_message = f"You are {calorie_difference} calories under your daily goal.\nConsume a bit more calories to get within your goal!"
+    elif calorie_difference > 0:
+        comparison_message = f"You are {calorie_difference} caloreis under your daily goal.\nYou are on track for your goal!"
+    elif calorie_difference < 300:
+        comparison_message = f"You are {abs(calorie_difference)} calories over your daily goal.\nTry consuming less calorie dense meals to stay closer to your goal!"
     elif calorie_difference < 0:
-        comparison_message = f"You are {abs(calorie_difference)} calories over your daily goal."
+        comparison_message = f"You are {abs(calorie_difference)} calories over your daily goal. \nYou reached your goal today!"
     else:
         comparison_message = "You have met your daily calorie goal exactly!"
 
