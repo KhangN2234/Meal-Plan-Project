@@ -54,3 +54,13 @@ __pycache__/
 .venv/
 venv/
 .project
+sampleImage.jpg
+
+#Firebase stuff
+.firebaserc
+.json
+index.html
+firebase.json
+package-lock.json
+package.json
+404.html

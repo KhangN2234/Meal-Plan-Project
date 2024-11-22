@@ -2,23 +2,111 @@
 <html>
   <head>
     <title>Meal Project</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   </head>
+  <nav>
+    <li><a href="{{ url_for('welcome') }}">Home</a></li>
+    <li><a href="{{ url_for('profile') }}">Profile</a></li>
+    <li><a href="{{ url_for('calorie_tracking') }}">Calories</a></li>
+    <li><a href="{{ url_for('calendar') }}">Calendar</a></li>
+    <li style="float: right"><a href="{{ url_for('cart') }}">Cart</a></li>
+    <li style="float: right"><a href="{{ url_for('search') }}">Search</a></li>
+    <li>
+      <form action="{{ url_for('search') }}" method="POST" class="search_body">
+        <div class="input_box">
+            <button type="submit" class="submit_btn"> <i class='bx bx-search-alt'></i> </button>
+            <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."required> 
+        </div>
+        <details>
+            <summary>
+                <i class='bx bx-filter' ></i>
+            </summary>
+            <div class="wrapper">
+                <label for="mealtype"><p>Meal Type: </label>
+                <select label="Category" name='mealtype' class="mealtype" id="mealtype">
+                    <option value="">Any</option>
+                    <option>Breakfast</option>
+                    <option>Lunch</option>
+                    <option>Dinner</option>
+                </select>
+                <div class="maxIngredients" style="display: flex;">
+                  <label for="servings"> <p>Max Ingredients: </p></label>
+                  <p id="rangeValue" class="rangeValue" style="margin-left: 10px;">20</p>
+                </div>  
+                  <input type="range" id="maxingredients" name="maxIngredients" min="1" max="20" step="1" value="20" oninput="rangeValue.innerText = this.value" list="markers">
+                  <datalist id="markers">
+                      <option value="0"></option>
+                      <option value="5"></option>
+                      <option value="10"></option>
+                      <option value="15"></option>
+                      <option value="20"></option>
+                  </datalist>
+                
+                <label for="cuisinetype"><p>Cuisine: </label>
+                <select label="cuisinetype" name='cuisinetype' class="cuisinetype" id="cuisinetype">
+                    <option value="">Any</option>
+                    <option>Amercian</option>
+                    <option>Asian</option>
+                    <option>British</option>
+                    <option>Carribbean</option>
+                    <option>Central Europe</option>
+                    <option>Chinese</option>
+                    <option>Eastern Europe</option>
+                    <option>French</option>
+                    <option>Italian</option>
+                    <option>Japanese</option>
+                    <option>Kosher</option>
+                    <option>Mediterranean</option>
+                    <option>Mexican</option>
+                    <option>Middle Eastern</option>
+                    <option>South East Asian</option>
+                </select>
+              </p>
+                
+                <label for="dishtype"><p>Dish Type: </label>
+                <select label="dishtype" name='dishtype' class="dishtype" id="dishtype">
+                    <option value="">Any</option>
+                    <option>Biscuits and cookies</option>
+                    <option>Bread</option>
+                    <option>Cereal</option>
+                    <option>Condiments and sauces</option>
+                    <option>Drinks</option>
+                    <option>Main Course</option>
+                    <option>Pancake</option>
+                    <option>Preps</option>
+                    <option>Preserve</option>
+                    <option>Salad</option>
+                    <option>Sandwiches</option>
+                    <option>Side Dish</option>
+                    <option>Soup</option>
+                    <option>Starter</option>
+                    <option>Sweets</option>
+                </select> 
+              </p>
+                
+                <label for="healthType"><p>Diet: </label>
+                <select label="healthType" name='healthType' class="healthType" id="healthType">
+                    <option value="">Any</option>
+                    <option value = "vegan">Vegan</option>
+                    <option value = "vegetarian">Vegetarian</option>
+                    <option value = "paleo">Paleo</option>
+                    <option value = "kosher">Kosher</option>
+                    <option value = "peanut-free">Peanut-free</option>
+                    <option value = "pork-free">Pork-free</option>
+                    <option value = "shellfish-free">Shellfish-free</option>
+                    <option value = "gluten-free">Gluten-free</option>
+                </select> 
+              </p>
+            </div>
+        </details>
+      </form>
+    </li>
+  </nav>
   <body>
-  <header>
-    <h2>
-      <nav>
-          <li><a href="{{ url_for('welcome') }}">Home</a></li>
-          <li><a href="{{ url_for('profile') }}">Profile</a></li>
-          <li style="float: right"><a href="{{ url_for('search') }}">Search</a></li>
-      </nav>
-    </h2>
-  </header>
-
     <div class="container">
       {% block content %}
       {% endblock %}
     </div>
-
   </body>
 </html>
