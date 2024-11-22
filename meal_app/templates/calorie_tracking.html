@@ -7,6 +7,7 @@
 {% if daily_calorie_goal %}
     <p style="text-align: center;">Daily Goal: {{ daily_calorie_goal }} calories</p>
     <p style="text-align: center;">Calories Consumed Today: {{ total_calories_today }} calories</p>
+    <p style="text-align: center; font-weight: bold;">{{ comparison_message }}</p>
     <div class="progress-bar-container">
         <div class="progress-bar" style="width: {{ percentage or 0 }}%;"></div>
     </div>

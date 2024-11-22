@@ -82,7 +82,15 @@ def calorie_tracking():
     total_calories_today = entries.get(today_date, {}).get('total_calories', 0)
     percentage = min((total_calories_today / daily_calorie_goal) * 100, 100) if daily_calorie_goal > 0 else 0
 
-    return render_template('calorie_tracking.html', entries=entries, daily_calorie_goal=daily_calorie_goal, total_calories_today=total_calories_today, percentage=percentage)
+    calorie_difference = daily_calorie_goal - total_calories_today
+    if calorie_difference > 0:
+        comparison_message = f"You are {calorie_difference} calories under your daily goal."
+    elif calorie_difference < 0:
+        comparison_message = f"You are {abs(calorie_difference)} calories over your daily goal."
+    else:
+        comparison_message = "You have met your daily calorie goal exactly!"
+
+    return render_template('calorie_tracking.html', entries=entries, daily_calorie_goal=daily_calorie_goal, total_calories_today=total_calories_today, percentage=percentage, comparison_message=comparison_message)
 @app.route('/delete_entry', methods=['POST'])
 def delete_entry():
     user_email = session.get('user')
