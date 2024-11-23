@@ -430,6 +430,10 @@ p {
         cursor: pointer;
     }
 
+    .search_result details:hover {
+        background-color: #204e64;
+    }
+
     .search_result details[open] {
         z-index: 2;
         background-color: white;
