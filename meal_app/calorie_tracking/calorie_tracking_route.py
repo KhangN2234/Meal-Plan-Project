@@ -86,7 +86,7 @@ def calorie_tracking():
     if calorie_difference > 300:
         comparison_message = f"You are {calorie_difference} calories under your daily goal.\nConsume a bit more calories to get within your goal!"
     elif calorie_difference > 0:
-        comparison_message = f"You are {calorie_difference} caloreis under your daily goal.\nYou are on track for your goal!"
+        comparison_message = f"You are {calorie_difference} calories under your daily goal.\nYou are on track for your goal!"
     elif calorie_difference < 300:
         comparison_message = f"You are {abs(calorie_difference)} calories over your daily goal.\nTry consuming less calorie dense meals to stay closer to your goal!"
     elif calorie_difference < 0:
