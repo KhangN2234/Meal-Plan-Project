@@ -234,9 +234,9 @@ p {
         width: 500px;
         text-align: center;
         position: fixed;
-        top: 2.3%;
-        left: 50%;
+        left: 38%;
         transform: translate(-50%, -50%);
+        transform: translate3d( 0, 0, 0);
     }
 
     .search_body .input_box {
@@ -257,13 +257,9 @@ p {
     /* Title of the detail tab */
     .search_body summary {
         list-style: none;
-        padding: 12px;
-        font-weight: bold;
         cursor: pointer;
-        height: 25px;
-        width: 0px;
+        height: 49px;
         color: #30353b;
-        border-radius: 7px;
     }
 
     /* Filter icon */
@@ -285,7 +281,6 @@ p {
     .search_body details {
         position: absolute;
         left: 1.8em;
-        border-radius: 7px;
         text-align: left;
         top: 7px;
     }
@@ -301,23 +296,18 @@ p {
     }
 
     .search_body .submit_btn {
-        list-style: none; 
-        padding: 10px;
-        font-weight: bold;
-        cursor: pointer;
-        height: 46px;
-        width: 45px;
+        height: 47px;
+        width: 47px;
         color: #30353b;
-        border-radius: 7px;
         position: absolute;
         border-left: 2px solid black;
-        left: 16.4em;
+        left: 16.35em;
         border-radius: 0px 7px 7px 0px;
-        text-align: left;
-        top: 6px;
+        top: 5px;
         box-shadow: none;
     }
 
+    /* Magnifying glass icon */
     .search_body .submit_btn i {
         top: 11px;
         font: bold;
