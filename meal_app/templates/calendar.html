@@ -1,131 +1,174 @@
 {% extends "layout.html" %}
 {% block content %}
-<title>Calendar</title>
-<head>
-</head>
-<body>
+<form action="/calendar" method="POST">
 
-<form action="{{ url_for('calendar') }}" method="POST">
-    
-    <h2>Select the day(s) to add the recipe</h2>
+<h2>Calendar</h2>
 
-    <!-- Checkboxes for day selection -->
-    <input type="checkbox" id="monday" name="selected_days" value="Monday">
-    <label for="monday">Monday</label><br>
-    <input type="checkbox" id="tuesday" name="selected_days" value="Tuesday">
-    <label for="tuesday">Tuesday</label><br>
-    <input type="checkbox" id="wednesday" name="selected_days" value="Wednesday">
-    <label for="wednesday">Wednesday</label><br>
-    <input type="checkbox" id="thursday" name="selected_days" value="Thursday">
-    <label for="thursday">Thursday</label><br>
-    <input type="checkbox" id="Friday" name="selected_days" value="Friday">
-    <label for="Friday">Friday</label><br>
-    <input type="checkbox" id="Saturday" name="selected_days" value="Saturday">
-    <label for="Saturday">Saturday</label><br>
-    <input type="checkbox" id="Sunday" name="selected_days" value="Sunday">
-    <label for="Sunday">Sunday</label><br><br>
+<!-- Hidden fields to pass the recipe details with the form -->
+<input type="hidden" name="recipe_label" value="{{ recipe_label }}">
+<input type="hidden" name="recipe_url" value="{{ recipe_url }}">
 
-    <!-- Hidden fields to pass the recipe details with the form -->
-    <input type="hidden" name="recipe_label" value="{{ recipe_label }}">
-    <input type="hidden" name="recipe_url" value="{{ recipe_url }}">
+{%if recipe_label != None%}
+{%if selected_days == []%}
+<style>
+    .day_box .wrapper:hover {
+        border-color: #38a0cf;
+        cursor: pointer;
+        .output {
+            border-bottom-color: #46c4ff;
+        }
+        box-shadow: 0 3px 7px;
+        transition: 0.2s;
+        transform: translateY(-3px)
+    }
 
-    <!-- Display Recipe Name and URL -->
+    .day_box input:checked + label .wrapper {
+        border-color: #38a0cf;
+        box-shadow: 0 0 10px #38a0cf;
+        transform: translateY(-3px)
+    }
+
+    .if_calendar {
+        text-align: center;
+        font-size: 24px;
+        margin-top: -5%;
+        p {
+            font-size: 24px;
+        }
+        .submit_btn {
+            margin-bottom: 5%;
+            width: 200px;
+            float: right;
+        }
+    }
+</style>
+
+<div class = "if_calendar">
     <label for="recipe_name">Recipe Name:</label>
     <a href="{{ recipe_url }}"> {{ recipe_label }}</a><br><br>
-    <button type ="submit"> Add Recipe to Selected Day(s)</button>
+
+    <p> Select the days you want to add the recipe to: </p>
+    <br>
+    <button type="submit" class="submit_btn"> Add Recipe</button>
+</div>
+{%endif%}
+{% endif %}
+
+{% for message in get_flashed_messages() %}
+    <script type="text/javascript">window.setTimeout("document.getElementById('successMessage').style.display='none';", 4000); </script>
+    <style>
+        .successnotification {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30em;
+            border-radius: 7px;
+            text-align: center;
+            padding: 0 0 0 0;
+        }
+    </style>
+    <div id="successMessage" class="successnotification"><p>{{message}}</p></div>
+{% endfor %}
+
+<div class="day_box">
+    <input type="checkbox" id="Monday" name="selected_days" value="Monday">
+    <label for="Monday">
+        <div class="wrapper">
+            <h2 class="output">Monday</h2>
+            <ul>
+                {% for recipe in recipes_list %}
+                {% if 'Monday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </label>
+
+    <input type="checkbox" id="Tuesday" name="selected_days" value="Tuesday">
+    <label for="Tuesday">
+        <div class="wrapper">
+            <h2 class="output">Tuesday</h2>
+            <ul>
+                {% for recipe in recipes_list %}
+                {% if 'Tuesday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </label>
+
+    <input type="checkbox" id="Wednesday" name="selected_days" value="Wednesday">
+    <label for="Wednesday">
+        <div class="wrapper">
+            <h2 class="output">Wednesday</h2>
+            <ul>
+                {% for recipe in recipes_list %}
+                {% if 'Wednesday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </label>
+
+    <input type="checkbox" id="Thursday" name="selected_days" value="Thursday">
+    <label for="Thursday">
+        <div class="wrapper">
+            <h2 class="output">Thursday</h2>
+            <ul>
+                {% for recipe in recipes_list %}
+                {% if 'Thursday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </label>
+
+    <input type="checkbox" id="Friday" name="selected_days" value="Friday">
+    <label for="Friday">
+        <div class="wrapper">
+            <h2 class="output">Friday</h2>
+            <ul>
+                {% for recipe in recipes_list %}
+                {% if 'Friday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </label>
+
+    <input type="checkbox" id="Saturday" name="selected_days" value="Saturday">
+    <label for="Saturday">
+        <div class="wrapper">
+            <h2 class="output">Saturday</h2>
+            <ul>
+                {% for recipe in recipes_list %}
+                {% if 'Saturday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </label>
+
+    <input type="checkbox" id="Sunday" name="selected_days" value="Sunday">
+    <label for="Sunday">
+        <div class="wrapper">
+            <h2 class="output">Sunday</h2>
+            <ul>
+                {% for recipe in recipes_list %}
+                {% if 'Sunday' in recipe. days %}
+                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </label>
+</div>
 </form>
-
-<br>
-<!-- Display areas for days -->
-<div class = "output"> 
-    <h2>Monday</h2>
-    <ul>
-        {% for recipe in recipes_list %}
-            {% if 'Monday' in recipe. days %}
-                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
-
-<div class = "output">
-     
-    <h2>Tuesday</h2>
-    <ul>
-        {% for recipe in recipes_list %}
-            {% if 'Tuesday' in recipe. days %}
-                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
-
-
-<div class = "output">
-    
-    <h2>Wednesday</h2>
-    <ul>
-        {% for recipe in recipes_list %}
-            {% if 'Wednesday' in recipe. days %}
-                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
-
-
-<div class = "output">
-    <h2>Thursday</h2>
-    <ul> 
-        {% for recipe in recipes_list %}
-            {% if 'Thursday' in recipe. days %}
-                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
-
-
-<div class = "output">
-    <h2>Friday</h2>
-    <ul> 
-        {% for recipe in recipes_list %}
-            {% if 'Friday' in recipe. days %}
-                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
-
-
-<div class = "output">
-    <h2>Saturday</h2>
-    <ul> 
-        {% for recipe in recipes_list %}
-            {% if 'Saturday' in recipe. days %}
-                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
-
-
-<div class = "output">
-    <h2>Sunday</h2>
-    <ul> 
-        {% for recipe in recipes_list %}
-            {% if 'Sunday' in recipe. days %}
-                <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-</div>
-
-
-</body>
-</html>
 {% endblock %}
-
-
-
-
