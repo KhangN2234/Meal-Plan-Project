@@ -1,36 +1,5 @@
 {% extends "layout.html" %}
 {% block content %}
-<style>
-    .day_box {
-        display: flex;
-        width: 80em;
-        margin-left: 40px;
-        margin-top: -5%;
-        gap: 2rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        input {
-            display: none;
-        }
-        .wrapper {
-            height: 25em;
-            width: 15em;
-        }
-
-    }
-    .wrapper .output {
-        border-bottom: 4px solid black;
-        position: relative;
-        background-color: transparent;
-        border-radius: 7px 7px 0 0;
-        padding-top: 10px;
-        bottom: 5px;
-        width: 7.15em;
-        right: 20px;
-        box-shadow: 0 0 7px;
-    }
-    
-</style>
 <form action="/calendar" method="POST">
 
 <h2>Calendar</h2>
