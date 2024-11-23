@@ -18,6 +18,18 @@
         }
 
     }
+    .wrapper .output {
+        border-bottom: 4px solid black;
+        position: relative;
+        background-color: transparent;
+        border-radius: 7px 7px 0 0;
+        padding-top: 10px;
+        bottom: 5px;
+        width: 7.15em;
+        right: 20px;
+        box-shadow: 0 0 7px;
+    }
+    
 </style>
 <form action="/calendar" method="POST">
 
@@ -33,12 +45,20 @@
     .day_box .wrapper:hover {
         border-color: #38a0cf;
         cursor: pointer;
+        .output {
+            border-bottom-color: #46c4ff;
+        }
+        box-shadow: 0 3px 7px;
+        transition: 0.2s;
+        transform: translateY(-3px)
     }
 
     .day_box input:checked + label .wrapper {
         border-color: #38a0cf;
-        box-shadow: 0 0 10px black;
+        box-shadow: 0 0 10px #38a0cf;
+        transform: translateY(-3px)
     }
+
     .if_calendar {
         text-align: center;
         font-size: 24px;
@@ -66,15 +86,17 @@
 {% endif %}
 
 {% for message in get_flashed_messages() %}
-    <script type="text/javascript">window.setTimeout("document.getElementById('successMessage').style.display='none';", 2000); </script>
+    <script type="text/javascript">window.setTimeout("document.getElementById('successMessage').style.display='none';", 4000); </script>
     <style>
         .successnotification {
             position: fixed;
-            top: 65px;
-            margin-left: 27%;
-            width: 18em;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30em;
             border-radius: 7px;
-            padding: 0 10px 0 10px
+            text-align: center;
+            padding: 0 0 0 0;
         }
     </style>
     <div id="successMessage" class="successnotification"><p>{{message}}</p></div>
@@ -84,7 +106,7 @@
     <input type="checkbox" id="Monday" name="selected_days" value="Monday">
     <label for="Monday">
         <div class="wrapper">
-            <h2>Monday</h2>
+            <h2 class="output">Monday</h2>
             <ul>
                 {% for recipe in recipes_list %}
                 {% if 'Monday' in recipe. days %}
@@ -98,7 +120,7 @@
     <input type="checkbox" id="Tuesday" name="selected_days" value="Tuesday">
     <label for="Tuesday">
         <div class="wrapper">
-            <h2>Tuesday</h2>
+            <h2 class="output">Tuesday</h2>
             <ul>
                 {% for recipe in recipes_list %}
                 {% if 'Tuesday' in recipe. days %}
@@ -112,7 +134,7 @@
     <input type="checkbox" id="Wednesday" name="selected_days" value="Wednesday">
     <label for="Wednesday">
         <div class="wrapper">
-            <h2>Wednesday</h2>
+            <h2 class="output">Wednesday</h2>
             <ul>
                 {% for recipe in recipes_list %}
                 {% if 'Wednesday' in recipe. days %}
@@ -126,7 +148,7 @@
     <input type="checkbox" id="Thursday" name="selected_days" value="Thursday">
     <label for="Thursday">
         <div class="wrapper">
-            <h2>Thursday</h2>
+            <h2 class="output">Thursday</h2>
             <ul>
                 {% for recipe in recipes_list %}
                 {% if 'Thursday' in recipe. days %}
@@ -140,7 +162,7 @@
     <input type="checkbox" id="Friday" name="selected_days" value="Friday">
     <label for="Friday">
         <div class="wrapper">
-            <h2>Friday</h2>
+            <h2 class="output">Friday</h2>
             <ul>
                 {% for recipe in recipes_list %}
                 {% if 'Friday' in recipe. days %}
@@ -154,7 +176,7 @@
     <input type="checkbox" id="Saturday" name="selected_days" value="Saturday">
     <label for="Saturday">
         <div class="wrapper">
-            <h2>Saturday</h2>
+            <h2 class="output">Saturday</h2>
             <ul>
                 {% for recipe in recipes_list %}
                 {% if 'Saturday' in recipe. days %}
@@ -168,7 +190,7 @@
     <input type="checkbox" id="Sunday" name="selected_days" value="Sunday">
     <label for="Sunday">
         <div class="wrapper">
-            <h2>Sunday</h2>
+            <h2 class="output">Sunday</h2>
             <ul>
                 {% for recipe in recipes_list %}
                 {% if 'Sunday' in recipe. days %}

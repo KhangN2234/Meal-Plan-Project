@@ -60,7 +60,7 @@ h3 {
 
 .output {
     border-style: solid;
-    border-radius: 2%;
+    border-radius: 7px;
     border-width: thin;
     border-color: rgb(146, 145, 145);
     padding: 1%;
@@ -233,8 +233,10 @@ p {
     .search_body {
         width: 500px;
         text-align: center;
-        position: relative;
-        margin-left: 33%;
+        position: fixed;
+        top: 2.3%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .search_body .input_box {
