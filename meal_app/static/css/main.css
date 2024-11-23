@@ -22,14 +22,14 @@ h2 {
     text-align: center;
     font-size: 40px;
     margin-bottom: 10%;
-    font-family:"Papyrus";
+    font-family:"Garamond";
 }
 
 h3 {
     color: grey;
     font-size: 20px;
     font-weight: lighter;
-    font-family:"Garamond", serif;
+    font-family:"Garamond";
 }
 
 .container {
@@ -60,7 +60,7 @@ h3 {
 
 .output {
     border-style: solid;
-    border-radius: 2%;
+    border-radius: 7px;
     border-width: thin;
     border-color: rgb(146, 145, 145);
     padding: 1%;
@@ -233,8 +233,10 @@ p {
     .search_body {
         width: 500px;
         text-align: center;
-        position: relative;
-        margin-left: 33%;
+        position: fixed;
+        left: 38%;
+        transform: translate(-50%, -50%);
+        transform: translate3d( 0, 0, 0);
     }
 
     .search_body .input_box {
@@ -255,13 +257,9 @@ p {
     /* Title of the detail tab */
     .search_body summary {
         list-style: none;
-        padding: 12px;
-        font-weight: bold;
         cursor: pointer;
-        height: 25px;
-        width: 0px;
+        height: 49px;
         color: #30353b;
-        border-radius: 7px;
     }
 
     /* Filter icon */
@@ -283,7 +281,6 @@ p {
     .search_body details {
         position: absolute;
         left: 1.8em;
-        border-radius: 7px;
         text-align: left;
         top: 7px;
     }
@@ -299,23 +296,18 @@ p {
     }
 
     .search_body .submit_btn {
-        list-style: none; 
-        padding: 10px;
-        font-weight: bold;
-        cursor: pointer;
-        height: 46px;
-        width: 45px;
+        height: 47px;
+        width: 47px;
         color: #30353b;
-        border-radius: 7px;
         position: absolute;
         border-left: 2px solid black;
-        left: 16.4em;
+        left: 16.35em;
         border-radius: 0px 7px 7px 0px;
-        text-align: left;
-        top: 6px;
+        top: 5px;
         box-shadow: none;
     }
 
+    /* Magnifying glass icon */
     .search_body .submit_btn i {
         top: 11px;
         font: bold;
@@ -662,4 +654,35 @@ p {
         background-color: #4caf50;
         max-width: 100%;
         transition: width 0.3s ease-in-out;
+    }
+
+
+/* Calendar Style */
+    .day_box {
+        display: flex;
+        width: 80em;
+        margin-left: 40px;
+        margin-top: -5%;
+        gap: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        input {
+            display: none;
+        }
+        .wrapper {
+            height: 25em;
+            width: 15em;
+        }
+
+    }
+    .day_box .wrapper .output {
+        border-bottom: 4px solid black;
+        position: relative;
+        background-color: transparent;
+        border-radius: 7px 7px 0 0;
+        padding-top: 10px;
+        bottom: 5px;
+        width: 7.15em;
+        right: 20px;
+        box-shadow: 0 0 7px;
     }
