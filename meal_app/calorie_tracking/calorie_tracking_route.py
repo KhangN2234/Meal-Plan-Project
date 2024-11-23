@@ -78,10 +78,23 @@ def calorie_tracking():
 
     # Calculate today's total calories
     today_date = datetime.utcnow().strftime('%Y-%m-%d')
+    
     total_calories_today = entries.get(today_date, {}).get('total_calories', 0)
     percentage = min((total_calories_today / daily_calorie_goal) * 100, 100) if daily_calorie_goal > 0 else 0
 
-    return render_template('calorie_tracking.html', entries=entries, daily_calorie_goal=daily_calorie_goal, total_calories_today=total_calories_today, percentage=percentage)
+    calorie_difference = daily_calorie_goal - total_calories_today
+    if calorie_difference > 300:
+        comparison_message = f"You are {calorie_difference} calories under your daily goal.\nConsume a bit more calories to get within your goal!"
+    elif calorie_difference > 0:
+        comparison_message = f"You are {calorie_difference} calories under your daily goal.\nYou are on track for your goal!"
+    elif calorie_difference < 300:
+        comparison_message = f"You are {abs(calorie_difference)} calories over your daily goal.\nTry consuming less calorie dense meals to stay closer to your goal!"
+    elif calorie_difference < 0:
+        comparison_message = f"You are {abs(calorie_difference)} calories over your daily goal. \nYou reached your goal today!"
+    else:
+        comparison_message = "You have met your daily calorie goal exactly!"
+
+    return render_template('calorie_tracking.html', entries=entries, daily_calorie_goal=daily_calorie_goal, total_calories_today=total_calories_today, percentage=percentage, comparison_message=comparison_message)
 @app.route('/delete_entry', methods=['POST'])
 def delete_entry():
     user_email = session.get('user')

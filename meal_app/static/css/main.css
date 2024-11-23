@@ -654,6 +654,7 @@ p {
         border-radius: 5px;
         overflow: hidden;
         margin: 10px 0;
+        border: 1px solid black;
     }
     
     .progress-bar {

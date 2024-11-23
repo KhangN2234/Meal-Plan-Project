@@ -10,9 +10,11 @@
     <div class="progress-bar-container">
         <div class="progress-bar" style="width: {{ percentage or 0 }}%;"></div>
     </div>
+    <p style="text-align: center; font-weight: bold;">{{ comparison_message }}</p>
 {% else %}
     <p>No daily goal set. Please set one above!</p>
 {% endif %}
+
     <form method="POST" action="{{ url_for('daily_calorie_goal') }}">
         <div class="input">
             <label for="calorie_goal">Daily Calorie Goal:</label>
