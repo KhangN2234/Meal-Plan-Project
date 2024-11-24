@@ -52,7 +52,7 @@ def calendar():
             recipe_label = request.form.get('recipe_label')
             recipe_url = request.form.get('recipe_url')
             selected_days = request.form.getlist('selected_days')
-            recipe_ingredients = request.form.get('recipe_ingredients')
+            recipe_ingredients = request.form.getlist('ingredients')
             
             if recipe_label != 'None':
                 if not selected_days:
@@ -66,6 +66,8 @@ def calendar():
                     }
                     print(recipe_data)
                     # Save to firebase
+                    recipe_ingredients = ['tomato','basil','bread']
+                    print('ingredient list: ', recipe_ingredients)
                     recipes_collection_ref.document(recipe_label).set(recipe_data)
                     flash(f"Succesfully added Recipe: {recipe_label}")
 
