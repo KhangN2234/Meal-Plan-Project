@@ -95,6 +95,22 @@ p {
     transition: ease-in-out 200ms;
 }
 
+.notification {
+    border-color: rgb(146, 145, 145);
+    background-color: rgb(111, 255, 166);
+    box-shadow: 0 0 10px;
+    font-size: medium;
+    position: fixed;
+    top: 9%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30em;
+    border-radius: 7px;
+    text-align: center;
+    padding: 0 0 0 0;
+    z-index: 1000;
+}
+
 
 /* login and signup style */
     .input_box {
@@ -492,22 +508,72 @@ p {
 
 
 /* Cart style */
-    .notification {
-        border-color: rgb(146, 145, 145);
-        background-color: rgb(111, 255, 166);
-        box-shadow: 0 0 10px;
-        font-size: medium;
-        position: fixed;
-        top: 9%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 30em;
-        border-radius: 7px;
-        text-align: center;
-        padding: 0 0 0 0;
-        z-index: 1000;
+    .cart_body {
+        margin-top: 10%;
+    }
+    .cart_body .wrapper {
+        width: 43em;
+        .Submit{
+            position: absolute;
+            width: 20em;
+            left: 28%;
+            height: 50px;
+            font-size: 17px;
+        }
+    }
+    .cart_body details summary{
+        font-family:"Garamond", serif;
+        padding-bottom: 5px;
+        font-weight: 500;
+        font-size: 18px;
+        list-style: none;
+    }
+    .cart_body details:hover {
+        color: rgb(77, 77, 77);
+        cursor: pointer;
     }
 
+    /* Download symbol */
+    .cart_body form i {
+        color: rgb(236, 236, 236);
+        position: absolute;
+        z-index: 2;
+        font-size: 20px;
+        bottom: 3.2em;
+        left: 14.5em;
+    }
+    .ingredient {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        text-align: left;
+        margin-top: -50px;
+        margin-left: 19px;
+        padding: 0 30px 3em 30px;
+        border: 2px solid black;
+        column-gap: 3rem;
+    }
+    .ingredient .ingre_list{
+        list-style: none;
+        margin-bottom: 0;
+        .sub_list{
+            margin: -20px 0 0 -15px;
+            list-style: '-';
+            font-size: 20px;
+            color: grey;
+        }
+    }
+    .sub_list li {
+        margin-bottom: -20px;
+    }
+    .boughtCheck {
+        position: absolute;
+        transform: translate(-30px, -2px);
+        zoom: 1.5;
+    }
+    .line {
+        border: 2px solid black;
+    }
+    
 
 /* Calories tracker style */
     .tracker_bar{
