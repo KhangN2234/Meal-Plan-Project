@@ -492,26 +492,20 @@ p {
 
 
 /* Cart style */
-    .errornotification {
-        border-style: solid;
-        border-radius: 2%;
-        border-width: thin;
-        border-color: rgb(146, 145, 145);
-        background-color: rgb(255, 94, 94);
-        box-shadow: 0 0 10px;
-        width: 100%;
-        font-size: medium;
-    }
-
-    .successnotification {
-        border-style: solid;
-        border-radius: 2%;
-        border-width: thin;
+    .notification {
         border-color: rgb(146, 145, 145);
         background-color: rgb(111, 255, 166);
         box-shadow: 0 0 10px;
-        width: 100%;
         font-size: medium;
+        position: fixed;
+        top: 9%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 30em;
+        border-radius: 7px;
+        text-align: center;
+        padding: 0 0 0 0;
+        z-index: 1000;
     }
 
 
