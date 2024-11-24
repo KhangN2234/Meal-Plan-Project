@@ -42,6 +42,7 @@
                 <form action="/calendar" method="POST">
                     <input type="hidden" name="recipe_label" value="{{ recipe.label }}">
                     <input type="hidden" name="recipe_url" value="{{ recipe.url }}">
+                    <input type="hidden" name="recipe_ingredients" value="{{ recipe.ingredients}}"
                     <button type="submit" class="small_btn">Add to Calendar</button>
                 </form>
                 <form action="/cart" method="POST">
