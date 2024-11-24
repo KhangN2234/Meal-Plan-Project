@@ -4,23 +4,55 @@
 
 </head>
 <style>
-    .ingredient {
-        text-align: left;
-        margin-bottom: 10px;
-        input {
-            position: absolute;
-            transform: translateY(18px);
+    .cart_body {
+        margin-top: 10%;
+    }
+    .cart_body details {
+        summary {
+            font-family:"Garamond", serif;
+            padding-bottom: 5px;
+            font-weight: 500;
+            font-size: 18px;
+            list-style: none;
         }
     }
-    .ingredient ul{
+    .ingredient {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        text-align: left;
+        margin-top: -50px;
+        margin-left: 19px;
+        padding: 0 30px 3em 30px;
+        border: 2px solid black;
+        column-gap: 3rem;
+    }
+    .ingredient .ingre_list{
         list-style: none;
-        display: flex;
+        margin-bottom: 0;
         .sub_list{
-            list-style: none;
-            display: block;
+            margin: -20px 0 0 -15px;
+            list-style: '-';
+            font-size: 20px;
+            color: grey;
         }
+    }
+    .sub_list li {
+        margin-bottom: -20px;
+    }
+    .cart_body .wrapper {
+        width: 43em;
+        .Submit{
+            position: absolute;
+            width: 20em;
+            left: 33%;
+        }
+    }
+    .boughtCheck {
+        position: absolute;
+        transform: translate(-30px, 2px);
     }
 </style>
+<div class="cart_body">
     <div class="wrapper">
         {% if errorMessage %}
             <div class="errornotification">{{ errorMessage }}</div>
@@ -30,26 +62,33 @@
         {% endif %}
         <h2>Shopping Cart<h2>
 
-        {% for precessed_item in result %}
+        
         <div class="ingredient">
-            <input type="checkbox" class="boughtCheck">
-            <ul>
+            {% for precessed_item in result %}
+            <ul class="ingre_list">
+                <input type="checkbox" class="boughtCheck">
+                <details>
+                    <summary>
+                        {{ precessed_item.quantity }} {{ precessed_item.measure }} {{ precessed_item.food }}
+                    </summary>
                 <li>
-                    <p>{{ precessed_item.quantity }} {{ precessed_item.measure }} {{ precessed_item.food }}</p>
                     <ul class="sub_list">
                         {% for recipe in precessed_item.recipe %}
-                            <li><p style="color: grey;">- {{ recipe }}</p></li>
+                            <li><p style="color: grey;"> {{ recipe }}</p></li>
                         {% endfor %}
-                    </ul>
+                    </ul>   
                 </li>
+                </details>
             </ul>
+            {% endfor %}
         </div>
-        {% endfor %}
+       
         <br>
         <form action="{{ url_for('download_pdf') }}" method="POST">
             <input type="submit" class="Submit" value="Save as PDF">
         </form>            
     </div>
+</div>
 
 
 
