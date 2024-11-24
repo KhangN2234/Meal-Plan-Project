@@ -23,11 +23,13 @@
         </div>
 
         <div class="profile-info">
-            <label>
-                <input type="checkbox" name="opt_in_out" id="optInOutCheckbox">
-                Opt-in to receive updates
-            </label>
             <form method="POST">
+                <label>
+                    <input type="checkbox" name="opt_in_out" id="optInOutCheckbox"
+                    {% if user_data.opt_in_out %} checked {%endif%}>
+                    Opt-in to receive updates
+                </label>
+            
                 <label>Username:</label>
                 <input type="text" name="username" value="{{ user_data.username }}" required><br><br>
         
