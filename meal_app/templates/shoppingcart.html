@@ -3,9 +3,25 @@
 <head>
 
 </head>
-
-<body class="cartbody">
-    <div class="cartwindow">
+<style>
+    .ingredient {
+        text-align: left;
+        margin-bottom: 10px;
+        input {
+            position: absolute;
+            transform: translateY(18px);
+        }
+    }
+    .ingredient ul{
+        list-style: none;
+        display: flex;
+        .sub_list{
+            list-style: none;
+            display: block;
+        }
+    }
+</style>
+    <div class="wrapper">
         {% if errorMessage %}
             <div class="errornotification">{{ errorMessage }}</div>
         {% endif %}
@@ -16,13 +32,17 @@
 
         {% for precessed_item in result %}
         <div class="ingredient">
-            <table>
-                <td><input type="checkbox" class="boughtCheck"></td>
-                <td><p class="quantity">{{ precessed_item.quantity }}</p></td>
-                <td><p class="measure">{{ precessed_item.measure }}</p></td>
-                <td><p class="ingredientName">{{ precessed_item.food }}</p></td>
-                <td><p class="recipesUsing">{{ precessed_item.recipe }}</p></td>
-            </table>
+            <input type="checkbox" class="boughtCheck">
+            <ul>
+                <li>
+                    <p>{{ precessed_item.quantity }} {{ precessed_item.measure }} {{ precessed_item.food }}</p>
+                    <ul class="sub_list">
+                        {% for recipe in precessed_item.recipe %}
+                            <li><p style="color: grey;">- {{ recipe }}</p></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
         </div>
         {% endfor %}
         <br>
@@ -30,7 +50,6 @@
             <input type="submit" class="Submit" value="Save as PDF">
         </form>            
     </div>
-</body>
 
 
 

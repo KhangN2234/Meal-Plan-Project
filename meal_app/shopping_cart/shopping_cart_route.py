@@ -102,7 +102,7 @@ def renderCart(successMessage, errorMessage):
                 'quantity': item['quantity'],
                 'measure': item['measure'],
                 'food': item['food'],
-                'recipe': ', '.join(item['recipes'])  # Combine recipe names
+                'recipe': item['recipes']  # Combine recipe names
             }
             for item in ingredients_dict.values()
         ]
