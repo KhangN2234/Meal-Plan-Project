@@ -124,10 +124,12 @@ def profile():
         bio = request.form.get('bio', user_data.get('bio'))
         password = request.form.get('password')
         newPost = request.form.get('newPost')
+        opt_in_out = 'opt_in_out' in request.form
 
         updated_data = {
         'username': username,
-        'bio': bio
+        'bio': bio,
+        'opt_in_out': opt_in_out
     }
 
         if password:
