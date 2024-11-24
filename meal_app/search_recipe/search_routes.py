@@ -20,7 +20,7 @@ recipe_search_api_key = os.getenv('RECIPE_SEARCH_API_KEY')
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == 'GET': 
-        return render_template('search.html')
+        return render_template('search.html', success=False)
     else:
         searchbar = request.form['searchbar']
         mealtype = request.form['mealtype']
@@ -37,16 +37,45 @@ def search():
         if(len(corrected_words) == 0):
             combinedcorrected = searchbar
 
-        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={combinedcorrected}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&mealType={mealtype}&dishType={dishtype}&ingr={maxIngredients}&cuisineType={cuisineType}&health={healthType}&random=false&field=uri&field=label&field=calories&field=yield&field=ingredientLines&field=source&field=images&field=url&field=totalNutrients"
+        api_url = f"https://api.edamam.com/api/recipes/v2?type=any&q={searchbar}&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&imageSize=SMALL"
+        
+        if (mealtype != ""): 
+            api_url += f"&mealType={mealtype}"
+        if (dishtype != ""):
+            api_url += f"&dishType={dishtype}"
+        if (maxIngredients != ""):
+            api_url += f"&ingr={maxIngredients}"
+        if (cuisineType != ""):
+            api_url += f"&cuisineType={cuisineType}"    
+        if (healthType != ""):
+            api_url += f"&health={healthType}"
+
 
         response = requests.get(api_url)
 
         data = response.json()
-
+        
         list_of_recipes = data['hits']
 
-        display_data = [{'label': recipe['recipe']['label'], 'uri': recipe['recipe']['uri'], 'calories': round(recipe['recipe']['calories']), 'servings': round(recipe['recipe']['yield']), 'cal_per_serv': round(recipe['recipe']['calories']/recipe['recipe']['yield']), 'ingredients': recipe['recipe']['ingredientLines'], 'url': recipe['recipe']['url'], 'source': recipe['recipe']['source'], 'protein': round(recipe['recipe']['totalNutrients']['PROCNT']['quantity']), 'proteinunit': recipe['recipe']['totalNutrients']['PROCNT']['unit'], 'protein_per_serv': round(recipe['recipe']['totalNutrients']['PROCNT']['quantity']/recipe['recipe']['yield'])} for recipe in list_of_recipes]
+        display_data = [{'label': recipe['recipe']['label'], 
+                         'uri': recipe['recipe']['uri'], 
+                         'images': recipe['recipe']['images']['SMALL']['url'],
+                         'calories': round(recipe['recipe']['calories']), 
+                         'servings': round(recipe['recipe']['yield']), 
+                         'cal_per_serv': round(recipe['recipe']['calories']/recipe['recipe']['yield']), 
+                         'ingredients': recipe['recipe']['ingredientLines'], 
+                         'url': recipe['recipe']['url'], 
+                         'source': recipe['recipe']['source'], 
+                         'protein': round(recipe['recipe']['totalNutrients']['PROCNT']['quantity']), 
+                         'proteinunit': recipe['recipe']['totalNutrients']['PROCNT']['unit'], 
+                         'protein_per_serv': round(recipe['recipe']['totalNutrients']['PROCNT']['quantity']/recipe['recipe']['yield'])} for recipe in list_of_recipes]
 
         current_date = datetime.now().strftime("%Y-%m-%d")
 
-        return render_template('search.html', searchbar=combinedcorrected,recipes=display_data, mealtype=mealtype, success=True, current_date=current_date)
+        return render_template('search.html', 
+                               searchbar=searchbar,
+                               length=len(list_of_recipes),
+                               recipes=display_data, 
+                               mealtype=mealtype, 
+                               success=True, 
+                               current_date=current_date)
