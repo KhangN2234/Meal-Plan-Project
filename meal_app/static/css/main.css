@@ -709,6 +709,38 @@ p {
         box-shadow: 0 0 7px;
     }
 
+.profile .input{
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 20px;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile .post {
+    width: 100%;
+}
+
+.post{
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 10px;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-wrap: break-word;
+}
 
 /* Recipe Scaling UI */ 
     .scale_recipe {

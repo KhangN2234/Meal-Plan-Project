@@ -6,6 +6,7 @@
 <div class="profile">
     <div class="input">
         <h2>My Profile</h2>
+        <p><i><a href="/user/{{user_data.email}}">View Your Public Profile</a></i></p>
 
         {% for message in get_flashed_messages() %}
             <p style="color: green;">{{ message }}</p>
@@ -44,15 +45,6 @@
                 </form>
             </div>
     </div>
-    <p>Your posts:</p>
-    {% for post in userPosts %}
-        <div class="post">
-            <p class="postAuthor" class="postTop"><b>@{{post.author}}</b></p>
-            <p class="postEmail"><i>({{post.email}})</i></p>
-            <p class="postTimestamp" class="postTop">{{post.timestamp}}</p>
-            <p class="postContent">{{post.content}}</p>
-        </div>
-    {% endfor %}
 
     <style>
         /* Very basic style circle (WIP) */
