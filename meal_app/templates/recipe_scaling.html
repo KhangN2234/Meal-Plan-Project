@@ -1,55 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
+{% block content %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meal Prep App - Your Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #202020;
-        }
-
-        header {
-            background-color: #202020;
-            color: #fff;
-            padding: 1em;
-            text-align: center;
-            border-bottom: 4px solid rgb(255, 36, 36);
-        }
-
-        .container {
-            max-width: 960px;
-            margin: 2em auto;
-            padding: 1em;
-            background-color: #6d6d6d;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .back-button {
-            position: absolute; /* Fixed to the top-left corner */
-            top: 20px;
-            left: 20px;
-            background-color: #f44336; /* Red background */
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-            text-decoration: none; /* Removes underline if using <a> tag */
-        }
-
-        .back-button:hover {
-            background-color: #d32f2f; /* Darker red on hover */
-        }
-
-        h1 {
-            margin-top: 0;
-        }
         h2 {
             font-size: 12pt;
         }
@@ -107,15 +63,13 @@
         }
     </style>
 </head>
-<body>
 
 <header>
-    <button class="back-button" onclick="goback()"> Back to Recipe</button>
-    <h1>Recipe Scaling</h1>
-    <h2>What ingredients are you short on?</h2>
+   
 </header>
 
-<div class="container">
+<h2>What ingredients are you short on?</h2>
+<div class="wrapper">
     <h3>Check the box and enter the amount you have</h3>
     
     <form action="{{ url_for('recipe_scaling') }}" method="POST">
@@ -133,6 +87,5 @@
         <input type="submit" value="Submit">
     </form>
 </div>
-
-</body>
 </html>
+{% endblock %}
