@@ -1,26 +1,44 @@
-{% extends "layout.html" %}
-{% block content %}
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Sign Up</title>
-</head>
-<body>
-    <div class="input">
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <style>
+        body {
+            background: url('static/img/burgerLogin2.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            height: 70vh;
+        }
+    </style>
+    
+    
+    <div class="wrapper">
         <h2>Create an Account</h2>
-        <form method="POST">
-            <label for="username">Username:</label>
-            <input type="text" name="username" required><br><br>
-            <label for="password">Password:</label>
-            <input type="password" name="password" required><br><br>
-            <input type="submit" value="Sign Up">
-        </div>
-    </form>
-</body>
-</html>
+        <form method="POST" id="signupForm">
+            <h3> Register for free to save your recipes.</h3>
+            
+            <div class = "input_box">
+                <p> Email: </p>
+                <i class='bx bxs-envelope'></i>
+                <input type="email" name="email" placeholder = "Email" required>
+            </div>
+            
+            <div class = "input_box">
+                <p> Password: </p>
+                <i class='bx bxs-lock-alt'></i>
+                <input type="password" name="password" placeholder="Password" required>
+            </div> <br>
+            
+            <input type="submit" class="submit_btn" value="Create">
 
-{%if success%}
-    <p> Account created successfully </p>
-{% elif success == false%}
-    <p> Account already exist </p>
-{% endif %}
-{% endblock %}
+            <div class = "word_link">
+                <p> Already have an account? <a href="/login"> Login </a></p>
+            </div>
+        </form>
+    </div>
+</html>
