@@ -26,7 +26,7 @@ h2 {
 }
 
 h3 {
-    color: grey;
+    color: rgb(54, 54, 54);
     font-size: 20px;
     font-weight: lighter;
     font-family:"Garamond";
@@ -742,65 +742,168 @@ p {
     overflow-wrap: break-word;
 }
 
-.postAuthor {
-    font-family: Arial, Helvetica, sans-serif;
-    display: inline;
-}
+/* Recipe Scaling UI */ 
+    .scale_recipe {
+        h3 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; 
+        }
 
-.postEmail{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: smaller;
-    display: inline;
-}
+        label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+        }
 
-.postTimestamp{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: smaller;
-}
+        label input[type="checkbox"] {
+            flex: 0;
+            margin-right: 10px; 
+        }
 
-.postContent{
-    font-family: Arial, Helvetica, sans-serif;
-}
+        label .title {
+            flex: 1; 
+            text-align: left;
+            width: 0;
+            margin-right: 4%;
+            border-bottom: 2px solid black;
+        }
 
-.social{
-    margin-top:25px;
-}
+        label .input-group {
+            display: flex;
+            align-items: center;
+        }
 
-.social .post{
-    width:25%;
-    overflow-wrap: break-word;
-    padding: 10px;
-    background-color: rgb(243, 243, 243);
-}
+        .input-group {
+            text-align: right;
+        }
 
-.post textarea {
-    width: 98%;
-    height: 100px;
-}
+        .input-group input {
+            display: none;
+            width: 60px;
+        }
+
+        input:checked ~ .input-group input{
+            display: block;
+            position: absolute;
+        }
+
+        input[type="submit"] {
+            margin-top: 1em;
+            padding: 0.75em;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        input[type="checkbox"] {
+            zoom: 1.5;
+        }
+    }    
+
+    .scaled_result {
+        align-content: center;
+        .wrapper {
+            width: 30em;
+            margin-left: 15%;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            align-items: center;
+        }
+        ul li {
+            padding: 10px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #000000;
+        }
+    }
+
+
+/* Social tab */
+    .post{
+        border-style: solid;
+        border-radius: 2%;
+        border-width: thin;
+        border-color: rgb(146, 145, 145);
+        padding: 10px;
+        margin: 5px;
+        background-color: aliceblue;
+        box-shadow: 0 0 10px;
+        width: 25%;
+        margin-left: auto;
+        margin-right: auto;
+        overflow-wrap: break-word;
+    }
+
+    .postAuthor {
+        font-family: Arial, Helvetica, sans-serif;
+        display: inline;
+    }
+
+    .postEmail{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        display: inline;
+    }
+
+    .postTimestamp{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+    }
+
+    .postContent{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .social{
+        margin-top:25px;
+    }
+
+    .social .post{
+        width:25%;
+        overflow-wrap: break-word;
+        padding: 10px;
+        background-color: rgb(243, 243, 243);
+    }
+
+    .post textarea {
+        width: 98%;
+        height: 100px;
+    }
 
 
 /* Contact Page Style*/
-.contact-page {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    text-align: center;
-}
+    .contact-page {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        text-align: center;
+    }
 
-.contact-page button {
-    background: #1a73e8; 
-    color: #fff; 
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease; 
-}
+    .contact-page button {
+        background: #1a73e8; 
+        color: #fff; 
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease; 
+    }
 
-.contact-page button:hover {
-    background: #0f5bbd; 
-}
+    .contact-page button:hover {
+        background: #0f5bbd; 
+    }

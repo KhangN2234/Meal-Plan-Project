@@ -6,6 +6,7 @@ import bcrypt
 import requests
 import os
 import re
+import random
 from .scale_recipe.scale_recipe_routes import scaled_recipe_templates
 from .scale_recipe.recipe_scaling_routes import recipe_scaling_templates
 from .search_recipe.search_routes import search_templates
@@ -18,6 +19,8 @@ from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_template
 from .social.social import social_template
 from .users.userpage import user_template
 from datetime import datetime
+from meal_app.meal_api import fetch_meals_by_category
+
 
 
 @app.route('/')
@@ -211,6 +214,22 @@ def contact():
             return redirect('/contact')
     
     return render_template('contact.html')
+
+@app.route('/popular-meals')
+def popular_meals():
+    categories = ["Beef", "Chicken", "Dessert", "Seafood", "Vegetarian"]
+    popular_meals = []
+
+    for category in categories:
+        meals = fetch_meals_by_category(category)
+        if meals:
+            random_meal = random.choice(meals)  # Select a random meal
+            popular_meals.append({
+                "category": category,
+                "meal": random_meal
+            })
+
+    return render_template('popular_meals.html', popular_meals=popular_meals)
 
 app.register_blueprint(search_templates)
 app.register_blueprint(scaled_recipe_templates)
