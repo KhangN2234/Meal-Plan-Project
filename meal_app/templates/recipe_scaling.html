@@ -20,7 +20,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
+            width: 90%;
         }
 
         label input[type="checkbox"] {
@@ -33,6 +33,7 @@
             text-align: left;
             width: 0;
             margin-right: 4%;
+            border-bottom: 2px solid black;
         }
 
         label .input-group {
@@ -50,7 +51,8 @@
         }
 
         input:checked ~ .input-group input{
-            display:block;
+            display: block;
+            position: absolute;
         }
 
         input[type="submit"] {
