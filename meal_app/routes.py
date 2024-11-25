@@ -128,11 +128,24 @@ def profile():
         newPost = request.form.get('newPost')
         opt_in_out = 'opt_in_out' in request.form
 
+        if request.form.get('bio') != user_data.get('bio'):
+
+            username = doc.to_dict().get('username')
+            if username == "":
+                username = "UnknownUsername"
+            post_entry = {
+                'author': username,
+                'email': email,
+                'content': "Updated bio to: \" " + request.form.get('bio') + " \"",
+                'timestamp': datetime.utcnow(),
+            }
+            db.collection('posts').add(post_entry)
+
         updated_data = {
-        'username': username,
-        'bio': bio,
-        'opt_in_out': opt_in_out
-    }
+            'username': username,
+            'bio': bio,
+            'opt_in_out': opt_in_out
+        }
 
         if password:
             # Hash the new password
