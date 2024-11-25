@@ -6,15 +6,10 @@
     <title>Meal Prep App - Your Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <style>
-        h2 {
-            font-size: 12pt;
-        }
-
+    .scale {
         h3 {
-            font-size: 10pt;
             text-align: center;
         }
-
         form {
             display: flex;
             flex-direction: column;
@@ -35,7 +30,9 @@
 
         label .title {
             flex: 1; 
-            text-align: center;
+            text-align: left;
+            width: 0;
+            margin-right: 4%;
         }
 
         label .input-group {
@@ -43,9 +40,17 @@
             align-items: center;
         }
 
-        label input[type="number"] {
-            width: 60px;
+        .input-group {
             text-align: right;
+        }
+
+        .input-group input {
+            display: none;
+            width: 60px;
+        }
+
+        input:checked ~ .input-group input{
+            display:block;
         }
 
         input[type="submit"] {
@@ -61,6 +66,11 @@
         input[type="submit"]:hover {
             background-color: #218838;
         }
+        input[type="checkbox"] {
+            zoom: 1.5;
+        }
+    }    
+        
     </style>
 </head>
 
@@ -68,24 +78,27 @@
    
 </header>
 
-<h2>What ingredients are you short on?</h2>
-<div class="wrapper">
-    <h3>Check the box and enter the amount you have</h3>
-    
-    <form action="{{ url_for('recipe_scaling') }}" method="POST">
-        {% for ingredient in ingredients %}
-        <label>
-            <input type="checkbox" name="ingredient_selected_{{ loop.index }}" class="checkbox">
-            <span class="title">{{ ingredient.amount_needed }} {{ ingredient.ingredient }}</span>
-            <input type="hidden" name="ingredient" value="{{ ingredient.ingredient }}">
-            <input type="hidden" name="amount_needed_{{ loop.index }}" value="{{ ingredient.amount_needed }}">
-            <div class="input-group">
-                <input type="number" name="amount_on_hand_{{ loop.index }}" value="{{ ingredient.amount_on_hand }}" placeholder="0">
-            </div>
-        </label>
-        {% endfor %}
-        <input type="submit" value="Submit">
-    </form>
+
+<div class="scale">
+    <h2>What ingredients are you short on?</h2>
+    <div class="wrapper">
+        <h3>Check the box and enter the amount you have</h3>
+        
+        <form action="{{ url_for('recipe_scaling') }}" method="POST">
+            {% for ingredient in ingredients %}
+            <label>
+                <input type="checkbox" name="ingredient_selected_{{ loop.index }}" class="checkbox">
+                <span class="title">{{ ingredient.amount_needed }} {{ ingredient.ingredient }}</span>
+                <input type="hidden" name="ingredient" value="{{ ingredient.ingredient }}">
+                <input type="hidden" name="amount_needed_{{ loop.index }}" value="{{ ingredient.amount_needed }}">
+                <div class="input-group">
+                    <input type="number" name="amount_on_hand_{{ loop.index }}" value="{{ ingredient.amount_on_hand }}" placeholder="0">
+                </div>
+            </label>
+            {% endfor %}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </div>
 </html>
 {% endblock %}
