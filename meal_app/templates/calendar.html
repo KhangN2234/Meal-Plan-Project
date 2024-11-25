@@ -56,19 +56,7 @@
 
 {% for message in get_flashed_messages() %}
     <script type="text/javascript">window.setTimeout("document.getElementById('successMessage').style.display='none';", 4000); </script>
-    <style>
-        .successnotification {
-            position: fixed;
-            top: 10%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 30em;
-            border-radius: 7px;
-            text-align: center;
-            padding: 0 0 0 0;
-        }
-    </style>
-    <div id="successMessage" class="successnotification"><p>{{message}}</p></div>
+    <div id="successMessage" class="notification"><p>{{message}}</p></div>
 {% endfor %}
 
 <div class="day_box">
