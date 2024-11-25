@@ -1,141 +1,82 @@
 {% extends "layout.html" %}
 {% block content %}
 <head>
-
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-    <body class="searchbody">
-    <form class="input" action="/search" method="POST">
-        <h2>Search</h2>
-        <h3>Find a meal plan that works for you</h3>
-        <p class="label"><i>I'm looking for....</i></p>
-        <input type="text" class="searchbar" name='searchbar' id="searchbar" placeholder="Chicken Parmesan..."required></input> 
-        <select label="Category" name='mealtype' class="mealtype" id="mealtype">
-            <option>Breakfast</option>
-            <option>Lunch</option>
-            <option>Dinner</option>
-        </select>
-        <details>
-            <summary>Additional Filters</summary>
-            <label for="servings">Max Ingredients: </label>
-            <p id="rangeValue" class="rangeValue">20</p>
-            <input type="range" id="maxingredients" name="maxIngredients" min="1" max="20" step="1" value="20" oninput="rangeValue.innerText = this.value" list="markers">
-            <datalist id="markers">
-                <option value="0"></option>
-                <option value="5"></option>
-                <option value="10"></option>
-                <option value="15"></option>
-                <option value="20"></option>
-            </datalist>
-            <br>
-            <label for="cuisinetype">Cuisine Type: </label>
-            <select label="cuisinetype" name='cuisinetype' class="cuisinetype" id="cuisinetype">
-                <option value="American&cuisineType=Asian&cuisineType=British&cuisineType=Caribbean&cuisineType=Central%20Europe&cuisineType=Chinese&cuisineType=Eastern%20Europe&cuisineType=French&cuisineType=Indian&cuisineType=Italian&cuisineType=Japanese&cuisineType=Kosher&cuisineType=Mediterranean&cuisineType=Mexican&cuisineType=Middle%20Eastern&cuisineType=Nordic&cuisineType=South%20American&cuisineType=South%20East%20Asian">Any</option>
-                <option>Amercian</option>
-                <option>Asian</option>
-                <option>British</option>
-                <option>Carribbean</option>
-                <option>Central Europe</option>
-                <option>Chinese</option>
-                <option>Eastern Europe</option>
-                <option>French</option>
-                <option>Italian</option>
-                <option>Japanese</option>
-                <option>Kosher</option>
-                <option>Mediterranean</option>
-                <option>Mexican</option>
-                <option>Middle Eastern</option>
-                <option>South East Asian</option>
-            </select>
-            <br>
-            <label for="dishtype">Dish Type: </label>
-            <select label="dishtype" name='dishtype' class="dishtype" id="dishtype">
-                <option value="Biscuits%20and%20cookies&dishType=Bread&dishType=Cereals&dishType=Condiments%20and%20sauces&dishType=Desserts&dishType=Drinks&dishType=Main%20course&dishType=Pancake&dishType=Preps&dishType=Preserve&dishType=Salad&dishType=Sandwiches&dishType=Side%20dish&dishType=Soup&dishType=Starter&dishType=Sweets">Any</option>
-                <option>Biscuits and cookies</option>
-                <option>Bread</option>
-                <option>Cereal</option>
-                <option>Condiments and sauces</option>
-                <option>Drinks</option>
-                <option>Main Course</option>
-                <option>Pancake</option>
-                <option>Preps</option>
-                <option>Preserve</option>
-                <option>Salad</option>
-                <option>Sandwiches</option>
-                <option>Side Dish</option>
-                <option>Soup</option>
-                <option>Starter</option>
-                <option>Sweets</option>
-            </select> 
-            <br>
-            <label for="healthType">Diet: </label>
-            <select label="healthType" name='healthType' class="healthType" id="healthType">
-                <option value="vegan&health=vegetarian&health=paleo&health=kosher&health=peanut-free&health=pork-free&health=shellfish-free&health=gluten-free">Any</option>
-                <option value = "vegan">Vegan</option>
-                <option value = "vegetarian">Vegetarian</option>
-                <option value = "paleo">Paleo</option>
-                <option value = "kosher">Kosher</option>
-                <option value = "peanut-free">Peanut-free</option>
-                <option value = "pork-free">Pork-free</option>
-                <option value = "shellfish-free">Shellfish-free</option>
-                <option value = "gluten-free">Gluten-free</option>
-            </select> 
-        </details>
-        <input type="submit" value="Search Recipes" class="Submit"></input>
-    </form>
-
-
+<form action="/search" method="POST">
+    <h2>Recipe Search</h2>
+</form>
 {%if success%}
-    <p>Results for <b>{{ searchbar }}</b> in <b>{{ mealtype }}</b></p>
+<p>Number of recipes found for <b>{{ searchbar }}:</b> {{ length }}</p>
+    
+<div class="search_grid">
     {% for recipe in recipes %}
-    <div class="output">
-        <ul>
-            <li class="title">
-                <p><b>{{ recipe.label }}</b></p>
+    <div class="search_result"> 
+        <div class="wrapper">
+            <div class="recipe_image">
+                <img src="{{recipe.images}}" alt="image">
+            </div>
+            <ul>
+                <p class="title">
+                    <b>{{recipe.label}}</b>
+                </p>
                 <ul class="contents">
-                    <li>{{ recipe.protein }}{{ recipe.proteinunit}} Protein</li>
-                    <li>{{ recipe.calories }} cal</li>
-                    <li>{{ recipe.servings }} servings</li>
-                    <li><b>{{ recipe.protein_per_serv }}{{ recipe.proteinunit }} protein/serving</b></li>
-                    <li><b>{{ recipe.cal_per_serv }} cal/serving</b></li>
-                    <br>
-                    <li><b>Ingredients</b></li>
-                    <ul>
-                        {% for ingredient in recipe.ingredients %}
-                            <li>{{ ingredient }}</li>
-                        {% endfor %}
-                    </ul>
-                    <br>
-                    <a href='{{ recipe.url }}'>From {{ recipe.source }}</a>
-                    
-                        <form action="/scale_recipe" method="POST">
-                            {% for ingredient in recipe.ingredients %}
-                                <input type="hidden" name="ingredients[]" value="{{ ingredient }}">
-                            {% endfor %}
-                            <button type="submit">Scale Recipe</button>
-                        </form>
-                        <form action="/calendar" method="POST">
-                            <input type="hidden" name="recipe_label" value="{{ recipe.label }}">
-                            <input type="hidden" name="recipe_url" value="{{ recipe.url }}">
-                            <button type="submit">Add to Calendar</button>
-                        </form>
-                        <form action="/cart" method="POST">
-                            <button type="submit" name="recipeURI" value="{{ recipe. uri }}">Add to Shopping Cart</button>
-                        </form>
-                    <form action="{{ url_for('calorie_tracking') }}" method="POST">
-                        <input type="hidden" name="item_name" value="{{ recipe.label }}">
-                        <input type="hidden" name="calories" value="{{ recipe.calories }}">
-                        <input type="hidden" name="date" value="{{ current_date }}">
-                        <button type="submit" class="add-calorie-btn">Add to Calorie Tracker</button>
-                    </form>
-                </ul>
-            </li>
-        </ul>
+                    <li>{{recipe.protein}} Protein</li>
+                    <li>{{recipe.calories}} Calories</li>
+                    <li>{{recipe.servings}} Servings</li>
+                    <li><b>{{recipe.protein_per_serv}} Protein/Serving</b></li>
+                    <li><b>{{recipe.cal_per_serv}} Cal/Serving</b></li>
+                    <a href='{{recipe.url}}'>From {{recipe.source}}</a>
+                </ul>  
+            </ul>
+        </div>
+        <details>
+            <summary> <i class='bx bx-chevrons-up' ></i> </summary>
+            <div class="group_btn">
+                <form action="/scale_recipe" method="POST">
+                    {% for ingredient in recipe.ingredients %}
+                        <input type="hidden" name="ingredients[]" value="{{ ingredient }}">
+                    {% endfor %}
+                    <button type="submit" class="small_btn">Scale Recipe</button>
+                </form>
+                <form action="/calendar" method="POST">
+                    <input type="hidden" name="recipe_label" value="{{ recipe.label }}">
+                    <input type="hidden" name="recipe_url" value="{{ recipe.url }}">
+                    <button type="submit" class="small_btn">Add to Calendar</button>
+                </form>
+                <form action="/cart" method="POST">
+                    <button type="submit" name="recipeURI" class="small_btn" value="{{ recipe. uri }}">Add to Cart</button>
+                </form>
+                <form action="{{ url_for('calorie_tracking') }}" method="POST">
+                    <input type="hidden" name="item_name" value="{{ recipe.label }}">
+                    <input type="hidden" name="calories" value="{{ recipe.calories }}">
+                    <input type="hidden" name="date" value="{{ current_date }}">
+                    <button type="submit" class="small_btn">Add to Calorie Tracker</button>
+                </form>
+                <form action="{{ url_for('postRecipe') }}" method="POST">
+                    <button type="submit" class="small_btn" name="recipeURI" value="{{ recipe.uri }}">Share</button>
+                </form>
+            </div>
+            <p style="text-align: center"><b>Ingredients</b></p>
+            <ul>
+                {% for ingredient in recipe.ingredients %}
+                <div>
+                    <li>{{ingredient}}</li>
+                </div>
+                {% endfor %}
+            </ul>
+        </details>
     </div>
-{% endfor %}
-    </body>
+    {% endfor %}
+</div>
+
+<br><br><br><br>
 
 {% elif success == false%}
-<p>Error.</p>
-
+    <style>
+        .search_body {
+            top: 6em;
+        }
+    </style>
 {% endif %}
 {% endblock %}
