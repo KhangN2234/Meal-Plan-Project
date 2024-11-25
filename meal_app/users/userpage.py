@@ -21,7 +21,15 @@ def user(userEmail):
 
     if user_doc.exists:
         user_data = user_doc.to_dict()
-        return render_template('userpage.html', username=userEmail, user_data=user_data)
+        posts = db.collection('posts').where('email', '==', userEmail).order_by('timestamp', direction='DESCENDING').stream()
+        userPosts = [
+            {'content': post.to_dict().get('content'),
+            'author': post.to_dict().get('author'),
+            'email': post.to_dict().get('email'),
+            'timestamp': post.to_dict().get('timestamp')}
+            for post in posts
+        ]
+        return render_template('userpage.html', username=userEmail, user_data=user_data, userPosts=userPosts)
     else:
         flash("User not found!")
         return redirect('/')
