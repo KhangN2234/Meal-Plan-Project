@@ -12,5 +12,26 @@
     {% endfor %}
 </div>
 
+<style>
+    .popular-meals {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+    .meal-card {
+        text-align: center;
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+    }
+    .meal-img {
+        width: 100%;
+        border-radius: 10px;
+    }
+</style>
+
 <a href="/popular-meals" class="btn">Refresh Popular Meals</a>
 {% endblock %}
