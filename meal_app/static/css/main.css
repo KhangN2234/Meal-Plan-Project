@@ -710,7 +710,7 @@ p {
     }
 
 
-/* Recipe Scaline UI */ 
+/* Recipe Scaling UI */ 
     .scale_recipe {
         h3 {
             text-align: center;
@@ -796,93 +796,82 @@ p {
         }
     }
 
-.profile .input{
-    border-style: solid;
-    border-radius: 2%;
-    border-width: thin;
-    border-color: rgb(146, 145, 145);
-    padding: 20px;
-    margin: 5px;
-    background-color: aliceblue;
-    box-shadow: 0 0 10px;
-    width: 15%;
-    margin-left: auto;
-    margin-right: auto;
-}
-.post{
-    border-style: solid;
-    border-radius: 2%;
-    border-width: thin;
-    border-color: rgb(146, 145, 145);
-    padding: 10px;
-    margin: 5px;
-    background-color: aliceblue;
-    box-shadow: 0 0 10px;
-    width: 25%;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-wrap: break-word;
-}
 
-.postAuthor {
-    font-family: Arial, Helvetica, sans-serif;
-    display: inline;
-}
+/* Social tab */
+    .post{
+        border-style: solid;
+        border-radius: 2%;
+        border-width: thin;
+        border-color: rgb(146, 145, 145);
+        padding: 10px;
+        margin: 5px;
+        background-color: aliceblue;
+        box-shadow: 0 0 10px;
+        width: 25%;
+        margin-left: auto;
+        margin-right: auto;
+        overflow-wrap: break-word;
+    }
 
-.postEmail{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: smaller;
-    display: inline;
-}
+    .postAuthor {
+        font-family: Arial, Helvetica, sans-serif;
+        display: inline;
+    }
 
-.postTimestamp{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: smaller;
-}
+    .postEmail{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        display: inline;
+    }
 
-.postContent{
-    font-family: Arial, Helvetica, sans-serif;
-}
+    .postTimestamp{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+    }
 
-.social{
-    margin-top:25px;
-}
+    .postContent{
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-.social .post{
-    width:25%;
-    overflow-wrap: break-word;
-    padding: 10px;
-    background-color: rgb(243, 243, 243);
-}
+    .social{
+        margin-top:25px;
+    }
 
-.post textarea {
-    width: 98%;
-    height: 100px;
-}
+    .social .post{
+        width:25%;
+        overflow-wrap: break-word;
+        padding: 10px;
+        background-color: rgb(243, 243, 243);
+    }
+
+    .post textarea {
+        width: 98%;
+        height: 100px;
+    }
 
 
 /* Contact Page Style*/
-.contact-page {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    text-align: center;
-}
+    .contact-page {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        text-align: center;
+    }
 
-.contact-page button {
-    background: #1a73e8; 
-    color: #fff; 
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease; 
-}
+    .contact-page button {
+        background: #1a73e8; 
+        color: #fff; 
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease; 
+    }
 
-.contact-page button:hover {
-    background: #0f5bbd; 
-}
+    .contact-page button:hover {
+        background: #0f5bbd; 
+    }
