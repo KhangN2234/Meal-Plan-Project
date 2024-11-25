@@ -752,3 +752,8 @@ p {
     background-color: rgb(243, 243, 243);
 }
 
+.post textarea {
+    width: 98%;
+    height: 100px;
+}
+

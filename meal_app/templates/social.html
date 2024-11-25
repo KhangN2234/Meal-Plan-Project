@@ -4,6 +4,14 @@
 </head>
 <body>
     <div class="social">
+        <div class="post">
+            <p>Create a new post:</p>
+            <form action="/profile" method="POST">
+                <textarea name="newPost" maxlength="256"></textarea><br><br>
+                <button type="submit">Post</button>
+            </form>
+        </div>
+
         {% for post in userPosts %}
             <div class="post">
                 <p class="postAuthor" class="postTop"><b>@{{post.author}}</b></p>

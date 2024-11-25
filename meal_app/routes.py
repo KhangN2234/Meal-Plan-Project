@@ -153,6 +153,7 @@ def profile():
             }
 
             db.collection('posts').add(postData)
+            return redirect('/social')
 
         
         return redirect('/profile')
