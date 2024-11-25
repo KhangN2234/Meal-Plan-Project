@@ -3,9 +3,12 @@ from flask import Flask, render_template, request, redirect, session, flash
 from flask import Blueprint
 from firebase_admin import firestore
 import re
-import json
+import os
+import requests
 
 calendar_templates = Blueprint('calendar',__name__)
+recipe_search_app_id = os.getenv('RECIPE_SEARCH_APP_ID')
+recipe_search_api_key = os.getenv('RECIPE_SEARCH_API_KEY')
 
 @app.route('/calendar', methods=['GET', 'POST'])
 def calendar():
@@ -53,10 +56,25 @@ def calendar():
             recipe_label = request.form.get('recipe_label')
             recipe_url = request.form.get('recipe_url')
             selected_days = request.form.getlist('selected_days')
-            recipe_ingredients_json = request.form.get('recipe_ingredients')
+            recipe_uri = request.form.get('recipe_uri')
+            print(f"Received recipe_uri: {recipe_uri}")
+            api_url = f"https://api.edamam.com/api/recipes/v2/by-uri?type=public&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&uri={recipe_uri}"
+            """
+            try:
+                response = requests.get(api_url)
+                response.raise_for_status()
+                data = response.json()
 
-            recipe_ingredients = json.loads(recipe_ingredients_json)
-            
+                # Extract ingredients if the recipe is found
+                ingredients = []
+                if "recipe" in data:
+                    ingredients = data["recipe"].get("ingredients", [])
+                else:
+                    flash("No ingredients found for the provided recipe URI.")
+            except requests.exceptions.RequestException as e:
+                flash(f"Error fetching ingredients: {e}")
+                return redirect('/search')
+            """
             if recipe_label != 'None':
                 if not selected_days:
                     print("list empty")
@@ -65,11 +83,11 @@ def calendar():
                         'recipe_label': recipe_label,
                         'recipe_url': recipe_url,
                         'days': selected_days,
-                        'ingredients': recipe_ingredients
+                        'recipe_uri': recipe_uri
                     }
                     print(recipe_data)
+                    print('ingredients: ', recipe_data['recipe_uri'])
                     # Save to firebase
-                    print('ingredient list: ', recipe_ingredients)
                     recipes_collection_ref.document(recipe_label).set(recipe_data)
                     flash(f"Succesfully added Recipe: {recipe_label}")
 
@@ -90,7 +108,8 @@ def calendar():
                                    recipes_list = data,
                                    recipe_label = recipe_label,
                                    recipe_url = recipe_url,
-                                   selected_days = selected_days
+                                   selected_days = selected_days,
+                                   recipe_uri = recipe_uri
                                    )
         else:
             flash("Please log in to access your calendar.")
