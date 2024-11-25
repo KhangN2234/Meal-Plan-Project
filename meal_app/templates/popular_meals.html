@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Most Popular Meals</h1>
+
+<div class="popular-meals">
+    {% for item in popular_meals %}
+        <div class="meal-card">
+            <h3>{{ item.category }}</h3>
+            <img src="{{ item.meal.strMealThumb }}" alt="{{ item.meal.strMeal }}" class="meal-img">
+            <p>{{ item.meal.strMeal }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+<a href="/popular-meals" class="btn">Refresh Popular Meals</a>
+{% endblock %}
