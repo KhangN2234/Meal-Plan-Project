@@ -184,10 +184,10 @@ def contact():
         }
 
             db.collection('contacts').add(contact_data)
-            flash('Message Sent test')
+            flash('Your message has been sent successfully!')
 
         else:
-            flash('Your message has been sent successfully!')
+            flash('Error, your message did not send please fill out the boxes above!')
 
             return redirect('/contact')
     
