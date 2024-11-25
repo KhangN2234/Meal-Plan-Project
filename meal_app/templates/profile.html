@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
-<br>
+<title>My Profile</title>
+</head>
+<body>
+
     <div class="input">
         <h2>My Profile</h2>
 
@@ -10,23 +13,64 @@
 
         <h3>My personal details</h3>
 
+        <div style="text-align: center; margin-top: 20px;">
+            <form method="POST" enctype="multipart/form-data">
+                <label for="profile_picture">
+                    <img src="{{ user_data.profile_picture }}" alt="Profile Picture" class="profile-img" onclick="document.getElementById('fileInput').click()">
+                </label>
+                <input type="file" id="fileInput" name="profile_picture" style="display: none;" onchange="this.form.submit()">
+            </form>
+        </div>
+
         <div class="profile-info">
             <form method="POST">
+
+                <div><label>
+                    <input type="checkbox" name="opt_in_out" id="optInOutCheckbox"
+                    {% if user_data.opt_in_out %} checked {%endif%}>
+                    Opt-in to receive updates
+                </label></div>
+            
                 <label>Username:</label>
                 <input type="text" name="username" value="{{ user_data.username }}" required><br><br>
-
-                <label>New Password:</label>
-                <input type="password" name="password"><br><br>
         
                 <label>Bio:</label>
                 <textarea name="bio">{{ user_data.bio }}</textarea><br><br>
         
                 <button type="submit">Update Profile</button>
             </form>
-            
-            <form action="logout" method="GET">
-                <button type="submit" class="btn-logout">Logout</button>
+            <form method="POST">
+                <label>New Post:</label>
+                <textarea name="newPost"></textarea><br><br>
+                <button type="submit">Post</button>
             </form>
+        
+                <form action="logout" method="GET">
+                    <button type="submit" class="btn-logout">Logout</button>
+                </form>
+        </div>
+        {% for post in userPosts %}
+            <div class="input">
+                <p>{{post.author}}</p>
+                <p>{{post.email}}</p>
+                <p>{{post.timestamp}}</p>
+                <p>{{post.content}}</p>
+            </div>
+        {% endfor %}
         </div>
     </div>
+
+    <style>
+        /* Very basic style circle (WIP) */
+        .profile-img {
+            width: 100px; 
+            height: 100px;
+            border-radius: 50%; 
+            border: 2px solid #ccc; 
+            object-fit: cover;
+        }
+    </style>
+    
+</body>
+</html>
 {% endblock %}

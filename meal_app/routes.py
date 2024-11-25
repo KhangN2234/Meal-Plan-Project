@@ -14,6 +14,8 @@ from .calendar.calendar_routes import calendar_templates
 from .shopping_cart.download_pdf import download_pdf
 from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
+from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_templates
+from datetime import datetime
 
 @app.route('/')
 def startup():
@@ -121,10 +123,13 @@ def profile():
         username = request.form.get('username', user_data.get('username'))
         bio = request.form.get('bio', user_data.get('bio'))
         password = request.form.get('password')
+        newPost = request.form.get('newPost')
+        opt_in_out = 'opt_in_out' in request.form
 
         updated_data = {
         'username': username,
-        'bio': bio
+        'bio': bio,
+        'opt_in_out': opt_in_out
     }
 
         if password:
@@ -134,14 +139,33 @@ def profile():
      
         doc_ref.update(updated_data)
 
-        
         flash('Profile updated successfully!')
+
+        if newPost:
+            postData = {
+                'author': username,
+                'email': email,
+                'content': newPost,
+                'timestamp': datetime.utcnow()
+            }
+
+            db.collection('posts').add(postData)
 
         
         return redirect('/profile')
+    
+    posts = db.collection('posts').order_by('timestamp', direction='DESCENDING').stream()
+    userPosts = [
+        {'content': post.to_dict().get('content'),
+         'author': post.to_dict().get('author'),
+         'email': post.to_dict().get('email'),
+         'timestamp': post.to_dict().get('timestamp')}
+        for post in posts
+    ]
+    
 
     
-    return render_template('profile.html', user_data=user_data)
+    return render_template('profile.html', user_data=user_data, userPosts=userPosts)
 
 
 app.register_blueprint(search_templates)
@@ -151,3 +175,4 @@ app.register_blueprint(shopping_cart_template)
 app.register_blueprint(calendar_templates)
 app.register_blueprint(calorie_tracking_templates)
 app.register_blueprint(delete_entry_templates)
+app.register_blueprint(daily_calorie_goal_templates)
