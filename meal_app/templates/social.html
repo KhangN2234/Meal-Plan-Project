@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<title>My Profile</title>
+</head>
+<body>
+    <div class="social">
+        <div class="post">
+            <p>Create a new post:</p>
+            <form action="/profile" method="POST">
+                <textarea name="newPost" maxlength="256"></textarea><br><br>
+                <button type="submit">Post</button>
+            </form>
+        </div>
+
+        {% for post in userPosts %}
+            <div class="post">
+                <p class="postAuthor" class="postTop"><b>@{{post.author}}</b></p>
+                <p class="postEmail"><i>({{post.email}})</i></p>
+                <p class="postTimestamp" class="postTop">{{post.timestamp}}</p>
+                <p class="postContent">{{post.content}}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    
+</body>
+</html>
+{% endblock %}
