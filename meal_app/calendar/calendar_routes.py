@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, session, flash
 from flask import Blueprint
 from firebase_admin import firestore
 import re
+import json
 
 calendar_templates = Blueprint('calendar',__name__)
 
@@ -52,7 +53,9 @@ def calendar():
             recipe_label = request.form.get('recipe_label')
             recipe_url = request.form.get('recipe_url')
             selected_days = request.form.getlist('selected_days')
-            recipe_ingredients = request.form.getlist('ingredients')
+            recipe_ingredients_json = request.form.get('recipe_ingredients')
+
+            recipe_ingredients = json.loads(recipe_ingredients_json)
             
             if recipe_label != 'None':
                 if not selected_days:
@@ -66,7 +69,6 @@ def calendar():
                     }
                     print(recipe_data)
                     # Save to firebase
-                    recipe_ingredients = ['tomato','basil','bread']
                     print('ingredient list: ', recipe_ingredients)
                     recipes_collection_ref.document(recipe_label).set(recipe_data)
                     flash(f"Succesfully added Recipe: {recipe_label}")
