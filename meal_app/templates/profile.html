@@ -6,6 +6,7 @@
 <div class="profile">
     <div class="input">
         <h2>My Profile</h2>
+        <p><i><a href="/user/{{user_data.email}}">View Your Public Profile</a></i></p>
 
         {% for message in get_flashed_messages() %}
             <p style="color: green;">{{ message }}</p>

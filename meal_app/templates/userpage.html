@@ -24,7 +24,64 @@
             </div>
         </div>
         <div class="userPageLeft">
-            <div class="userCalendar"></div>
+            <div class="userCalendar">
+                <p>Monday</p>
+                <ul>
+                    {% for recipe in calendarRecipes %}
+                    {% if 'Monday' in recipe. days %}
+                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <p>Tuesday</p>
+                <ul>
+                    {% for recipe in calendarRecipes %}
+                    {% if 'Tuesday' in recipe. days %}
+                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <p>Wednesday</p>
+                <ul>
+                    {% for recipe in calendarRecipes %}
+                    {% if 'Wednesday' in recipe. days %}
+                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <p>Thursday</p>
+                <ul>
+                    {% for recipe in calendarRecipes %}
+                    {% if 'Thursday' in recipe. days %}
+                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <p>Friday</p>
+                <ul>
+                    {% for recipe in calendarRecipes %}
+                    {% if 'Friday' in recipe. days %}
+                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <p>Saturday</p>
+                <ul>
+                    {% for recipe in calendarRecipes %}
+                    {% if 'Friday' in recipe. days %}
+                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <p>Sunday</p>
+                <ul>
+                    {% for recipe in calendarRecipes %}
+                    {% if 'Friday' in recipe. days %}
+                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
         <div class="userPageRight">
             <div class="userFavorites"></div>

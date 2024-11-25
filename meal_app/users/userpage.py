@@ -29,7 +29,16 @@ def user(userEmail):
             'timestamp': post.to_dict().get('timestamp')}
             for post in posts
         ]
-        return render_template('userpage.html', username=userEmail, user_data=user_data, userPosts=userPosts)
+        recipes_collection_ref = db.collection('users').document(userEmail).collection('recipes')
+
+        data = [
+            {
+                'label': recipe.to_dict().get('recipe_label'),
+                'days': recipe.to_dict().get('days'),
+                'url': recipe.to_dict().get('recipe_url')
+            }
+            for recipe in recipes_collection_ref.get()]
+        return render_template('userpage.html', username=userEmail, user_data=user_data, userPosts=userPosts, calendarRecipes=data)
     else:
         flash("User not found!")
         return redirect('/')
