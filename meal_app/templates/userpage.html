@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<title></title>
+</head>
+<body>
+    <div class="userPage">
+        <div class="userPageHead">
+            <div class="userProfilePic"></div>
+            <div class="userUsername"> <p> {{user_data.username}} </p></div>
+            <div class="userEmail"> <p> {{user_data.email}} </p></div>
+            <div class="userTags"></div>
+            <div class="userBio"> <p>{{user_data.bio}}</p> </div>
+        </div>
+        <div class="userPageBody">
+            <div class="UserPosts"></div>
+        </div>
+        <div class="userPageLeft">
+            <div class="userCalendar"></div>
+        </div>
+        <div class="userPageRight">
+            <div class="userFavorites"></div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

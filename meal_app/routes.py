@@ -16,6 +16,7 @@ from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_templates
 from .social.social import social_template
+from .users.userpage import user_template
 from datetime import datetime
 
 
@@ -128,34 +129,6 @@ def profile():
         newPost = request.form.get('newPost')
         opt_in_out = 'opt_in_out' in request.form
 
-        if request.form.get('bio') != user_data.get('bio'):
-
-            username = doc.to_dict().get('username')
-            if username == "":
-                username = "UnknownUsername"
-            post_entry = {
-                'author': username,
-                'email': email,
-                'content': "Updated bio to: \" " + request.form.get('bio') + " \"",
-                'timestamp': datetime.utcnow(),
-            }
-            db.collection('posts').add(post_entry)
-
-        updated_data = {
-            'username': username,
-            'bio': bio,
-            'opt_in_out': opt_in_out
-        }
-
-        if password:
-            # Hash the new password
-            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-            updated_data['password'] = hashed_password.decode('utf-8')
-     
-        doc_ref.update(updated_data)
-
-        flash('Profile updated successfully!')
-
         if newPost:
             if username == "":
                 username = "UnknownUsername"
@@ -168,6 +141,35 @@ def profile():
 
             db.collection('posts').add(postData)
             return redirect('/social')
+
+        if bio:
+            if request.form.get('bio') != user_data.get('bio'):
+
+                username = doc.to_dict().get('username')
+                if username == "":
+                    username = "UnknownUsername"
+                post_entry = {
+                    'author': username,
+                    'email': email,
+                    'content': "Updated bio to: \" " + request.form.get('bio') + " \"",
+                    'timestamp': datetime.utcnow(),
+                }
+                db.collection('posts').add(post_entry)
+
+            updated_data = {
+                'username': username,
+                'bio': bio,
+                'opt_in_out': opt_in_out
+            }
+
+        if password:
+            # Hash the new password
+            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+            updated_data['password'] = hashed_password.decode('utf-8')
+     
+        doc_ref.update(updated_data)
+
+        flash('Profile updated successfully!')
 
         
         return redirect('/profile')
@@ -219,3 +221,4 @@ app.register_blueprint(calorie_tracking_templates)
 app.register_blueprint(delete_entry_templates)
 app.register_blueprint(daily_calorie_goal_templates)
 app.register_blueprint(social_template)
+app.register_blueprint(user_template)
