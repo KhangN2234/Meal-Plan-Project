@@ -4,13 +4,21 @@
 <div class="burger">
   <img src="static/img/burger3.png" alt="burger">
 </div>
-<div class="wrapper">
-    <form action ="signup">
-      <button type="submit" class="Sigbtn" >SIGN UP </button>
-    </form>
+  <form action ="signup">
+    <button type="submit" class="Sigbtn" >SIGN UP </button>
+  </form>
 
-    <form action="login">
-      <button type="submit" class="Sigbtn">LOGIN</button>
-    </form>
-</div>
+  <form action="login">
+    <button type="submit" class="Sigbtn">LOGIN</button>
+  </form>
+
+  <div class="description">
+    <p>Welcome to Meal APP, your go-to app for meal planning, recipe sharing, and calorie tracking!</p>
+  </div>
+
+  <footer>
+    <p>© 2024 Meal APP | <a href="{{ url_for('contact') }}" class="footer-link">Contact Us</a> | <a href="/privacy" class="footer-link">Privacy Policy</a></p>
+</footer>
+
+
 {% endblock %}
