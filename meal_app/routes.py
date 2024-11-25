@@ -168,23 +168,28 @@ def profile():
     
     return render_template('profile.html', user_data=user_data, userPosts=userPosts)
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
         name = request.form.get('name')
         email = request.form.get('email')
         message = request.form.get('message')
 
-        contact_data = {
-            'name': name,
-            'email': email,
-            'message': message,
-            'timestamp': datetime.utcnow()
+        if name and email and message:
+            contact_data = {
+                'name': name,
+                'email': email,
+                'message': message,
+                'timestamp': datetime.utcnow()
         }
-        db.collection('contacts').add(contact_data)
 
-        flash('Testing flash code')
-        return redirect('/contact')
+            db.collection('contacts').add(contact_data)
+            flash('Message Sent test')
+
+        else:
+            flash('Your message has been sent successfully!')
+
+            return redirect('/contact')
     
     return render_template('contact.html')
 
