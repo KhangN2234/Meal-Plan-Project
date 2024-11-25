@@ -718,10 +718,15 @@ p {
     margin: 5px;
     background-color: aliceblue;
     box-shadow: 0 0 10px;
-    width: 15%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
+
+.profile .post {
+    width: 100%;
+}
+
 .post{
     border-style: solid;
     border-radius: 2%;
