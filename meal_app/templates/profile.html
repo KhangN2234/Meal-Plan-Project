@@ -3,7 +3,7 @@
 <title>My Profile</title>
 </head>
 <body>
-
+<div class="profile">
     <div class="input">
         <h2>My Profile</h2>
 
@@ -41,7 +41,7 @@
             </form>
             <form method="POST">
                 <label>New Post:</label>
-                <textarea name="newPost"></textarea><br><br>
+                <textarea name="newPost" maxlength="256"></textarea><br><br>
                 <button type="submit">Post</button>
             </form>
         
@@ -70,7 +70,7 @@
             object-fit: cover;
         }
     </style>
-    
+</div>
 </body>
 </html>
 {% endblock %}
