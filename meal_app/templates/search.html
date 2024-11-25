@@ -55,6 +55,9 @@
                     <input type="hidden" name="date" value="{{ current_date }}">
                     <button type="submit" class="small_btn">Add to Calorie Tracker</button>
                 </form>
+                <form action="{{ url_for('postRecipe') }}" method="POST">
+                    <button type="submit" class="small_btn" name="recipeURI" value="{{ recipe.uri }}">Share</button>
+                </form>
             </div>
             <p style="text-align: center"><b>Ingredients</b></p>
             <ul>

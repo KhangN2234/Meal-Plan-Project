@@ -15,6 +15,7 @@ from .shopping_cart.download_pdf import download_pdf
 from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_templates
+from .social.social import social_template
 from datetime import datetime
 
 
@@ -143,6 +144,8 @@ def profile():
         flash('Profile updated successfully!')
 
         if newPost:
+            if username == "":
+                username = "UnknownUsername"
             postData = {
                 'author': username,
                 'email': email,
@@ -151,11 +154,12 @@ def profile():
             }
 
             db.collection('posts').add(postData)
+            return redirect('/social')
 
         
         return redirect('/profile')
     
-    posts = db.collection('posts').order_by('timestamp', direction='DESCENDING').stream()
+    posts = db.collection('posts').where('email', '==', email).order_by('timestamp', direction='DESCENDING').stream()
     userPosts = [
         {'content': post.to_dict().get('content'),
          'author': post.to_dict().get('author'),
@@ -201,3 +205,4 @@ app.register_blueprint(calendar_templates)
 app.register_blueprint(calorie_tracking_templates)
 app.register_blueprint(delete_entry_templates)
 app.register_blueprint(daily_calorie_goal_templates)
+app.register_blueprint(social_template)
