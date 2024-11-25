@@ -15,7 +15,9 @@ from .shopping_cart.download_pdf import download_pdf
 from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_templates
+from .social.social import social_template
 from datetime import datetime
+
 
 @app.route('/')
 def startup():
@@ -24,7 +26,7 @@ def startup():
 @app.route('/welcome')
 def welcome():
     return render_template('welcome.html')
-
+# test
 # Route to display the signup form and handle form submissions
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -142,6 +144,8 @@ def profile():
         flash('Profile updated successfully!')
 
         if newPost:
+            if username == "":
+                username = "UnknownUsername"
             postData = {
                 'author': username,
                 'email': email,
@@ -150,11 +154,12 @@ def profile():
             }
 
             db.collection('posts').add(postData)
+            return redirect('/social')
 
         
         return redirect('/profile')
     
-    posts = db.collection('posts').order_by('timestamp', direction='DESCENDING').stream()
+    posts = db.collection('posts').where('email', '==', email).order_by('timestamp', direction='DESCENDING').stream()
     userPosts = [
         {'content': post.to_dict().get('content'),
          'author': post.to_dict().get('author'),
@@ -167,6 +172,30 @@ def profile():
     
     return render_template('profile.html', user_data=user_data, userPosts=userPosts)
 
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+
+        if name and email and message:
+            contact_data = {
+                'name': name,
+                'email': email,
+                'message': message,
+                'timestamp': datetime.utcnow()
+        }
+
+            db.collection('contacts').add(contact_data)
+            flash('Your message has been sent successfully!')
+
+        else:
+            flash('Error, your message did not send please fill out the boxes above!')
+
+            return redirect('/contact')
+    
+    return render_template('contact.html')
 
 app.register_blueprint(search_templates)
 app.register_blueprint(scaled_recipe_templates)
@@ -176,3 +205,4 @@ app.register_blueprint(calendar_templates)
 app.register_blueprint(calorie_tracking_templates)
 app.register_blueprint(delete_entry_templates)
 app.register_blueprint(daily_calorie_goal_templates)
+app.register_blueprint(social_template)
