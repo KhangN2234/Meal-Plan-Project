@@ -1,9 +1,10 @@
 import unittest
 from unittest.mock import patch
 from meal_app import app
-from flask import request
+from flask import request,session
 from dotenv import load_dotenv
 import os
+import datetime
 
 class SearchPageTestCase(unittest.TestCase):
 
@@ -100,6 +101,92 @@ class SearchPageTestCase(unittest.TestCase):
         self.assertIn(b'2.0', response.data)  # Checking parsed amount
         self.assertIn(b'Cup Cheese', response.data)
         self.assertIn(b'Tbsp Oil', response.data)
+    
+    def test_calorie_tracking_get(self):
+        with patch('meal_app.db.collection') as mock_db:
+            # Mock a logged-in user and mock database fetch
+            session['user'] = 'test_user@example.com'
+            mock_user_ref = mock_db.return_value.document.return_value
+            mock_user_ref.get.return_value.to_dict.return_value = {
+                'daily_calorie_goal': 2000
+            }
+            mock_calorie_entries_ref = mock_user_ref.collection.return_value
+            mock_calorie_entries_ref.stream.return_value = []
+
+            response = self.app.get('/calorie_tracking')
+
+            self.assertEqual(response.status_code, 200)
+            self.assertIn(b'Calorie Tracker', response.data)
+            self.assertIn(b'Daily Goal: 2000 calories', response.data)
+
+    # Test the POST request for setting the daily calorie goal
+    def test_set_daily_calorie_goal(self):
+        form_data = {
+            'calorie_goal': '2500'
+        }
+        with patch('meal_app.db.collection') as mock_db:
+            # Mock logged-in user
+            session['user'] = 'test_user@example.com'
+            mock_user_ref = mock_db.return_value.document.return_value
+
+            response = self.app.post('/daily_calorie_goal', data=form_data)
+
+            # Check if the goal was updated
+            mock_user_ref.update.assert_called_with({'daily_calorie_goal': 2500})
+            self.assertEqual(response.status_code, 302)  # Redirects back to calorie tracking
+
+    # Test the POST request for adding a calorie entry
+    def test_add_calorie_entry(self):
+        form_data = {
+            'item_name': 'Apple',
+            'calories': '95',
+            'date': datetime.utcnow().strftime('%Y-%m-%d')
+        }
+        with patch('meal_app.db.collection') as mock_db:
+            session['user'] = 'test_user@example.com'
+            mock_user_ref = mock_db.return_value.document.return_value
+            mock_calorie_entries_ref = mock_user_ref.collection.return_value
+
+            response = self.app.post('/calorie_tracking', data=form_data)
+
+            # Check if the entry was added
+            mock_calorie_entries_ref.add.assert_called()
+            self.assertEqual(response.status_code, 302)  # Redirect back to calorie tracking page
+            self.assertIn(b'Entry added successfully!', response.data)
+
+    # Test the POST request for deleting a calorie entry
+    def test_delete_calorie_entry(self):
+        entry_id = 'test_entry_id'
+        form_data = {
+            'entry_id': entry_id
+        }
+        with patch('meal_app.db.collection') as mock_db:
+            session['user'] = 'test_user@example.com'
+            mock_user_ref = mock_db.return_value.document.return_value
+            mock_calorie_entries_ref = mock_user_ref.collection.return_value
+            mock_entry_ref = mock_calorie_entries_ref.document.return_value
+
+            response = self.app.post('/delete_entry', data=form_data)
+
+            # Check if the delete method was called
+            mock_entry_ref.delete.assert_called()
+            self.assertEqual(response.status_code, 302)  # Redirect back to calorie tracking page
+
+    # Test the POST request for the calorie tracking page when no entries exist
+    def test_no_entries(self):
+        with patch('meal_app.db.collection') as mock_db:
+            session['user'] = 'test_user@example.com'
+            mock_user_ref = mock_db.return_value.document.return_value
+            mock_user_ref.get.return_value.to_dict.return_value = {
+                'daily_calorie_goal': 2000
+            }
+            mock_calorie_entries_ref = mock_user_ref.collection.return_value
+            mock_calorie_entries_ref.stream.return_value = []
+
+            response = self.app.get('/calorie_tracking')
+
+            self.assertEqual(response.status_code, 200)
+            self.assertIn(b'No entries yet. Add some!', response.data)
 
 if __name__ == '__main__':
     unittest.main()
