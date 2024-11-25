@@ -692,3 +692,90 @@ p {
         right: 20px;
         box-shadow: 0 0 7px;
     }
+
+
+/* Recipe Scaline UI */ 
+    .scale_recipe {
+        h3 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; 
+        }
+
+        label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+        }
+
+        label input[type="checkbox"] {
+            flex: 0;
+            margin-right: 10px; 
+        }
+
+        label .title {
+            flex: 1; 
+            text-align: left;
+            width: 0;
+            margin-right: 4%;
+            border-bottom: 2px solid black;
+        }
+
+        label .input-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group {
+            text-align: right;
+        }
+
+        .input-group input {
+            display: none;
+            width: 60px;
+        }
+
+        input:checked ~ .input-group input{
+            display: block;
+            position: absolute;
+        }
+
+        input[type="submit"] {
+            margin-top: 1em;
+            padding: 0.75em;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        input[type="checkbox"] {
+            zoom: 1.5;
+        }
+    }    
+
+    .scaled_result {
+        align-content: center;
+        .wrapper {
+            width: 30em;
+            margin-left: 15%;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            align-items: center;
+        }
+        ul li {
+            padding: 10px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #000000;
+        }
+    }
