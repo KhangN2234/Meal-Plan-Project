@@ -708,3 +708,30 @@ p {
         right: 20px;
         box-shadow: 0 0 7px;
     }
+
+/* Contact Page Style*/
+    .contact-page {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        text-align: center;
+    }
+    
+    .contact-page button {
+        background: #1a73e8; 
+        color: #fff; 
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease; 
+    }
+    
+    .contact-page button:hover {
+        background: #0f5bbd; 
+    }
+    

@@ -17,6 +17,7 @@ from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_templates
 from datetime import datetime
 
+
 @app.route('/')
 def startup():
     return redirect('/login')
@@ -167,6 +168,30 @@ def profile():
     
     return render_template('profile.html', user_data=user_data, userPosts=userPosts)
 
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+
+        if name and email and message:
+            contact_data = {
+                'name': name,
+                'email': email,
+                'message': message,
+                'timestamp': datetime.utcnow()
+        }
+
+            db.collection('contacts').add(contact_data)
+            flash('Your message has been sent successfully!')
+
+        else:
+            flash('Error, your message did not send please fill out the boxes above!')
+
+            return redirect('/contact')
+    
+    return render_template('contact.html')
 
 app.register_blueprint(search_templates)
 app.register_blueprint(scaled_recipe_templates)
