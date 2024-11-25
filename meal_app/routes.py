@@ -17,6 +17,7 @@ from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_templates
 from datetime import datetime
 
+
 @app.route('/')
 def startup():
     return redirect('/login')
@@ -173,7 +174,17 @@ def contact():
         name = request.form.get('name')
         email = request.form.get('email')
         message = request.form.get('message')
-        return render_template('contact.html', success=True)
+
+        contact_data = {
+            'name': name,
+            'email': email,
+            'message': message,
+            'timestamp': datetime.utcnow()
+        }
+        db.collection('contacts').add(contact_data)
+
+        flash('Testing flash code')
+        return redirect('/contact')
     
     return render_template('contact.html')
 
