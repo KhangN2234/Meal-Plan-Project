@@ -1,93 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
+{% block content %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scaled Recipe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #202020;
-        }
-
-        header {
-            background-color: #202020;
-            color: #fff;
-            padding: 1em;
-            text-align: center;
-            border-bottom: 4px solid rgb(255, 36, 36);
-        }
-
-        .container {
-            max-width: 960px;
-            margin: 2em auto;
-            padding: 1em;
-            background-color: #6d6d6d;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            margin-top: 0;
-        }
-        h2 {
-            font-size: 12pt;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul li {
-            padding: 10px 0;
-            font-size: 16px;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid #fff;
-        }
-
-        /* Back button styles */
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: #f44336;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .back-button:hover {
-            background-color: #d32f2f;
-        }
-
-    </style>
 </head>
-<body>
 
 <header>
-    <a href="/" class="back-button">Back</a>
-    <h1>Scaled Recipe</h1>
-    <h2>Here are your adjusted ingredient amounts:</h2>
+    
 </header>
-
-<div class="container">
-    <ul>
-        {% for item in adjusted_ingredients %}
-        <li>
-            <span>{{ item.scaledAmount }}</span>
-            <span>{{ item.name }}</span>
-        </li>
-        {% endfor %}
-    </ul>
+<div class="scaled_result">
+    <h2>Here are your adjusted ingredient amounts:</h2>
+    <div class="wrapper">
+        <ul>
+            {% for item in adjusted_ingredients %}
+            <li>
+                <span>{{ item.scaledAmount }}</span>
+                <span>{{ item.name }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 
-</body>
 </html>
+{% endblock %}
