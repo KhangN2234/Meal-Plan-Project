@@ -166,9 +166,15 @@ def profile():
 
     
     return render_template('profile.html', user_data=user_data, userPosts=userPosts)
+
 @app.route('/contact')
 def contact():
-
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
+        return render_template('contact.html', success=True)
+    
     return render_template('contact.html')
 
 app.register_blueprint(search_templates)
