@@ -142,6 +142,8 @@ def profile():
         flash('Profile updated successfully!')
 
         if newPost:
+            if username == "":
+                username = "UnknownUsername"
             postData = {
                 'author': username,
                 'email': email,
@@ -154,7 +156,7 @@ def profile():
         
         return redirect('/profile')
     
-    posts = db.collection('posts').order_by('timestamp', direction='DESCENDING').stream()
+    posts = db.collection('posts').where('email', '==', email).order_by('timestamp', direction='DESCENDING').stream()
     userPosts = [
         {'content': post.to_dict().get('content'),
          'author': post.to_dict().get('author'),

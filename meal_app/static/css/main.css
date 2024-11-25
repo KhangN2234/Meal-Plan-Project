@@ -692,3 +692,38 @@ p {
         right: 20px;
         box-shadow: 0 0 7px;
     }
+
+.post{
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 5%;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.postAuthor {
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline;
+}
+
+.postEmail{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    display: inline;
+}
+
+.postTimestamp{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+}
+
+.postContent{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
