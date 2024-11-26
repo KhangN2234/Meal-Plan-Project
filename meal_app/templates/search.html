@@ -18,15 +18,15 @@
             </div>
             <ul>
                 <p class="title">
-                    <b>{{recipe.label}}</b>
+                    <a href='{{recipe.url}}'><b>{{recipe.label}}</b></a>
                 </p>
                 <ul class="contents">
-                    <li>{{recipe.protein}} Protein</li>
-                    <li>{{recipe.calories}} Calories</li>
-                    <li>{{recipe.servings}} Servings</li>
-                    <li><b>{{recipe.protein_per_serv}} Protein/Serving</b></li>
-                    <li><b>{{recipe.cal_per_serv}} Cal/Serving</b></li>
-                    <a href='{{recipe.url}}'>From {{recipe.source}}</a>
+                    <li>Protein: {{recipe.protein}}g </li>
+                    <li>Calories: {{recipe.calories}} </li>
+                    <li>Servings: {{recipe.servings}} </li>
+                    <li><b>Protein/Serving: {{recipe.protein_per_serv}}g </b></li>
+                    <li><b>Cal/Serving: {{recipe.cal_per_serv}} </b></li>
+                    <a href='{{recipe.url}}'>{{recipe.source}}</a>
                 </ul>  
             </ul>
         </div>
