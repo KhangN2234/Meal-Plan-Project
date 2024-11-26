@@ -19,6 +19,13 @@ def user(userEmail):
     user_ref = db.collection('users').document(userEmail)
     user_doc = user_ref.get()
 
+    viewingSelf = False
+
+    loggedInUser = session['user']
+
+    if loggedInUser == userEmail:
+        viewingSelf = True
+
     if user_doc.exists:
         user_data = user_doc.to_dict()
         posts = db.collection('posts').where('email', '==', userEmail).order_by('timestamp', direction='DESCENDING').stream()
@@ -38,7 +45,9 @@ def user(userEmail):
                 'url': recipe.to_dict().get('recipe_url')
             }
             for recipe in recipes_collection_ref.get()]
-        return render_template('userpage.html', username=userEmail, user_data=user_data, userPosts=userPosts, calendarRecipes=data)
+        
+        print(viewingSelf)
+        return render_template('userpage.html', username=userEmail, user_data=user_data, userPosts=userPosts, calendarRecipes=data, viewingSelf=viewingSelf, friendsWith = False)
     else:
         flash("User not found!")
         return redirect('/')

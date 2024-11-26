@@ -5,11 +5,21 @@
 <body>
     <div class="userPage">
         <div class="userPageHead">
+            {% if viewingSelf == True %}
+                <p> <i>(Your Profile)</i> </p>
+            {% endif %}
             <div class="userProfilePic"></div>
             <div class="userUsername"> <p class="userUsername"> <b>{{user_data.username}} </b></p></div>
             <div class="userEmail"> <p> {{user_data.email}} </p></div>
             <div class="userTags"></div>
             <div class="userBio"> <p>" {{user_data.bio}} "</p> </div>
+            {% if friendsWith %}
+                <button label="Unfriend">Unfriend</button>
+            {% elif viewingSelf == True %}
+            {% else %}
+                <button label="Add as Friend">Add as Friend</button>
+            {% endif %}
+            
         </div>
         <div class="userPageBody">
             <div class="userPageLeft input">
@@ -85,7 +95,7 @@
                 </div>
             </div>
             <div class="userPageRight input">
-                <div class="userFavorites"> <p>Friends</p> </div>
+                <div class="userFavorites"> <p>Friends</p> <p>Favorites</p></div>
             </div>
         </div>
     </div>

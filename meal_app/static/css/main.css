@@ -925,7 +925,7 @@ p {
 
 .userUsername{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: larger
+    font-size: 40px
 }
 
 .userPageBody{
@@ -952,6 +952,7 @@ p {
     text-align: center;
     padding: 10px;
     width: 20%;
+    list-style: none;
 }
 
 .userPageRight{
