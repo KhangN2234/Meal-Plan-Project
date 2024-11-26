@@ -25,8 +25,12 @@
                 
                 <details>
                     <summary>
-                        {{ precessed_item.quantity }} {{ precessed_item.measure }} {{ precessed_item.food }}
-                    </summary>
+                        {% if precessed_item.measure == None %}
+                            {{precessed_item.food}}
+                        {% else %}
+                            {{ precessed_item.quantity }} {{ precessed_item.measure }} {{ precessed_item.food }}
+                        {% endif %}
+                        </summary>
                 <li>
                     <ul class="sub_list">
                         {% for recipe in precessed_item.recipe %}
