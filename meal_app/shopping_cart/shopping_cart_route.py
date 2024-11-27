@@ -31,6 +31,9 @@ def cart():
                     return renderCart("", "")
             else:
                 return redirect('search')
+        else:
+            flash("Please log in to access your cart")
+            return redirect('login')
     if request.method == "POST":
         recipeURI = request.form.get('recipeURI')
         if 'user' in session:  # Check if the user is logged in
@@ -99,7 +102,7 @@ def renderCart(successMessage, errorMessage):
                 'quantity': item['quantity'],
                 'measure': item['measure'],
                 'food': item['food'],
-                'recipe': ', '.join(item['recipes'])  # Combine recipe names
+                'recipe': item['recipes']  # Combine recipe names
             }
             for item in ingredients_dict.values()
         ]
