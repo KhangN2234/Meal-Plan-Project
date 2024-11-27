@@ -57,24 +57,7 @@ def calendar():
             recipe_url = request.form.get('recipe_url')
             selected_days = request.form.getlist('selected_days')
             recipe_uri = request.form.get('recipe_uri')
-            print(f"Received recipe_uri: {recipe_uri}")
-            api_url = f"https://api.edamam.com/api/recipes/v2/by-uri?type=public&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&uri={recipe_uri}"
-            """
-            try:
-                response = requests.get(api_url)
-                response.raise_for_status()
-                data = response.json()
 
-                # Extract ingredients if the recipe is found
-                ingredients = []
-                if "recipe" in data:
-                    ingredients = data["recipe"].get("ingredients", [])
-                else:
-                    flash("No ingredients found for the provided recipe URI.")
-            except requests.exceptions.RequestException as e:
-                flash(f"Error fetching ingredients: {e}")
-                return redirect('/search')
-            """
             if recipe_label != 'None':
                 if not selected_days:
                     print("list empty")
@@ -86,7 +69,6 @@ def calendar():
                         'recipe_uri': recipe_uri
                     }
                     print(recipe_data)
-                    print('ingredients: ', recipe_data['recipe_uri'])
                     # Save to firebase
                     recipes_collection_ref.document(recipe_label).set(recipe_data)
                     flash(f"Succesfully added Recipe: {recipe_label}")

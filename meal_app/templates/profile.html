@@ -6,7 +6,9 @@
 <div class="profile">
     <div class="input">
         <h2>My Profile</h2>
-
+        <form action="{{ url_for('get_today_recipes') }}" method="POST">
+            <button type="submit" class="submit_btn">Show Today's Recipes</button>
+        </form>
         {% for message in get_flashed_messages() %}
             <p style="color: green;">{{ message }}</p>
         {% endfor %}
