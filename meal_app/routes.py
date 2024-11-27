@@ -16,6 +16,7 @@ from .shopping_cart.download_pdf import download_pdf
 from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_templates
+from .email.email_routes import email_templates
 from .social.social import social_template
 from .users.userpage import user_template
 from datetime import datetime
@@ -131,6 +132,7 @@ def profile():
         password = request.form.get('password')
         newPost = request.form.get('newPost')
         opt_in_out = 'opt_in_out' in request.form
+        email_scheduled_time = request.form.get('email_schedule_time')
 
         if newPost:
             if username == "":
@@ -162,7 +164,8 @@ def profile():
             updated_data = {
                 'username': username,
                 'bio': bio,
-                'opt_in_out': opt_in_out
+                'opt_in_out': opt_in_out,
+                'email_scheduled_time': email_scheduled_time
             }
 
         if password:
@@ -241,3 +244,4 @@ app.register_blueprint(delete_entry_templates)
 app.register_blueprint(daily_calorie_goal_templates)
 app.register_blueprint(social_template)
 app.register_blueprint(user_template)
+app.register_blueprint(email_templates)
