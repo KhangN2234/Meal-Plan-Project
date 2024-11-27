@@ -23,6 +23,10 @@
             </form>
         </div>
 
+        <div class="button">
+            <button id="consoleButton">Click Me!</button>
+        </div>
+
         <div class="profile-info">
             <form method="POST">
 
@@ -56,6 +60,11 @@
             object-fit: cover;
         }
     </style>
+     <script>
+        document.getElementById("consoleButton").addEventListener("click", function () {
+            console.log("Button was clicked!");
+        });
+    </script>
 </div>
 </body>
 </html>
