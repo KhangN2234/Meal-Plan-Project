@@ -21,7 +21,7 @@ from .social.social import social_template
 from .users.userpage import user_template
 from datetime import datetime
 from meal_app.meal_api import fetch_meals_by_category
-
+from .email.email_routes import schedule_email,send_scheduled_email
 
 
 @app.route('/')
@@ -132,8 +132,11 @@ def profile():
         password = request.form.get('password')
         newPost = request.form.get('newPost')
         opt_in_out = 'opt_in_out' in request.form
-        email_scheduled_time = request.form.get('email_schedule_time')
+        email_scheduled_time = request.form.get('email_scheduled_time')
 
+        if not email_scheduled_time:
+            print("No email schedule time recieved!")
+            
         if newPost:
             if username == "":
                 username = "UnknownUsername"
@@ -174,6 +177,8 @@ def profile():
             updated_data['password'] = hashed_password.decode('utf-8')
      
         doc_ref.update(updated_data)
+
+        schedule_email(email, email_scheduled_time)
 
         flash('Profile updated successfully!')
 
