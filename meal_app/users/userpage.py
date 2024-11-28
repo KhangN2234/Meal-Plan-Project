@@ -45,10 +45,58 @@ def user(userEmail):
                 'url': recipe.to_dict().get('recipe_url')
             }
             for recipe in recipes_collection_ref.get()]
+
+        loggedInUserRef = db.collection('users').document(loggedInUser)
+        loggedInUserDoc = loggedInUserRef.get()
+        loggedInUserData = loggedInUserDoc.to_dict()
+
+        friendsList = loggedInUserData.get('friends', [])
+        if friendsList is None:
+            friendsList = []
+
+        if userEmail in friendsList:
+            friendsWith = True
+        else:
+            friendsWith = False
         
-        print(viewingSelf)
-        return render_template('userpage.html', username=userEmail, user_data=user_data, userPosts=userPosts, calendarRecipes=data, viewingSelf=viewingSelf, friendsWith = False)
+        return render_template('userpage.html', username=userEmail, user_data=user_data, userPosts=userPosts, calendarRecipes=data, viewingSelf=viewingSelf, friendsWith = friendsWith)
     else:
         flash("User not found!")
         return redirect('/')
+
+@app.route('/friend/<userEmail>', methods=['POST'])
+def friend(userEmail):
+    if 'user' in session:
+        email = session['user']
+        
+        # Get the user document
+        user_doc_ref = db.collection('users').document(email)
+        user_doc = user_doc_ref.get()
+
+        print(user_doc)
+        
+        # Check if the 'friends' field exists and has items
+        if user_doc.exists:
+            friendsList = user_doc.to_dict().get('friends', [])
+        else: 
+            user_doc.update({'friends': []})
+            friendsList = []
+
+        if userEmail in friendsList:
+            friendsList.remove(userEmail)
+            flash('{userEmail} removed from friends list.')
+        else:
+            friendsList.append(userEmail)
+            flash('{userEmail} removed from friends list.')
+
+        user_doc_ref.update({'friends': friendsList})
+        print(user_doc.to_dict().get('friends', []))
+
+        return redirect(f'/user/{userEmail}')
+    else:
+        return redirect(f'/user/{userEmail}')
+        
+
+
+
 

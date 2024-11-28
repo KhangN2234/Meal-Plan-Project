@@ -14,10 +14,15 @@
             <div class="userTags"></div>
             <div class="userBio"> <p>" {{user_data.bio}} "</p> </div>
             {% if friendsWith %}
-                <button label="Unfriend">Unfriend</button>
+            <form action="/friend/{{user_data.email}}" method="POST">
+                <button label="Unfriend" type='submit' value="{{user_data.email}}">Unfriend</button>
+            </form>
             {% elif viewingSelf == True %}
+            </form>
             {% else %}
-                <button label="Add as Friend">Add as Friend</button>
+            <form action="/friend/{{user_data.email}}" method="POST">
+                <button label="Add as Friend" type='submit' value="{{user_data.email}}">Add as Friend</button>
+            </form>
             {% endif %}
             
         </div>
