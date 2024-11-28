@@ -5,86 +5,110 @@
 <body>
     <div class="userPage">
         <div class="userPageHead">
+            {% if viewingSelf == True %}
+                <p> <i>(Your Profile)</i> </p>
+            {% endif %}
             <div class="userProfilePic"></div>
-            <div class="userUsername"> <p> {{user_data.username}} </p></div>
+            <div class="userUsername"> <p class="userUsername"> <b>{{user_data.username}} </b></p></div>
             <div class="userEmail"> <p> {{user_data.email}} </p></div>
             <div class="userTags"></div>
-            <div class="userBio"> <p>{{user_data.bio}}</p> </div>
+            <div class="userBio"> <p>" {{user_data.bio}} "</p> </div>
+            {% if friendsWith %}
+            <form action="/friend/{{user_data.email}}" method="POST">
+                <button label="Unfriend" type='submit' value="{{user_data.email}}">Unfriend</button>
+            </form>
+            {% elif viewingSelf == True %}
+            </form>
+            {% else %}
+            <form action="/friend/{{user_data.email}}" method="POST">
+                <button label="Add as Friend" type='submit' value="{{user_data.email}}">Add as Friend</button>
+            </form>
+            {% endif %}
+            
         </div>
         <div class="userPageBody">
-            <div class="UserPosts">
-                {% for post in userPosts %}
-                    <div class="post">
-                        <p class="postAuthor" class="postTop"><b>@{{post.author}}</b></p>
-                        <p class="postEmail"><i>({{post.email}})</i></p>
-                        <p class="postTimestamp" class="postTop">{{post.timestamp}}</p>
-                        <p class="postContent">{{post.content}}</p>
-                    </div>
-                {% endfor %}               
+            <div class="userPageLeft input">
+                <div class="userCalendar">
+                    <p>Monday</p>
+                    <ul>
+                        {% for recipe in calendarRecipes %}
+                        {% if 'Monday' in recipe. days %}
+                        <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <p>Tuesday</p>
+                    <ul>
+                        {% for recipe in calendarRecipes %}
+                        {% if 'Tuesday' in recipe. days %}
+                        <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <p>Wednesday</p>
+                    <ul>
+                        {% for recipe in calendarRecipes %}
+                        {% if 'Wednesday' in recipe. days %}
+                        <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <p>Thursday</p>
+                    <ul>
+                        {% for recipe in calendarRecipes %}
+                        {% if 'Thursday' in recipe. days %}
+                        <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <p>Friday</p>
+                    <ul>
+                        {% for recipe in calendarRecipes %}
+                        {% if 'Friday' in recipe. days %}
+                        <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <p>Saturday</p>
+                    <ul>
+                        {% for recipe in calendarRecipes %}
+                        {% if 'Friday' in recipe. days %}
+                        <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <p>Sunday</p>
+                    <ul>
+                        {% for recipe in calendarRecipes %}
+                        {% if 'Friday' in recipe. days %}
+                        <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="userPageLeft">
-            <div class="userCalendar">
-                <p>Monday</p>
-                <ul>
-                    {% for recipe in calendarRecipes %}
-                    {% if 'Monday' in recipe. days %}
-                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <p>Tuesday</p>
-                <ul>
-                    {% for recipe in calendarRecipes %}
-                    {% if 'Tuesday' in recipe. days %}
-                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <p>Wednesday</p>
-                <ul>
-                    {% for recipe in calendarRecipes %}
-                    {% if 'Wednesday' in recipe. days %}
-                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <p>Thursday</p>
-                <ul>
-                    {% for recipe in calendarRecipes %}
-                    {% if 'Thursday' in recipe. days %}
-                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <p>Friday</p>
-                <ul>
-                    {% for recipe in calendarRecipes %}
-                    {% if 'Friday' in recipe. days %}
-                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <p>Saturday</p>
-                <ul>
-                    {% for recipe in calendarRecipes %}
-                    {% if 'Friday' in recipe. days %}
-                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-                <p>Sunday</p>
-                <ul>
-                    {% for recipe in calendarRecipes %}
-                    {% if 'Friday' in recipe. days %}
-                    <li><a href='{{ recipe. url }}'> {{ recipe. label }}</a><br></li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
+            <div class="userPageCenter">
+                <div class="UserPosts">
+                    {% for post in userPosts %}
+                        <div class="post">
+                            <p class="postAuthor" class="postTop"><b>@{{post.author}}</b></p>
+                            <p class="postEmail"><i>({{post.email}})</i></p>
+                            <p class="postTimestamp" class="postTop">{{post.timestamp}}</p>
+                            <p class="postContent">{{post.content}}</p>
+                        </div>
+                    {% endfor %}               
+                </div>
             </div>
-        </div>
-        <div class="userPageRight">
-            <div class="userFavorites"></div>
+            <div class="userPageRight input">
+                <div class="userFavorites"> 
+                    <p>Friends</p>
+                    <ul>
+                        {% for friend in viewedUserFriendsList %}
+                        <li><b><a href="/user/{{friend.email}}">{{ friend.username }}</b></a> <br><i>({{ friend.email }})</i></li>
+                        {% endfor %}
+                    </ul>
+                    <p>Favorites</p></div>
+            </div>
         </div>
     </div>
 </body>
