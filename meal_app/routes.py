@@ -6,6 +6,7 @@ import bcrypt
 import requests
 import os
 import re
+import random
 from .scale_recipe.scale_recipe_routes import scaled_recipe_templates
 from .scale_recipe.recipe_scaling_routes import recipe_scaling_templates
 from .search_recipe.search_routes import search_templates
@@ -15,8 +16,12 @@ from .shopping_cart.download_pdf import download_pdf
 from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_templates
+from .email.email_routes import email_templates
 from .social.social import social_template
+from .users.userpage import user_template
 from datetime import datetime
+from meal_app.meal_api import fetch_meals_by_category
+from .email.email_routes import schedule_email,send_scheduled_email
 
 
 @app.route('/')
@@ -127,22 +132,11 @@ def profile():
         password = request.form.get('password')
         newPost = request.form.get('newPost')
         opt_in_out = 'opt_in_out' in request.form
+        email_scheduled_time = request.form.get('email_scheduled_time')
 
-        updated_data = {
-        'username': username,
-        'bio': bio,
-        'opt_in_out': opt_in_out
-    }
-
-        if password:
-            # Hash the new password
-            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-            updated_data['password'] = hashed_password.decode('utf-8')
-     
-        doc_ref.update(updated_data)
-
-        flash('Profile updated successfully!')
-
+        if not email_scheduled_time:
+            print("No email schedule time recieved!")
+            
         if newPost:
             if username == "":
                 username = "UnknownUsername"
@@ -155,6 +149,38 @@ def profile():
 
             db.collection('posts').add(postData)
             return redirect('/social')
+
+        if bio:
+            if request.form.get('bio') != user_data.get('bio'):
+
+                username = doc.to_dict().get('username')
+                if username == "":
+                    username = "UnknownUsername"
+                post_entry = {
+                    'author': username,
+                    'email': email,
+                    'content': "Updated bio to: \" " + request.form.get('bio') + " \"",
+                    'timestamp': datetime.utcnow(),
+                }
+                db.collection('posts').add(post_entry)
+
+            updated_data = {
+                'username': username,
+                'bio': bio,
+                'opt_in_out': opt_in_out,
+                'email_scheduled_time': email_scheduled_time
+            }
+
+        if password:
+            # Hash the new password
+            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+            updated_data['password'] = hashed_password.decode('utf-8')
+     
+        doc_ref.update(updated_data)
+
+        schedule_email(email, email_scheduled_time)
+
+        flash('Profile updated successfully!')
 
         
         return redirect('/profile')
@@ -197,6 +223,22 @@ def contact():
     
     return render_template('contact.html')
 
+@app.route('/popular-meals')
+def popular_meals():
+    categories = ["Beef", "Chicken", "Dessert", "Seafood", "Vegetarian"]
+    popular_meals = []
+
+    for category in categories:
+        meals = fetch_meals_by_category(category)
+        if meals:
+            random_meal = random.choice(meals)  # Select a random meal
+            popular_meals.append({
+                "category": category,
+                "meal": random_meal
+            })
+
+    return render_template('popular_meals.html', popular_meals=popular_meals)
+
 app.register_blueprint(search_templates)
 app.register_blueprint(scaled_recipe_templates)
 app.register_blueprint(recipe_scaling_templates)
@@ -206,3 +248,5 @@ app.register_blueprint(calorie_tracking_templates)
 app.register_blueprint(delete_entry_templates)
 app.register_blueprint(daily_calorie_goal_templates)
 app.register_blueprint(social_template)
+app.register_blueprint(user_template)
+app.register_blueprint(email_templates)

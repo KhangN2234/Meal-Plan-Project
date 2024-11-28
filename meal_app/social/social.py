@@ -18,7 +18,6 @@ postRecipe_template = Blueprint('postRecipe', __name__)
 
 @app.route('/social', methods=['GET', 'POST'])
 def social():
-
     if 'user' not in session:
         flash("Please log in to access your account information")
         return redirect('/login')
@@ -31,8 +30,14 @@ def social():
         return redirect('/login')
     
     user_data = doc.to_dict()
+
+
+    friendsList = user_data.get('friends', [])
+    if friendsList is None:
+        friendsList = []
+
     
-    posts = db.collection('posts').order_by('timestamp', direction='DESCENDING').stream()
+    posts = list(db.collection('posts').order_by('timestamp', direction='DESCENDING').stream())
     userPosts = [
         {'content': post.to_dict().get('content'),
          'author': post.to_dict().get('author'),
@@ -41,9 +46,17 @@ def social():
         for post in posts
     ]
     
-
+    friendPosts = [
+        {'content': post.to_dict().get('content'),
+         'author': post.to_dict().get('author'),
+         'email': post.to_dict().get('email'),
+         'timestamp': post.to_dict().get('timestamp')}
+        for post in posts if post.to_dict().get('email') in friendsList
+    ]
     
-    return render_template('social.html', user_data=user_data, userPosts=userPosts)
+    friendsOnly = request.args.get('friendsOnly', '').lower() == 'true'
+    
+    return render_template('social.html', user_data=user_data, userPosts=userPosts, friendPosts=friendPosts, friendsOnly=friendsOnly)
 
 @app.route('/postrecipe', methods=['GET', 'POST'])
 def postRecipe():
