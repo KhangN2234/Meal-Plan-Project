@@ -48,6 +48,17 @@ def send_scheduled_email(user_email):
                     server.sendmail(sender_email, recipient_email, msg.as_string())
 
                 print(f"Email sent to {recipient_email}")
+
+                now = datetime.now()
+                next_run_time = now + timedelta(days=1)
+                scheduler.add_job(
+                    send_scheduled_email,
+                    'date',
+                    run_date=next_run_time.replace(hour=now.hour, minute=now.minute,second=now.second, microsecond=now.microsecond),
+                    args=[user_email]
+                )   
+                print(f"Next email scheduled for {recipient_email} at {next_run_time.strftime('%Y-%m-%d %H:%M:%S')}")
+
             else:
                 print(f"No email found for user {user_email}")
         else:
