@@ -907,3 +907,56 @@ p {
     .contact-page button:hover {
         background: #0f5bbd; 
     }
+
+
+.userpage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.userPageHead{
+    text-align: center;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+.userUsername{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px
+}
+
+.userPageBody{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start
+}
+
+.userPageCenter{
+    flex: 1;
+    padding: 10px;
+    position: relative;
+    
+}
+
+.userPageCenter .post {
+    width: 500px;
+    margin-top: auto;
+    justify-content: left;
+}
+
+.userPageLeft{
+    text-align: center;
+    padding: 10px;
+    width: 20%;
+    list-style: none;
+}
+
+.userPageRight{
+    text-align: center;
+    padding: 10px;
+    width: 20%;
+}
