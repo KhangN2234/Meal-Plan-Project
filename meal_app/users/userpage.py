@@ -104,10 +104,8 @@ def friend(userEmail):
 
         if userEmail in friendsList:
             friendsList.remove(userEmail)
-            flash('{userEmail} removed from friends list.')
         else:
             friendsList.append(userEmail)
-            flash('{userEmail} removed from friends list.')
 
         user_doc_ref.update({'friends': friendsList})
         print(user_doc.to_dict().get('friends', []))
