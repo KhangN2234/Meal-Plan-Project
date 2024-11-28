@@ -100,7 +100,14 @@
                 </div>
             </div>
             <div class="userPageRight input">
-                <div class="userFavorites"> <p>Friends</p> <p>Favorites</p></div>
+                <div class="userFavorites"> 
+                    <p>Friends</p>
+                    <ul>
+                        {% for friend in viewedUserFriendsList %}
+                        <li><b><a href="/user/{{friend.email}}">{{ friend.username }}</b></a> <br><i>({{ friend.email }})</i></li>
+                        {% endfor %}
+                    </ul>
+                    <p>Favorites</p></div>
             </div>
         </div>
     </div>

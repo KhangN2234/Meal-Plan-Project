@@ -54,12 +54,32 @@ def user(userEmail):
         if friendsList is None:
             friendsList = []
 
-        if userEmail in friendsList:
-            friendsWith = True
-        else:
-            friendsWith = False
+        friendsWithDetails = []
+        for friendEmail in friendsList:
+            friend_doc = db.collection('users').document(friendEmail).get()
+            if friend_doc.exists:
+                friend_data = friend_doc.to_dict()
+                friendsWithDetails.append({
+                    'email': friendEmail,
+                    'username': friend_data.get('username', 'Unknown') #Default if username not found
+                })
+
+        friendsWith = userEmail in friendsList
+
+        viewedUserFriendsList = []
+        viewedUserFriends = user_doc.to_dict().get('friends', [])
+        for friendEmail in viewedUserFriends:
+            friend_doc = db.collection('users').document(friendEmail).get()
+            if friend_doc.exists:
+                friend_data = friend_doc.to_dict()
+                viewedUserFriendsList.append({
+                    'email': friendEmail,
+                    'username': friend_data.get('username', 'Unknown')  #Default if username not found
+                })
+
+        print(viewedUserFriendsList)
         
-        return render_template('userpage.html', username=userEmail, user_data=user_data, userPosts=userPosts, calendarRecipes=data, viewingSelf=viewingSelf, friendsWith = friendsWith)
+        return render_template('userpage.html', username=userEmail, user_data=user_data, userPosts=userPosts, calendarRecipes=data, viewingSelf=viewingSelf, friendsWith = friendsWith, viewedUserFriendsList=viewedUserFriendsList)
     else:
         flash("User not found!")
         return redirect('/')
