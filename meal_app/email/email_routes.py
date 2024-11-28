@@ -11,7 +11,14 @@ import os
 from dotenv import load_dotenv
 
 email_templates = Blueprint('send_email', __name__)
+test_templates = Blueprint('test_route', __name__)
 
+@app.route('/test_route', methods=['POST'])
+def test_route():
+    if request.method == 'POST':
+        today = datetime.now().strftime('%A')
+        print(today)
+        return redirect('/profile')
 
 def send_scheduled_email(user_email):
     # Check if the user is logged in
