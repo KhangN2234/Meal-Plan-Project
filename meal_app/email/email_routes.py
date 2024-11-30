@@ -9,15 +9,54 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
 from dotenv import load_dotenv
+import requests
+from urllib.parse import quote
 
 email_templates = Blueprint('send_email', __name__)
 test_templates = Blueprint('test_route', __name__)
+
+recipe_search_app_id = os.getenv('RECIPE_SEARCH_APP_ID')
+recipe_search_api_key = os.getenv('RECIPE_SEARCH_API_KEY')
 
 @app.route('/test_route', methods=['POST'])
 def test_route():
     if request.method == 'POST':
         today = datetime.now().strftime('%A')
-        print(today)
+        
+        email = session['user']
+        recipes_collection_ref = db.collection('users').document(email).collection('recipes')
+        recipes_collection_docs = recipes_collection_ref.stream()
+
+        for recipe in recipes_collection_docs:
+            recipe_data = recipe.to_dict()
+            if today in recipe_data.get('days', []):
+                recipe_uri = recipe_data.get('recipe_uri')
+                print(f"fetched uri: {recipe_uri}")
+
+                api_uri = quote(recipe_uri, safe='')
+                api_url = (
+                    f"https://api.edamam.com/api/recipes/v2"
+                    f"/by-uri?type=public&app_id={recipe_search_app_id}&app_key={recipe_search_api_key}&uri={api_uri}"
+                )
+
+                response = requests.get(api_url)
+
+                if response.status_code == 200:
+                    recipe_json = response.json()
+                    recipe_hits = recipe_json['hits']
+                    for recipe in recipe_hits:
+                        recipe_label = recipe["recipe"]["label"]
+                        recipe_ingredients = recipe["recipe"]["ingredientLines"]
+
+                        print(recipe_label)
+                        for item in recipe_ingredients:
+                            print(item)
+                    #print(f"Recipe Name: {recipe_label}")
+                    #print("Ingredients: ")
+                    #print(ingredients)
+                else:
+                    print(f"Failed to fetch recipe details: {response.status_code} - {response.text}")
+
         return redirect('/profile')
 
 def send_scheduled_email(user_email):
