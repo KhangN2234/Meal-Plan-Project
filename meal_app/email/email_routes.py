@@ -26,6 +26,8 @@ def test_route():
         email = session['user']
         recipes_collection_ref = db.collection('users').document(email).collection('recipes')
         recipes_collection_docs = recipes_collection_ref.stream()
+        recipe_labels  = []
+        total_ingredients = []
 
         for recipe in recipes_collection_docs:
             recipe_data = recipe.to_dict()
@@ -42,20 +44,25 @@ def test_route():
                 response = requests.get(api_url)
 
                 if response.status_code == 200:
+                    
                     recipe_json = response.json()
                     recipe_hits = recipe_json['hits']
                     for recipe in recipe_hits:
-                        recipe_label = recipe["recipe"]["label"]
+                        recipe_labels.append(recipe["recipe"]["label"])
                         recipe_ingredients = recipe["recipe"]["ingredientLines"]
 
-                        print(recipe_label)
                         for item in recipe_ingredients:
-                            print(item)
-                    #print(f"Recipe Name: {recipe_label}")
-                    #print("Ingredients: ")
-                    #print(ingredients)
+                            total_ingredients.append(item)
+                    
                 else:
                     print(f"Failed to fetch recipe details: {response.status_code} - {response.text}")
+        print("Today's recipes:")
+        for item in recipe_labels:
+            print(f" - {item}")
+        print("Total ingredients:")
+        for item in total_ingredients:
+            print(f" - {item}")
+
 
         return redirect('/profile')
 
