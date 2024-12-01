@@ -306,7 +306,7 @@ p {
         text-decoration: none;
         font-size: 20px;
         transition: ease-in-out 250ms;
-        border-left: 1px solid rgb(68, 104, 180) ;
+        border-left: 1px solid rgb(68, 104, 180);
     }
 
     nav a:hover {
