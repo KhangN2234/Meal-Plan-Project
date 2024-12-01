@@ -271,12 +271,31 @@ p {
             padding-left: 40px;
             box-sizing: border-box;
             border-bottom: 1px solid #38a0cf;
+            border-left: none;
         }
         i {
             margin-right: 16px;
         }
     }
 
+    /* Settings option */
+    .side_bar ul li:last-child {
+        border-top: 1px solid #38a0cf;
+        margin-top: 270.6%;
+    }
+
+    .profile_nav {
+        /* hide the content so that the nav bar align itself automatically */
+        .content {
+            color: transparent;
+        }
+        i {
+            font-size: 50px;
+            right: 7px;
+            top: 8px;
+            position: fixed;
+        }
+    }
 
     /* change text inside nav bar */
     nav li a {
