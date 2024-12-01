@@ -90,7 +90,7 @@ def login():
                     flash('Account created successfully!')
                 else:
                     flash('You have been successfully logged in!')
-                return redirect('/profile')
+                return redirect('/welcome')
         else:
                 # If its incorrect
                 flash('Invalid password')

@@ -217,7 +217,7 @@ p {
 /* nav bar style */
     /* change nav bar position*/
     nav {
-        background-color: #e7e6e6;
+        background-color: white;
         border-bottom: 4px solid #38a0cf;
         position: fixed;
         font-size: 40px;
