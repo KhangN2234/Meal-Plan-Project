@@ -21,7 +21,7 @@
         </ul>
       </div>
     </li>
-    <li><a href="{{ url_for('welcome') }}">Home</a></li>
+    <li style="border-right: 1px solid #38a0cf;"><a href="{{ url_for('welcome') }}">Home</a></li>
     <li class="profile_nav" style="float: right;"><a href="/user/{{user_data.email}}"><div class="content">.</div><i class='bx bxs-user-circle' ></i></a></li>
     <li>
       <form action="{{ url_for('search') }}" method="POST" class="search_body">
