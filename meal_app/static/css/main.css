@@ -314,7 +314,7 @@ p {
         background-color: lightblue;
     }
 
-    nav label:hover {
+    nav label i:hover {
         color: #007bff;
     }
 
