@@ -16,11 +16,12 @@ from .shopping_cart.download_pdf import download_pdf
 from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_templates
+from .email.email_routes import email_templates
 from .social.social import social_template
 from .users.userpage import user_template
 from datetime import datetime
 from meal_app.meal_api import fetch_meals_by_category
-
+from .email.email_routes import schedule_email,send_scheduled_email
 
 
 @app.route('/')
@@ -131,7 +132,11 @@ def profile():
         password = request.form.get('password')
         newPost = request.form.get('newPost')
         opt_in_out = 'opt_in_out' in request.form
+        email_scheduled_time = request.form.get('email_scheduled_time')
 
+        if not email_scheduled_time:
+            print("No email schedule time recieved!")
+            
         if newPost:
             if username == "":
                 username = "UnknownUsername"
@@ -162,7 +167,8 @@ def profile():
             updated_data = {
                 'username': username,
                 'bio': bio,
-                'opt_in_out': opt_in_out
+                'opt_in_out': opt_in_out,
+                'email_scheduled_time': email_scheduled_time
             }
 
         if password:
@@ -171,6 +177,8 @@ def profile():
             updated_data['password'] = hashed_password.decode('utf-8')
      
         doc_ref.update(updated_data)
+
+        schedule_email(email, email_scheduled_time)
 
         flash('Profile updated successfully!')
 
@@ -241,3 +249,4 @@ app.register_blueprint(delete_entry_templates)
 app.register_blueprint(daily_calorie_goal_templates)
 app.register_blueprint(social_template)
 app.register_blueprint(user_template)
+app.register_blueprint(email_templates)
