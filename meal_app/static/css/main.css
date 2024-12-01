@@ -724,6 +724,38 @@ p {
         box-shadow: 0 0 7px;
     }
 
+.profile .input{
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 20px;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile .post {
+    width: 100%;
+}
+
+.post{
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 10px;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-wrap: break-word;
+}
 
 /* Recipe Scaling UI */ 
     .scale_recipe {
@@ -894,3 +926,56 @@ p {
     .contact-page button:hover {
         background: #0f5bbd; 
     }
+
+
+.userpage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.userPageHead{
+    text-align: center;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+.userUsername{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px
+}
+
+.userPageBody{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start
+}
+
+.userPageCenter{
+    flex: 1;
+    padding: 10px;
+    position: relative;
+    
+}
+
+.userPageCenter .post {
+    width: 500px;
+    margin-top: auto;
+    justify-content: left;
+}
+
+.userPageLeft{
+    text-align: center;
+    padding: 10px;
+    width: 20%;
+    list-style: none;
+}
+
+.userPageRight{
+    text-align: center;
+    padding: 10px;
+    width: 20%;
+}

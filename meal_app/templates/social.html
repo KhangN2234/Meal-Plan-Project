@@ -11,15 +11,35 @@
                 <button type="submit">Post</button>
             </form>
         </div>
-
-        {% for post in userPosts %}
-            <div class="post">
-                <p class="postAuthor" class="postTop"><b>@{{post.author}}</b></p>
-                <p class="postEmail"><i>({{post.email}})</i></p>
-                <p class="postTimestamp" class="postTop">{{post.timestamp}}</p>
-                <p class="postContent">{{post.content}}</p>
-            </div>
-        {% endfor %}
+        <div class="post">
+            <p class="postTimestamp" style="display: inline;">View Posts Made By:</p>
+            <form action="/social" method="GET">
+                <select name="friendsOnly">
+                    <option value="false">All Users</option>
+                    <option value="true">Just Friends</option>
+                </select>
+                <button type="submit">Apply</button>
+            </form>
+        </div>
+        {% if friendsOnly %}
+            {% for post in friendPosts %}
+                <div class="post">
+                    <p class="postAuthor" class="postTop"><b><a href="/user/{{post.email}}">@{{post.author}}</a></b></p>
+                    <p class="postEmail"><i>({{post.email}})</i></p>
+                    <p class="postTimestamp" class="postTop">{{post.timestamp}}</p>
+                    <p class="postContent">{{post.content}}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            {% for post in userPosts %}
+                <div class="post">
+                    <p class="postAuthor" class="postTop"><b><a href="/user/{{post.email}}">@{{post.author}}</a></b></p>
+                    <p class="postEmail"><i>({{post.email}})</i></p>
+                    <p class="postTimestamp" class="postTop">{{post.timestamp}}</p>
+                    <p class="postContent">{{post.content}}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
 
     

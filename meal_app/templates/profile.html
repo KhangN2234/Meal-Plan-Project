@@ -6,6 +6,7 @@
 <div class="profile">
     <div class="input">
         <h2>My Profile</h2>
+        <p><i><a href="/user/{{user_data.email}}">View Your Public Profile</a></i></p>
 
         {% for message in get_flashed_messages() %}
             <p style="color: green;">{{ message }}</p>
@@ -30,6 +31,8 @@
                     {% if user_data.opt_in_out %} checked {%endif%}>
                     Opt-in to receive updates
                 </label></div>
+                <label>Email Schedule Time:</label>
+                <input type="time" name="email_scheduled_time" value="{{ user_data.email_scheduled_time }}"><br><br>
             
                 <label>Username:</label>
                 <input type="text" name="username" value="{{ user_data.username }}" required><br><br>
@@ -44,15 +47,6 @@
                 </form>
             </div>
     </div>
-    <p>Your posts:</p>
-    {% for post in userPosts %}
-        <div class="post">
-            <p class="postAuthor" class="postTop"><b>@{{post.author}}</b></p>
-            <p class="postEmail"><i>({{post.email}})</i></p>
-            <p class="postTimestamp" class="postTop">{{post.timestamp}}</p>
-            <p class="postContent">{{post.content}}</p>
-        </div>
-    {% endfor %}
 
     <style>
         /* Very basic style circle (WIP) */
@@ -64,6 +58,11 @@
             object-fit: cover;
         }
     </style>
+     <script>
+        document.getElementById("consoleButton").addEventListener("click", function () {
+            console.log("Button was clicked!");
+        });
+    </script>
 </div>
 </body>
 </html>
