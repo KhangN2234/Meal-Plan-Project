@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
+{% for message in get_flashed_messages() %}
+    <script type="text/javascript">window.setTimeout("document.getElementById('successMessage').style.display='none';", 4000); </script>
+    <div id="successMessage" class="notification"><p>{{message}}</p></div>
+{% endfor %}
 <h1>Meal APP</h1>
 <div class="burger">
   <img src="static/img/burger3.png" alt="burger">
