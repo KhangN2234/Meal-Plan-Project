@@ -21,6 +21,9 @@
                     <a href='{{recipe.url}}'><b>{{recipe.label}}</b></a>
                 </p>
                 <ul class="contents">
+                    <form action="{{ url_for('postRecipe') }}" method="POST">
+                        <button type="submit"  name="recipeURI" value="{{ recipe.uri }}"><i class='bx bxs-share'></i></button>
+                    </form>
                     <li>Protein: {{recipe.protein}}g </li>
                     <li>Calories: {{recipe.calories}} </li>
                     <li>Servings: {{recipe.servings}} </li>
@@ -54,9 +57,6 @@
                     <input type="hidden" name="date" value="{{ current_date }}">
                     <input type="hidden" name="servings" value="{{ recipe.servings }}">
                     <button type="submit" class="small_btn">Add to Calorie Tracker</button>
-                </form>
-                <form action="{{ url_for('postRecipe') }}" method="POST">
-                    <button type="submit" class="small_btn" name="recipeURI" value="{{ recipe.uri }}">Share</button>
                 </form>
             </div>
             <p style="text-align: center"><b>Ingredients</b></p>

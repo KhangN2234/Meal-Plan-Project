@@ -279,7 +279,7 @@ p {
 
     .profile_nav {
         /* hide the content so that the nav bar align itself automatically */
-        .content {
+        .hide {
             color: transparent;
         }
         i {
@@ -383,6 +383,7 @@ p {
         height: 48px;
         width: 47px;
         color: #30353b;
+        background-color: transparent;
         position: absolute;
         border-left: 2px solid black;
         left: 22.6em;
@@ -464,6 +465,21 @@ p {
     .search_result .contents {
         margin-top: -5%;
         margin-left: 29%;
+    }
+    .search_result .contents form {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border: none;
+        button {
+            border-radius: 0 3px 0 7px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        button:hover {
+            color: #007bff;
+        }
     }
 
     .search_result .title {
