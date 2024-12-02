@@ -22,7 +22,20 @@ from .users.userpage import user_template
 from datetime import datetime
 from meal_app.meal_api import fetch_meals_by_category
 from .email.email_routes import schedule_email,send_scheduled_email
+from flask import render_template as real_render_template
 
+# Pass the user_data variable to all render template 
+# so nav bar works when clicking on profile icon
+@app.context_processor
+def inject_user_data():
+    if 'user' in session:
+        email = session['user']
+        doc_ref = db.collection('users').document(email)
+        doc = doc_ref.get()
+        if doc.exists:
+            user_data = doc.to_dict()
+            return {'user_data': user_data}
+    return {'user_data': None}
 
 @app.route('/')
 def startup():
@@ -90,7 +103,7 @@ def login():
                     flash('Account created successfully!')
                 else:
                     flash('You have been successfully logged in!')
-                return redirect('/profile')
+                return redirect('/welcome')
         else:
                 # If its incorrect
                 flash('Invalid password')
