@@ -44,8 +44,11 @@ def calorie_tracking():
         item_name = request.form.get('item_name', '').strip()
         total_calories = int(request.form.get('calories', '').strip())
         date = request.form.get('date', '').strip()
-        servings = int(request.form.get('servings', '').strip())
-        calories = round(total_calories/servings)
+        if request.form.get('servings', '').strip():
+            servings = int(request.form.get('servings', '').strip())
+            calories = round(total_calories/servings)
+        else:
+            calories = total_calories
 
         if item_name and calories and date:
             try:
