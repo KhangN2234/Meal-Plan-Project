@@ -35,7 +35,13 @@ def inject_user_data():
         if doc.exists:
             user_data = doc.to_dict()
             return {'user_data': user_data}
-    return {'user_data': None}
+        return {'user_data': None}
+    return{'user_data': None}
+
+@app.route('/user/')
+def user_None():
+    flash('No Account Found')
+    return redirect('/login')
 
 @app.route('/')
 def startup():
