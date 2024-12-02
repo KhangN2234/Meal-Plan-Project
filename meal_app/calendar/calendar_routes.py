@@ -3,8 +3,12 @@ from flask import Flask, render_template, request, redirect, session, flash
 from flask import Blueprint
 from firebase_admin import firestore
 import re
+import os
+import requests
 
 calendar_templates = Blueprint('calendar',__name__)
+recipe_search_app_id = os.getenv('RECIPE_SEARCH_APP_ID')
+recipe_search_api_key = os.getenv('RECIPE_SEARCH_API_KEY')
 
 @app.route('/calendar', methods=['GET', 'POST'])
 def calendar():
@@ -52,7 +56,8 @@ def calendar():
             recipe_label = request.form.get('recipe_label')
             recipe_url = request.form.get('recipe_url')
             selected_days = request.form.getlist('selected_days')
-            
+            recipe_uri = request.form.get('recipe_uri')
+
             if recipe_label != 'None':
                 if not selected_days:
                     print("list empty")
@@ -60,7 +65,8 @@ def calendar():
                     recipe_data = {
                         'recipe_label': recipe_label,
                         'recipe_url': recipe_url,
-                        'days': selected_days
+                        'days': selected_days,
+                        'recipe_uri': recipe_uri
                     }
                     print(recipe_data)
                     # Save to firebase
@@ -84,7 +90,8 @@ def calendar():
                                    recipes_list = data,
                                    recipe_label = recipe_label,
                                    recipe_url = recipe_url,
-                                   selected_days = selected_days
+                                   selected_days = selected_days,
+                                   recipe_uri = recipe_uri
                                    )
         else:
             flash("Please log in to access your calendar.")

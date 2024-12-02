@@ -45,6 +45,7 @@
                 <form action="/calendar" method="POST">
                     <input type="hidden" name="recipe_label" value="{{ recipe.label }}">
                     <input type="hidden" name="recipe_url" value="{{ recipe.url }}">
+                    <input type="hidden" name="recipe_uri" value="{{ recipe.uri }}">
                     <button type="submit" class="small_btn">Add to Calendar</button>
                 </form>
                 <form action="/cart" method="POST">
@@ -54,6 +55,7 @@
                     <input type="hidden" name="item_name" value="{{ recipe.label }}">
                     <input type="hidden" name="calories" value="{{ recipe.calories }}">
                     <input type="hidden" name="date" value="{{ current_date }}">
+                    <input type="hidden" name="servings" value="{{ recipe.servings }}">
                     <button type="submit" class="small_btn">Add to Calorie Tracker</button>
                 </form>
             </div>

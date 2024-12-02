@@ -17,6 +17,7 @@ from .calorie_tracking.calorie_tracking_route import calorie_tracking_templates
 from .calorie_tracking.calorie_tracking_route import delete_entry_templates
 from .calorie_tracking.calorie_tracking_route import daily_calorie_goal_templates
 from .email.email_routes import email_templates
+from .email.email_routes import test_templates
 from .social.social import social_template
 from .users.userpage import user_template
 from datetime import datetime
@@ -269,3 +270,4 @@ app.register_blueprint(daily_calorie_goal_templates)
 app.register_blueprint(social_template)
 app.register_blueprint(user_template)
 app.register_blueprint(email_templates)
+app.register_blueprint(test_templates)

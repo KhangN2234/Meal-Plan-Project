@@ -42,12 +42,13 @@ def calorie_tracking():
 
     if request.method == 'POST':
         item_name = request.form.get('item_name', '').strip()
-        calories = request.form.get('calories', '').strip()
+        total_calories = int(request.form.get('calories', '').strip())
         date = request.form.get('date', '').strip()
+        servings = int(request.form.get('servings', '').strip())
+        calories = round(total_calories/servings)
 
         if item_name and calories and date:
             try:
-                calories = int(calories)
                 entry_data = {
                     'item_name': item_name,
                     'calories': calories,
