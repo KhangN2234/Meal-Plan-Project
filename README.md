@@ -242,4 +242,28 @@ Khang Ngo: Made the Calendar Page for the user.
 - Jira Task Scrum-132: Share button
 	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-82 
 	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/58 
+	
+
+Lucas Garcia: Made the social page, profile page, and implemented social functionality.
+- Jira Task Scrum-116: Design profile page layout
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-116
+	-  Bitbucket: https://bitbucket.org/%7B%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-116-design-profile-page-layout
+	
+- Jira Task Scrum-117:Implement posts submission system
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-117
+	-  Bitbucket: I think this branch got deleted by my accidental clicking of the checkbox udring the pull request. The pull request still exists.
+
+- Jira Task Scrum-120: Implement friends system
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-120
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/feature/SCRUM-120-implement-friends-system
+
+- Jira Task Scrum-118: Implement post displaying from database system
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-118
+	-  Bitbucket: https://bitbucket.org/cs3398-europa-f24/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-118-implement-post-displaying-from
+
+- Jira Task Scrum-119:Implement bio changes as posts
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-119
+	-  Bitbucket: https://bitbucket.org/%7B%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-119-implement-bio-changes-as-posts
+
+
 
