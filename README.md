@@ -207,3 +207,39 @@ Lucas Garcia: Set up functional ingredient shopping page with pdf export. Added 
 
 
 
+
+## Sprint 3 (November 11th - December 2)
+Contribution:
+
+Khang Ngo: Made the Calendar Page for the user.
+- Jira Task Scrum-107: Sign In/Sign Up UI
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-107
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/33
+- Jira Task Scrum-110: Recipe Search UI
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-110  
+	-  Bitbucket:https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/37
+
+- Jira Task Scrum-109: Recipe Scaling UI
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-109 
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/51
+
+- Jira Task Scrum-112: Nav Bar
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-112
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/56
+
+- Jira Task Scrum-111: Cart UI
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-111 
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/47
+
+- Jira Task Scrum-108: Calendar UI
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-102  
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/44
+
+- Jira Task Scrum-131: Restore Tracker UI
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-82 
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/39
+
+- Jira Task Scrum-132: Share button
+	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-82 
+	-  Bitbucket: https://bitbucket.org/%7B14accbf2-0e99-4271-b4d3-4fe97e4971c1%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/pull-requests/58 
+
