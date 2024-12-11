@@ -265,5 +265,31 @@ Lucas Garcia: Made the social page, profile page, and implemented social functio
 	-  Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-119
 	-  Bitbucket: https://bitbucket.org/%7B%7D/%7B315ae11b-9fcd-47ba-9242-cfc4f4b9d261%7D/branch/SCRUM-119-implement-bio-changes-as-posts
 
+Joseph Bond: Completed calorie Tracking Page and added automatic emailing function
+- Jira Task Scrum-100: create daily calorie goal entry option
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-100
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-100-create-daily-calorie-goal-entr/
+- Jira Task Scrum-98: Create daily calorie summary logic
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-98
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-98-create-daily-calorie-summary-lo/
+- Jira Task Scrum-101: implement logic to give calorie intake recomendations based on daily calorie goal
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-101
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-101-implement-logic-to-give-calori/
+- Jira Task Scrum-99: write unit tests form calorie tracker logic
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-99
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-99-write-unit-tests-form-calorie-t/
+- Jira Task Scrum-113: Create opt-in/out option for email reminders
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-113
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-113-create-opt-in-out-option-for-e/
+- Jira Task Scrum-114: create prep list generation logic
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-114
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-114-create-prep-list-generation-lo/
+- Jira Task Scrum-125: create automatic emailing function
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-125
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-125-create-automatic-emailing-func/
+- Jira Task Scrum-126: create unit tests for prep reminders function
+	- Jira: https://cs3398-europa-fall24.atlassian.net/browse/SCRUM-126
+	- Bitbucket: https://bitbucket.org/cs3398-europa-f24/meal-project/src/SCRUM-126-create-unit-tests-for-prep-rem/
+
 
 
