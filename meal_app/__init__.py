@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 app.secret_key = 'Qk!9:`6rb59G'  
 
-cred = credentials.Certificate('meal-afe56-firebase-adminsdk-lsk0x-4f1be2c0c8.json')  
+cred = credentials.Certificate('meal-afe56-d805a28a48bf.json')  
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
