@@ -55,6 +55,7 @@ __pycache__/
 venv/
 .project
 sampleImage.jpg
+server/src/meal_app/__init__.py
 
 #Firebase stuff
 .firebaserc
