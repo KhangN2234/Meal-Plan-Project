@@ -78,7 +78,7 @@ def signup():
             flash('Account created successfully!')
             session['new_signup'] = True
             session['user'] = email
-            return redirect('/profile')
+            return redirect('/welcome')
         
         except Exception as e:
             return render_template('signup.html', success=False, error=str(e))
