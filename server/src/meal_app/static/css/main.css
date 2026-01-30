@@ -41,8 +41,9 @@ h3 {
     padding: 0 38px 30px 15px;
     border-width: thin;
     border-color: rgb(0, 0, 0);
+    backdrop-filter: blur(10px);
     background-color: whitesmoke;
-    backdrop-filter: blur(20px);
+    
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
@@ -111,7 +112,6 @@ font-family:"Garamond", serif;
     z-index: 1000;
 }
 
-
 /**********************************************************************/
 /* login and signup style */
 /**********************************************************************/
@@ -168,7 +168,6 @@ font-family:"Garamond", serif;
     text-decoration: underline;
 }
 
-
 /**********************************************************************/
 /* Welcome Page style */
 /**********************************************************************/
@@ -216,22 +215,21 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
-    
 
 /**********************************************************************/
 /* nav bar style */
 /**********************************************************************/
-    /* change nav bar position*/
-    nav {
-        background-color: white;
-        border-bottom: 4px solid #38a0cf;
-        position: fixed;
-        font-size: 40px;
-        top: 0em;
-        left: 0em;
-        width: 100%;
-        z-index: 1000;
-    }
+/* change nav bar position*/
+nav {
+    background-color: white;
+    border-bottom: 4px solid #38a0cf;
+    position: fixed;
+    font-size: 40px;
+    top: 0em;
+    left: 0em;
+    width: 100%;
+    z-index: 1000;
+}
 
 /* hide the dot next to the tabs */
 nav li {
@@ -337,27 +335,17 @@ nav label i:hover {
     }   
 }
 
-/**********************************************************************/
-/* Search BAR style */
-/**********************************************************************/
-    .search_body {
-        position: fixed;
-        width: 452px;
-        left: 0;
-        left: 50%;
-        transform: translateX(-47.8%);
-    }
+.search_body .input_box i {
+    position: flex;
+    left: 20px;
+    top: 17px;
+    transform: translate(-50%);
+    font-size: 20px;
+}
 
-    .search_body .input_box {
-        display: inline-block;
-        margin-bottom: 0;
-        margin-top: 0;
-        input {
-            padding-right: 60px;
-            border-bottom-right-radius: 0;
-            border-top-right-radius:0;
-        }   
-    }
+.search_body .input_box i:hover {
+    color: #007bff;
+}
 
 /* Title of the detail tab */
 .search_body summary {
@@ -413,34 +401,21 @@ summary::-webkit-details-marker {
     box-shadow: none;
 }
 
-    .search_body .submit_btn {
-        height: 50px;
-        width: 47px;
-        color: #30353b;
-        background-color: transparent;
-        position: absolute;
-        border: 2px solid black;
-        border-left: none;
-        left: 22.6em;
-        border-radius: 0px 7px 7px 0px;
-        top: 4px;
-        box-shadow: none;
-    }
-
-    .search_body .submit_btn:hover {
-        transition: ease-in-out 200ms;
-    }
-
-    .search_body .submit_btn:hover i {
+.search_body .submit_btn:hover i {
         color: #007bff;
-    }
+}
 
-    /* Magnifying glass icon */
-    .search_body .submit_btn i {
-        top: 10px;
-        height: 30px;
-        width: 47px;
-        font: bold;
+/* Magnifying glass icon */
+.search_body .submit_btn i {
+    top: 11px;
+    font: bold;
+}
+
+/* Prevent nav bar from stacking when adjusting window's width */
+@media (max-width: 92em) {
+    nav {
+    flex-direction: column;
+    width: 100%;
     }
     .search_body {
         margin-left: 0;
@@ -457,22 +432,15 @@ summary::-webkit-details-marker {
     }
 }
 
-
 /**********************************************************************/
 /* Search RESULT style */
 /**********************************************************************/
-    .search_grid {
-        display: grid; 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 2rem; 
-        row-gap: 4rem;
-    }
-    
-    .recipe_image {
-        display: inline-block;
-        height: auto;
-        left: 0;
-    }
+.search_grid {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 2rem; 
+    row-gap: 4rem;
+}
 
 .recipe_image {
     display: inline-block;
@@ -620,20 +588,50 @@ summary::-webkit-details-marker {
     align-items: center;
 }
 
+.small_btn {
+    text-align: center;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #5ec4ffcc;
+    height: 40px;
+    color: black;
+    border-width: thin;
+    border-color: #000000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 12px;
+}
 
-/**********************************************************************/   
+.small_btn:hover {
+    background-color: rgb(143, 227, 255);
+}
+
+
+
+/**********************************************************************/
 /* Profile style */
 /**********************************************************************/
-    .profile-info {
-        margin-bottom: 10%;
-    }
+.profile-info {
+    margin-bottom: 10%;
+}
+
 
 
 /**********************************************************************/
 /* Cart style */
 /**********************************************************************/
-    .cart_body {
-        margin-top: 10%;
+.cart_body {
+    margin-top: 10%;
+}
+.cart_body .wrapper {
+    width: 43em;
+    .Submit{
+        position: absolute;
+        width: 20em;
+        left: 28%;
+        height: 50px;
+        font-size: 17px;
     }
 }
 .cart_body details summary{
@@ -786,22 +784,16 @@ summary::-webkit-details-marker {
 /**********************************************************************/
 /* Calendar Style */
 /**********************************************************************/
-    .day_box {
-        display: flex;
-        width: 80em;
-        margin-left: 40px;
-        margin-top: -5%;
-        gap: 2rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        input {
-            display: none;
-        }
-        .wrapper {
-            height: 25em;
-            width: 15em;
-        }
-
+.day_box {
+    display: flex;
+    width: 80em;
+    margin-left: 40px;
+    margin-top: -5%;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    input {
+        display: none;
     }
     .wrapper {
         height: 25em;
@@ -858,16 +850,16 @@ width: 100%;
 /**********************************************************************/
 /* Recipe Scaling UI */ 
 /**********************************************************************/
-    .scale_recipe {
-        h3 {
-            text-align: center;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px; 
-            font-size: 22px;
-        }
+.scale_recipe {
+    h3 {
+        text-align: center;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; 
+        font-size: 22px;
+    }
 
     label {
         display: flex;
@@ -947,24 +939,23 @@ width: 100%;
     }
 }
 
-
 /**********************************************************************/
 /* Social tab */
 /**********************************************************************/
-    .post{
-        border-style: solid;
-        border-radius: 2%;
-        border-width: thin;
-        border-color: rgb(146, 145, 145);
-        padding: 10px;
-        margin: 5px;
-        background-color: aliceblue;
-        box-shadow: 0 0 10px;
-        width: 25%;
-        margin-left: auto;
-        margin-right: auto;
-        overflow-wrap: break-word;
-    }
+.post{
+    border-style: solid;
+    border-radius: 2%;
+    border-width: thin;
+    border-color: rgb(146, 145, 145);
+    padding: 10px;
+    margin: 5px;
+    background-color: aliceblue;
+    box-shadow: 0 0 10px;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-wrap: break-word;
+}
 
 .postAuthor {
     font-family: Arial, Helvetica, sans-serif;
@@ -1002,19 +993,18 @@ width: 100%;
     height: 100px;
 }
 
-
 /**********************************************************************/
 /* Contact Page Style*/
 /**********************************************************************/
-    .contact-page {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 20px;
-        border-radius: 10px;
-        background-color: #f9f9f9;
-        border: 1px solid #ccc;
-        text-align: center;
-    }
+.contact-page {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    text-align: center;
+}
 
 .contact-page button {
     background: #1a73e8; 
