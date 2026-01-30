@@ -41,7 +41,7 @@ h3 {
     padding: 0 38px 30px 15px;
     border-width: thin;
     border-color: rgb(0, 0, 0);
-    background-color: transparent;
+    background-color: whitesmoke;
     backdrop-filter: blur(20px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
@@ -112,109 +112,115 @@ p {
 }
 
 
+/**********************************************************************/
 /* login and signup style */
-    .input_box {
-        position: relative;
-        width: 100%;
-        height: 50px;
-        margin: 30px 0 60px;
-    }
+/**********************************************************************/
+.input_box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0 60px;
+}
 
-    .input_box input {
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        border: none;
-        outline: none;
-        border: 2px solid black;
-        border-radius: 7px;
-        font-size: 16px;
-        padding: 20px 10px 20px 40px;
-        font-family:"Garamond", serif;
-    }
+.input_box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 7px;
+    font-size: 16px;
+    padding: 20px 10px 20px 40px;
+    font-family:"Garamond", serif;
+}
 
-    /* icon next to email and password */
-    .input_box i {
-        position: absolute;
-        left: 20px;
-        top: 44px;
-        transform: translate(-50%);
-        font-size: 20px;
-    }
+/* icon next to email and password */
+.input_box i {
+    position: absolute;
+    left: 20px;
+    top: 44px;
+    transform: translate(-50%);
+    font-size: 20px;
+}
 
-    .input_box * {
-        margin: 3px;
-        font-size: 20px;
-        box-sizing: border-box;
-    }
+.input_box * {
+    margin: 3px;
+    font-size: 20px;
+    box-sizing: border-box;
+}
 
-    .word_link {
-        margin-top: 10px;
-        margin-bottom: 5px;
-        font-size: 14.5px;
-        text-align: left;
-    }
+.word_link {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 14.5px;
+    text-align: left;
+}
 
-    .word_link p a {
-        color: rgb(13, 13, 14);
-        text-decoration: none;
-        font-weight: 600;
-    }
+.word_link p a {
+    color: rgb(13, 13, 14);
+    text-decoration: none;
+    font-weight: 600;
+}
 
-    .word_link p a:hover {
-        color: rgb(23, 93, 134);
-        text-decoration: underline;
-    }
+.word_link p a:hover {
+    color: rgb(23, 93, 134);
+    text-decoration: underline;
+}
 
 
+/**********************************************************************/
 /* Welcome Page style */
-    .Sigbtn {
-        width: 50%;
-        height: 65px;
-        margin-top: 1%;
-        background: #fff;
-        border: none;
-        outline: none;
-        border-radius: 40px;
-        box-shadow: 0 0 10px black;
-        cursor: pointer;
-        font-size: 30px;
-        color: rgb(0, 0, 0);
-        font-weight: 600;
-        margin-left: 25%;
-    }
+/**********************************************************************/
+.Sigbtn {
+    width: 50%;
+    height: 65px;
+    margin-top: 1%;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px black;
+    cursor: pointer;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    margin-left: 25%;
+}
 
-    .Sigbtn:hover {
-        background-color: rgb(143, 227, 255);
-        color: black; /* of text */
-        transition: ease-in-out 200ms;
-    }
+.Sigbtn:hover {
+    background-color: rgb(143, 227, 255);
+    color: black; /* of text */
+    transition: ease-in-out 200ms;
+}
 
-    .burger {
-        margin-left: auto;
-        margin-right: auto;
-        justify-content: center;
-        display: flex;
-        height: 400px;
-    }
+.burger {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    display: flex;
+    height: 400px;
+}
 
-    .footer {
-        text-align: center;
-        margin-top: 40px;
-        font-size: 0.9em;
-        color: #666;
-    }
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+footer a { 
+    text-decoration: none;
+    color: #007bff;
+}
+footer a:hover {
+    text-decoration: underline;
+}
     
-    footer a { 
-        text-decoration: none;
-        color: #007bff;
-    }
-    footer a:hover {
-        text-decoration: underline;
-    }
-    
 
+/**********************************************************************/
 /* nav bar style */
+/**********************************************************************/
     /* change nav bar position*/
     nav {
         background-color: white;
@@ -312,10 +318,12 @@ p {
     }
 
 
+/**********************************************************************/
 /* Search BAR style */
+/**********************************************************************/
     .search_body {
         position: fixed;
-        width: 500px;
+        width: 452px;
         left: 0;
         left: 50%;
         transform: translateX(-47.8%);
@@ -327,6 +335,8 @@ p {
         margin-top: 0;
         input {
             padding-right: 60px;
+            border-bottom-right-radius: 0;
+            border-top-right-radius:0;
         }   
     }
 
@@ -380,21 +390,32 @@ p {
     }
 
     .search_body .submit_btn {
-        height: 48px;
+        height: 50px;
         width: 47px;
         color: #30353b;
         background-color: transparent;
         position: absolute;
-        border-left: 2px solid black;
+        border: 2px solid black;
+        border-left: none;
         left: 22.6em;
         border-radius: 0px 7px 7px 0px;
         top: 4px;
         box-shadow: none;
     }
 
+    .search_body .submit_btn:hover {
+        transition: ease-in-out 200ms;
+    }
+
+    .search_body .submit_btn:hover i {
+        color: #007bff;
+    }
+
     /* Magnifying glass icon */
     .search_body .submit_btn i {
-        top: 11px;
+        top: 10px;
+        height: 30px;
+        width: 47px;
         font: bold;
     }
 
@@ -420,7 +441,9 @@ p {
     }
 
 
+/**********************************************************************/
 /* Search RESULT style */
+/**********************************************************************/
     .search_grid {
         display: grid; 
         grid-template-columns: repeat(2, 1fr); 
@@ -593,14 +616,18 @@ p {
         background-color: rgb(143, 227, 255);
     }
 
-    
+
+/**********************************************************************/   
 /* Profile style */
+/**********************************************************************/
     .profile-info {
         margin-bottom: 10%;
     }
 
 
+/**********************************************************************/
 /* Cart style */
+/**********************************************************************/
     .cart_body {
         margin-top: 10%;
     }
@@ -761,7 +788,9 @@ p {
     }
 
 
+/**********************************************************************/
 /* Calendar Style */
+/**********************************************************************/
     .day_box {
         display: flex;
         width: 80em;
@@ -824,7 +853,10 @@ p {
     overflow-wrap: break-word;
 }
 
+
+/**********************************************************************/
 /* Recipe Scaling UI */ 
+/**********************************************************************/
     .scale_recipe {
         h3 {
             text-align: center;
@@ -915,7 +947,9 @@ p {
     }
 
 
+/**********************************************************************/
 /* Social tab */
+/**********************************************************************/
     .post{
         border-style: solid;
         border-radius: 2%;
@@ -968,7 +1002,9 @@ p {
     }
 
 
+/**********************************************************************/
 /* Contact Page Style*/
+/**********************************************************************/
     .contact-page {
         max-width: 600px;
         margin: 50px auto;
